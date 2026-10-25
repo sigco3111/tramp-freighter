@@ -2,103 +2,69 @@ import { Modal } from '../../components/Modal';
 
 export function InstructionsModal({ isOpen, onClose, shipName }) {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Captain's Briefing">
+    <Modal isOpen={isOpen} onClose={onClose} title="선장 브리핑">
       <div className="instructions-content">
         <section className="instructions-section">
-          <h3>Your Goal</h3>
+          <h3>당신의 목표</h3>
           <p>
-            You've spent years hauling cargo through the wormhole lanes of Sol
-            Sector. Bad deals, rough encounters, and the relentless cost of
-            keeping a ship running have taken their toll. You're tired. All you
-            want is enough credits to retire somewhere quiet and never look at a
-            cargo manifest again.
+            당신은 수년간 솔 섹터의 웜홀 항로를 누비며 화물을 날랐습니다. 불리한 거래, 험한 조우, 그리고 함선을 굴리는 데 드는 끝없는 비용이 당신을 지치게 했습니다. 이제 바라는 건 조용한 곳에서 은퇴할 만큼의 크레딧, 그리고 다시는 화물 목록을 쳐다보지 않는 것뿐입니다.
           </p>
           <p>
-            There's just one problem: you owe Marcus Cole ten thousand credits —
-            and he's not the patient type. Interest is ticking. You'll want to
-            check the <strong>Finance</strong> menu at any station before the
-            terms surprise you.
+            문제는 하나뿐입니다. 마커스 콜에게 1만 크레딧을 빚지고 있고, 그는 참을성 있는 사람이 아니라는 점입니다. 이자는 계속 붙고 있습니다. 조건에 놀라기 전에 어느 정거장에서든  <strong>금융</strong>  메뉴를 확인해 두세요.
           </p>
           <p>
-            Trade smart, pay down the debt, and build a reputation. The traders
-            who last longest out here aren't just rich — they know the right
-            people. There are rumors of routes beyond the known lanes, but
-            nobody's going to share those with a stranger. Earn your way in.
+            똑똑하게 거래하고, 빚을 갚고, 평판을 쌓으세요. 이곳에서 오래 버티는 상인은 그저 부자가 아니라 알아야 할 사람들을 아는 사람입니다. 알려진 항로 너머의 경로에 대한 소문도 있지만 낯선 사람에게 알려줄 사람은 없습니다. 스스로 자격을 얻으세요.
           </p>
           <p>
-            Clear your debt and the sector may have{' '}
-            <em>more to offer than you expect</em>.
+            빚을 청산하면 이 섹터가 {' '}
+            <em>생각보다 더 많은 것을 내줄지도 모릅니다</em>.
           </p>
           <p>
-            Your hold has 20 units of grain — enough to start, but raw
-            commodities like grain and ore have thin margins. The real money is
-            in manufactured goods: <strong>electronics</strong>,{' '}
-            <strong>parts</strong>, <strong>medicine</strong>. Your{' '}
-            <strong>Cargo Manifest</strong> will show you what you're hauling.
+            화물칸에는 곡물 20단위가 있습니다. 시작하기엔 충분하지만 곡물이나 광석 같은 원자재는 이윤이 얇습니다. 진짜 돈은 공산품에 있습니다:  <strong>전자제품</strong>,{' '}
+            <strong>부품</strong>, <strong>의약품</strong>. {' '}
+            <strong>화물 목록</strong> 에서 지금 무엇을 나르고 있는지 확인할 수 있습니다.
           </p>
         </section>
 
         <section className="instructions-section">
-          <h3>Navigation</h3>
+          <h3>항법</h3>
           <p>
-            The starmap shows 117 real star systems connected by wormhole lanes.
-            To travel, click the <strong>System Info</strong> button in the
-            Quick Access panel to view a system's details, wormhole connections,
-            and the option to jump there. Every jump costs fuel and advances
-            time.
+            별지도에는 웜홀 항로로 이어진 실제 항성계 117곳이 표시됩니다. 이동하려면 빠른 이동 패널의  <strong>항성계 정보</strong>  버튼을 눌러 항성계의 상세 정보와 웜홀 연결을 보고 거기서 점프하세요. 점프할 때마다 연료가 들고 시간이 흐릅니다.
           </p>
         </section>
 
         <section className="instructions-section">
-          <h3>Your Ship</h3>
+          <h3>당신의 함선</h3>
           <p>
-            <em>{shipName || 'Your ship'}</em> is second-hand — a Tanaka Mark
-            III freighter. Every used ship has its quirks: maybe she sips fuel,
-            maybe she handles like a brick. Check <strong>Ship Status</strong>{' '}
-            to see what yours came with.
+            <em>{shipName || '당신의 함선'}</em> 은 중고입니다. 타나카 마크 III 화물선이죠. 중고선에는 저마다 버릇이 있습니다. 연료를 홀짝일 수도, 벽돌처럼 둔하게 움직일 수도 있죠.  <strong>함선 상태</strong>{' '}
+            에서 이 배에 어떤 특성이 딸려 왔는지 확인하세요.
           </p>
         </section>
 
         <section className="instructions-section">
-          <h3>Stations</h3>
+          <h3>정거장</h3>
           <p>
-            When you're in a system with a station, click the{' '}
-            <strong>Dock</strong> button in the Quick Access panel to go aboard.
-            From there you can trade goods, refuel, and repair your ship. Each
-            system has different prices — buy low, sell high.
+            정거장이 있는 항성계에서는 빠른 이동 패널의 {' '}
+            <strong>도킹</strong>  버튼을 눌러 승선하세요. 거기서 물건을 거래하고, 연료를 채우고, 함선을 수리할 수 있습니다. 항성계마다 가격이 다르니 싸게 사서 비싸게 파세요.
           </p>
           <p>
-            The <strong>Info Broker</strong> sells market intelligence — rumors
-            and price data for nearby systems. Worth the credits if you want to
-            trade smart instead of flying blind.
+             <strong>정보 중개인</strong> 은 시장 정보를 팝니다. 인근 항성계의 소문과 가격 데이터죠. 눈 감고 날지 않고 똑똑하게 거래하려면 크레딧을 쓸 가치가 있습니다.
           </p>
           <p>
-            The <strong>Mission Board</strong> posts cargo runs and passenger
-            contracts. Missions pay on delivery and don't cost anything upfront
-            — good supplemental income alongside trading.
+             <strong>임무 게시판</strong> 에는 화물 운송과 승객 계약이 올라옵니다. 임무는 배달 시 보수를 받으며 선불 비용이 없습니다. 거래와 함께 부수입으로 좋습니다.
           </p>
           <p>
-            Talk to <strong>People</strong> at stations. Build relationships and
-            they'll share tips, offer favors, and open doors you didn't know
-            existed.
+            정거장에서  <strong>사람들</strong> 과 이야기해 보세요. 관계를 쌓으면 팁을 알려 주고, 호의를 베풀고, 존재하는 줄 몰랐던 문을 열어 줄 것입니다.
           </p>
         </section>
 
         <section className="instructions-section">
-          <h3>The Science</h3>
+          <h3>과학</h3>
           <p>
-            The stars in this game are real systems within 20 light-years of
-            Sol. Their colors and relative sizes are as accurate as we could
-            make them, with a minimum size so the smallest remain visible. Most
-            are red dwarfs — too dim to see with the naked eye. Until modern
-            astronomy, we didn't even know they existed.
+            이 게임의 별들은 태양에서 20광년 이내에 있는 실제 항성계입니다. 색과 상대적 크기는 최대한 정확하게 만들었고, 가장 작은 별도 보이도록 최소 크기를 두었습니다. 대부분은 적색 왜성이라 맨눈으로는 너무 어두워 보이지 않습니다. 현대 천문학이 나오기 전에는 존재하는 줄도 몰랐습니다.
           </p>
           <p>
-            The antimatter view in the settings menu simply inverts the colors.
-            In reality, an antimatter universe would probably look much the same
-            as ours — light is its own antiparticle, after all. The difference
-            is that if you were actually there, every atom of your body would
-            annihilate on contact. So enjoy the view from this side.
+            설정 메뉴의 반물질 보기는 색을 반전시킬 뿐입니다. 실제로 반물질 우주는 아마 우리 우주와 거의 똑같이 보일 겁니다. 빛은 결국 자기 자신의 반입자이니까요. 다만 실제로 그곳에 있다면 몸의 모든 원자가 접촉 즉시 소멸할 겁니다. 그러니 이쪽에서 경치를 즐기세요.
           </p>
         </section>
       </div>

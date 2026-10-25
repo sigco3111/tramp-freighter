@@ -45,9 +45,9 @@ export function ShipNamingDialog({ onSubmit }) {
       >
         <div className="modal-content">
           <h2 id="ship-naming-title" className="modal-title">
-            Name Your Ship
+            함선 이름 짓기
           </h2>
-          <p className="modal-description">What will you call your vessel?</p>
+          <p className="modal-description">이 배를 뭐라고 부르시겠습니까?</p>
 
           <div className="ship-naming-input-group">
             <input
@@ -56,15 +56,15 @@ export function ShipNamingDialog({ onSubmit }) {
               value={shipName}
               onChange={(e) => setShipName(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Enter ship name..."
+              placeholder="함선 이름 입력..."
               maxLength={SHIP_CONFIG.MAX_NAME_LENGTH}
               autoFocus
-              aria-label="Ship name"
+              aria-label="함선 이름"
             />
           </div>
 
           <div className="ship-name-suggestions">
-            <p className="suggestions-label">Suggestions:</p>
+            <p className="suggestions-label">추천 이름:</p>
             <div className="suggestions-list">
               {SHIP_CONFIG.NAME_SUGGESTIONS.map((name) => (
                 <button
@@ -80,7 +80,7 @@ export function ShipNamingDialog({ onSubmit }) {
 
           <div className="modal-actions">
             <button className="modal-confirm" onClick={handleSubmit}>
-              Confirm
+              확인
             </button>
           </div>
         </div>

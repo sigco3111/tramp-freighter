@@ -62,16 +62,16 @@ export function transformOutcomeForDisplay(rawOutcome, encounterType, choice) {
 
   if (rawOutcome.escalate) {
     additionalEffects.push(
-      'Pirates become more aggressive (threat level increased)'
+      '해적이 더 공격적으로 변했습니다 (위협 수준 상승)'
     );
   }
 
   if (costs.restrictedGoodsConfiscated) {
-    additionalEffects.push('Restricted goods confiscated by customs');
+    additionalEffects.push('제한 품목을 세관이 압수했습니다');
   }
 
   if (costs.hiddenCargoConfiscated) {
-    additionalEffects.push('Hidden cargo discovered and confiscated');
+    additionalEffects.push('은닉 화물이 발견되어 압수되었습니다');
   }
 
   if (additionalEffects.length > 0) {

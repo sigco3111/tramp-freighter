@@ -112,3 +112,6 @@ button.repair-option {
   /* No positioning or styling - panels handle their own */
   /* This is just a semantic wrapper for React component structure */
 }
+
+/* 한글화: 한글 가독성을 위해 자간 보정 */
+html:lang(ko) body, html:lang(ko) body * { letter-spacing: normal !important; word-break: keep-all; }

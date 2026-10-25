@@ -80,7 +80,7 @@ export function AchievementToast() {
       role="status"
       aria-live="polite"
     >
-      <div className="achievement-toast-title">Achievement Unlocked!</div>
+      <div className="achievement-toast-title">업적 달성!</div>
       <div className="achievement-toast-name">{toast.name}</div>
     </div>
   );

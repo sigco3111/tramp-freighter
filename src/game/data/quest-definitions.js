@@ -2,7 +2,7 @@ import { ENDGAME_CONFIG } from '../constants.js';
 
 export const TANAKA_QUEST = {
   id: 'tanaka',
-  name: 'The Tanaka Sequence',
+  name: '타나카 연쇄',
   npcId: 'tanaka_barnards',
 
   unlockConditions: {
@@ -13,7 +13,7 @@ export const TANAKA_QUEST = {
   stages: [
     {
       stage: 1,
-      name: 'Field Test',
+      name: '현장 시험',
       requirements: {
         npcRep: ['tanaka_barnards', ENDGAME_CONFIG.STAGE_1_REP],
         engineCondition: ENDGAME_CONFIG.STAGE_1_ENGINE,
@@ -28,7 +28,7 @@ export const TANAKA_QUEST = {
     },
     {
       stage: 2,
-      name: 'Rare Materials',
+      name: '희귀 자재',
       requirements: {
         npcRep: ['tanaka_barnards', ENDGAME_CONFIG.STAGE_2_REP],
       },
@@ -42,7 +42,7 @@ export const TANAKA_QUEST = {
     },
     {
       stage: 3,
-      name: 'The Prototype',
+      name: '프로토타입',
       requirements: {
         npcRep: ['tanaka_barnards', ENDGAME_CONFIG.STAGE_3_REP],
         hullCondition: ENDGAME_CONFIG.STAGE_3_HULL,
@@ -57,7 +57,7 @@ export const TANAKA_QUEST = {
     },
     {
       stage: 4,
-      name: 'Personal Request',
+      name: '개인적 부탁',
       requirements: {
         npcRep: ['tanaka_barnards', ENDGAME_CONFIG.STAGE_4_REP],
       },
@@ -69,7 +69,7 @@ export const TANAKA_QUEST = {
     },
     {
       stage: 5,
-      name: 'Final Preparations',
+      name: '최종 준비',
       requirements: {
         npcRep: ['tanaka_barnards', ENDGAME_CONFIG.STAGE_5_REP],
         debt: 0,

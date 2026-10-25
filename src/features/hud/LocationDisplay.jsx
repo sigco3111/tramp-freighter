@@ -29,15 +29,15 @@ export function LocationDisplay() {
   return (
     <div className="hud-section hud-location">
       <div className="hud-row">
-        <span className="hud-label">System:</span>
+        <span className="hud-label">항성계:</span>
         <span id="hud-system" className="hud-value">
           {system.name}
         </span>
       </div>
       <div className="hud-row">
-        <span className="hud-label">Distance from Sol:</span>
+        <span className="hud-label">태양으로부터 거리:</span>
         <span id="hud-distance" className="hud-value">
-          {distance.toFixed(1)} LY
+          {distance.toFixed(1)} 광년
         </span>
       </div>
     </div>

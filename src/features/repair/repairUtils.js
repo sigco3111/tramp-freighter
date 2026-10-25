@@ -114,19 +114,19 @@ export function validateRepair(systemType, amount, state) {
   // 4. Check if would exceed max (player can fix by reducing amount)
 
   if (amount <= 0) {
-    return { valid: false, reason: 'Repair amount must be positive' };
+    return { valid: false, reason: '수리량은 양수여야 합니다' };
   }
 
   if (currentCondition >= SHIP_CONFIG.CONDITION_BOUNDS.MAX) {
-    return { valid: false, reason: 'System already at maximum condition' };
+    return { valid: false, reason: '시스템이 이미 최대 상태입니다' };
   }
 
   if (cost > credits) {
-    return { valid: false, reason: 'Insufficient credits for repair' };
+    return { valid: false, reason: '수리할 크레딧이 부족합니다' };
   }
 
   if (currentCondition + amount > SHIP_CONFIG.CONDITION_BOUNDS.MAX) {
-    return { valid: false, reason: 'Repair would exceed maximum condition' };
+    return { valid: false, reason: '수리하면 최대 상태를 초과합니다' };
   }
 
   return { valid: true };
@@ -151,19 +151,19 @@ export function validateRepairAll(condition, credits) {
   if (allAtMax) {
     return {
       valid: false,
-      reason: 'All systems already at maximum condition',
+      reason: '모든 시스템이 이미 최대 상태입니다',
     };
   }
 
   if (totalCost === 0) {
     return {
       valid: false,
-      reason: 'All systems already at maximum condition',
+      reason: '모든 시스템이 이미 최대 상태입니다',
     };
   }
 
   if (credits < totalCost) {
-    return { valid: false, reason: 'Insufficient credits for full repair' };
+    return { valid: false, reason: '전체 수리에 필요한 크레딧이 부족합니다' };
   }
 
   return { valid: true };
@@ -178,11 +178,11 @@ export function validateRepairAll(condition, credits) {
 export function getSystemName(systemType) {
   switch (systemType) {
     case 'hull':
-      return 'Hull';
+      return '선체';
     case 'engine':
-      return 'Engine';
+      return '엔진';
     case 'lifeSupport':
-      return 'Life Support';
+      return '생명 유지';
     default:
       return systemType.charAt(0).toUpperCase() + systemType.slice(1);
   }

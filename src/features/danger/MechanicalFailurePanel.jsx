@@ -57,24 +57,24 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
       aria-modal="true"
       aria-labelledby="mechanical-failure-title"
     >
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         ×
       </button>
-      <h2 id="mechanical-failure-title">Mechanical Failure</h2>
+      <h2 id="mechanical-failure-title">기계 고장</h2>
 
       <div className="failure-content">
         {/* Failure Status Section */}
         <div className="failure-section failure-status">
-          <h3>System Failure</h3>
+          <h3>시스템 고장</h3>
           <div className="failure-info">
             <div className="failure-type">
-              <span className="type-label">Failure Type:</span>
+              <span className="type-label">고장 유형:</span>
               <span className="type-value">
                 {formatFailureType(failure.type)}
               </span>
             </div>
             <div className="failure-severity">
-              <span className="severity-label">Severity:</span>
+              <span className="severity-label">심각도:</span>
               <span
                 className={`severity-value ${severity}`}
                 style={{ color: severityColor }}
@@ -91,33 +91,33 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
 
         {/* Ship Status Section */}
         <div className="failure-section ship-status">
-          <h3>Ship Status</h3>
+          <h3>함선 상태</h3>
           <div className="status-grid">
             <div className="status-item">
-              <span className="status-label">Hull Integrity:</span>
+              <span className="status-label">선체 무결성:</span>
               <span className={`status-value ${getConditionClass(hull)}`}>
                 {Math.round(hull ?? 100)}%
               </span>
               <span className="status-impact">
                 {(hull ?? 100) < SHIP_CONFIG.CONDITION_WARNING_THRESHOLDS.HULL
-                  ? 'Structural weakness detected'
-                  : 'Hull stable'}
+                  ? '구조적 약화 감지'
+                  : '선체 안정'}
               </span>
             </div>
             <div className="status-item">
-              <span className="status-label">Engine Status:</span>
+              <span className="status-label">엔진 상태:</span>
               <span className={`status-value ${getConditionClass(engine)}`}>
                 {Math.round(engine ?? 100)}%
               </span>
               <span className="status-impact">
                 {(engine ?? 100) <
                 SHIP_CONFIG.CONDITION_WARNING_THRESHOLDS.ENGINE
-                  ? 'Critical engine condition'
-                  : 'Engine operational'}
+                  ? '엔진 상태 위급'
+                  : '엔진 정상 작동'}
               </span>
             </div>
             <div className="status-item">
-              <span className="status-label">Life Support:</span>
+              <span className="status-label">생명 유지:</span>
               <span
                 className={`status-value ${getConditionClass(lifeSupport)}`}
               >
@@ -126,12 +126,12 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
               <span className="status-impact">
                 {(lifeSupport ?? 100) <
                 SHIP_CONFIG.CONDITION_WARNING_THRESHOLDS.LIFE_SUPPORT
-                  ? 'Life support failing'
-                  : 'Environment stable'}
+                  ? '생명 유지 장치 고장 중'
+                  : '환경 안정'}
               </span>
             </div>
             <div className="status-item">
-              <span className="status-label">Credits Available:</span>
+              <span className="status-label">보유 크레딧:</span>
               <span className="status-value">
                 ₡{(credits || 0).toLocaleString()}
               </span>
@@ -141,7 +141,7 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
 
         {/* Repair Options Section */}
         <div className="failure-section repair-options">
-          <h3>Repair Options</h3>
+          <h3>수리 선택지</h3>
           <div className="options-list">
             {/* Engine Failure Specific Options */}
             {failure.type === 'engine_failure' && (
@@ -152,16 +152,15 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
                   onClick={() => handleOptionSelect('emergency_restart')}
                 >
                   <div className="option-header">
-                    <span className="option-name">Emergency Restart</span>
-                    <span className="option-type">Quick Fix</span>
+                    <span className="option-name">긴급 재시동</span>
+                    <span className="option-type">응급 처치</span>
                   </div>
                   <div className="option-description">
-                    Attempt to restart the engine using emergency protocols.
-                    Risky but fast.
+                    비상 프로토콜로 엔진 재시동을 시도합니다. 위험하지만 빠릅니다.
                   </div>
                   <div className="option-analysis">
                     <div className="probability-display">
-                      <span className="prob-label">Success Rate:</span>
+                      <span className="prob-label">성공률:</span>
                       <span className="prob-value">
                         {Math.round(
                           FAILURE_CONFIG.ENGINE_FAILURE.EMERGENCY_RESTART
@@ -171,7 +170,7 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
                       </span>
                     </div>
                     <div className="cost-display">
-                      <span className="cost-label">Engine Wear:</span>
+                      <span className="cost-label">엔진 마모:</span>
                       <span className="cost-value">
                         -
                         {
@@ -184,25 +183,25 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
                   </div>
                   <div className="option-outcomes">
                     <div className="outcome success">
-                      <span className="outcome-label">Success:</span>
+                      <span className="outcome-label">성공:</span>
                       <span className="outcome-text">
-                        Engine restarted, -
+                        엔진 재시동, -
                         {
                           FAILURE_CONFIG.ENGINE_FAILURE.EMERGENCY_RESTART
                             .ENGINE_COST
                         }
-                        % engine condition
+                        % 엔진 상태
                       </span>
                     </div>
                     <div className="outcome failure">
-                      <span className="outcome-label">Failure:</span>
+                      <span className="outcome-label">실패:</span>
                       <span className="outcome-text">
-                        Engine still failed, -
+                        엔진 여전히 고장, -
                         {
                           FAILURE_CONFIG.ENGINE_FAILURE.EMERGENCY_RESTART
                             .ENGINE_COST
                         }
-                        % engine condition
+                        % 엔진 상태
                       </span>
                     </div>
                   </div>
@@ -218,47 +217,46 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
                   onClick={() => handleOptionSelect('call_for_help')}
                 >
                   <div className="option-header">
-                    <span className="option-name">Call for Help</span>
-                    <span className="option-type">Professional Repair</span>
+                    <span className="option-name">도움 요청</span>
+                    <span className="option-type">전문 수리</span>
                   </div>
                   <div className="option-description">
-                    Contact emergency services for professional repair
-                    assistance.
+                    긴급 서비스에 연락해 전문 수리 지원을 받습니다.
                   </div>
                   <div className="option-analysis">
                     <div className="guaranteed-success">
-                      <span className="prob-label">Success Rate:</span>
+                      <span className="prob-label">성공률:</span>
                       <span className="prob-value guaranteed">100%</span>
                     </div>
                     <div className="cost-display">
-                      <span className="cost-label">Service Cost:</span>
+                      <span className="cost-label">서비스 비용:</span>
                       <span className="cost-value">
                         ₡
                         {FAILURE_CONFIG.ENGINE_FAILURE.CALL_FOR_HELP.CREDITS_COST.toLocaleString()}
                       </span>
                     </div>
                     <div className="delay-display">
-                      <span className="delay-label">Time Delay:</span>
+                      <span className="delay-label">시간 지연:</span>
                       <span className="delay-value">
                         {FAILURE_CONFIG.ENGINE_FAILURE.CALL_FOR_HELP.DAYS_DELAY}{' '}
-                        days
+                        일
                       </span>
                     </div>
                     {credits <
                       FAILURE_CONFIG.ENGINE_FAILURE.CALL_FOR_HELP
                         .CREDITS_COST && (
                       <div className="insufficient-funds">
-                        <span className="error-text">Insufficient Credits</span>
+                        <span className="error-text">크레딧 부족</span>
                       </div>
                     )}
                   </div>
                   <div className="option-outcomes">
                     <div className="outcome guaranteed">
-                      <span className="outcome-label">Guaranteed:</span>
+                      <span className="outcome-label">확정:</span>
                       <span className="outcome-text">
-                        Engine fully repaired, +
+                        엔진 완전 수리, +
                         {FAILURE_CONFIG.ENGINE_FAILURE.CALL_FOR_HELP.DAYS_DELAY}{' '}
-                        days delay, -₡
+                        일 지연, -₡
                         {FAILURE_CONFIG.ENGINE_FAILURE.CALL_FOR_HELP.CREDITS_COST.toLocaleString()}
                       </span>
                     </div>
@@ -271,15 +269,15 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
                   onClick={() => handleOptionSelect('jury_rig')}
                 >
                   <div className="option-header">
-                    <span className="option-name">Jury-Rig Repair</span>
-                    <span className="option-type">Field Repair</span>
+                    <span className="option-name">임시 수리</span>
+                    <span className="option-type">현장 수리</span>
                   </div>
                   <div className="option-description">
-                    Attempt a makeshift repair using available parts and tools.
+                    가진 부품과 도구로 임시 수리를 시도합니다.
                   </div>
                   <div className="option-analysis">
                     <div className="probability-display">
-                      <span className="prob-label">Success Rate:</span>
+                      <span className="prob-label">성공률:</span>
                       <span className="prob-value">
                         {Math.round(
                           FAILURE_CONFIG.ENGINE_FAILURE.JURY_RIG.CHANCE * 100
@@ -288,7 +286,7 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
                       </span>
                     </div>
                     <div className="cost-display">
-                      <span className="cost-label">Engine Wear:</span>
+                      <span className="cost-label">엔진 마모:</span>
                       <span className="cost-value">
                         -{FAILURE_CONFIG.ENGINE_FAILURE.JURY_RIG.ENGINE_COST}%
                       </span>
@@ -296,19 +294,17 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
                   </div>
                   <div className="option-outcomes">
                     <div className="outcome success">
-                      <span className="outcome-label">Success:</span>
+                      <span className="outcome-label">성공:</span>
                       <span className="outcome-text">
-                        Engine operational, -
-                        {FAILURE_CONFIG.ENGINE_FAILURE.JURY_RIG.ENGINE_COST}%
-                        engine condition
+                        엔진 작동, -
+                        {FAILURE_CONFIG.ENGINE_FAILURE.JURY_RIG.ENGINE_COST}% 엔진 상태
                       </span>
                     </div>
                     <div className="outcome failure">
-                      <span className="outcome-label">Failure:</span>
+                      <span className="outcome-label">실패:</span>
                       <span className="outcome-text">
-                        Repair failed, -
-                        {FAILURE_CONFIG.ENGINE_FAILURE.JURY_RIG.ENGINE_COST}%
-                        engine condition
+                        수리 실패, -
+                        {FAILURE_CONFIG.ENGINE_FAILURE.JURY_RIG.ENGINE_COST}% 엔진 상태
                       </span>
                     </div>
                   </div>
@@ -320,25 +316,23 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
             {failure.type === 'hull_breach' && (
               <div className="repair-option hull-breach-info">
                 <div className="option-header">
-                  <span className="option-name">Hull Breach Damage</span>
-                  <span className="option-type">Automatic</span>
+                  <span className="option-name">선체 파손 피해</span>
+                  <span className="option-type">자동</span>
                 </div>
                 <div className="option-description">
-                  The hull breach has caused immediate damage and cargo loss.
+                  선체 파손으로 즉각적인 피해와 화물 손실이 발생했습니다.
                 </div>
                 <div className="option-outcomes">
                   <div className="outcome damage">
-                    <span className="outcome-label">Immediate Effects:</span>
+                    <span className="outcome-label">즉각적인 영향:</span>
                     <span className="outcome-text">
-                      -{FAILURE_CONFIG.HULL_BREACH.HULL_DAMAGE}% hull integrity,
-                      some cargo lost to space
+                      -{FAILURE_CONFIG.HULL_BREACH.HULL_DAMAGE}% 선체 무결성, 일부 화물이 우주로 유실
                     </span>
                   </div>
                   <div className="outcome warning">
-                    <span className="outcome-label">Recommendation:</span>
+                    <span className="outcome-label">권고:</span>
                     <span className="outcome-text">
-                      Seek repairs at the nearest station to prevent further
-                      deterioration
+                      더 악화되기 전에 가장 가까운 정거장에서 수리를 받으세요
                     </span>
                   </div>
                 </div>
@@ -349,28 +343,25 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
             {failure.type === 'life_support' && (
               <div className="repair-option life-support-info">
                 <div className="option-header">
-                  <span className="option-name">Life Support Emergency</span>
-                  <span className="option-type">Critical</span>
+                  <span className="option-name">생명 유지 비상</span>
+                  <span className="option-type">위급</span>
                 </div>
                 <div className="option-description">
-                  Life support systems are failing. Emergency protocols
-                  activated.
+                  생명 유지 시스템이 고장 나고 있습니다. 비상 프로토콜이 가동되었습니다.
                 </div>
                 <div className="option-outcomes">
                   <div className="outcome critical">
                     <span className="outcome-label">
-                      Immediate Action Required:
+                      즉각 조치 필요:
                     </span>
                     <span className="outcome-text">
-                      Proceed to nearest station immediately for life support
-                      repairs
+                      생명 유지 장치 수리를 위해 즉시 가장 가까운 정거장으로 향하세요
                     </span>
                   </div>
                   <div className="outcome warning">
-                    <span className="outcome-label">Risk:</span>
+                    <span className="outcome-label">위험:</span>
                     <span className="outcome-text">
-                      Continued operation without repair may result in crew
-                      casualties
+                      수리 없이 계속 운항하면 승무원 사상자가 발생할 수 있습니다
                     </span>
                   </div>
                 </div>
@@ -395,13 +386,13 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
                 {getActionButtonText(selectedOption)}
               </button>
               <button className="failure-btn secondary" onClick={handleCancel}>
-                Reconsider
+                다시 생각하기
               </button>
             </>
           )}
           {failure.type === 'engine_failure' && !selectedOption && (
             <div className="selection-prompt">
-              Choose a repair option to address the engine failure
+              엔진 고장을 해결할 수리 방법을 고르세요
             </div>
           )}
           {(failure.type === 'hull_breach' ||
@@ -410,7 +401,7 @@ export function MechanicalFailurePanel({ failure, onChoice, onClose }) {
               className="failure-btn primary"
               onClick={() => onChoice('acknowledge')}
             >
-              Acknowledge
+              확인
             </button>
           )}
         </div>
@@ -473,13 +464,13 @@ function getFailureSeverityColor(severity) {
 function formatFailureType(failureType) {
   switch (failureType) {
     case 'hull_breach':
-      return 'Hull Breach';
+      return '선체 파손';
     case 'engine_failure':
-      return 'Engine Failure';
+      return '엔진 고장';
     case 'life_support':
-      return 'Life Support Emergency';
+      return '생명 유지 비상';
     default:
-      return 'System Malfunction';
+      return '시스템 오작동';
   }
 }
 
@@ -492,13 +483,13 @@ function formatFailureType(failureType) {
 function getFailureDescription(failureType) {
   switch (failureType) {
     case 'hull_breach':
-      return 'A breach in the hull has been detected. Structural integrity is compromised and cargo may be lost to space.';
+      return '선체 파손이 감지되었습니다. 구조 무결성이 손상되었고 화물이 우주로 유실될 수 있습니다.';
     case 'engine_failure':
-      return 'The main engine has suffered a critical failure and is no longer operational. The ship is stranded until repairs are completed.';
+      return '주 엔진이 치명적으로 고장 나 더는 작동하지 않습니다. 수리가 끝날 때까지 함선은 움직일 수 없습니다.';
     case 'life_support':
-      return 'Life support systems are experiencing critical failures. Atmospheric processing and environmental controls are failing.';
+      return '생명 유지 시스템에 치명적인 고장이 발생했습니다. 대기 정화와 환경 제어가 실패하고 있습니다.';
     default:
-      return 'An unspecified system malfunction has occurred.';
+      return '원인 불명의 시스템 오작동이 발생했습니다.';
   }
 }
 
@@ -511,13 +502,13 @@ function getFailureDescription(failureType) {
 function getSystemAlert(failureType) {
   switch (failureType) {
     case 'hull_breach':
-      return 'ALERT: Hull breach detected. Emergency bulkheads activated.';
+      return '경보: 선체 파손 감지. 비상 격벽 가동.';
     case 'engine_failure':
-      return 'ALERT: Main engine offline. Ship propulsion systems non-functional.';
+      return '경보: 주 엔진 정지. 함선 추진 시스템 작동 불능.';
     case 'life_support':
-      return 'ALERT: Life support critical. Emergency oxygen reserves activated.';
+      return '경보: 생명 유지 위급. 비상 산소 비축분 가동.';
     default:
-      return 'ALERT: System malfunction detected.';
+      return '경보: 시스템 오작동 감지.';
   }
 }
 
@@ -530,12 +521,12 @@ function getSystemAlert(failureType) {
 function getActionButtonText(optionName) {
   switch (optionName) {
     case 'emergency_restart':
-      return 'Attempt Emergency Restart';
+      return '긴급 재시동 시도';
     case 'call_for_help':
-      return 'Call for Professional Help';
+      return '전문가 도움 요청';
     case 'jury_rig':
-      return 'Attempt Jury-Rig Repair';
+      return '임시 수리 시도';
     default:
-      return 'Proceed';
+      return '진행';
   }
 }

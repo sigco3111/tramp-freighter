@@ -87,21 +87,21 @@ export function QuickAccessButtons({ onDock, onSystemInfo }) {
 
   return (
     <div className="hud-section hud-quick-access">
-      <div className="hud-quick-access-label">Quick Access:</div>
+      <div className="hud-quick-access-label">빠른 이동:</div>
       <div className="hud-quick-access-buttons">
         <button
           className="quick-access-btn"
           onClick={handleDock}
           disabled={!canDock || isAnimationRunning}
         >
-          Dock
+          도킹
         </button>
         <button
           className="quick-access-btn"
           onClick={handleSystemInfo}
           disabled={false}
         >
-          System Info
+          항성계 정보
         </button>
       </div>
     </div>

@@ -132,7 +132,7 @@ export function RefuelPanel({ onClose }) {
   let validationClass = 'validation-message';
 
   if (amount <= 0) {
-    validationMessage = 'Enter an amount to refuel';
+    validationMessage = '주유할 양을 입력하세요';
     validationClass = 'validation-message info';
   } else if (!finalValidation.valid) {
     validationMessage = finalValidation.reason;
@@ -141,28 +141,28 @@ export function RefuelPanel({ onClose }) {
 
   return (
     <div id="refuel-panel" className="visible">
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         ×
       </button>
-      <h2>Refuel</h2>
+      <h2>주유</h2>
 
       <div className="refuel-content">
         <div className="refuel-section refuel-status">
-          <h3>Current Status</h3>
+          <h3>현재 상태</h3>
           <div className="info-row">
-            <span className="label">Current Fuel:</span>
+            <span className="label">현재 연료:</span>
             <span className="value">{Math.round(fuel)}%</span>
           </div>
           <div className="info-row">
-            <span className="label">Price per %:</span>
+            <span className="label">% 당 가격:</span>
             <span className="value">{fuelPrice} ₡</span>
           </div>
         </div>
 
         <div className="refuel-section refuel-controls">
-          <h3>Refuel Amount</h3>
+          <h3>주유량</h3>
           <div className="refuel-input-group">
-            <label htmlFor="refuel-amount">Amount:</label>
+            <label htmlFor="refuel-amount">수량:</label>
             <input
               id="refuel-amount"
               type="range"
@@ -180,19 +180,19 @@ export function RefuelPanel({ onClose }) {
               className="refuel-preset-btn"
               onClick={handleMaxClick}
             >
-              Max ({maxRefuel}%)
+              최대 ({maxRefuel}%)
             </button>
           </div>
 
           <div className="refuel-cost-display">
             <div className="cost-row">
-              <span className="cost-label">Total Cost:</span>
+              <span className="cost-label">총 비용:</span>
               <span className="cost-value">{finalTotalCost} ₡</span>
             </div>
             {bestDiscount.discount > 0 && (
               <div className="discount-row">
                 <span className="discount-label">
-                  Discount ({Math.round(bestDiscount.discount * 100)}% from{' '}
+                  할인 ({Math.round(bestDiscount.discount * 100)}% - 출처:{' '}
                   {bestDiscount.npcName}):
                 </span>
                 <span className="discount-value">
@@ -215,10 +215,10 @@ export function RefuelPanel({ onClose }) {
             onClick={handleConfirm}
             disabled={!finalValidation.valid || amount <= 0}
           >
-            Confirm Refuel
+            주유 확인
           </button>
           <button className="station-btn secondary" onClick={onClose}>
-            Cancel
+            취소
           </button>
         </div>
       </div>

@@ -13,7 +13,7 @@ export function CustomSelect({
   options,
   value,
   onChange,
-  placeholder = '-- Select --',
+  placeholder = '-- 선택 --',
   className = '',
   'aria-label': ariaLabel,
 }) {

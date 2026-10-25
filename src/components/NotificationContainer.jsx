@@ -29,7 +29,7 @@ export function NotificationContainer() {
           <button
             className="notification-dismiss"
             onClick={() => ctx.dismissNotification(notification.id)}
-            aria-label="Dismiss notification"
+            aria-label="알림 닫기"
           >
             ×
           </button>

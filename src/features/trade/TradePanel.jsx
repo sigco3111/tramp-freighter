@@ -140,7 +140,7 @@ export function TradePanel({ onClose }) {
     const purchaseOutcome = buyGood(goodType, quantity, price);
 
     if (!purchaseOutcome.success) {
-      throw new Error(`Purchase failed: ${purchaseOutcome.reason}`);
+      throw new Error(`구매 실패: ${purchaseOutcome.reason}`);
     }
   };
 
@@ -148,12 +148,12 @@ export function TradePanel({ onClose }) {
     const saleOutcome = sellGood(stackIndex, quantity, salePrice);
 
     if (!saleOutcome.success) {
-      throw new Error(`Sale failed: ${saleOutcome.reason}`);
+      throw new Error(`판매 실패: ${saleOutcome.reason}`);
     }
 
     if (saleOutcome.withheld > 0) {
       setSaleFeedback(
-        `Revenue: ₡${saleOutcome.totalRevenue.toLocaleString()} · Cole's cut: -₡${saleOutcome.withheld.toLocaleString()} · You receive: ₡${saleOutcome.playerReceives.toLocaleString()} (does not reduce your debt)`
+        `매출: ₡${saleOutcome.totalRevenue.toLocaleString()} · 콜의 몫: -₡${saleOutcome.withheld.toLocaleString()} · 수령액: ₡${saleOutcome.playerReceives.toLocaleString()} (부채는 줄어들지 않음)`
       );
     }
   };
@@ -162,7 +162,7 @@ export function TradePanel({ onClose }) {
     const result = moveToHiddenCargo(goodType, quantity);
 
     if (!result.success) {
-      throw new Error(`Transfer failed: ${result.reason}`);
+      throw new Error(`이동 실패: ${result.reason}`);
     }
   };
 
@@ -170,23 +170,23 @@ export function TradePanel({ onClose }) {
     const result = moveToRegularCargo(goodType, quantity);
 
     if (!result.success) {
-      throw new Error(`Transfer failed: ${result.reason}`);
+      throw new Error(`이동 실패: ${result.reason}`);
     }
   };
 
   return (
     <div id="trade-panel" className="visible">
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         ×
       </button>
       <h2>
-        Trade - <span id="trade-system-name">{system.name}</span>
+        거래 -  <span id="trade-system-name">{system.name}</span>
       </h2>
 
       <div className="trade-content">
         {/* Market Goods Section */}
         <div className="trade-section">
-          <h3>Market Goods</h3>
+          <h3>시장 상품</h3>
           <div id="market-goods" className="goods-list">
             {(() => {
               let hintShown = false;
@@ -211,15 +211,15 @@ export function TradePanel({ onClose }) {
                         {capitalizeFirst(goodType)}
                       </div>
                       <div className="good-price">
-                        {price} ₡/unit
+                        {price}  ₡/단위
                         {isRestricted && (
                           <span className="restricted-badge-wrapper">
                             <span
                               className="restricted-badge"
                               title={RESTRICTED_GOODS_CONFIG.RESTRICTED_TOOLTIP}
-                              aria-label={`Restricted: ${RESTRICTED_GOODS_CONFIG.RESTRICTED_TOOLTIP}`}
+                              aria-label={`제한 품목: ${RESTRICTED_GOODS_CONFIG.RESTRICTED_TOOLTIP}`}
                             >
-                              RESTRICTED
+                              제한 품목
                             </span>
                             {showHint && (
                               <span className="restricted-hint">
@@ -227,9 +227,9 @@ export function TradePanel({ onClose }) {
                                 <button
                                   className="restricted-hint-dismiss"
                                   onClick={dismissRestrictedHint}
-                                  aria-label="Dismiss restricted goods explanation"
+                                  aria-label="제한 품목 설명 닫기"
                                 >
-                                  Got it
+                                  알겠습니다
                                 </button>
                               </span>
                             )}
@@ -244,7 +244,7 @@ export function TradePanel({ onClose }) {
                         disabled={credits < price || cargoRemaining < 1}
                         onClick={() => handleBuyGood(goodType, 1, price)}
                       >
-                        Buy 1
+                        1개 구매
                       </button>
                       <button
                         className="buy-btn"
@@ -260,7 +260,7 @@ export function TradePanel({ onClose }) {
                           )
                         }
                       >
-                        Buy {TRADE_CONFIG.QUICK_BUY_QUANTITY}
+                        구매  {TRADE_CONFIG.QUICK_BUY_QUANTITY}
                       </button>
                       <button
                         className="buy-btn"
@@ -269,7 +269,7 @@ export function TradePanel({ onClose }) {
                           handleBuyGood(goodType, maxQuantity, price)
                         }
                       >
-                        Buy Max
+                        최대 구매
                       </button>
                     </div>
 
@@ -287,14 +287,14 @@ export function TradePanel({ onClose }) {
 
         {/* Cargo Section */}
         <div className="trade-section">
-          <h3>Your Cargo</h3>
+          <h3>내 화물</h3>
           <div className="cargo-capacity-display">
-            <span className="capacity-label">Capacity:</span>
+            <span className="capacity-label">적재량:</span>
             <span id="trade-cargo-used">{cargoUsed}</span> /
             <span id="trade-cargo-capacity">{safeCargoCapacity}</span>
             <span className="capacity-remaining">
               (<span id="trade-cargo-remaining">{cargoRemaining}</span>{' '}
-              remaining)
+              남음)
             </span>
           </div>
           {saleFeedback && (
@@ -302,13 +302,13 @@ export function TradePanel({ onClose }) {
           )}
           <div id="cargo-stacks" className="cargo-list">
             {safeCargo.length === 0 ? (
-              <div className="cargo-empty">No cargo</div>
+              <div className="cargo-empty">화물 없음</div>
             ) : (
               safeCargo.map((stack, index) => {
                 const currentPrice = currentSystemPrices[stack.good];
                 const profit = calculateProfit(stack, currentPrice);
 
-                let detailsText = `Qty: ${stack.qty} | Bought at: ${stack.buyPrice} ₡/unit`;
+                let detailsText = `수량: ${stack.qty} | 구매가: ${stack.buyPrice} ₡/단위`;
 
                 if (
                   stack.buySystem !== undefined &&
@@ -321,17 +321,17 @@ export function TradePanel({ onClose }) {
                   const ageText = formatCargoAge(currentDay, stack.buyDate);
                   const systemName = purchaseSystem
                     ? purchaseSystem.name
-                    : 'Unknown System';
-                  detailsText += ` in ${systemName} (${ageText})`;
+                    : '알 수 없는 항성계';
+                  detailsText += ` ${systemName}에서 (${ageText})`;
                 }
 
                 let profitText = '';
                 if (profit.direction === 'positive') {
-                  profitText = `Sell at: ${currentPrice} ₡/unit | Profit: +${profit.margin} ₡/unit (+${profit.percentage}%)`;
+                  profitText = `판매가: ${currentPrice} ₡/단위 | 이익: +${profit.margin} ₡/단위 (+${profit.percentage}%)`;
                 } else if (profit.direction === 'negative') {
-                  profitText = `Sell at: ${currentPrice} ₡/unit | Loss: ${profit.margin} ₡/unit (${profit.percentage}%)`;
+                  profitText = `판매가: ${currentPrice} ₡/단위 | 손실: ${profit.margin} ₡/단위 (${profit.percentage}%)`;
                 } else {
-                  profitText = `Sell at: ${currentPrice} ₡/unit | Break even`;
+                  profitText = `판매가: ${currentPrice} ₡/단위 | 본전`;
                 }
 
                 return (
@@ -351,7 +351,7 @@ export function TradePanel({ onClose }) {
                     {stack.missionId ? (
                       <div className="stack-actions">
                         <span className="mission-cargo-label">
-                          Mission Cargo
+                          임무 화물
                         </span>
                       </div>
                     ) : (
@@ -363,7 +363,7 @@ export function TradePanel({ onClose }) {
                             handleSellStack(index, 1, currentPrice)
                           }
                         >
-                          Sell 1
+                          1개 판매
                         </button>
                         <button
                           className="sell-btn"
@@ -371,7 +371,7 @@ export function TradePanel({ onClose }) {
                             handleSellStack(index, stack.qty, currentPrice)
                           }
                         >
-                          Sell All ({stack.qty})
+                          전부 판매 ({stack.qty})
                         </button>
                         {hasSmugglersPanel && (
                           <button
@@ -380,7 +380,7 @@ export function TradePanel({ onClose }) {
                               handleMoveToHidden(stack.good, stack.qty)
                             }
                           >
-                            Move to Hidden
+                            은닉 화물로 이동
                           </button>
                         )}
                       </div>
@@ -399,7 +399,7 @@ export function TradePanel({ onClose }) {
             className="trade-section hidden-cargo-section"
           >
             <div className="hidden-cargo-header">
-              <h3>Hidden Cargo</h3>
+              <h3>은닉 화물</h3>
               <button
                 id="toggle-hidden-cargo-btn"
                 className="toggle-hidden-cargo-btn"
@@ -407,7 +407,7 @@ export function TradePanel({ onClose }) {
                 aria-expanded={!hiddenCargoCollapsed}
                 aria-controls="hidden-cargo-content"
               >
-                {hiddenCargoCollapsed ? 'Show' : 'Hide'}
+                {hiddenCargoCollapsed ? '보이기' : '숨기기'}
               </button>
             </div>
             <div
@@ -417,20 +417,20 @@ export function TradePanel({ onClose }) {
               }`}
             >
               <div className="cargo-capacity-display">
-                <span className="capacity-label">Hidden Capacity:</span>
+                <span className="capacity-label">은닉 적재량:</span>
                 <span id="hidden-cargo-used">{hiddenCargoUsed}</span> /
                 <span id="hidden-cargo-capacity">{hiddenCargoCapacity}</span>
-                <span className="capacity-units">units</span>
+                <span className="capacity-units">단위</span>
               </div>
               <div id="hidden-cargo-stacks" className="cargo-list">
                 {safeHiddenCargo.length === 0 ? (
-                  <div className="cargo-empty">No hidden cargo</div>
+                  <div className="cargo-empty">은닉 화물 없음</div>
                 ) : (
                   safeHiddenCargo.map((stack, index) => {
                     const currentPrice = currentSystemPrices[stack.good];
                     const profit = calculateProfit(stack, currentPrice);
 
-                    let detailsText = `Qty: ${stack.qty} | Bought at: ${stack.buyPrice} ₡/unit`;
+                    let detailsText = `수량: ${stack.qty} | 구매가: ${stack.buyPrice} ₡/단위`;
 
                     if (
                       stack.buySystem !== undefined &&
@@ -446,16 +446,16 @@ export function TradePanel({ onClose }) {
                       }
 
                       const ageText = formatCargoAge(currentDay, stack.buyDate);
-                      detailsText += ` in ${purchaseSystem.name} (${ageText})`;
+                      detailsText += ` ${purchaseSystem.name}에서 (${ageText})`;
                     }
 
                     let profitText = '';
                     if (profit.direction === 'positive') {
-                      profitText = `Sell at: ${currentPrice} ₡/unit | Profit: +${profit.margin} ₡/unit (+${profit.percentage}%)`;
+                      profitText = `판매가: ${currentPrice} ₡/단위 | 이익: +${profit.margin} ₡/단위 (+${profit.percentage}%)`;
                     } else if (profit.direction === 'negative') {
-                      profitText = `Sell at: ${currentPrice} ₡/unit | Loss: ${profit.margin} ₡/unit (${profit.percentage}%)`;
+                      profitText = `판매가: ${currentPrice} ₡/단위 | 손실: ${profit.margin} ₡/단위 (${profit.percentage}%)`;
                     } else {
-                      profitText = `Sell at: ${currentPrice} ₡/unit | Break even`;
+                      profitText = `판매가: ${currentPrice} ₡/단위 | 본전`;
                     }
 
                     return (
@@ -479,7 +479,7 @@ export function TradePanel({ onClose }) {
                               handleMoveToRegular(stack.good, stack.qty)
                             }
                           >
-                            Move to Regular
+                            일반 화물로 이동
                           </button>
                         </div>
                       </div>

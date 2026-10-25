@@ -331,7 +331,7 @@
   border: 2px solid #00ff88;
   border-radius: 5px;
   font-size: var(--font-size-large);
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -613,7 +613,7 @@
   color: #ffffff;
   border: 2px solid #00ff88;
   border-radius: 5px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   font-size: var(--font-size-xlarge);
   cursor: pointer;
   transition: all 0.2s;
@@ -704,7 +704,7 @@
   border: 2px solid #00ff88;
   border-radius: 5px;
   font-size: var(--font-size-xlarge);
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -756,7 +756,7 @@
   padding: 15px 20px;
   margin-bottom: 10px;
   color: #ffffff;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   font-size: var(--font-size-large);
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
@@ -851,7 +851,7 @@
   color: #00ff88;
   font-size: 36px;
   margin-bottom: 10px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -860,7 +860,7 @@
   color: rgba(255, 255, 255, 0.7);
   font-size: var(--font-size-large);
   margin-bottom: 40px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
 }
 
 .menu-buttons {
@@ -878,7 +878,7 @@
   border: 2px solid #00ff88;
   border-radius: 5px;
   font-size: var(--font-size-xxlarge);
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   cursor: pointer;
   transition: all 0.2s;
   text-transform: uppercase;
@@ -914,7 +914,7 @@
 .menu-version {
   color: rgba(255, 255, 255, 0.5);
   font-size: var(--font-size-normal);
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
 }
 
 /* Mobile title screen — breakpoint: 600px matches --breakpoint-mobile */

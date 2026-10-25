@@ -192,10 +192,10 @@ export function generateCargoRun(
   return {
     id: `cargo_run_${Date.now()}_${Math.floor(rng() * 10000)}`,
     type: 'delivery',
-    title: `Cargo Run: ${cargoLabel} to ${destStar ? destStar.name : `System ${toSystem}`}`,
+    title: `화물 운송: ${cargoLabel} → ${destStar ? destStar.name : `항성계 ${toSystem}`}`,
     description: isIllegal
-      ? 'Discreet delivery. No questions asked.'
-      : 'Standard delivery contract.',
+      ? '은밀한 배송. 묻지 않기.'
+      : '표준 배송 계약.',
     giver: 'station_master',
     giverSystem: fromSystem,
     hopCount,
@@ -205,7 +205,7 @@ export function generateCargoRun(
     },
     destination: {
       systemId: toSystem,
-      name: destStar ? destStar.name : `System ${toSystem}`,
+      name: destStar ? destStar.name : `항성계 ${toSystem}`,
     },
     missionCargo: {
       good,
@@ -287,8 +287,8 @@ export function generatePassengerMission(
   return {
     id: `passenger_${Date.now()}_${Math.floor(rng() * 10000)}`,
     type: 'passenger',
-    title: `Passenger: ${name} to ${destStar ? destStar.name : `System ${toSystem}`}`,
-    description: `Transport ${name} to ${destStar ? destStar.name : `System ${toSystem}`}.`,
+    title: `승객: ${name} → ${destStar ? destStar.name : `항성계 ${toSystem}`}`,
+    description: `${name}을(를) ${destStar ? destStar.name : `항성계 ${toSystem}`}까지 수송.`,
     giver: 'passenger',
     giverSystem: fromSystem,
     hopCount,
@@ -299,7 +299,7 @@ export function generatePassengerMission(
     },
     destination: {
       systemId: toSystem,
-      name: destStar ? destStar.name : `System ${toSystem}`,
+      name: destStar ? destStar.name : `항성계 ${toSystem}`,
     },
     rewards: { credits: reward, faction: { civilians: 5 } },
     penalties: { failure: { faction: { civilians: -3 } } },

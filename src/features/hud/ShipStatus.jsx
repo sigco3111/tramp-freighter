@@ -57,11 +57,11 @@ export function ShipStatus() {
         </span>
       </div>
       <div className="hud-row">
-        <span className="hud-label">Fuel:</span>
+        <span className="hud-label">연료:</span>
         <div
           className="fuel-bar-container condition-bar-container"
           role="meter"
-          aria-label="Fuel"
+          aria-label="연료"
           aria-valuenow={Math.round(safeFuel)}
           aria-valuemin={0}
           aria-valuemax={100}
@@ -74,11 +74,11 @@ export function ShipStatus() {
         </div>
       </div>
       <div className="hud-row">
-        <span className="hud-label">Hull:</span>
+        <span className="hud-label">선체:</span>
         <div
           className="hull-bar-container condition-bar-container"
           role="meter"
-          aria-label="Hull"
+          aria-label="선체"
           aria-valuenow={Math.round(safeCondition.hull)}
           aria-valuemin={0}
           aria-valuemax={100}
@@ -93,11 +93,11 @@ export function ShipStatus() {
         </div>
       </div>
       <div className="hud-row">
-        <span className="hud-label">Engine:</span>
+        <span className="hud-label">엔진:</span>
         <div
           className="engine-bar-container condition-bar-container"
           role="meter"
-          aria-label="Engine"
+          aria-label="엔진"
           aria-valuenow={Math.round(safeCondition.engine)}
           aria-valuemin={0}
           aria-valuemax={100}
@@ -112,11 +112,11 @@ export function ShipStatus() {
         </div>
       </div>
       <div className="hud-row">
-        <span className="hud-label">Life Sup:</span>
+        <span className="hud-label">생명유지:</span>
         <div
           className="life-support-bar-container condition-bar-container"
           role="meter"
-          aria-label="Life support"
+          aria-label="생명 유지"
           aria-valuenow={Math.round(safeCondition.lifeSupport)}
           aria-valuemin={0}
           aria-valuemax={100}
@@ -131,7 +131,7 @@ export function ShipStatus() {
         </div>
       </div>
       <div className="hud-row">
-        <span className="hud-label">Cargo:</span>
+        <span className="hud-label">화물:</span>
         <span id="hud-cargo" className="hud-value">
           {cargoUsed}/{safeCargoCapacity}
         </span>

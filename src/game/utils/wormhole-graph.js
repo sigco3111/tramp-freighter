@@ -145,7 +145,7 @@ export function getShortestPath(fromId, toId) {
 
   // Same system — zero-hop path
   if (fromId === toId) {
-    const name = starNameMap.get(fromId) || `System ${fromId}`;
+    const name = starNameMap.get(fromId) || `항성계 ${fromId}`;
     return { hops: 0, path: [fromId], systemNames: [name] };
   }
 
@@ -154,7 +154,7 @@ export function getShortestPath(fromId, toId) {
   if (!cached) return null;
 
   const systemNames = cached.path.map(
-    (id) => starNameMap.get(id) || `System ${id}`
+    (id) => starNameMap.get(id) || `항성계 ${id}`
   );
 
   return { hops: cached.hops, path: [...cached.path], systemNames };

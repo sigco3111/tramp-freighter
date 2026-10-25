@@ -13,10 +13,10 @@ function getWorstResources(fuel, fuelCapacity, condition) {
   const safeFuelCap = fuelCapacity > 0 ? fuelCapacity : 100;
   const fuelPct = ((fuel ?? safeFuelCap) / safeFuelCap) * 100;
   const resources = [
-    { name: 'Fuel', value: Math.round(fuelPct) },
-    { name: 'Hull', value: Math.round(condition?.hull ?? 100) },
-    { name: 'Engine', value: Math.round(condition?.engine ?? 100) },
-    { name: 'Life Sup', value: Math.round(condition?.lifeSupport ?? 100) },
+    { name: '연료', value: Math.round(fuelPct) },
+    { name: '선체', value: Math.round(condition?.hull ?? 100) },
+    { name: '엔진', value: Math.round(condition?.engine ?? 100) },
+    { name: '생명유지', value: Math.round(condition?.lifeSupport ?? 100) },
   ];
   resources.sort((a, b) => a.value - b.value);
 
@@ -60,7 +60,7 @@ export function MobileHUD({ onDock, onSystemInfo, panelActive }) {
           const willExpand = !expanded;
           setExpanded(willExpand);
         }}
-        aria-label={expanded ? 'Collapse HUD' : 'Expand HUD'}
+        aria-label={expanded ? 'HUD 접기' : 'HUD 펼치기'}
         aria-expanded={expanded}
         aria-disabled={!expanded && panelActive ? 'true' : undefined}
       >
@@ -91,7 +91,7 @@ export function MobileHUD({ onDock, onSystemInfo, panelActive }) {
           <div
             className="mobile-hud-expanded"
             role="region"
-            aria-label="Ship status details"
+            aria-label="함선 상태 상세"
           >
             <ResourceBar />
             <DateDisplay />

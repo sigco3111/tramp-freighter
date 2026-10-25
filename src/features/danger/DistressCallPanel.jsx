@@ -75,20 +75,20 @@ export function DistressCallPanel({
       <button
         className="close-btn"
         onClick={() => onChoice('ignore')}
-        aria-label="Ignore distress call"
+        aria-label="조난 신호 무시"
       >
         ×
       </button>
-      <h2 id="distress-call-title">Distress Call</h2>
+      <h2 id="distress-call-title">조난 신호</h2>
 
       <div className="distress-content">
         {/* Distress Call Information Section */}
         <div className="distress-section call-info">
-          <h3>Emergency Signal</h3>
+          <h3>비상 신호</h3>
           <div className="call-details">
             <div className="signal-header">
               <div className="signal-strength">
-                <span className="signal-label">Signal Strength:</span>
+                <span className="signal-label">신호 세기:</span>
                 <span
                   className={`signal-value ${severity}`}
                   style={{ color: severityColor }}
@@ -97,34 +97,34 @@ export function DistressCallPanel({
                 </span>
               </div>
               <div className="call-type">
-                <span className="type-label">Emergency Type:</span>
+                <span className="type-label">비상 유형:</span>
                 <span className="type-value">{formatCallType(callType)}</span>
               </div>
             </div>
             <div className="distress-message">
-              <div className="message-header">Transmission:</div>
+              <div className="message-header">송신 내용:</div>
               <div className="message-text">
                 {distressCall.description ||
-                  '"Mayday, mayday! This is civilian transport vessel requesting immediate assistance. We have suffered critical system failures and are stranded. Please respond if you can hear this transmission."'}
+                  '"메이데이, 메이데이! 여기는 민간 수송선입니다. 즉각적인 지원을 요청합니다. 치명적인 시스템 고장으로 오도 가도 못하는 상태입니다. 이 송신이 들리면 응답해 주세요."'}
               </div>
             </div>
             <div className="signal-analysis">
               <div className="analysis-item">
-                <span className="analysis-label">Vessel Type:</span>
+                <span className="analysis-label">선박 종류:</span>
                 <span className="analysis-value">
-                  {distressCall.vesselType || 'Civilian Transport'}
+                  {distressCall.vesselType || '민간 수송선'}
                 </span>
               </div>
               <div className="analysis-item">
-                <span className="analysis-label">Estimated Crew:</span>
+                <span className="analysis-label">추정 승무원:</span>
                 <span className="analysis-value">
-                  {distressCall.crewCount || '3-5 persons'}
+                  {distressCall.crewCount || '3~5명'}
                 </span>
               </div>
               <div className="analysis-item">
-                <span className="analysis-label">Time Since Signal:</span>
+                <span className="analysis-label">신호 이후 경과 시간:</span>
                 <span className="analysis-value">
-                  {distressCall.timeElapsed || '2.3 hours'}
+                  {distressCall.timeElapsed || '2.3시간'}
                 </span>
               </div>
             </div>
@@ -133,10 +133,10 @@ export function DistressCallPanel({
 
         {/* Player Resources Section */}
         <div className="distress-section player-resources">
-          <h3>Your Resources</h3>
+          <h3>보유 자원</h3>
           <div className="resources-grid">
             <div className="resource-item">
-              <span className="resource-label">Fuel Reserves:</span>
+              <span className="resource-label">연료 잔량:</span>
               <span
                 className={`resource-value ${getResourceClass(fuel ?? 100)}`}
               >
@@ -144,12 +144,12 @@ export function DistressCallPanel({
               </span>
               <span className="resource-impact">
                 {(fuel ?? 100) >= DISTRESS_CONFIG.RESPOND.FUEL_COST
-                  ? 'Sufficient for rescue'
-                  : 'Insufficient fuel reserves'}
+                  ? '구조에 충분'
+                  : '연료 잔량 부족'}
               </span>
             </div>
             <div className="resource-item">
-              <span className="resource-label">Life Support:</span>
+              <span className="resource-label">생명 유지:</span>
               <span
                 className={`resource-value ${getResourceClass(lifeSupport ?? 100)}`}
               >
@@ -158,21 +158,21 @@ export function DistressCallPanel({
               <span className="resource-impact">
                 {(lifeSupport ?? 100) >=
                 DISTRESS_CONFIG.RESPOND.LIFE_SUPPORT_COST
-                  ? 'Can support additional crew'
-                  : 'Limited life support capacity'}
+                  ? '추가 승무원 수용 가능'
+                  : '생명 유지 수용량 제한적'}
               </span>
             </div>
             <div className="resource-item">
-              <span className="resource-label">Credits:</span>
+              <span className="resource-label">크레딧:</span>
               <span className="resource-value">
                 ₡{(credits ?? 0).toLocaleString()}
               </span>
               <span className="resource-impact">
-                Potential reward: ₡{DISTRESS_CONFIG.RESPOND.CREDITS_REWARD}
+                예상 보상: ₡{DISTRESS_CONFIG.RESPOND.CREDITS_REWARD}
               </span>
             </div>
             <div className="resource-item">
-              <span className="resource-label">Current Karma:</span>
+              <span className="resource-label">현재 카르마:</span>
               <span className={`resource-value ${getKarmaClass(karma ?? 0)}`}>
                 {(karma ?? 0) > 0 ? '+' : ''}
                 {karma ?? 0}
@@ -185,10 +185,10 @@ export function DistressCallPanel({
 
           {/* Moral Standing Display */}
           <div className="moral-standing">
-            <h4>Reputation Standing</h4>
+            <h4>평판 상태</h4>
             <div className="reputation-grid">
               <div className="rep-item">
-                <span className="rep-label">Civilians:</span>
+                <span className="rep-label">민간인:</span>
                 <span
                   className={`rep-value ${getReputationClass(factions?.civilians ?? 0)}`}
                 >
@@ -196,7 +196,7 @@ export function DistressCallPanel({
                 </span>
               </div>
               <div className="rep-item">
-                <span className="rep-label">Outlaws:</span>
+                <span className="rep-label">무법자:</span>
                 <span
                   className={`rep-value ${getReputationClass(factions?.outlaws ?? 0)}`}
                 >
@@ -209,7 +209,7 @@ export function DistressCallPanel({
 
         {/* Moral Choice Options Section */}
         <div className="distress-section choice-options">
-          <h3>Your Response</h3>
+          <h3>대응</h3>
           <div className="choices-list">
             {/* Respond Option */}
             <button
@@ -218,51 +218,50 @@ export function DistressCallPanel({
               onClick={() => handleChoiceSelect('respond')}
             >
               <div className="choice-header">
-                <span className="choice-name">Respond to Distress Call</span>
-                <span className="choice-type moral-good">Heroic</span>
+                <span className="choice-name">조난 신호에 응답</span>
+                <span className="choice-type moral-good">영웅적</span>
               </div>
               <div className="choice-description">
-                "We hear your distress call and are moving to assist. Hold
-                tight, help is on the way."
+                "조난 신호를 들었습니다. 지원하러 가는 중입니다. 조금만 버티세요, 도움이 가고 있습니다."
               </div>
               <div className="choice-analysis">
                 <div className="costs-section">
-                  <h5>Resource Costs:</h5>
+                  <h5>자원 비용:</h5>
                   <div className="cost-item">
-                    <span className="cost-label">Time Delay:</span>
+                    <span className="cost-label">시간 지연:</span>
                     <span className="cost-value">
-                      +{DISTRESS_CONFIG.RESPOND.DAYS_COST} days
+                      +{DISTRESS_CONFIG.RESPOND.DAYS_COST} 일
                     </span>
                   </div>
                   <div className="cost-item">
-                    <span className="cost-label">Fuel Consumption:</span>
+                    <span className="cost-label">연료 소모:</span>
                     <span className="cost-value">
                       -{DISTRESS_CONFIG.RESPOND.FUEL_COST}%
                     </span>
                   </div>
                   <div className="cost-item">
-                    <span className="cost-label">Life Support Strain:</span>
+                    <span className="cost-label">생명 유지 부담:</span>
                     <span className="cost-value">
                       -{DISTRESS_CONFIG.RESPOND.LIFE_SUPPORT_COST}%
                     </span>
                   </div>
                 </div>
                 <div className="rewards-section">
-                  <h5>Rewards:</h5>
+                  <h5>보상:</h5>
                   <div className="reward-item">
-                    <span className="reward-label">Credits:</span>
+                    <span className="reward-label">크레딧:</span>
                     <span className="reward-value positive">
                       +₡{DISTRESS_CONFIG.RESPOND.CREDITS_REWARD}
                     </span>
                   </div>
                   <div className="reward-item">
-                    <span className="reward-label">Civilian Reputation:</span>
+                    <span className="reward-label">민간인 평판:</span>
                     <span className="reward-value positive">
                       +{DISTRESS_CONFIG.RESPOND.REP_REWARD}
                     </span>
                   </div>
                   <div className="reward-item">
-                    <span className="reward-label">Karma:</span>
+                    <span className="reward-label">카르마:</span>
                     <span className="reward-value positive">
                       +{DISTRESS_CONFIG.RESPOND.KARMA_REWARD}
                     </span>
@@ -272,7 +271,7 @@ export function DistressCallPanel({
               {!playerStatus.canRespond && (
                 <div className="choice-restriction">
                   <span className="restriction-text">
-                    Insufficient resources to safely conduct rescue operation
+                    구조 작전을 안전하게 수행할 자원이 부족합니다
                   </span>
                 </div>
               )}
@@ -284,32 +283,31 @@ export function DistressCallPanel({
               onClick={() => handleChoiceSelect('ignore')}
             >
               <div className="choice-header">
-                <span className="choice-name">Ignore the Call</span>
-                <span className="choice-type moral-neutral">Pragmatic</span>
+                <span className="choice-name">신호 무시</span>
+                <span className="choice-type moral-neutral">현실적</span>
               </div>
               <div className="choice-description">
-                "We cannot afford to get involved. Continue on our planned
-                course."
+                "우리가 끼어들 여유는 없다. 계획한 항로를 계속 간다."
               </div>
               <div className="choice-analysis">
                 <div className="costs-section">
-                  <h5>Consequences:</h5>
+                  <h5>결과:</h5>
                   <div className="cost-item">
-                    <span className="cost-label">Karma:</span>
+                    <span className="cost-label">카르마:</span>
                     <span className="cost-value negative">
                       {DISTRESS_CONFIG.IGNORE.KARMA_PENALTY}
                     </span>
                   </div>
                 </div>
                 <div className="rewards-section">
-                  <h5>Benefits:</h5>
+                  <h5>이득:</h5>
                   <div className="reward-item">
-                    <span className="reward-label">Resources:</span>
-                    <span className="reward-value neutral">No cost</span>
+                    <span className="reward-label">자원:</span>
+                    <span className="reward-value neutral">비용 없음</span>
                   </div>
                   <div className="reward-item">
-                    <span className="reward-label">Time:</span>
-                    <span className="reward-value neutral">No delay</span>
+                    <span className="reward-label">시간:</span>
+                    <span className="reward-value neutral">지연 없음</span>
                   </div>
                 </div>
               </div>
@@ -321,43 +319,42 @@ export function DistressCallPanel({
               onClick={() => handleChoiceSelect('loot')}
             >
               <div className="choice-header">
-                <span className="choice-name">Salvage the Wreck</span>
-                <span className="choice-type moral-evil">Predatory</span>
+                <span className="choice-name">잔해 인양</span>
+                <span className="choice-type moral-evil">약탈적</span>
               </div>
               <div className="choice-description">
-                "Looks like they won't be needing their cargo anymore. Might as
-                well make this trip profitable."
+                "저 사람들은 이제 화물이 필요 없겠군. 이번 항해로 수지를 맞춰야지."
               </div>
               <div className="choice-analysis">
                 <div className="costs-section">
-                  <h5>Moral Costs:</h5>
+                  <h5>도덕적 대가:</h5>
                   <div className="cost-item">
-                    <span className="cost-label">Time Delay:</span>
+                    <span className="cost-label">시간 지연:</span>
                     <span className="cost-value">
-                      +{DISTRESS_CONFIG.LOOT.DAYS_COST} day
+                      +{DISTRESS_CONFIG.LOOT.DAYS_COST} 일
                     </span>
                   </div>
                   <div className="cost-item">
-                    <span className="cost-label">Karma:</span>
+                    <span className="cost-label">카르마:</span>
                     <span className="cost-value negative">
                       {DISTRESS_CONFIG.LOOT.KARMA_PENALTY}
                     </span>
                   </div>
                   <div className="cost-item">
-                    <span className="cost-label">Civilian Reputation:</span>
+                    <span className="cost-label">민간인 평판:</span>
                     <span className="cost-value negative">
                       {DISTRESS_CONFIG.LOOT.REP_PENALTY}
                     </span>
                   </div>
                 </div>
                 <div className="rewards-section">
-                  <h5>Material Gains:</h5>
+                  <h5>물질적 이득:</h5>
                   <div className="reward-item">
-                    <span className="reward-label">Salvaged Cargo:</span>
-                    <span className="reward-value positive">Random goods</span>
+                    <span className="reward-label">인양 화물:</span>
+                    <span className="reward-value positive">무작위 물품</span>
                   </div>
                   <div className="reward-item">
-                    <span className="reward-label">Outlaw Reputation:</span>
+                    <span className="reward-label">무법자 평판:</span>
                     <span className="reward-value positive">
                       +{DISTRESS_CONFIG.LOOT.OUTLAW_REP_GAIN}
                     </span>
@@ -366,7 +363,7 @@ export function DistressCallPanel({
               </div>
               <div className="choice-warning">
                 <span className="warning-text">
-                  ⚠ This action will be remembered by the sector
+                  ⚠ 이 행동은 성역 전체에 기억됩니다
                 </span>
               </div>
             </button>
@@ -381,13 +378,13 @@ export function DistressCallPanel({
                 {getChoiceActionText(selectedChoice)}
               </button>
               <button className="distress-btn secondary" onClick={handleCancel}>
-                Reconsider
+                다시 생각하기
               </button>
             </>
           )}
           {!selectedChoice && (
             <div className="selection-prompt">
-              The distress signal continues to broadcast. What will you do?
+              조난 신호는 계속 송출되고 있습니다. 어떻게 하시겠습니까?
             </div>
           )}
         </div>
@@ -464,11 +461,11 @@ function getResourceClass(resource) {
  */
 function getKarmaDescription(karma) {
   const thresholds = KARMA_CONFIG.DISPLAY_THRESHOLDS;
-  if (karma >= thresholds.SAINT) return 'Renowned for heroic deeds';
-  if (karma >= thresholds.GOOD) return 'Known for helping others';
-  if (karma >= thresholds.BAD) return 'Morally neutral reputation';
-  if (karma >= thresholds.VILLAIN) return 'Reputation for selfishness';
-  return 'Feared as ruthless and cruel';
+  if (karma >= thresholds.SAINT) return '영웅적인 행적으로 명성이 높음';
+  if (karma >= thresholds.GOOD) return '남을 돕는 사람으로 알려짐';
+  if (karma >= thresholds.BAD) return '도덕적으로 중립적인 평판';
+  if (karma >= thresholds.VILLAIN) return '이기적이라는 평판';
+  return '무자비하고 잔인하다고 두려움을 받음';
 }
 
 /**
@@ -497,17 +494,17 @@ function getReputationClass(reputation) {
 function formatCallType(callType) {
   switch (callType) {
     case 'mechanical':
-      return 'Mechanical Failure';
+      return '기계 고장';
     case 'medical':
-      return 'Medical Emergency';
+      return '의료 비상';
     case 'pirate':
-      return 'Pirate Attack';
+      return '해적 습격';
     case 'navigation':
-      return 'Navigation Failure';
+      return '항법 고장';
     case 'general':
-      return 'General Distress';
+      return '일반 조난';
     default:
-      return 'Unknown Emergency';
+      return '알 수 없는 비상';
   }
 }
 
@@ -521,12 +518,12 @@ function formatCallType(callType) {
 function getChoiceActionText(choice) {
   switch (choice) {
     case 'respond':
-      return 'Launch Rescue Operation';
+      return '구조 작전 개시';
     case 'ignore':
-      return 'Continue on Course';
+      return '항로 유지';
     case 'loot':
-      return 'Salvage the Wreck';
+      return '잔해 인양';
     default:
-      return 'Confirm Choice';
+      return '선택 확정';
   }
 }

@@ -4,15 +4,15 @@ import { SeededRandom } from '../../utils/seeded-random.js';
 function getRequirementHint(context, nextStage) {
   const unmet = context.getUnmetRequirements('tanaka', nextStage);
   if (unmet.includes('engine'))
-    return '"Your drive\'s running rough. I wouldn\'t trust my firmware on an engine in that shape." She glances at your ship. "Get it tuned up and we\'ll talk."';
+    return '"구동계가 거칠게 돌아가네요. 그런 상태의 엔진에는 내 펌웨어를 믿고 맡기지 못하겠어요." 그녀가 당신의 배를 힐끗 본다. "손봐 오세요. 그러면 얘기하죠."';
   if (unmet.includes('hull'))
-    return '"Your hull\'s taken a beating. Get that patched up before we talk next steps." She runs a hand along a dent in your ship\'s plating.';
+    return '"선체가 많이 두들겨 맞았네요. 다음 단계를 얘기하기 전에 그것부터 때우세요." 그녀가 당신 배 장갑의 찌그러진 곳을 손으로 쓸어 본다.';
   if (unmet.includes('debt'))
-    return '"You\'re still in Cole\'s pocket. Settle that first." She crosses her arms. "I don\'t work with people who have strings attached."';
+    return '"아직 콜의 주머니 속이군요. 그것부터 해결하세요." 그녀가 팔짱을 낀다. "줄이 달린 사람과는 일하지 않아요."';
   if (unmet.includes('credits'))
-    return `"What I have in mind isn't cheap. You'll need at least ${ENDGAME_CONFIG.VICTORY_CREDITS.toLocaleString()} credits before we proceed." She glances at your ship. "Keep trading."`;
+    return `"내가 생각하는 건 싸지 않아요. 진행하려면 최소 ${ENDGAME_CONFIG.VICTORY_CREDITS.toLocaleString()} 크레딧이 필요해요." 그녀가 당신의 배를 힐끗 본다. "계속 거래하세요."`;
   if (unmet.includes('rep'))
-    return '"I like you, captain. But I don\'t know you well enough yet for what comes next." She turns back to her work. "Keep visiting. Bring supplies. We\'ll get there."';
+    return '"당신이 마음에 들어요, 선장. 하지만 다음 단계를 하기엔 아직 당신을 잘 몰라요." 그녀가 다시 작업으로 돌아선다. "계속 들르세요. 물자를 가져오고요. 거기까지 갈 거예요."';
   return null;
 }
 
@@ -20,7 +20,7 @@ export const YUKI_TANAKA_DIALOGUE = {
   greeting: {
     text: (rep, context) => {
       if (!context) {
-        return 'Tanaka nods in your direction.';
+        return '타나카가 당신 쪽으로 고개를 끄덕인다.';
       }
 
       const stage = context.getQuestStage('tanaka');
@@ -35,34 +35,34 @@ export const YUKI_TANAKA_DIALOGUE = {
       }
 
       if (stage >= 5) {
-        return '"Everything is in place. The Range Extender is calibrated. Your ship is ready." She meets your eyes. "Are you?"';
+        return '"모든 게 준비됐어요. 항속 연장기는 보정이 끝났고, 당신의 배도 준비됐어요." 그녀가 당신의 눈을 마주 본다. "당신은요?"';
       }
       if (stage === 4) {
         const delivered =
           context.getQuestState('tanaka')?.data?.messageDelivered;
         if (delivered) {
-          return '"You delivered the message. Thank you." Her voice is steady, but her eyes say more. "When you are ready for the final preparations, we should talk."';
+          return '"메시지를 전해 줬군요. 고마워요." 목소리는 담담하지만 눈은 더 많은 걸 말한다. "최종 준비를 할 때가 되면 얘기해요."';
         }
-        return '"My message for Captain Vasquez — have you delivered it yet?" She meets your eyes briefly. "They\'re at Eridani Hub. Epsilon Eridani."';
+        return '"바스케스 선장에게 보내는 내 메시지는 전했나요?" 그녀가 잠깐 당신의 눈을 마주 본다. "에리다니 허브에 있어요. 엡실론 에리다니요."';
       }
       if (stage === 3) {
-        return '"The prototype integration is complete. Your ship performed admirably." She pauses. "I have one more request. A personal one."';
+        return '"시제품 통합이 끝났어요. 당신의 배는 훌륭하게 해냈어요." 그녀가 잠시 멈춘다. "부탁이 하나 더 있어요. 개인적인 거예요."';
       }
       if (stage === 2) {
         const exotics =
           context.getQuestState('tanaka')?.data?.exoticMaterials || 0;
         if (exotics >= ENDGAME_CONFIG.STAGE_2_EXOTIC_NEEDED) {
-          return `"You found all ${ENDGAME_CONFIG.STAGE_2_EXOTIC_NEEDED} samples. Excellent work." She examines them carefully. "The isotope ratios are perfect. We can proceed."`;
+          return `"표본 ${ENDGAME_CONFIG.STAGE_2_EXOTIC_NEEDED}개를 전부 찾았군요. 훌륭해요." 그녀가 꼼꼼히 살핀다. "동위원소 비율이 완벽해요. 진행할 수 있어요."`;
         }
-        return `"The exotic materials search continues. You have ${exotics} of ${ENDGAME_CONFIG.STAGE_2_EXOTIC_NEEDED} samples so far." She checks her instruments. "Keep searching stations beyond ${ENDGAME_CONFIG.STAGE_2_EXOTIC_DISTANCE} light-years from Sol."`;
+        return `"외계 물질 탐색은 계속되고 있어요. 지금까지 표본 ${ENDGAME_CONFIG.STAGE_2_EXOTIC_NEEDED}개 중 ${exotics}개를 찾았어요." 그녀가 계기를 확인한다. "태양에서 ${ENDGAME_CONFIG.STAGE_2_EXOTIC_DISTANCE}광년 너머의 정거장을 계속 뒤지세요."`;
       }
       if (stage === 1) {
         const jumps =
           context.getQuestState('tanaka')?.data?.jumpsCompleted || 0;
         if (jumps >= ENDGAME_CONFIG.STAGE_1_JUMPS) {
-          return '"The field test data looks excellent. The drive modifications are performing within expected parameters." She actually smiles. "I have another task for you."';
+          return '"현장 시험 데이터가 훌륭해요. 구동계 개조가 예상 매개변수 안에서 작동하고 있어요." 그녀가 실제로 미소 짓는다. "다른 일이 하나 더 있어요."';
         }
-        return `"The field test is in progress. ${ENDGAME_CONFIG.STAGE_1_JUMPS - jumps} more jumps needed to calibrate the drive harmonics." She studies her readouts intently.`;
+        return `"현장 시험이 진행 중이에요. 구동 고조파를 보정하려면 점프가 ${ENDGAME_CONFIG.STAGE_1_JUMPS - jumps}회 더 필요해요." 그녀가 계측값을 유심히 살핀다.`;
       }
 
       // Stage 0 with requirements not met for stage 1
@@ -72,23 +72,23 @@ export const YUKI_TANAKA_DIALOGUE = {
       }
 
       if (rep >= REPUTATION_BOUNDS.FRIENDLY_MIN) {
-        return '"Captain." A brief nod. "I appreciate your continued visits. There is much work to be done."';
+        return '"선장." 짧은 끄덕임. "계속 들러 줘서 고마워요. 할 일이 많아요."';
       }
       if (rep >= REPUTATION_BOUNDS.WARM_MIN) {
-        return '"Your ship interests me. The Tanaka Mark III drive is one of my better designs." She studies you. "Perhaps we can help each other."';
+        return '"당신의 배가 흥미로워요. 타나카 마크 III 구동계는 내 설계 중 괜찮은 편이죠." 그녀가 당신을 살핀다. "어쩌면 서로 도울 수 있겠네요."';
       }
       if (rep >= REPUTATION_BOUNDS.NEUTRAL_HIGH) {
-        return '"Captain." She looks up from her work. "You keep bringing supplies. You ask nothing in return." A pause. "I may have a use for that reliability."';
+        return '"선장." 그녀가 작업에서 눈을 든다. "계속 물자를 가져오는군요. 아무 대가도 요구하지 않고." 잠시 침묵. "그 믿음직함을 쓸 데가 있을지도 모르겠어요."';
       }
       if (rep >= REPUTATION_BOUNDS.NEUTRAL_MID) {
-        return '"You again." She doesn\'t look up, but she doesn\'t turn away either. "Your deliveries have been... adequate."';
+        return '"또 당신이군요." 그녀는 고개를 들지 않지만 돌아서지도 않는다. "당신의 배달은... 충분했어요."';
       }
-      return '"Tanaka. Engineer." She extends a hand, then withdraws it. "I have work to do. Unless you have business?"';
+      return '"타나카. 엔지니어예요." 그녀가 손을 내밀었다가 거둔다. "할 일이 있어요. 용건이 없다면요?"';
     },
 
     choices: [
       {
-        text: '"I\'m ready for the Pavonis Run."',
+        text: '"파보니스 비행 준비됐어요."',
         next: 'pavonis_ready',
         condition: (_rep, context) =>
           context &&
@@ -96,7 +96,7 @@ export const YUKI_TANAKA_DIALOGUE = {
           context.canStartQuestStage('tanaka', 5),
       },
       {
-        text: '"Tell me about the final preparations."',
+        text: '"최종 준비에 대해 알려 주세요."',
         next: 'mission_5_offer',
         condition: (_rep, context) =>
           context &&
@@ -105,7 +105,7 @@ export const YUKI_TANAKA_DIALOGUE = {
           context.canStartQuestStage('tanaka', 5),
       },
       {
-        text: '"Vasquez understood. They\'ll take care of it."',
+        text: '"바스케스는 이해했어요. 알아서 처리할 거예요."',
         next: 'mission_4_complete',
         condition: (_rep, context) =>
           context &&
@@ -114,7 +114,7 @@ export const YUKI_TANAKA_DIALOGUE = {
           !context.hasClaimedStageRewards('tanaka'),
       },
       {
-        text: '"About that personal request..."',
+        text: '"그 개인적인 부탁 말인데요..."',
         next: 'mission_4_offer',
         condition: (_rep, context) =>
           context &&
@@ -123,7 +123,7 @@ export const YUKI_TANAKA_DIALOGUE = {
           context.canStartQuestStage('tanaka', 4),
       },
       {
-        text: '"Your work is impressive, Tanaka. The ship feels different."',
+        text: '"당신 솜씨가 인상적이에요, 타나카. 배가 다르게 느껴져요."',
         next: 'mission_3_complete',
         condition: (_rep, context) =>
           context &&
@@ -132,7 +132,7 @@ export const YUKI_TANAKA_DIALOGUE = {
           !context.hasClaimedStageRewards('tanaka'),
       },
       {
-        text: '"I\'m ready for the prototype installation."',
+        text: '"시제품 설치 준비됐어요."',
         next: 'mission_3_offer',
         condition: (_rep, context) =>
           context &&
@@ -141,7 +141,7 @@ export const YUKI_TANAKA_DIALOGUE = {
           context.canStartQuestStage('tanaka', 3),
       },
       {
-        text: '"Took some searching, but it was worth the trip."',
+        text: '"찾느라 고생했지만 그럴 가치가 있었어요."',
         next: 'mission_2_complete',
         condition: (_rep, context) =>
           context &&
@@ -150,7 +150,7 @@ export const YUKI_TANAKA_DIALOGUE = {
           !context.hasClaimedStageRewards('tanaka'),
       },
       {
-        text: '"What do you need?"',
+        text: '"뭐가 필요하세요?"',
         next: 'mission_2_offer',
         condition: (_rep, context) =>
           context &&
@@ -159,7 +159,7 @@ export const YUKI_TANAKA_DIALOGUE = {
           context.canStartQuestStage('tanaka', 2),
       },
       {
-        text: '"Glad the data worked out. She handled well out there."',
+        text: '"데이터가 잘 나와서 다행이에요. 배가 거기서 잘 움직였어요."',
         next: 'mission_1_complete',
         condition: (_rep, context) =>
           context &&
@@ -168,7 +168,7 @@ export const YUKI_TANAKA_DIALOGUE = {
           !context.hasClaimedStageRewards('tanaka'),
       },
       {
-        text: '"You mentioned needing a field test?"',
+        text: '"현장 시험이 필요하다고 하셨죠?"',
         next: 'mission_1_offer',
         condition: (_rep, context) =>
           context &&
@@ -176,7 +176,7 @@ export const YUKI_TANAKA_DIALOGUE = {
           context.canStartQuestStage('tanaka', 1),
       },
       {
-        text: '"I brought supplies for your research."',
+        text: '"당신의 연구에 쓸 물자를 가져왔어요."',
         next: 'research_supply',
         condition: (_rep, context) =>
           context &&
@@ -184,65 +184,65 @@ export const YUKI_TANAKA_DIALOGUE = {
           context.canContributeSupply(),
       },
       {
-        text: 'Tell me about your work.',
+        text: '당신의 연구에 대해 알려 주세요.',
         next: 'about_work',
       },
       {
-        text: 'Tell me about yourself.',
+        text: '당신에 대해 알려 주세요.',
         next: 'backstory',
         condition: (rep) => rep >= REPUTATION_BOUNDS.TRUSTED_MIN,
       },
       {
-        text: 'Good to see you. Take care.',
+        text: '만나서 반가웠어요. 몸 조심하세요.',
         next: null,
       },
     ],
   },
 
   about_work: {
-    text: '"I design drive systems. My father created the original Tanaka Drive — the one in your ship. I\'ve been working on improvements. Specifically, a Range Extender that could push a ship beyond the wormhole network." She pauses. "Much further."',
+    text: '"나는 구동 시스템을 설계해요. 아버지가 원조 타나카 구동계를 만드셨죠. 당신 배에 있는 그거요. 나는 개량 작업을 해 왔어요. 구체적으로는 웜홀 네트워크 너머로 배를 보낼 수 있는 항속 연장기예요." 그녀가 말을 멈춘다. "훨씬 더 멀리요."',
     choices: [
       {
-        text: '"How much further?"',
+        text: '"얼마나 멀리요?"',
         next: 'range_extender',
         repGain: 1,
       },
       {
-        text: '"Sounds ambitious."',
+        text: '"야심차게 들리네요."',
         next: 'greeting',
       },
     ],
   },
 
   range_extender: {
-    text: '"Delta Pavonis. Nineteen point eight-nine light-years from Sol. No wormhole connection. The colony ships took years to crawl there. No one has ever made the jump in a single leap." Her eyes light up — the only sign of emotion you\'ve seen from her. "The Range Extender makes it possible. One jump. One way."',
+    text: '"델타 파보니스. 태양에서 19.89광년. 웜홀 연결은 없어요. 식민선들도 거기까지 기어가는 데 수년이 걸렸죠. 한 번에 점프한 사람은 아무도 없어요." 그녀의 눈이 빛난다. 그녀에게서 본 유일한 감정의 징후다. "항속 연장기가 그걸 가능하게 해요. 한 번의 점프. 편도로요."',
     choices: [
       {
-        text: '"Why Delta Pavonis?"',
+        text: '"왜 델타 파보니스죠?"',
         next: 'why_pavonis',
         repGain: 2,
       },
       {
-        text: '"One way? That\'s a big commitment."',
+        text: '"편도라고요? 큰 결심이네요."',
         next: 'one_way',
       },
       {
-        text: '"Interesting. I should get going."',
+        text: '"흥미롭네요. 이만 가 봐야겠어요."',
         next: null,
       },
     ],
   },
 
   why_pavonis: {
-    text: '"Data suggests habitable conditions. But more than that — my sister went there. On the colony ship Meridian, ten years ago. One-way trip." She looks away. "I want to find her."',
+    text: '"데이터는 거주 가능한 조건을 시사해요. 하지만 그 이상이에요. 내 언니가 거기 갔어요. 십 년 전에 식민선 메리디언호를 타고요. 편도 여행이었죠." 그녀가 시선을 돌린다. "언니를 찾고 싶어요."',
     choices: [
       {
-        text: '"I hope you find her."',
+        text: '"언니를 찾길 바라요."',
         next: 'greeting',
         repGain: 3,
       },
       {
-        text: '"That\'s a long time. She might not—"',
+        text: '"오래된 일이네요. 어쩌면 언니는..."',
         next: 'might_not',
         repGain: -1,
       },
@@ -250,51 +250,51 @@ export const YUKI_TANAKA_DIALOGUE = {
   },
 
   might_not: {
-    text: '"I am aware of the probabilities." Her voice is ice. "I have calculated them extensively. Do not presume to lecture me on what I already know."',
+    text: '"확률은 알고 있어요." 목소리가 얼음장 같다. "충분히 계산해 봤어요. 내가 이미 아는 걸 나한테 훈계하려 들지 마세요."',
     choices: [
       {
-        text: '"I\'m sorry. I didn\'t mean to—"',
+        text: '"미안해요. 그럴 뜻은..."',
         next: 'greeting',
         repGain: 1,
       },
       {
-        text: '"Fair enough."',
+        text: '"그렇군요."',
         next: null,
       },
     ],
   },
 
   one_way: {
-    text: '"Yes. The Range Extender is single-use. The energy requirements for a 20-light-year jump are... considerable. There is no return unless Delta Pavonis has wormhole infrastructure." She shrugs. "It probably does not."',
+    text: '"네. 항속 연장기는 일회용이에요. 20광년 점프에 필요한 에너지는... 상당해요. 델타 파보니스에 웜홀 기반시설이 없으면 돌아올 방법은 없어요." 그녀가 어깨를 으쓱한다. "아마 없겠죠."',
     choices: [
       {
-        text: '"And you\'d make that jump?"',
+        text: '"그래도 그 점프를 하시려고요?"',
         next: 'why_pavonis',
         repGain: 1,
       },
       {
-        text: '"Good luck with that."',
+        text: '"행운을 빌어요."',
         next: null,
       },
     ],
   },
 
   backstory: {
-    text: '"My father was Kenji Tanaka. He invented the drive that bears our name. Died in a test flight when I was twelve." She speaks without sentiment. "I continued his work. Improved the efficiency by thirty-two percent. But the Range Extender is my own design."',
+    text: '"아버지는 켄지 타나카였어요. 우리 이름을 딴 구동계를 발명하셨죠. 내가 열두 살 때 시험 비행 중 돌아가셨어요." 그녀가 감정 없이 말한다. "나는 아버지의 일을 이어받았어요. 효율을 32% 개선했죠. 하지만 항속 연장기는 내 설계예요."',
     flags: ['tanaka_backstory'],
     choices: [
       {
-        text: '"He\'d be proud of you."',
+        text: '"아버지께서 자랑스러워하실 거예요."',
         next: 'proud',
         repGain: 3,
       },
       {
-        text: '"What happened to your sister?"',
+        text: '"언니는 어떻게 되었나요?"',
         next: 'sister',
         repGain: 2,
       },
       {
-        text: '"I see. Thank you for telling me."',
+        text: '"알겠어요. 얘기해 줘서 고마워요."',
         next: 'greeting',
         repGain: 1,
       },
@@ -302,15 +302,15 @@ export const YUKI_TANAKA_DIALOGUE = {
   },
 
   proud: {
-    text: 'She is quiet for a long moment. "Perhaps. He valued results over sentiment. I do the same." But there is something in her expression that suggests otherwise.',
+    text: '그녀가 한참 동안 조용하다. "어쩌면요. 아버지는 감정보다 결과를 중시하셨어요. 나도 마찬가지고요." 하지만 그녀의 표정에는 그렇지 않음을 암시하는 무언가가 있다.',
     choices: [
       {
-        text: '"Results matter. But so do people."',
+        text: '"결과도 중요하지만 사람도 중요해요."',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: '"I understand."',
+        text: '"이해해요."',
         next: 'greeting',
         repGain: 1,
       },
@@ -318,15 +318,15 @@ export const YUKI_TANAKA_DIALOGUE = {
   },
 
   sister: {
-    text: '"Yumi. Three years older. Brilliant biologist. She signed up for the Meridian colony mission without telling anyone. Left a note." Tanaka\'s jaw tightens. "I have not spoken to her in ten years. The Meridian has no communication relay back to Sol."',
+    text: '"유미. 세 살 위. 뛰어난 생물학자였어요. 아무에게도 말하지 않고 메리디언 식민 임무에 지원했죠. 쪽지를 남겼어요." 타나카의 턱이 굳는다. "십 년 동안 얘기를 못 했어요. 메리디언에는 태양계로 돌아오는 통신 중계기가 없어요."',
     choices: [
       {
-        text: '"That\'s why you want to reach Delta Pavonis."',
+        text: '"그래서 델타 파보니스에 가고 싶은 거군요."',
         next: 'greeting',
         repGain: 3,
       },
       {
-        text: '"I\'m sorry."',
+        text: '"유감이에요."',
         next: 'greeting',
         repGain: 1,
       },
@@ -334,10 +334,10 @@ export const YUKI_TANAKA_DIALOGUE = {
   },
 
   mission_1_offer: {
-    text: '"I need someone to field-test my latest drive calibration. Three jumps with the modified firmware. Your ship, your route. I just need the telemetry data." She holds up a data chip. "Compensation: one thousand credits and a full engine restoration."',
+    text: '"내 최신 구동 보정을 현장 시험해 줄 사람이 필요해요. 개조한 펌웨어로 점프 세 번. 당신의 배, 당신의 항로로요. 나는 텔레메트리 데이터만 있으면 돼요." 그녀가 데이터 칩을 들어 보인다. "보수는 천 크레딧과 엔진 완전 복원이에요."',
     choices: [
       {
-        text: '"I\'ll do it. Three jumps, telemetry data."',
+        text: '"할게요. 점프 세 번, 텔레메트리 데이터."',
         next: 'mission_1_accepted',
         repGain: 5,
         action: (context) => {
@@ -345,27 +345,27 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"Not right now. Maybe later."',
+        text: '"지금은 안 돼요. 나중에요."',
         next: 'greeting',
       },
     ],
   },
 
   mission_1_accepted: {
-    text: '"Good. The firmware is already uploading. Just fly your normal routes — the chip will record everything automatically." She turns back to her workstation. "Three jumps. Then come back."',
+    text: '"좋아요. 펌웨어는 이미 업로드 중이에요. 평소 항로로 날기만 하면 돼요. 칩이 모든 걸 자동으로 기록할 거예요." 그녀가 작업대로 돌아선다. "점프 세 번. 그다음 돌아오세요."',
     choices: [
       {
-        text: '"Consider it done."',
+        text: '"해 놓은 걸로 치세요."',
         next: null,
       },
     ],
   },
 
   mission_1_complete: {
-    text: '"Excellent data. The harmonic oscillations are within two percent of predicted values." She downloads the telemetry and transfers your payment. "Your engine has been fully restored as promised."',
+    text: '"훌륭한 데이터예요. 고조파 진동이 예측값의 2% 이내예요." 그녀가 텔레메트리를 내려받고 보수를 보낸다. "약속대로 엔진은 완전히 복원했어요."',
     choices: [
       {
-        text: '"What\'s next?"',
+        text: '"다음은요?"',
         next: 'greeting',
         repGain: 3,
         action: (context) => {
@@ -373,7 +373,7 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"Pleasure doing business."',
+        text: '"거래해서 즐거웠어요."',
         next: null,
         repGain: 1,
         action: (context) => {
@@ -384,10 +384,10 @@ export const YUKI_TANAKA_DIALOGUE = {
   },
 
   mission_2_offer: {
-    text: '"The Range Extender requires exotic matter — specific isotopes found only at stations beyond fifteen light-years from Sol. I need five samples." She hands you a scanner module. "The materials appear randomly in station markets. This scanner will identify them."',
+    text: '"항속 연장기에는 외계 물질이 필요해요. 태양에서 15광년 너머의 정거장에서만 발견되는 특정 동위원소요. 표본 다섯 개가 필요해요." 그녀가 스캐너 모듈을 건넨다. "이 물질은 정거장 시장에 무작위로 나타나요. 이 스캐너가 알아봐 줄 거예요."',
     choices: [
       {
-        text: '"I\'ll keep my eyes open on my travels."',
+        text: '"여행하면서 눈여겨볼게요."',
         next: 'mission_2_accepted',
         repGain: 5,
         action: (context) => {
@@ -395,27 +395,27 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"That sounds like a lot of searching."',
+        text: '"찾을 게 많겠네요."',
         next: 'greeting',
       },
     ],
   },
 
   mission_2_accepted: {
-    text: '"The scanner integrates with your ship\'s sensors. When you dock at distant stations, it will alert you to any viable samples." She pauses. "Payment upon completion: three thousand credits and an advanced sensor upgrade."',
+    text: '"스캐너는 당신 배의 센서와 연동돼요. 먼 정거장에 도킹하면 쓸 만한 표본이 있을 때 알려 줄 거예요." 그녀가 잠시 멈춘다. "완료 시 보수: 삼천 크레딧과 고급 센서 업그레이드예요."',
     choices: [
       {
-        text: '"I\'ll find them."',
+        text: '"찾아낼게요."',
         next: null,
       },
     ],
   },
 
   mission_2_complete: {
-    text: '"All five samples. The isotope signatures are..." She checks each one carefully. "Perfect. These will form the core of the Range Extender\'s reaction mass." She installs the sensor upgrade on your ship. "You have earned this."',
+    text: '"표본 다섯 개 전부. 동위원소 신호가..." 그녀가 하나씩 꼼꼼히 확인한다. "완벽해요. 이게 항속 연장기 반응 질량의 핵심이 될 거예요." 그녀가 당신 배에 센서 업그레이드를 설치한다. "받을 자격이 있어요."',
     choices: [
       {
-        text: '"What comes next?"',
+        text: '"다음은 뭐죠?"',
         next: 'greeting',
         repGain: 3,
         action: (context) => {
@@ -426,10 +426,10 @@ export const YUKI_TANAKA_DIALOGUE = {
   },
 
   mission_3_offer: {
-    text: '"The prototype Range Extender is ready for installation. Your ship needs to be in good condition — hull at seventy percent minimum, engine at eighty." She looks at your ship appraisingly. "I will install it myself. Then we test."',
+    text: '"시제품 항속 연장기를 설치할 준비가 됐어요. 당신의 배는 상태가 좋아야 해요. 선체 최소 70%, 엔진 80%요." 그녀가 당신의 배를 가늠하듯 본다. "내가 직접 설치할 거예요. 그다음 시험해요."',
     choices: [
       {
-        text: '"Install it. Let\'s see what this drive can do."',
+        text: '"설치하세요. 이 구동계가 뭘 할 수 있는지 보죠."',
         next: 'mission_3_accepted',
         repGain: 5,
         action: (context) => {
@@ -437,17 +437,17 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"I need to get my ship in better shape first."',
+        text: '"먼저 배 상태를 더 끌어올려야겠어요."',
         next: 'greeting',
       },
     ],
   },
 
   mission_3_accepted: {
-    text: '"Installation complete. The Range Extender sits dormant until activation — it will not interfere with normal operations." She wipes her hands. "Take a test flight. Come back and we will verify the readings."',
+    text: '"설치 완료. 항속 연장기는 작동 전까지 휴면 상태라 평상시 운항에는 지장 없어요." 그녀가 손을 닦는다. "시험 비행을 하고 오세요. 돌아오면 측정값을 확인해요."',
     choices: [
       {
-        text: '"Thank you, Tanaka."',
+        text: '"고마워요, 타나카."',
         next: null,
         repGain: 2,
       },
@@ -455,10 +455,10 @@ export const YUKI_TANAKA_DIALOGUE = {
   },
 
   mission_3_complete: {
-    text: '"All readings nominal. The prototype is stable." She transfers your payment and looks at you differently now — with something approaching trust. "There is something else I need. Something personal."',
+    text: '"모든 측정값 정상. 시제품은 안정적이에요." 그녀가 보수를 보내고 이제는 다르게 당신을 본다. 신뢰에 가까운 무언가로. "필요한 게 하나 더 있어요. 개인적인 거예요."',
     choices: [
       {
-        text: '"Name it."',
+        text: '"말해 보세요."',
         next: 'greeting',
         repGain: 2,
         action: (context) => {
@@ -466,7 +466,7 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"I\'ll hear you out."',
+        text: '"들어 볼게요."',
         next: 'greeting',
         action: (context) => {
           return context.claimStageRewards('tanaka');
@@ -476,10 +476,10 @@ export const YUKI_TANAKA_DIALOGUE = {
   },
 
   mission_4_offer: {
-    text: '"Captain Vasquez at Epsilon Eridani knew my sister. They served together, years ago." She hesitates — the first time you have seen her uncertain. "I wrote a message. For Yumi. In case... in case she is there when we arrive. Would you deliver it to Vasquez? They will know what to do with it."',
+    text: '"엡실론 에리다니의 바스케스 선장은 내 언니를 알았어요. 몇 년 전에 함께 복무했죠." 그녀가 망설인다. 처음 보는 불확실한 모습이다. "메시지를 썼어요. 유미에게. 혹시... 우리가 도착했을 때 언니가 거기 있다면. 바스케스에게 전해 줄래요? 어떻게 해야 할지 알 거예요."',
     choices: [
       {
-        text: '"Of course. I\'ll deliver it personally."',
+        text: '"물론이죠. 직접 전해 드릴게요."',
         next: 'mission_4_accepted',
         repGain: 5,
         action: (context) => {
@@ -487,7 +487,7 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"I\'ll take care of it."',
+        text: '"제가 처리할게요."',
         next: 'mission_4_accepted',
         repGain: 3,
         action: (context) => {
@@ -495,21 +495,21 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"Tell me more about Yumi first."',
+        text: '"먼저 유미에 대해 더 알려 주세요."',
         next: 'mission_4_yumi_backstory',
       },
       {
-        text: '"I\'m not heading that way yet."',
+        text: '"아직 그쪽으로 가지 않아요."',
         next: 'greeting',
       },
     ],
   },
 
   mission_4_yumi_backstory: {
-    text: '"Yumi is — was — a biologist. Brilliant. She joined the Meridian colony mission ten years ago. One-way trip to Delta Pavonis." Tanaka\'s voice is carefully controlled. "She left without saying goodbye. Just a note." A pause. "This message is everything I never told her. If Vasquez can get it to the colony somehow..." She trails off. "It matters to me. More than the drive. More than any of this."',
+    text: '"유미는 생물학자예요. 였어요. 뛰어났죠. 십 년 전에 메리디언 식민 임무에 합류했어요. 델타 파보니스행 편도 여행이었죠." 타나카의 목소리는 조심스럽게 통제되어 있다. "작별 인사도 없이 떠났어요. 쪽지만 남기고요." 잠시 침묵. "이 메시지는 언니에게 하지 못한 모든 말이에요. 바스케스가 어떻게든 식민지에 전해 줄 수 있다면..." 그녀가 말끝을 흐린다. "내겐 중요해요. 구동계보다도. 이 모든 것보다도."',
     choices: [
       {
-        text: '"I\'ll get it there."',
+        text: '"그곳에 전할게요."',
         next: 'mission_4_accepted',
         repGain: 5,
         action: (context) => {
@@ -517,27 +517,27 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"I need some time to think about it."',
+        text: '"생각할 시간이 좀 필요해요."',
         next: 'greeting',
       },
     ],
   },
 
   mission_4_accepted: {
-    text: 'She hands you a sealed data chip. Her hand trembles slightly. "It is... just a letter. Ten years of things I should have said." She straightens. "Vasquez is at Eridani Hub. Epsilon Eridani."',
+    text: '그녀가 봉인된 데이터 칩을 건넨다. 손이 살짝 떨린다. "그냥... 편지예요. 십 년 치 해야 했던 말들." 그녀가 몸을 곧게 편다. "바스케스는 에리다니 허브에 있어요. 엡실론 에리다니요."',
     choices: [
       {
-        text: '"I\'ll make sure it gets there."',
+        text: '"반드시 전달할게요."',
         next: null,
       },
     ],
   },
 
   mission_4_complete: {
-    text: '"You delivered it." Her voice is quiet. "That message... it means everything." She composes herself. "When you are ready for the final preparations, we should talk."',
+    text: '"전해 줬군요." 목소리가 조용하다. "그 메시지... 내겐 전부예요." 그녀가 마음을 가다듬는다. "최종 준비를 할 때가 되면 얘기해요."',
     choices: [
       {
-        text: '"She would want to hear from you."',
+        text: '"언니도 당신 소식을 듣고 싶어 할 거예요."',
         next: 'greeting',
         repGain: 3,
         action: (context) => {
@@ -545,7 +545,7 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"Glad I could help."',
+        text: '"도움이 되어 기뻐요."',
         next: null,
         repGain: 1,
         action: (context) => {
@@ -556,10 +556,10 @@ export const YUKI_TANAKA_DIALOGUE = {
   },
 
   mission_5_offer: {
-    text: `"This is it. The final stage." She stands before your ship, tools in hand. "To make the Pavonis jump, you need: zero debt, ${ENDGAME_CONFIG.VICTORY_CREDITS.toLocaleString()} credits for fuel and supplies, hull at eighty percent, engine at ninety." She meets your eyes. "And my trust. Completely."`,
+    text: `"이게 마지막 단계예요." 그녀가 공구를 든 채 당신의 배 앞에 선다. "파보니스 점프를 하려면 필요한 건: 부채 0, 연료와 물자용 ${ENDGAME_CONFIG.VICTORY_CREDITS.toLocaleString()} 크레딧, 선체 80%, 엔진 90%예요." 그녀가 당신의 눈을 마주 본다. "그리고 나의 신뢰. 완전히."`,
     choices: [
       {
-        text: '"I\'m ready. Let\'s do this."',
+        text: '"준비됐어요. 해 봐요."',
         next: 'mission_5_accepted',
         repGain: 5,
         condition: (_rep, context) =>
@@ -569,14 +569,14 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"I need more time to prepare."',
+        text: '"준비할 시간이 더 필요해요."',
         next: 'greeting',
       },
     ],
   },
 
   mission_5_accepted: {
-    text: '"The Range Extender is fully calibrated. I have installed the final components." She steps back to admire her work. "This is my father\'s legacy. And mine. And now yours." She hands you the activation key. "When you are ready, we fly to Delta Pavonis. Together."',
+    text: '"항속 연장기는 완전히 보정됐어요. 마지막 부품도 설치했고요." 그녀가 물러서서 자신의 작품을 감상한다. "이건 아버지의 유산이에요. 그리고 내 것. 이제는 당신의 것이기도 하죠." 그녀가 활성화 키를 건넨다. "준비되면 델타 파보니스로 가요. 함께요."',
     choices: [
       {
         text: '"Together."',
@@ -594,18 +594,18 @@ export const YUKI_TANAKA_DIALOGUE = {
       let lines;
       if (rep >= REPUTATION_BOUNDS.NEUTRAL_HIGH) {
         lines = [
-          '"Every delivery gets me closer. I won\'t forget that."',
-          '"Medical-grade sealant compounds. Useful for the containment housing. Thank you."',
+          '"배달할 때마다 목표에 가까워져요. 잊지 않을게요."',
+          '"의료용 실란트 화합물이군요. 격납 하우징에 쓸모가 있어요. 고마워요."',
         ];
       } else if (rep >= REPUTATION_BOUNDS.NEUTRAL_MID) {
         lines = [
-          "\"You didn't have to do this. But I won't pretend it doesn't help.\"",
-          '"This saves me weeks of requisition paperwork. Appreciated."',
+          "\"이럴 필요는 없었어요. 하지만 도움이 안 된다고 하진 않을게요.\"",
+          '"몇 주치 조달 서류 작업을 덜어 주네요. 고마워요."',
         ];
       } else {
         lines = [
-          '"Electronics. Good quality. These will work for the coupling array."',
-          '"I can use these. The drive prototype consumes components faster than I projected."',
+          '"전자제품. 품질이 좋네요. 결합 어레이에 쓸 수 있겠어요."',
+          '"이거 쓸 수 있겠어요. 구동계 시제품이 예상보다 부품을 빨리 소모해요."',
         ];
       }
       const rng = new SeededRandom(
@@ -615,7 +615,7 @@ export const YUKI_TANAKA_DIALOGUE = {
     },
     choices: [
       {
-        text: '"Glad to help."',
+        text: '"도움이 되어 기뻐요."',
         next: 'greeting',
         action: (context) => {
           return context.contributeSupply();
@@ -625,10 +625,10 @@ export const YUKI_TANAKA_DIALOGUE = {
   },
 
   pavonis_ready: {
-    text: '"The coordinates are locked. Delta Pavonis. Nineteen point eight-nine light-years." She stands at the airlock. "Once we activate the Range Extender, there is no coming back. The jump is one-way." Her voice is perfectly steady. "Are you certain?"',
+    text: '"좌표 고정. 델타 파보니스. 19.89광년." 그녀가 에어록에 서 있다. "항속 연장기를 가동하면 돌아올 수 없어요. 점프는 편도예요." 목소리는 완벽하게 침착하다. "확실해요?"',
     choices: [
       {
-        text: '"Let\'s fly."',
+        text: '"날아가죠."',
         next: null,
         action: (context) => {
           context.startPavonisRun();
@@ -636,7 +636,7 @@ export const YUKI_TANAKA_DIALOGUE = {
         },
       },
       {
-        text: '"Not yet. I need more time."',
+        text: '"아직요. 시간이 더 필요해요."',
         next: null,
       },
     ],

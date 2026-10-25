@@ -171,7 +171,7 @@
   border: 1px solid #00ff88;
   border-radius: 3px;
   font-size: var(--font-size-medium);
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
@@ -209,7 +209,7 @@
   color: rgba(0, 255, 136, 0.7);
   border: none;
   border-bottom: 3px solid transparent;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   font-size: var(--font-size-large);
   cursor: pointer;
   transition: all 0.2s;

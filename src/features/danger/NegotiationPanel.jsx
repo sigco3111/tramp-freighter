@@ -66,7 +66,7 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
     encounter.demandPercent ?? PIRATE_CREDIT_DEMAND_CONFIG.CARGO_DEMAND_PERCENT;
   const pirateDescription =
     encounter.description ||
-    `The pirates are demanding ${demandPercent}% of your cargo as tribute.`;
+    `해적들이 화물의 ${demandPercent}%를 공물로 요구하고 있습니다.`;
 
   return (
     <div
@@ -79,47 +79,47 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
       <button
         className="close-btn"
         onClick={() => onChoice('flee')}
-        aria-label="Flee negotiation"
+        aria-label="협상 이탈"
       >
         ×
       </button>
-      <h2 id="negotiation-panel-title">Negotiation</h2>
+      <h2 id="negotiation-panel-title">협상</h2>
 
       <div className="negotiation-content">
         {/* Negotiation Context Section */}
         <div className="negotiation-section context-section">
-          <h3>Situation</h3>
+          <h3>상황</h3>
           <div className="context-info">
             <div className="pirate-demand">
-              <span className="demand-label">Pirate Demand:</span>
-              <span className="demand-value">{demandPercent}% of cargo</span>
+              <span className="demand-label">해적 요구:</span>
+              <span className="demand-value">{demandPercent}% 화물</span>
             </div>
             <div className="situation-description">{pirateDescription}</div>
             <div className="negotiation-prompt">
-              "Perhaps we can come to a more... reasonable arrangement?"
+              "좀 더... 합리적인 선에서 합의할 수 있지 않겠소?"
             </div>
           </div>
         </div>
 
         {/* Player Status Section */}
         <div className="negotiation-section status-section">
-          <h3>Your Position</h3>
+          <h3>당신의 입장</h3>
           <div className="status-grid">
             <div className="status-item">
-              <span className="status-label">Cargo Value:</span>
+              <span className="status-label">화물 가치:</span>
               <span className="status-value">
                 ₡{calculateCargoValue(cargo).toLocaleString()}
               </span>
             </div>
             <div className="status-item">
-              <span className="status-label">Karma:</span>
+              <span className="status-label">카르마:</span>
               <span className={`status-value ${getKarmaClass(karma)}`}>
                 {karma > 0 ? '+' : ''}
                 {karma || 0}
               </span>
             </div>
             <div className="status-item">
-              <span className="status-label">Outlaw Standing:</span>
+              <span className="status-label">무법자 입지:</span>
               <span
                 className={`status-value ${getReputationClass(factions?.outlaws)}`}
               >
@@ -127,9 +127,9 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
               </span>
             </div>
             <div className="status-item">
-              <span className="status-label">Available Intel:</span>
+              <span className="status-label">보유 정보:</span>
               <span className="status-value">
-                {hasIntelligence ? 'Yes' : 'None'}
+                {hasIntelligence ? 'Yes' : '없음'}
               </span>
             </div>
           </div>
@@ -137,7 +137,7 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
 
         {/* Negotiation Options Section */}
         <div className="negotiation-section options-section">
-          <h3>Dialogue Options</h3>
+          <h3>대화 선택지</h3>
           <div className="options-list">
             {/* Counter-Proposal Option */}
             <button
@@ -145,16 +145,15 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
               onClick={() => handleOptionSelect('counter_proposal')}
             >
               <div className="option-header">
-                <span className="option-name">Counter-Proposal</span>
-                <span className="option-type">Bargaining</span>
+                <span className="option-name">역제안</span>
+                <span className="option-type">흥정</span>
               </div>
               <div className="option-dialogue">
-                "Look, I understand you need to make a living, but that's a
-                steep price. How about we settle for something more reasonable?"
+                "당신들도 먹고살아야 하는 건 알지만 요구가 너무 과해요. 좀 더 합리적인 선에서 끝내는 게 어떻겠소?"
               </div>
               <div className="option-analysis">
                 <div className="probability-display">
-                  <span className="prob-label">Success Chance:</span>
+                  <span className="prob-label">성공 확률:</span>
                   <span className="prob-value">
                     {Math.round(
                       negotiationAnalysis.counterProposal.finalChance * 100
@@ -177,22 +176,21 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
               </div>
               <div className="option-outcomes">
                 <div className="outcome success">
-                  <span className="outcome-label">Success:</span>
+                  <span className="outcome-label">성공:</span>
                   <span className="outcome-text">
-                    Pay only{' '}
-                    {NEGOTIATION_CONFIG.COUNTER_PROPOSAL.SUCCESS_CARGO_PERCENT}%
-                    of cargo instead of {demandPercent}%
+                    화물의 {' '}
+                    {NEGOTIATION_CONFIG.COUNTER_PROPOSAL.SUCCESS_CARGO_PERCENT}%만 지불 (원래 요구:  {demandPercent}%
                   </span>
                 </div>
                 <div className="outcome failure">
-                  <span className="outcome-label">Failure:</span>
+                  <span className="outcome-label">실패:</span>
                   <span className="outcome-text">
-                    Pirates become more aggressive (+
+                    해적이 더 공격적으로 변함 (+
                     {Math.round(
                       NEGOTIATION_CONFIG.COUNTER_PROPOSAL
                         .FAILURE_STRENGTH_INCREASE * 100
                     )}
-                    % threat), combat likely
+                    % 위협), 전투 가능성 높음
                   </span>
                 </div>
               </div>
@@ -205,16 +203,15 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
                 onClick={() => handleOptionSelect('medicine_claim')}
               >
                 <div className="option-header">
-                  <span className="option-name">Medicine Claim</span>
-                  <span className="option-type">Humanitarian</span>
+                  <span className="option-name">의약품 주장</span>
+                  <span className="option-type">인도주의</span>
                 </div>
                 <div className="option-dialogue">
-                  "Wait! I'm carrying medical supplies for civilians in the
-                  outer systems. People will die if these don't get through."
+                  "잠깐! 외곽 항성계 민간인에게 보낼 의료품을 싣고 있소. 이게 도착하지 못하면 사람들이 죽소."
                 </div>
                 <div className="option-analysis">
                   <div className="probability-display">
-                    <span className="prob-label">Sympathy Chance:</span>
+                    <span className="prob-label">동정 확률:</span>
                     <span className="prob-value">
                       {Math.round(
                         negotiationAnalysis.medicineClaim.finalChance * 100
@@ -223,21 +220,21 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
                     </span>
                   </div>
                   <div className="conditional-note">
-                    <span className="condition-label">Requires:</span>
-                    <span className="condition-text">Medicine in cargo</span>
+                    <span className="condition-label">필요:</span>
+                    <span className="condition-text">화물에 의약품</span>
                   </div>
                 </div>
                 <div className="option-outcomes">
                   <div className="outcome success">
-                    <span className="outcome-label">Success:</span>
+                    <span className="outcome-label">성공:</span>
                     <span className="outcome-text">
-                      Pirates show sympathy, allow free passage
+                      해적이 동정해 무료 통과 허용
                     </span>
                   </div>
                   <div className="outcome failure">
-                    <span className="outcome-label">Failure:</span>
+                    <span className="outcome-label">실패:</span>
                     <span className="outcome-text">
-                      Pirates don't believe you, demand original tribute
+                      해적이 믿지 않고 원래 공물 요구
                     </span>
                   </div>
                 </div>
@@ -251,16 +248,15 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
                 onClick={() => handleOptionSelect('intel_offer')}
               >
                 <div className="option-header">
-                  <span className="option-name">Intelligence Offer</span>
-                  <span className="option-type">Information</span>
+                  <span className="option-name">정보 제공</span>
+                  <span className="option-type">정보</span>
                 </div>
                 <div className="option-dialogue">
-                  "I might have information about other ships in the area...
-                  valuable cargo routes, if you're interested in a trade."
+                  "이 근처 다른 배들에 대한 정보가 있소... 값나가는 화물 항로 말이오. 거래할 마음이 있다면."
                 </div>
                 <div className="option-analysis">
                   <div className="probability-display">
-                    <span className="prob-label">Acceptance Chance:</span>
+                    <span className="prob-label">수락 확률:</span>
                     <span className="prob-value">
                       {Math.round(
                         NEGOTIATION_CONFIG.INTEL_OFFER.BASE_SUCCESS_RATE * 100
@@ -269,38 +265,37 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
                     </span>
                   </div>
                   <div className="conditional-note">
-                    <span className="condition-label">Requires:</span>
+                    <span className="condition-label">필요:</span>
                     <span className="condition-text">
-                      Market intelligence data
+                      시장 정보 데이터
                     </span>
                   </div>
                 </div>
                 <div className="option-outcomes">
                   <div className="outcome success">
-                    <span className="outcome-label">Success:</span>
+                    <span className="outcome-label">성공:</span>
                     <span className="outcome-text">
-                      Pirates accept intel, allow passage, +
-                      {NEGOTIATION_CONFIG.INTEL_OFFER.OUTLAW_REP_GAIN} outlaw
-                      reputation
+                      해적이 정보를 받아들이고 통과 허용, +
+                      {NEGOTIATION_CONFIG.INTEL_OFFER.OUTLAW_REP_GAIN}  무법자 평판
                     </span>
                   </div>
                   <div className="outcome failure">
-                    <span className="outcome-label">Failure:</span>
+                    <span className="outcome-label">실패:</span>
                     <span className="outcome-text">
-                      Pirates suspicious of intel quality, +
+                      해적이 정보의 질을 의심함, +
                       {Math.round(
                         NEGOTIATION_CONFIG.INTEL_OFFER
                           .SUSPICIOUS_STRENGTH_INCREASE * 100
                       )}
-                      % threat
+                      % 위협
                     </span>
                   </div>
                   <div className="outcome warning">
-                    <span className="outcome-label">Risk:</span>
+                    <span className="outcome-label">위험:</span>
                     <span className="outcome-text">
-                      If discovered later:{' '}
+                      나중에 발각될 경우:{' '}
                       {NEGOTIATION_CONFIG.INTEL_OFFER.SUCCESS_REP_PENALTY}{' '}
-                      reputation with authorities
+                      당국과의 평판
                     </span>
                   </div>
                 </div>
@@ -313,48 +308,47 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
               onClick={() => handleOptionSelect('accept_demand')}
             >
               <div className="option-header">
-                <span className="option-name">Accept Demand</span>
-                <span className="option-type">Compliance</span>
+                <span className="option-name">요구 수락</span>
+                <span className="option-type">순응</span>
               </div>
               <div className="option-dialogue">
                 {hasTradeCargo
-                  ? '"Alright, you\'ve got me. I\'ll pay your tribute. Just let me get on with my business."'
-                  : '"I don\'t have cargo, but I can pay in credits..."'}
+                  ? '"알았소, 내가 졌소. 공물을 내겠소. 제 갈 길 가게 해 주시오."'
+                  : '"화물은 없지만 크레딧으로 낼 수 있소..."'}
               </div>
               <div className="option-analysis">
                 <div
                   className={`probability-display ${hasTradeCargo ? 'guaranteed' : ''}`}
                 >
-                  <span className="prob-label">Success Rate:</span>
+                  <span className="prob-label">성공률:</span>
                   <span
                     className={`prob-value ${hasTradeCargo ? 'guaranteed' : ''}`}
                   >
-                    {hasTradeCargo ? '100%' : 'Varies'}
+                    {hasTradeCargo ? '100%' : '변동'}
                   </span>
                 </div>
               </div>
               <div className="option-outcomes">
                 {hasTradeCargo ? (
                   <div className="outcome guaranteed">
-                    <span className="outcome-label">Guaranteed:</span>
+                    <span className="outcome-label">확정:</span>
                     <span className="outcome-text">
-                      Pay {NEGOTIATION_CONFIG.ACCEPT_DEMAND.CARGO_PERCENT}% of
-                      cargo, safe passage
+                      화물의  {NEGOTIATION_CONFIG.ACCEPT_DEMAND.CARGO_PERCENT}% 지불, 안전 통과
                     </span>
                   </div>
                 ) : (
                   <>
                     <div className="outcome guaranteed">
-                      <span className="outcome-label">Credit demand:</span>
+                      <span className="outcome-label">크레딧 요구:</span>
                       <span className="outcome-text">
                         ₡{PIRATE_CREDIT_DEMAND_CONFIG.MIN_CREDIT_DEMAND}-₡
                         {PIRATE_CREDIT_DEMAND_CONFIG.MAX_CREDIT_DEMAND}
                       </span>
                     </div>
                     <div className="outcome failure">
-                      <span className="outcome-label">If can't pay:</span>
+                      <span className="outcome-label">낼 수 없는 경우:</span>
                       <span className="outcome-text">
-                        Pirates may kidnap a passenger or damage the ship
+                        해적이 승객을 납치하거나 함선을 손상시킬 수 있습니다
                       </span>
                     </div>
                   </>
@@ -372,19 +366,19 @@ export function NegotiationPanel({ encounter, onChoice, onClose: _onClose }) {
                 className="negotiation-btn primary"
                 onClick={handleConfirm}
               >
-                Say: "{getOptionDialogue(selectedOption)}"
+                말하기: "{getOptionDialogue(selectedOption)}"
               </button>
               <button
                 className="negotiation-btn secondary"
                 onClick={handleCancel}
               >
-                Reconsider
+                다시 생각하기
               </button>
             </>
           )}
           {!selectedOption && (
             <div className="selection-prompt">
-              Choose your words carefully - your life may depend on it
+              말을 신중히 고르세요 - 목숨이 달려 있을 수 있습니다
             </div>
           )}
         </div>
@@ -419,7 +413,7 @@ function calculateNegotiationProbabilities(
   if (Math.abs(karmaModifier) > 0.001) {
     counterProposalChance += karmaModifier;
     counterProposalModifiers.push({
-      name: karma > 0 ? 'Good Karma' : 'Bad Karma',
+      name: karma > 0 ? '선한 카르마' : '악한 카르마',
       value: karmaModifier,
       type: karma > 0 ? 'bonus' : 'penalty',
     });
@@ -435,7 +429,7 @@ function calculateNegotiationProbabilities(
   if (Math.abs(karmaModifier) > 0.001) {
     medicineClaimChance += karmaModifier;
     medicineClaimModifiers.push({
-      name: karma > 0 ? 'Good Karma' : 'Bad Karma',
+      name: karma > 0 ? '선한 카르마' : '악한 카르마',
       value: karmaModifier,
       type: karma > 0 ? 'bonus' : 'penalty',
     });
@@ -504,14 +498,14 @@ function getReputationClass(reputation = 0) {
 function getOptionDialogue(optionName) {
   switch (optionName) {
     case 'counter_proposal':
-      return 'How about something more reasonable?';
+      return '좀 더 합리적인 선은 어떻소?';
     case 'medicine_claim':
-      return "I'm carrying medical supplies...";
+      return "의료품을 싣고 있소...";
     case 'intel_offer':
-      return 'I have information you might want...';
+      return '당신들이 원할 만한 정보가 있소...';
     case 'accept_demand':
-      return "Alright, you've got me.";
+      return "알았소, 내가 졌소.";
     default:
-      return 'Continue negotiation';
+      return '협상 계속';
   }
 }

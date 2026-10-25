@@ -100,7 +100,7 @@ export class CombatManager extends BaseManager {
           engine: EVASIVE.SUCCESS_ENGINE_COST,
         },
         rewards: {},
-        description: 'Successfully evaded the pirates using evasive maneuvers.',
+        description: '회피 기동으로 해적을 성공적으로 따돌렸습니다.',
       };
     } else {
       if (this.checkLuckyShipNegate(gameState, rng)) {
@@ -112,7 +112,7 @@ export class CombatManager extends BaseManager {
           },
           rewards: {},
           description:
-            'Lucky ship systems helped evade the pirates at the last moment.',
+            '운 좋은 선내 시스템이 마지막 순간에 해적을 따돌리는 데 도움이 되었습니다.',
         };
       }
 
@@ -126,7 +126,7 @@ export class CombatManager extends BaseManager {
         },
         rewards: {},
         description:
-          'Evasive maneuvers failed. Pirates scored hits on your hull.',
+          '회피 기동 실패. 해적이 선체에 명중탄을 입혔습니다.',
       };
     }
   }
@@ -170,7 +170,7 @@ export class CombatManager extends BaseManager {
           },
         },
         description:
-          'You drove off the pirates, but not before taking some hits. Your hull shows fresh scoring.',
+          '해적을 몰아냈지만 피해를 입었습니다. 선체에 새 긁힌 자국이 남았습니다.',
       };
     } else {
       if (this.checkLuckyShipNegate(gameState, rng)) {
@@ -188,7 +188,7 @@ export class CombatManager extends BaseManager {
             },
           },
           description:
-            'Lucky ship systems turned the tide of battle in your favor.',
+            '운 좋은 선내 시스템이 전세를 당신 쪽으로 뒤집었습니다.',
         };
       }
 
@@ -203,7 +203,7 @@ export class CombatManager extends BaseManager {
           cargoLoss: true,
         },
         rewards: {},
-        description: 'Return fire failed. Pirates boarded and took everything.',
+        description: '응사 실패. 해적이 승선해 모든 것을 가져갔습니다.',
       };
     }
   }
@@ -226,7 +226,7 @@ export class CombatManager extends BaseManager {
         fuel: DUMP_CARGO.FUEL_COST,
       },
       rewards: {},
-      description: 'Dumped cargo to distract pirates and escaped safely.',
+      description: '화물을 버려 해적의 주의를 끌고 무사히 탈출했습니다.',
     };
   }
 
@@ -268,7 +268,7 @@ export class CombatManager extends BaseManager {
           },
         },
         description:
-          'Patrol responded to distress call and drove off the pirates.',
+          '순찰대가 조난 신호에 응답해 해적을 몰아냈습니다.',
       };
     } else {
       if (this.checkLuckyShipNegate(gameState, rng)) {
@@ -281,7 +281,7 @@ export class CombatManager extends BaseManager {
             },
           },
           description:
-            'Lucky ship systems boosted the distress signal at the last moment.',
+            '운 좋은 선내 시스템이 마지막 순간에 조난 신호를 증폭시켰습니다.',
         };
       }
 
@@ -294,7 +294,7 @@ export class CombatManager extends BaseManager {
           hull: hullDamage,
         },
         rewards: {},
-        description: 'No patrol response. Pirates attacked while you waited.',
+        description: '순찰대의 응답이 없습니다. 기다리는 동안 해적이 공격했습니다.',
       };
     }
   }

@@ -1,93 +1,37 @@
-# Tramp Freighter Blues
+# 트램프 프레이터 블루스 (Tramp Freighter Blues) - 한글화
 
-**A full game, built entirely with AI — to find out where AI coding actually breaks.**
+> 솔 섹터를 무대로 한 우주 교역 생존 게임의 **비공식 한글 번역판**입니다.
 
-Tramp Freighter Blues is a space trading survival game: 117 real star systems, NPC relationships, pirate combat, branching dialogue, a multi-stage quest line, and 2,300+ passing tests. It was built first with [Kiro](https://kiro.dev/) and continued with [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
+- **플레이하기:** https://sigco3111.github.io/tramp-freighter/
+- **원작 저장소:** https://github.com/Ovid/tramp-freighter (제작: Curtis "Ovid" Poe)
+- **원본 README:** [README.en.md](README.en.md)
+- **라이선스:** MIT (원작 라이선스 [LICENSE.md](LICENSE.md)를 그대로 유지합니다)
 
-It's not a perfect product. Perfect was never the point. The point was to push AI-assisted development as far as it goes and document where it fails.
+## 게임 소개
 
-What I found: four problems. I call them PAAD.
+117개의 실제 항성계, NPC와의 관계, 해적 전투, 분기형 대화, 다단계 퀘스트가 있는 우주 교역 생존 게임입니다. 작은 화물선 선장이 되어 빚을 갚고, 웜홀 네트워크를 오가며 거래하고, 언젠가 델타 파보니스로 향하는 것이 목표입니다.
 
+## 한글화 내용
 
-[Tramp Freighter Blues](https://curtispoe.org/paad/tramp-freighter/).
+- UI 문구, 시스템 메시지, 모든 NPC 대화(바스케스, 마커스 콜, 오콘쿠오 신부, 위스퍼, 타나카 자매 등), 서사 이벤트, 엔딩 문구를 한국어로 번역했습니다.
+- NPC 말투를 인물별로 구분했습니다(예: 바스케스는 노련한 하게체, 콜은 위압적인 격식체).
+- 한글 표시를 위해 Noto Sans KR 글꼴을 추가하고, 한글 가독성을 위해 자간을 보정했습니다.
+- 게임 규칙, 수치, 데이터 ID, 저장 형식은 원작 그대로입니다. 기존 저장 데이터와 호환됩니다.
+- 항성계 이름, 정거장 이름 등 고유명사는 원문(영문) 그대로 두었습니다.
+- GitHub Pages 배포를 위해 Vite `base` 경로(`VITE_BASE_PATH`)를 지정하는 배포 워크플로(`.github/workflows/1-deploy-tramp.yml`)를 추가했습니다.
 
-![Tramp Freighter Blues](screenshots/main.png)
+## 알려진 한계
 
-## PAAD: The Four Problems with AI Coding
+- 일부 영문 표기가 남아 있을 수 있습니다(항성계 이름, 일부 짧은 라벨 등).
+- 영어 문자열을 검증하는 기존 테스트는 번역된 문구와 맞지 않아 실패할 수 있습니다. 배포에는 영향이 없습니다.
 
-**PAAD = Pushback · Alignment · Architecture · Discipline**
-
-### Pushback
-
-AI tends to agree with whatever you say. It doesn't push back, ask clarifying questions, or tell you your idea has problems. Systems that attempt this don't do it well.
-
-**Status:** Largely solved. Specialized hooks and review workflows force the AI to challenge assumptions before writing code.
-
-### Alignment
-
-For larger tasks, AI "understands" the assignment — then implements most of it, plus things you didn't ask for. Scope creep from the machine.
-
-**Status:** Largely solved. The same hook-based workflows keep implementation tightly scoped to what was actually requested.
-
-### Architecture
-
-AI is often bad at architecture. When a feature is hard to implement because the architecture is wrong, AI forces the feature through instead of recognizing the structural problem. It builds around bad foundations.
-
-**Status:** Partially solved. Pausing between tasks to run specialized architectural review catches issues, but requires diligence and skipping this will kill you.
-
-### Discipline
-
-A broad category. As software grows, complexity creates edge cases — security holes, subtle logic bugs, weird interactions. AI can't see these patterns. Humans struggle to articulate them clearly enough to teach AI what to watch for.
-
-**Status:** Unsolved. This is the hard problem. Some promising work (like Anthropic's zero-day bug research) may help, but cost and scalability are open questions.
-
-## The Game
-
-The result of this experiment is a playable (if unbalanced) space trading survival game.
-
-You're a broke freighter captain hauling cargo through wormhole networks, dodging pirates, bribing customs officials, and trying to keep your ship from falling apart. All you want to do is retire. Can you?
-
-**What's in it:**
-
-- 117 real star systems within 20 light-years of Sol, rendered in an interactive 3D starmap
-- Commodity trading with dynamic prices, economic events, and information brokers
-- Ship systems that degrade — fuel, hull, engines, life support — all need managing
-- NPCs at stations who remember you and build relationships over time
-- Pirate encounters, customs inspections, distress calls, mechanical failures
-- A branching mission system with delivery, fetch, and passenger contracts
-- A multi-stage quest line with an endgame sequence
-- 2,300+ tests across 261 test files (as of this writing)
-
-**What's not in it:** Game balance. This is alpha. Prices may be off, difficulty curves are untested, and some encounters are rougher than others. The goal was to build it, not perfect it.
-
-## Try It
-
-To run locally:
+## 로컬 실행
 
 ```bash
-git clone https://github.com/Ovid/tramp-freighter/
-cd tramp-freighter
-npm install
+npm ci
 npm run dev
 ```
 
-Open `http://localhost:5173` in your browser.
+## 저작권 및 출처
 
-## Technical Details
-
-- **Stack:** React 18, Three.js, Vite
-- **Platform:** Browser-based, no server required
-- **Storage:** All saves in browser localStorage
-- **Tests:** Vitest with property-based testing (fast-check)
-
-## Contributing
-
-This is a personal project, but feedback, bug reports, and collaboration are welcome! Please open an issue if you encounter problems or have suggestions.
-
-## License
-
-MIT License — see [LICENSE.md](LICENSE.md) for details.
-
----
-
-_"The stars are far apart, but the people who live among them are closer than you think."_
+원작: Curtis "Ovid" Poe, MIT License. 이 저장소는 원작자의 허가 범위(MIT) 안에서 번역을 더한 파생본이며, 원작의 모든 저작권은 원작자에게 있습니다.

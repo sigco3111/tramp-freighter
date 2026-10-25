@@ -3,8 +3,8 @@ export const COLE_FAVOR_MISSIONS = [
     id: 'cole_courier',
     type: 'delivery',
     source: 'cole',
-    title: 'Sealed Package',
-    description: 'Cole needs a sealed package delivered. No questions asked.',
+    title: '봉인된 소포',
+    description: '콜이 봉인된 소포를 배달해 달라고 한다. 묻지 않는 조건이다.',
     requirements: {
       deadline: 21,
       cargoSpace: 1,
@@ -21,8 +21,8 @@ export const COLE_FAVOR_MISSIONS = [
     id: 'cole_passenger',
     type: 'passenger',
     source: 'cole',
-    title: 'Discreet Passenger',
-    description: "One of Cole's associates needs quiet transport.",
+    title: '은밀한 승객',
+    description: "콜의 동료 한 명이 조용한 이동 수단을 필요로 한다.",
     requirements: {
       deadline: 14,
       cargoSpace: 5,
@@ -35,8 +35,8 @@ export const COLE_FAVOR_MISSIONS = [
     id: 'cole_intimidation',
     type: 'delivery',
     source: 'cole',
-    title: 'Show of Presence',
-    description: 'Dock at the specified station. Your arrival is the message.',
+    title: '존재감 과시',
+    description: '지정된 정거장에 도킹하라. 당신의 도착이 곧 메시지다.',
     requirements: {
       deadline: 21,
       cargoSpace: 0,

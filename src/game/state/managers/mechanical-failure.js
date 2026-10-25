@@ -103,7 +103,7 @@ export class MechanicalFailureManager extends BaseManager {
       },
       rewards: {},
       description:
-        'Hull breach detected! Emergency bulkheads sealed, but some cargo was lost to space.',
+        '선체 파손 감지! 비상 격벽이 봉쇄되었지만 일부 화물이 우주로 유실되었습니다.',
     };
   }
 
@@ -145,7 +145,7 @@ export class MechanicalFailureManager extends BaseManager {
         },
         rewards: {},
         description:
-          'Emergency restart successful! Engine is running again, but condition has deteriorated.',
+          '비상 재시동 성공! 엔진이 다시 돌아가지만 상태가 나빠졌습니다.',
       };
     } else {
       return {
@@ -155,7 +155,7 @@ export class MechanicalFailureManager extends BaseManager {
         },
         rewards: {},
         description:
-          'Emergency restart failed. Engine condition worsened and you remain stranded.',
+          '비상 재시동 실패. 엔진 상태가 악화되었고 발이 묶였습니다.',
       };
     }
   }
@@ -174,7 +174,7 @@ export class MechanicalFailureManager extends BaseManager {
       },
       rewards: {},
       description:
-        'Rescue tug arrived and repaired your engine. Service fee charged and time lost.',
+        '구조 예인선이 도착해 엔진을 수리했습니다. 수수료가 청구되고 시간을 잃었습니다.',
     };
   }
 
@@ -195,7 +195,7 @@ export class MechanicalFailureManager extends BaseManager {
         },
         rewards: {},
         description:
-          'Jury-rig repair successful! Makeshift fix got the engine running again.',
+          '임시변통 수리 성공! 땜질로 엔진이 다시 돌아갑니다.',
       };
     } else {
       return {
@@ -205,7 +205,7 @@ export class MechanicalFailureManager extends BaseManager {
         },
         rewards: {},
         description:
-          'Jury-rig repair failed. Engine condition worsened and you remain stranded.',
+          '임시변통 수리 실패. 엔진 상태가 악화되었고 발이 묶였습니다.',
       };
     }
   }
@@ -223,7 +223,7 @@ export class MechanicalFailureManager extends BaseManager {
       },
       rewards: {},
       description:
-        'Life support emergency! Backup systems engaged, but overall condition has deteriorated.',
+        '생명 유지 비상! 예비 시스템이 가동되었지만 전반적인 상태가 나빠졌습니다.',
     };
   }
 }

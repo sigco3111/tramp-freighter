@@ -19,18 +19,18 @@ export function validateUpgradePurchase(upgradeId, state) {
   const upgrade = SHIP_CONFIG.UPGRADES[upgradeId];
 
   if (!upgrade) {
-    return { valid: false, reason: 'Invalid upgrade ID' };
+    return { valid: false, reason: '잘못된 업그레이드 ID입니다' };
   }
 
   // Check if already installed
   const installedUpgrades = state.ship.upgrades || [];
   if (installedUpgrades.includes(upgradeId)) {
-    return { valid: false, reason: 'Upgrade already installed' };
+    return { valid: false, reason: '이미 설치된 업그레이드입니다' };
   }
 
   // Check if player has enough credits
   if (state.player.credits < upgrade.cost) {
-    return { valid: false, reason: 'Insufficient credits' };
+    return { valid: false, reason: '크레딧이 부족합니다' };
   }
 
   return { valid: true };
@@ -60,22 +60,22 @@ export function formatUpgradeEffects(effects) {
 
   for (const [attr, value] of Object.entries(effects)) {
     if (attr === 'fuelCapacity') {
-      formatted.push(`Fuel capacity: ${value}%`);
+      formatted.push(`연료 용량: ${value}%`);
     } else if (attr === 'cargoCapacity') {
-      formatted.push(`Cargo capacity: ${value} units`);
+      formatted.push(`화물 용량: ${value}단위`);
     } else if (attr === 'hiddenCargoCapacity') {
-      formatted.push(`Hidden cargo: ${value} units`);
+      formatted.push(`은닉 화물: ${value}단위`);
     } else if (attr === 'fuelConsumption') {
-      const text = formatReduction('Fuel consumption', value);
+      const text = formatReduction('연료 소비', value);
       if (text) formatted.push(text);
     } else if (attr === 'hullDegradation') {
-      const text = formatReduction('Hull degradation', value);
+      const text = formatReduction('선체 노후화', value);
       if (text) formatted.push(text);
     } else if (attr === 'lifeSupportDrain') {
-      const text = formatReduction('Life support drain', value);
+      const text = formatReduction('생명 유지 소모', value);
       if (text) formatted.push(text);
     } else if (attr === 'eventVisibility') {
-      formatted.push('See economic events in connected systems');
+      formatted.push('연결된 항성계의 경제 이벤트 확인');
     }
   }
 

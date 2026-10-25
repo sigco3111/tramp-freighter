@@ -24,10 +24,10 @@ export function formatCargoAge(currentDay, purchaseDay) {
   const daysSincePurchase = currentDay - purchaseDay;
 
   if (daysSincePurchase === 0) {
-    return 'today';
+    return '오늘';
   } else if (daysSincePurchase === 1) {
-    return '1 day ago';
+    return '1일 전';
   } else {
-    return `${daysSincePurchase} days ago`;
+    return `${daysSincePurchase}일 전`;
   }
 }

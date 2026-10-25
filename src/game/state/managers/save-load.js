@@ -85,9 +85,9 @@ export class SaveLoadManager extends BaseManager {
       localStorage.setItem(SAVE_KEY, saveData);
       this.lastSaveTime = now;
     } catch (error) {
-      this.error('Save failed — game progress may be lost', error);
+      this.error('저장 실패 - 게임 진행 상황이 유실될 수 있습니다', error);
       this.capabilities.emit(EVENT_NAMES.SAVE_FAILED, {
-        message: 'Save failed — game progress may be lost',
+        message: '저장 실패 - 게임 진행 상황이 유실될 수 있습니다',
       });
     }
   }
@@ -116,9 +116,9 @@ export class SaveLoadManager extends BaseManager {
       const timeSinceLastSave = now - this.lastSaveTime;
 
       if (timeSinceLastSave >= UI_CONFIG.SAVE_DEBOUNCE_MS) {
-        this.error('Save failed — game progress may be lost');
+        this.error('저장 실패 - 게임 진행 상황이 유실될 수 있습니다');
         this.capabilities.emit(EVENT_NAMES.SAVE_FAILED, {
-          message: 'Save failed — game progress may be lost',
+          message: '저장 실패 - 게임 진행 상황이 유실될 수 있습니다',
         });
       }
     }
@@ -200,7 +200,7 @@ export class SaveLoadManager extends BaseManager {
         }
       }
     } catch {
-      this.log('Recovery failed, starting new game');
+      this.log('복구 실패, 새 게임을 시작합니다');
     }
 
     return null;

@@ -162,7 +162,7 @@ export function applyEncounterOutcome(game, outcome) {
         const availableSpace = cargoCapacity - currentTotal;
 
         if (availableSpace <= 0) {
-          salvageMessages.push('Your hold is full — nothing salvaged.');
+          salvageMessages.push('화물칸이 가득 차 아무것도 인양하지 못했습니다.');
           break;
         }
 
@@ -171,7 +171,7 @@ export function applyEncounterOutcome(game, outcome) {
         if (qtyToAdd < rewardItem.qty) {
           const unitWord = rewardItem.qty === 1 ? 'unit' : 'units';
           salvageMessages.push(
-            `Could only fit ${qtyToAdd} of ${rewardItem.qty} ${unitWord}.`
+            `${qtyToAdd}/${rewardItem.qty} ${unitWord}만 실을 수 있었습니다.`
           );
         }
 
@@ -189,7 +189,7 @@ export function applyEncounterOutcome(game, outcome) {
             qty: qtyToAdd,
             buyPrice: rewardItem.buyPrice,
             buySystem: state.player.currentSystem,
-            buySystemName: rewardItem.buySystemName || 'Salvaged',
+            buySystemName: rewardItem.buySystemName || '인양됨',
             buyDate: state.player.daysElapsed,
           });
         }

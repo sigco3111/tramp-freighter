@@ -313,7 +313,7 @@ export class NavigationSystem {
       return {
         valid: false,
         reason: 'no_connection',
-        error: 'No wormhole connection to target system',
+        error: '목표 항성계와 웜홀 연결이 없습니다',
         fuelCost: 0,
         distance: 0,
         jumpTime: 0,
@@ -354,7 +354,7 @@ export class NavigationSystem {
       return {
         valid: false,
         reason: 'insufficient_fuel',
-        error: 'Insufficient fuel for jump',
+        error: '점프에 연료가 부족합니다',
         fuelCost,
         distance,
         jumpTime,
@@ -365,16 +365,16 @@ export class NavigationSystem {
     if (shipCondition) {
       const criticalSystems = [];
       if (shipCondition.hull <= REPAIR_CONFIG.CRITICAL_SYSTEM_THRESHOLD) {
-        criticalSystems.push(`Hull (${Math.round(shipCondition.hull)}%)`);
+        criticalSystems.push(`선체 (${Math.round(shipCondition.hull)}%)`);
       }
       if (shipCondition.engine <= REPAIR_CONFIG.CRITICAL_SYSTEM_THRESHOLD) {
-        criticalSystems.push(`Engine (${Math.round(shipCondition.engine)}%)`);
+        criticalSystems.push(`엔진 (${Math.round(shipCondition.engine)}%)`);
       }
       if (
         shipCondition.lifeSupport <= REPAIR_CONFIG.CRITICAL_SYSTEM_THRESHOLD
       ) {
         criticalSystems.push(
-          `Life Support (${Math.round(shipCondition.lifeSupport)}%)`
+          `생명 유지 장치 (${Math.round(shipCondition.lifeSupport)}%)`
         );
       }
 
@@ -382,7 +382,7 @@ export class NavigationSystem {
         return {
           valid: false,
           reason: 'critical_damage',
-          error: `${criticalSystems.join(', ')} critically damaged. Repairs required before departure.`,
+          error: `${criticalSystems.join(', ')}이(가) 심각하게 손상되었습니다. 출발 전에 수리가 필요합니다.`,
           fuelCost,
           distance,
           jumpTime,

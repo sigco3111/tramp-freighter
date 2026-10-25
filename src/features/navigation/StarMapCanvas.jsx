@@ -475,7 +475,7 @@ export const StarMapCanvas = forwardRef(function StarMapCanvas(props, ref) {
         className="starmap-container"
         tabIndex={0}
         role="application"
-        aria-label="3D Star Map — use arrow keys to rotate, plus and minus to zoom"
+        aria-label="3D 별지도 — 방향키로 회전, 더하기/빼기로 확대·축소"
         onKeyDown={handleKeyDown}
       />
       <CameraControls

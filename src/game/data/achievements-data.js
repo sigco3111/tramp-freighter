@@ -15,8 +15,8 @@ export const ACHIEVEMENTS = [
   // Exploration: systems visited
   {
     id: 'exploration_1',
-    name: 'First Steps',
-    description: `Visit ${T.EXPLORATION_TIER_1} star systems`,
+    name: '첫걸음',
+    description: `항성계 ${T.EXPLORATION_TIER_1}곳 방문`,
     category: 'exploration',
     tier: 1,
     target: T.EXPLORATION_TIER_1,
@@ -24,8 +24,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'exploration_2',
-    name: 'Pathfinder',
-    description: `Visit ${T.EXPLORATION_TIER_2} star systems`,
+    name: '개척자',
+    description: `항성계 ${T.EXPLORATION_TIER_2}곳 방문`,
     category: 'exploration',
     tier: 2,
     target: T.EXPLORATION_TIER_2,
@@ -33,8 +33,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'exploration_3',
-    name: 'Star Mapper',
-    description: `Visit ${T.EXPLORATION_TIER_3} star systems`,
+    name: '별 지도 제작자',
+    description: `항성계 ${T.EXPLORATION_TIER_3}곳 방문`,
     category: 'exploration',
     tier: 3,
     target: T.EXPLORATION_TIER_3,
@@ -42,8 +42,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'exploration_4',
-    name: 'Galaxy Wanderer',
-    description: 'Visit every reachable star system',
+    name: '은하 방랑자',
+    description: '도달 가능한 모든 항성계 방문',
     category: 'exploration',
     tier: 4,
     target: T.EXPLORATION_TIER_4,
@@ -53,8 +53,8 @@ export const ACHIEVEMENTS = [
   // Trading: credits earned
   {
     id: 'trading_1',
-    name: 'Petty Cash',
-    description: `Earn ${T.TRADING_TIER_1.toLocaleString()} credits from trading`,
+    name: '푼돈',
+    description: `거래로 ${T.TRADING_TIER_1.toLocaleString()} 크레딧 벌기`,
     category: 'trading',
     tier: 1,
     target: T.TRADING_TIER_1,
@@ -62,8 +62,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'trading_2',
-    name: 'Merchant',
-    description: `Earn ${T.TRADING_TIER_2.toLocaleString()} credits from trading`,
+    name: '상인',
+    description: `거래로 ${T.TRADING_TIER_2.toLocaleString()} 크레딧 벌기`,
     category: 'trading',
     tier: 2,
     target: T.TRADING_TIER_2,
@@ -71,8 +71,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'trading_3',
-    name: 'Trade Baron',
-    description: `Earn ${T.TRADING_TIER_3.toLocaleString()} credits from trading`,
+    name: '무역 남작',
+    description: `거래로 ${T.TRADING_TIER_3.toLocaleString()} 크레딧 벌기`,
     category: 'trading',
     tier: 3,
     target: T.TRADING_TIER_3,
@@ -80,8 +80,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'trading_4',
-    name: 'Tycoon',
-    description: `Earn ${T.TRADING_TIER_4.toLocaleString()} credits from trading`,
+    name: '거물',
+    description: `거래로 ${T.TRADING_TIER_4.toLocaleString()} 크레딧 벌기`,
     category: 'trading',
     tier: 4,
     target: T.TRADING_TIER_4,
@@ -91,8 +91,8 @@ export const ACHIEVEMENTS = [
   // Social: trusted NPCs (rep >= TRUSTED_MIN)
   {
     id: 'social_1',
-    name: 'First Friend',
-    description: `Earn Trusted status with ${T.SOCIAL_TIER_1} ${T.SOCIAL_TIER_1 === 1 ? 'NPC' : 'NPCs'}`,
+    name: '첫 친구',
+    description: `NPC ${T.SOCIAL_TIER_1}명에게서 신뢰 등급 달성`,
     category: 'social',
     tier: 1,
     target: T.SOCIAL_TIER_1,
@@ -100,8 +100,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'social_2',
-    name: 'Inner Circle',
-    description: `Earn Trusted status with ${T.SOCIAL_TIER_2} NPCs`,
+    name: '최측근',
+    description: `NPC ${T.SOCIAL_TIER_2}명에게서 신뢰 등급 달성`,
     category: 'social',
     tier: 2,
     target: T.SOCIAL_TIER_2,
@@ -109,8 +109,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'social_3',
-    name: 'Networker',
-    description: `Earn Trusted status with ${T.SOCIAL_TIER_3} NPCs`,
+    name: '인맥왕',
+    description: `NPC ${T.SOCIAL_TIER_3}명에게서 신뢰 등급 달성`,
     category: 'social',
     tier: 3,
     target: T.SOCIAL_TIER_3,
@@ -118,8 +118,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'social_4',
-    name: 'Beloved',
-    description: `Earn Trusted status with ${T.SOCIAL_TIER_4} NPCs`,
+    name: '모두의 사랑',
+    description: `NPC ${T.SOCIAL_TIER_4}명에게서 신뢰 등급 달성`,
     category: 'social',
     tier: 4,
     target: T.SOCIAL_TIER_4,
@@ -129,8 +129,8 @@ export const ACHIEVEMENTS = [
   // Survival: jumps completed
   {
     id: 'survival_1',
-    name: 'Rookie Pilot',
-    description: `Complete ${T.SURVIVAL_TIER_1} jumps`,
+    name: '신참 조종사',
+    description: `점프 ${T.SURVIVAL_TIER_1}회 완료`,
     category: 'survival',
     tier: 1,
     target: T.SURVIVAL_TIER_1,
@@ -138,8 +138,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'survival_2',
-    name: 'Seasoned Captain',
-    description: `Complete ${T.SURVIVAL_TIER_2} jumps`,
+    name: '노련한 선장',
+    description: `점프 ${T.SURVIVAL_TIER_2}회 완료`,
     category: 'survival',
     tier: 2,
     target: T.SURVIVAL_TIER_2,
@@ -147,8 +147,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'survival_3',
-    name: 'Wormhole Veteran',
-    description: `Complete ${T.SURVIVAL_TIER_3} jumps`,
+    name: '웜홀 베테랑',
+    description: `점프 ${T.SURVIVAL_TIER_3}회 완료`,
     category: 'survival',
     tier: 3,
     target: T.SURVIVAL_TIER_3,
@@ -156,8 +156,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'survival_4',
-    name: 'Void Walker',
-    description: `Complete ${T.SURVIVAL_TIER_4} jumps`,
+    name: '공허를 걷는 자',
+    description: `점프 ${T.SURVIVAL_TIER_4}회 완료`,
     category: 'survival',
     tier: 4,
     target: T.SURVIVAL_TIER_4,
@@ -167,8 +167,8 @@ export const ACHIEVEMENTS = [
   // Danger: total danger encounters resolved
   {
     id: 'danger_1',
-    name: 'Survivor',
-    description: `Resolve ${T.DANGER_TIER_1} danger encounters`,
+    name: '생존자',
+    description: `위험한 조우 ${T.DANGER_TIER_1}회 해결`,
     category: 'danger',
     tier: 1,
     target: T.DANGER_TIER_1,
@@ -177,7 +177,7 @@ export const ACHIEVEMENTS = [
   {
     id: 'danger_2',
     name: 'Battle-Scarred',
-    description: `Resolve ${T.DANGER_TIER_2} danger encounters`,
+    description: `위험한 조우 ${T.DANGER_TIER_2}회 해결`,
     category: 'danger',
     tier: 2,
     target: T.DANGER_TIER_2,
@@ -185,8 +185,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'danger_3',
-    name: 'Hardened',
-    description: `Resolve ${T.DANGER_TIER_3} danger encounters`,
+    name: '단련된 자',
+    description: `위험한 조우 ${T.DANGER_TIER_3}회 해결`,
     category: 'danger',
     tier: 3,
     target: T.DANGER_TIER_3,
@@ -194,8 +194,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'danger_4',
-    name: 'Unkillable',
-    description: `Resolve ${T.DANGER_TIER_4} danger encounters`,
+    name: '불사신',
+    description: `위험한 조우 ${T.DANGER_TIER_4}회 해결`,
     category: 'danger',
     tier: 4,
     target: T.DANGER_TIER_4,
@@ -205,8 +205,8 @@ export const ACHIEVEMENTS = [
   // Moral: karma absolute value (works for both saint and villain paths)
   {
     id: 'moral_1',
-    name: 'Picking Sides',
-    description: `Reach karma magnitude of ${T.MORAL_TIER_1}`,
+    name: '편 가르기',
+    description: `카르마 절댓값 ${T.MORAL_TIER_1} 달성`,
     category: 'moral',
     tier: 1,
     target: T.MORAL_TIER_1,
@@ -214,8 +214,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'moral_2',
-    name: 'Committed',
-    description: `Reach karma magnitude of ${T.MORAL_TIER_2}`,
+    name: '헌신',
+    description: `카르마 절댓값 ${T.MORAL_TIER_2} 달성`,
     category: 'moral',
     tier: 2,
     target: T.MORAL_TIER_2,
@@ -223,8 +223,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'moral_3',
-    name: 'True Believer',
-    description: `Reach karma magnitude of ${T.MORAL_TIER_3}`,
+    name: '진정한 신봉자',
+    description: `카르마 절댓값 ${T.MORAL_TIER_3} 달성`,
     category: 'moral',
     tier: 3,
     target: T.MORAL_TIER_3,
@@ -232,8 +232,8 @@ export const ACHIEVEMENTS = [
   },
   {
     id: 'moral_4',
-    name: 'Legend',
-    description: `Reach karma magnitude of ${T.MORAL_TIER_4}`,
+    name: '전설',
+    description: `카르마 절댓값 ${T.MORAL_TIER_4} 달성`,
     category: 'moral',
     tier: 4,
     target: T.MORAL_TIER_4,

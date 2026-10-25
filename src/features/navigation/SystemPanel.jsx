@@ -133,22 +133,22 @@ export function SystemPanel({
         <Modal
           isOpen={showCriticalDamageModal}
           onClose={() => setShowCriticalDamageModal(false)}
-          title="Ship Damaged"
+          title="함선 손상"
           showCloseButton={false}
         >
           <p>{validation.error}</p>
-          <p>Dock at a station for repairs before attempting a jump.</p>
+          <p>점프하기 전에 정거장에 도킹해 수리하세요.</p>
           <button
             className="modal-btn"
             onClick={() => setShowCriticalDamageModal(false)}
           >
-            Understood
+            알겠습니다
           </button>
         </Modal>
         <div className="system-panel" data-panel>
           <div className="system-panel-header">
             <h3>{viewingSystem.name}</h3>
-            <button className="close-btn" onClick={onClose} aria-label="Close">
+            <button className="close-btn" onClick={onClose} aria-label="닫기">
               ×
             </button>
           </div>
@@ -157,29 +157,29 @@ export function SystemPanel({
             {/* System Details */}
             <div className="system-details">
               <div className="system-property">
-                <span className="label">Spectral Class:</span>
+                <span className="label">분광형:</span>
                 <span className="value">{viewingSystem.type}</span>
               </div>
               <div className="system-property">
-                <span className="label">Wormholes:</span>
+                <span className="label">웜홀:</span>
                 <span className="value">{viewingSystem.wh}</span>
               </div>
               <div className="system-property">
-                <span className="label">Distance from Sol:</span>
+                <span className="label">태양으로부터 거리:</span>
                 <span className="value">
-                  {calculateDistanceFromSol(viewingSystem).toFixed(1)} LY
+                  {calculateDistanceFromSol(viewingSystem).toFixed(1)}  광년
                 </span>
               </div>
               <div className="system-property">
-                <span className="label">Security Level:</span>
+                <span className="label">보안 등급:</span>
                 <span className={`value danger-${dangerZone}`}>
                   {dangerZone.charAt(0).toUpperCase() + dangerZone.slice(1)}
                 </span>
               </div>
               <div className="system-property">
-                <span className="label">Status:</span>
+                <span className="label">상태:</span>
                 <span className="value">
-                  {viewingSystem.r === 1 ? 'Reachable' : 'Unreachable'}
+                  {viewingSystem.r === 1 ? '도달 가능' : '도달 불가'}
                 </span>
               </div>
             </div>
@@ -189,21 +189,21 @@ export function SystemPanel({
             {/* Jump Information */}
             <div className="jump-information">
               <div className="jump-info-row">
-                <span className="label">Jump Distance:</span>
+                <span className="label">점프 거리:</span>
                 <span className="value">
-                  {validation.distance.toFixed(1)} LY
+                  {validation.distance.toFixed(1)}  광년
                 </span>
               </div>
               <div className="jump-info-row">
-                <span className="label">Fuel Cost:</span>
+                <span className="label">연료 비용:</span>
                 <span className="value">
                   {Math.round(validation.fuelCost)}%
                 </span>
               </div>
               <div className="jump-info-row">
-                <span className="label">Jump Time:</span>
+                <span className="label">점프 시간:</span>
                 <span className="value">
-                  {validation.jumpTime} day
+                  {validation.jumpTime} 일
                   {validation.jumpTime !== 1 ? 's' : ''}
                 </span>
               </div>
@@ -218,7 +218,7 @@ export function SystemPanel({
               onClick={handleJump}
               disabled={!validation.valid}
             >
-              Jump to System
+              항성계로 점프
             </button>
           </div>
         </div>
@@ -265,7 +265,7 @@ export function SystemPanel({
     <div className="system-panel" data-panel>
       <div className="system-panel-header">
         <h3>{viewingSystem.name}</h3>
-        <button className="close-btn" onClick={onClose} aria-label="Close">
+        <button className="close-btn" onClick={onClose} aria-label="닫기">
           ×
         </button>
       </div>
@@ -274,29 +274,29 @@ export function SystemPanel({
         {/* System Details */}
         <div className="system-details">
           <div className="system-property">
-            <span className="label">Spectral Class:</span>
+            <span className="label">분광형:</span>
             <span className="value">{viewingSystem.type}</span>
           </div>
           <div className="system-property">
-            <span className="label">Wormholes:</span>
+            <span className="label">웜홀:</span>
             <span className="value">{viewingSystem.wh}</span>
           </div>
           <div className="system-property">
-            <span className="label">Distance from Sol:</span>
+            <span className="label">태양으로부터 거리:</span>
             <span className="value">
-              {calculateDistanceFromSol(viewingSystem).toFixed(1)} LY
+              {calculateDistanceFromSol(viewingSystem).toFixed(1)}  광년
             </span>
           </div>
           <div className="system-property">
-            <span className="label">Security Level:</span>
+            <span className="label">보안 등급:</span>
             <span className={`value danger-${dangerZone}`}>
               {dangerZone.charAt(0).toUpperCase() + dangerZone.slice(1)}
             </span>
           </div>
           <div className="system-property">
-            <span className="label">Status:</span>
+            <span className="label">상태:</span>
             <span className="value">
-              {viewingSystem.st > 0 ? 'Station Available' : 'No Station'}
+              {viewingSystem.st > 0 ? '정거장 이용 가능' : '정거장 없음'}
             </span>
           </div>
         </div>
@@ -304,7 +304,7 @@ export function SystemPanel({
         {/* Connected Systems */}
         <div className="connected-systems">
           {connectedSystems.length === 0 ? (
-            <p className="no-connections">No wormhole connections</p>
+            <p className="no-connections">웜홀 연결 없음</p>
           ) : (
             <div className="connections-list">
               {connectedSystems.map((system) => {
@@ -334,15 +334,15 @@ export function SystemPanel({
                   >
                     <div className="connection-name">{system.name}</div>
                     <div className="connection-details">
-                      {system.distance.toFixed(1)} LY •{' '}
-                      {system.fuelCost.toFixed(1)}% fuel • {system.jumpTime}d
+                      {system.distance.toFixed(1)}  광년 •{' '}
+                      {system.fuelCost.toFixed(1)}% 연료 •  {system.jumpTime}일
                     </div>
                     {destinationEventType && daysRemaining >= 0 && (
                       <div className="system-event-info destination-event">
                         <div className="event-indicator">
                           <span className="event-icon">📊</span>
                           <span className="event-name">
-                            {destinationEventType.name} at {system.name}
+                            {destinationEventType.name}   /  {system.name}
                           </span>
                         </div>
                         <div className="event-description">
@@ -350,8 +350,8 @@ export function SystemPanel({
                         </div>
                         <div className="event-time-remaining">
                           {daysRemaining === 0
-                            ? 'Final day'
-                            : `${daysRemaining} day${daysRemaining !== 1 ? 's' : ''} remaining`}
+                            ? '마지막 날'
+                            : `${daysRemaining}일 남음`}
                         </div>
                       </div>
                     )}

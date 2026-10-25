@@ -29,7 +29,7 @@ export function RumorAlert() {
 
   return (
     <div className="rumor-alert" role="alert">
-      Word of your illicit cargo is spreading...
+      불법 화물에 대한 소문이 퍼지고 있습니다...
     </div>
   );
 }

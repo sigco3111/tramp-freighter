@@ -22,6 +22,7 @@ import {
   EVENT_NAMES,
 } from '../../game/constants';
 import { getNPCsAtSystem } from '../../game/game-npcs';
+import { tierKo } from '../../game/tier-ko.js';
 
 /**
  * RepairPanel component for repairing ship systems.
@@ -103,7 +104,7 @@ export function RepairPanel({ onClose }) {
     const repairOutcome = repair(systemType, amount, bestDiscount.discount);
 
     if (!repairOutcome.success) {
-      setValidationMessage(`Repair failed: ${repairOutcome.reason}`);
+      setValidationMessage(`수리 실패: ${repairOutcome.reason}`);
       setValidationClass('error');
     } else {
       setValidationMessage('');
@@ -121,10 +122,10 @@ export function RepairPanel({ onClose }) {
     const repairOutcome = getFreeRepair(npcId, hullDamagePercent);
 
     if (repairOutcome.success) {
-      setValidationMessage(`Free repair completed: ${repairOutcome.message}`);
+      setValidationMessage(`무료 수리 완료: ${repairOutcome.message}`);
       setValidationClass('success');
     } else {
-      setValidationMessage(`Free repair failed: ${repairOutcome.message}`);
+      setValidationMessage(`무료 수리 실패: ${repairOutcome.message}`);
       setValidationClass('error');
     }
   };
@@ -133,11 +134,11 @@ export function RepairPanel({ onClose }) {
     const result = applyEmergencyPatch(systemType);
     if (result.success) {
       setValidationMessage(
-        `Emergency patch applied to ${getSystemName(systemType)}. +${REPAIR_CONFIG.EMERGENCY_PATCH_DAYS_PENALTY} days.`
+        `${getSystemName(systemType)}에 응급 패치를 적용했습니다. +${REPAIR_CONFIG.EMERGENCY_PATCH_DAYS_PENALTY}일.`
       );
       setValidationClass('warning');
     } else {
-      setValidationMessage(`Emergency patch failed: ${result.reason}`);
+      setValidationMessage(`응급 패치 실패: ${result.reason}`);
       setValidationClass('error');
     }
   };
@@ -150,12 +151,12 @@ export function RepairPanel({ onClose }) {
     const result = cannibalizeSystem(targetType, donations);
     if (result.success) {
       setValidationMessage(
-        `Cannibalized systems to patch ${getSystemName(targetType)}.`
+        `${getSystemName(targetType)}을(를) 패치하려고 다른 시스템을 분해했습니다.`
       );
       setValidationClass('warning');
       setCannibalizeAllocation({});
     } else {
-      setValidationMessage(`Cannibalization failed: ${result.reason}`);
+      setValidationMessage(`분해 수리 실패: ${result.reason}`);
       setValidationClass('error');
     }
   };
@@ -179,7 +180,7 @@ export function RepairPanel({ onClose }) {
       if (repairOutcome.success) {
         repairCount++;
       } else {
-        failedRepairs.push(`Hull: ${repairOutcome.reason}`);
+        failedRepairs.push(`선체: ${repairOutcome.reason}`);
       }
     }
 
@@ -194,7 +195,7 @@ export function RepairPanel({ onClose }) {
       if (repairOutcome.success) {
         repairCount++;
       } else {
-        failedRepairs.push(`Engine: ${repairOutcome.reason}`);
+        failedRepairs.push(`엔진: ${repairOutcome.reason}`);
       }
     }
 
@@ -210,19 +211,19 @@ export function RepairPanel({ onClose }) {
       if (repairOutcome.success) {
         repairCount++;
       } else {
-        failedRepairs.push(`Life Support: ${repairOutcome.reason}`);
+        failedRepairs.push(`생명 유지: ${repairOutcome.reason}`);
       }
     }
 
     // Show results
     if (failedRepairs.length > 0) {
-      setValidationMessage(`Some repairs failed: ${failedRepairs.join(', ')}`);
+      setValidationMessage(`일부 수리 실패: ${failedRepairs.join(', ')}`);
       setValidationClass('error');
     } else if (repairCount > 0) {
       setValidationMessage('');
       setValidationClass('');
     } else {
-      setValidationMessage('All systems already at maximum condition');
+      setValidationMessage('모든 시스템이 이미 최대 상태입니다');
       setValidationClass('info');
     }
   };
@@ -272,9 +273,9 @@ export function RepairPanel({ onClose }) {
               );
 
               if (bestDiscount.discount > 0) {
-                buttonText = `Full (₡${discountedCost})`;
+                buttonText = `전체 (₡${discountedCost})`;
               } else {
-                buttonText = `Full (₡${cost})`;
+                buttonText = `전체 (₡${cost})`;
               }
             } else {
               amount = amountStr;
@@ -337,19 +338,18 @@ export function RepairPanel({ onClose }) {
   if (!currentSystem) {
     return (
       <div id="repair-panel" className="visible">
-        <button className="close-btn" onClick={onClose} aria-label="Close">
+        <button className="close-btn" onClick={onClose} aria-label="닫기">
           ×
         </button>
-        <h2>Repairs - Error</h2>
+        <h2>수리 - 오류</h2>
         <div className="repair-content">
           <div className="validation-message error">
-            System data error: Unable to load repair panel. Please restart the
-            game.
+            시스템 데이터 오류: 수리 패널을 불러올 수 없습니다. 게임을 다시 시작하세요.
           </div>
         </div>
         <div className="repair-actions">
           <button className="station-btn secondary" onClick={onClose}>
-            Back to Station
+            정거장으로 돌아가기
           </button>
         </div>
       </div>
@@ -360,23 +360,23 @@ export function RepairPanel({ onClose }) {
 
   return (
     <div id="repair-panel" className="visible">
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         ×
       </button>
       <h2>
-        Repairs - <span>{currentSystemName}</span>
+        수리 -  <span>{currentSystemName}</span>
       </h2>
 
       <div className="repair-content">
         {/* Ship Condition Status Section */}
         <div className="repair-section">
-          <h3>Ship Condition</h3>
+          <h3>함선 상태</h3>
           <div className="condition-status">
-            {renderConditionItem('hull', 'Hull Integrity', 'hull-bar')}
-            {renderConditionItem('engine', 'Engine', 'engine-bar')}
+            {renderConditionItem('hull', '선체 무결성', 'hull-bar')}
+            {renderConditionItem('engine', '엔진', 'engine-bar')}
             {renderConditionItem(
               'lifeSupport',
-              'Life Support',
+              '생명 유지',
               'life-support-bar'
             )}
           </div>
@@ -384,11 +384,11 @@ export function RepairPanel({ onClose }) {
 
         {/* Repair Options Section */}
         <div className="repair-section">
-          <h3>Repair Options</h3>
+          <h3>수리 선택지</h3>
           <div className="repair-options">
-            {renderSystemRepair('hull', 'Hull Integrity')}
-            {renderSystemRepair('engine', 'Engine')}
-            {renderSystemRepair('lifeSupport', 'Life Support')}
+            {renderSystemRepair('hull', '선체 무결성')}
+            {renderSystemRepair('engine', '엔진')}
+            {renderSystemRepair('lifeSupport', '생명 유지')}
 
             {/* Repair All Option */}
             <div className="repair-all-section">
@@ -397,7 +397,7 @@ export function RepairPanel({ onClose }) {
                 onClick={handleRepairAll}
                 disabled={repairAllDisabled}
               >
-                Repair All to Full (₡{finalTotalCost})
+                전부 최대치로 수리 (₡{finalTotalCost})
               </button>
             </div>
           </div>
@@ -413,10 +413,10 @@ export function RepairPanel({ onClose }) {
             )
         ) && (
           <div className="repair-section emergency-section">
-            <h3>Emergency Patch</h3>
+            <h3>응급 패치</h3>
             <p className="emergency-warning">
-              Jury-rig repairs to minimum flight condition. Takes{' '}
-              {REPAIR_CONFIG.EMERGENCY_PATCH_DAYS_PENALTY} days per system.
+              최소 비행 가능 상태로 임시 수리합니다. 시스템당 소요:{' '}
+              {REPAIR_CONFIG.EMERGENCY_PATCH_DAYS_PENALTY} 일
             </p>
             {['hull', 'engine', 'lifeSupport'].map((sys) => {
               const cond = getSystemCondition(condition, sys);
@@ -429,8 +429,8 @@ export function RepairPanel({ onClose }) {
                   className="repair-btn emergency-btn"
                   onClick={() => handleEmergencyPatch(sys)}
                 >
-                  Emergency Patch {getSystemName(sys)} (+
-                  {REPAIR_CONFIG.EMERGENCY_PATCH_DAYS_PENALTY} days)
+                  응급 패치  {getSystemName(sys)} (+
+                  {REPAIR_CONFIG.EMERGENCY_PATCH_DAYS_PENALTY} 일)
                 </button>
               );
             })}
@@ -442,9 +442,9 @@ export function RepairPanel({ onClose }) {
           isSystemCritical(getSystemCondition(condition, sys))
         ) && (
           <div className="repair-section cannibalize-section">
-            <h3>Cannibalize Systems</h3>
+            <h3>시스템 분해 수리</h3>
             <p className="cannibalize-warning">
-              Sacrifice parts from other systems. 50% waste penalty (1.5x cost).
+              다른 시스템의 부품을 희생합니다. 50% 낭비 페널티(비용 1.5배).
             </p>
             {['hull', 'engine', 'lifeSupport'].map((targetSys) => {
               const targetCond = getSystemCondition(condition, targetSys);
@@ -472,10 +472,10 @@ export function RepairPanel({ onClose }) {
               return (
                 <div key={targetSys} className="cannibalize-target">
                   <h4>
-                    Repair {getSystemName(targetSys)} ({Math.round(targetCond)}%
+                    수리  {getSystemName(targetSys)} ({Math.round(targetCond)}%
                     → 21%)
                   </h4>
-                  <p>Need {required}% from donors:</p>
+                  <p>필요  {required}% 기증 시스템에서:</p>
                   {donorSystems.map((donorSys) => {
                     const donorCond = getSystemCondition(condition, donorSys);
                     const maxDonation = calculateMaxDonation(donorCond);
@@ -484,8 +484,7 @@ export function RepairPanel({ onClose }) {
                     return (
                       <div key={donorSys} className="donor-row">
                         <label>
-                          {getSystemName(donorSys)} ({Math.round(donorCond)}%,
-                          max {maxDonation}%)
+                          {getSystemName(donorSys)} ({Math.round(donorCond)}%, 최대  {maxDonation}%)
                         </label>
                         <div className="donor-slider-group">
                           <input
@@ -493,7 +492,7 @@ export function RepairPanel({ onClose }) {
                             min={0}
                             max={maxDonation}
                             value={currentAlloc}
-                            aria-label={`Cannibalize ${getSystemName(donorSys)}`}
+                            aria-label={`${getSystemName(donorSys)} 분해`}
                             onChange={(e) =>
                               setCannibalizeAllocation((prev) => ({
                                 ...prev,
@@ -511,7 +510,7 @@ export function RepairPanel({ onClose }) {
                     onClick={() => handleCannibalize(targetSys)}
                     disabled={totalAllocated < required}
                   >
-                    Cannibalize ({totalAllocated}/{required}%)
+                    분해 수리 ({totalAllocated}/{required}%)
                   </button>
                 </div>
               );
@@ -522,16 +521,16 @@ export function RepairPanel({ onClose }) {
         {/* NPC Discount Section */}
         {bestDiscount.discount > 0 && (
           <div className="repair-section">
-            <h3>NPC Discount Applied</h3>
+            <h3>NPC 할인 적용</h3>
             <div className="discount-info">
               <div className="discount-details">
                 <p>
-                  <strong>{bestDiscount.npcName}</strong> is providing a{' '}
+                  <strong>{bestDiscount.npcName}</strong>  님이 수리 서비스를 {' '}
                   <strong>{Math.round(bestDiscount.discount * 100)}%</strong>{' '}
-                  discount on repair services.
+                  할인해 주고 있습니다.
                 </p>
                 <p className="discount-note">
-                  <em>All repair prices shown above include this discount.</em>
+                  <em>위에 표시된 모든 수리 가격에는 이 할인이 포함되어 있습니다.</em>
                 </p>
               </div>
             </div>
@@ -540,7 +539,7 @@ export function RepairPanel({ onClose }) {
 
         {/* Free Repair Section */}
         <div className="repair-section">
-          <h3>Free Repair</h3>
+          <h3>무료 수리</h3>
           {freeRepairOptions.length > 0 ? (
             <div className="free-repair-options">
               {freeRepairOptions.map(({ npc, availability }) => {
@@ -564,20 +563,20 @@ export function RepairPanel({ onClose }) {
                       </h4>
                       <div className="free-repair-details">
                         <p className="tier-info">
-                          <strong>{tierName} Tier:</strong> Up to{' '}
-                          {availability.maxHullPercent}% hull damage repair
+                          <strong>{tierKo(tierName)} 등급:</strong>  최대{' '}
+                          {availability.maxHullPercent}% 선체 피해 수리
                         </p>
                         <p className="limitation-info">
-                          <em>Once per visit limitation</em>
+                          <em>방문당 1회 제한</em>
                         </p>
                         {actualRepairPercent > 0 ? (
                           <p className="repair-amount">
-                            Will repair:{' '}
+                            수리 내용:{' '}
                             <strong>{actualRepairPercent.toFixed(1)}%</strong>{' '}
-                            hull damage
+                            선체 피해
                           </p>
                         ) : (
-                          <p className="no-damage">No hull damage to repair</p>
+                          <p className="no-damage">수리할 선체 피해 없음</p>
                         )}
                       </div>
                     </div>
@@ -588,7 +587,7 @@ export function RepairPanel({ onClose }) {
                       }
                       disabled={actualRepairPercent <= 0}
                     >
-                      Get Free Repair
+                      무료 수리 받기
                     </button>
                   </div>
                 );
@@ -598,7 +597,7 @@ export function RepairPanel({ onClose }) {
             <div className="free-repair-unavailable">
               {npcsAtSystem.length > 0 ? (
                 <div className="validation-info">
-                  <h4>Free Repair Requirements</h4>
+                  <h4>무료 수리 조건</h4>
                   <div className="npc-status-list">
                     {npcsAtSystem.map((npc) => {
                       const availability = canGetFreeRepair(npc.id);
@@ -608,7 +607,7 @@ export function RepairPanel({ onClose }) {
                             <strong>{npc.name}</strong> ({npc.role})
                           </div>
                           <div className="status-message">
-                            {availability.reason || 'Requirements not met'}
+                            {availability.reason || '조건 미충족'}
                           </div>
                         </div>
                       );
@@ -616,23 +615,21 @@ export function RepairPanel({ onClose }) {
                   </div>
                   <div className="tier-requirements">
                     <p>
-                      <strong>Tier Requirements:</strong>
+                      <strong>등급 조건:</strong>
                     </p>
                     <ul>
                       <li>
-                        <strong>Trusted Tier:</strong> Up to 10% hull damage
-                        repair (once per visit)
+                        <strong>신뢰 등급:</strong>  선체 피해 최대 10% 수리 (방문당 1회)
                       </li>
                       <li>
-                        <strong>Family Tier:</strong> Up to 25% hull damage
-                        repair (once per visit)
+                        <strong>가족 등급:</strong>  선체 피해 최대 25% 수리 (방문당 1회)
                       </li>
                     </ul>
                   </div>
                 </div>
               ) : (
                 <p className="no-npcs">
-                  No NPCs available at this station for free repairs.
+                  이 정거장에는 무료 수리를 해 줄 NPC가 없습니다.
                 </p>
               )}
             </div>
@@ -649,7 +646,7 @@ export function RepairPanel({ onClose }) {
 
       <div className="repair-actions">
         <button className="station-btn secondary" onClick={onClose}>
-          Back to Station
+          정거장으로 돌아가기
         </button>
       </div>
     </div>

@@ -74,7 +74,7 @@ function validateAndRepairCargoStacks(
     }
     if (typeof cargoStack.buySystemName !== 'string') {
       const system = systemData.find((s) => s.id === cargoStack.buySystem);
-      cargoStack.buySystemName = system ? system.name : 'Unknown';
+      cargoStack.buySystemName = system ? system.name : '알 수 없음';
     }
     if (typeof cargoStack.buyDate !== 'number') {
       cargoStack.buyDate = 0;
@@ -134,7 +134,7 @@ function normalizeCargoStack(cargoStack, currentSystemId, systemData) {
   }
   if (cargoStack.buySystemName === undefined) {
     const system = systemData.find((s) => s.id === cargoStack.buySystem);
-    cargoStack.buySystemName = system ? system.name : 'Unknown';
+    cargoStack.buySystemName = system ? system.name : '알 수 없음';
   }
   if (cargoStack.buyDate === undefined) {
     cargoStack.buyDate = 0;

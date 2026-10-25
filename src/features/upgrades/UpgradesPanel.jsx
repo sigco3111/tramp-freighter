@@ -93,7 +93,7 @@ export function UpgradesPanel({ onClose }) {
         <div className="upgrade-description">{upgrade.description}</div>
 
         <div className="upgrade-effects">
-          <div className="upgrade-effects-label">Effects:</div>
+          <div className="upgrade-effects-label">효과:</div>
           <ul className="upgrade-effects-list">
             {effectsText.map((effect, index) => (
               <li key={index}>{effect}</li>
@@ -103,7 +103,7 @@ export function UpgradesPanel({ onClose }) {
 
         {hasTradeoff && (
           <div className="upgrade-tradeoff">
-            <div className="upgrade-tradeoff-label">Tradeoff:</div>
+            <div className="upgrade-tradeoff-label">단점:</div>
             <div className="upgrade-tradeoff-text">{upgrade.tradeoff}</div>
           </div>
         )}
@@ -116,7 +116,7 @@ export function UpgradesPanel({ onClose }) {
                 onClick={() => handlePurchaseClick(upgradeId)}
                 disabled={!validation.valid}
               >
-                Purchase
+                구매
               </button>
             </div>
             {!validation.valid && (
@@ -172,19 +172,19 @@ export function UpgradesPanel({ onClose }) {
           <div className="upgrade-confirmation-cost">
             <div className="cost-breakdown">
               <div className="cost-row">
-                <span>Current Credits:</span>
+                <span>보유 크레딧:</span>
                 <span className="upgrade-current-credits">
                   ₡{credits.toLocaleString()}
                 </span>
               </div>
               <div className="cost-row">
-                <span>Cost:</span>
+                <span>비용:</span>
                 <span className="upgrade-cost-value">
                   -₡{upgrade.cost.toLocaleString()}
                 </span>
               </div>
               <div className="cost-row total">
-                <span>After Purchase:</span>
+                <span>구매 후:</span>
                 <span className="upgrade-credits-after">
                   ₡{creditsAfter.toLocaleString()}
                 </span>
@@ -193,7 +193,7 @@ export function UpgradesPanel({ onClose }) {
           </div>
 
           <div className="upgrade-confirmation-warning">
-            ⚠ Upgrades are permanent and cannot be removed
+            ⚠ 업그레이드는 영구적이며 제거할 수 없습니다
           </div>
 
           <div className="upgrade-confirmation-actions">
@@ -201,13 +201,13 @@ export function UpgradesPanel({ onClose }) {
               className="upgrade-cancel-btn"
               onClick={handleCancelPurchase}
             >
-              Cancel
+              취소
             </button>
             <button
               className="upgrade-confirm-btn"
               onClick={handleConfirmPurchase}
             >
-              Confirm Purchase
+              구매 확인
             </button>
           </div>
         </div>
@@ -232,26 +232,26 @@ export function UpgradesPanel({ onClose }) {
 
   return (
     <div id="upgrades-panel" className="panel-base visible">
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         ×
       </button>
       <h2>
-        Ship Upgrades - <span>{currentSystemName}</span>
+        함선 업그레이드 -  <span>{currentSystemName}</span>
       </h2>
 
       <div className="upgrades-content">
         {/* Credits Display */}
         <div className="upgrades-credits">
-          Credits:{' '}
+          크레딧:{' '}
           <span id="upgrades-credits-value">₡{credits.toLocaleString()}</span>
         </div>
 
         {/* Available Upgrades Section */}
         <div className="upgrades-section">
-          <h3>Available Upgrades</h3>
+          <h3>구매 가능한 업그레이드</h3>
           <div id="available-upgrades-list" className="upgrades-list">
             {sortedAvailableUpgrades.length === 0 ? (
-              <div className="upgrades-empty">All upgrades installed</div>
+              <div className="upgrades-empty">모든 업그레이드 설치됨</div>
             ) : (
               sortedAvailableUpgrades.map((upgradeId) =>
                 renderUpgradeCard(upgradeId, false)
@@ -262,10 +262,10 @@ export function UpgradesPanel({ onClose }) {
 
         {/* Installed Upgrades Section */}
         <div className="upgrades-section">
-          <h3>Installed Upgrades</h3>
+          <h3>설치된 업그레이드</h3>
           <div id="installed-upgrades-list" className="upgrades-list">
             {installedUpgradeIds.length === 0 ? (
-              <div className="upgrades-empty">No upgrades installed</div>
+              <div className="upgrades-empty">설치된 업그레이드 없음</div>
             ) : (
               installedUpgradeIds.map((upgradeId) =>
                 renderUpgradeCard(upgradeId, true)
@@ -277,7 +277,7 @@ export function UpgradesPanel({ onClose }) {
 
       <div className="upgrades-actions">
         <button className="station-btn secondary" onClick={onClose}>
-          Back to Station
+          정거장으로 돌아가기
         </button>
       </div>
 

@@ -37,15 +37,15 @@ export const WEI_CHEN_DIALOGUE = {
       let baseText;
       if (rep >= REPUTATION_BOUNDS.FRIENDLY_MIN) {
         baseText =
-          'Hey there, friend! Good to see you again. Ship treating you well?';
+          '여, 친구! 다시 보니 반갑네. 배는 잘 버텨 주고 있어?';
       } else if (rep >= REPUTATION_BOUNDS.WARM_MIN) {
-        baseText = "Oh, it's you. How's business? Ship holding together?";
+        baseText = "아, 당신이군. 장사는 어때? 배는 멀쩡해?";
       } else if (rep >= REPUTATION_BOUNDS.NEUTRAL_MIN) {
-        baseText = 'Another trader. Docking fees paid? Good. What you need?';
+        baseText = '또 한 명의 상인이네. 도킹 요금은 냈지? 좋아. 뭐가 필요해?';
       } else if (rep >= REPUTATION_BOUNDS.COLD_MIN) {
-        baseText = 'You again. Keep your business quick. Got work to do.';
+        baseText = '또 당신이야. 용건은 빨리 끝내. 할 일이 있으니까.';
       } else {
-        baseText = "Don't want trouble. State your business and move along.";
+        baseText = "문제 일으키고 싶지 않아. 용건만 말하고 가.";
       }
 
       // Add karma-based first impression for new or low-reputation encounters
@@ -63,11 +63,11 @@ export const WEI_CHEN_DIALOGUE = {
     },
     choices: [
       {
-        text: "Just making conversation. How's work?",
+        text: "그냥 얘기하는 거예요. 일은 어때요?",
         next: 'small_talk',
       },
       {
-        text: 'Any dock worker tips for me?',
+        text: '부두 일꾼으로서 알려 줄 요령이 있나요?',
         next: 'ask_tip',
         condition: (rep, context) => {
           // Check both reputation requirement and tip availability
@@ -76,12 +76,12 @@ export const WEI_CHEN_DIALOGUE = {
         },
       },
       {
-        text: 'Tell me about yourself.',
+        text: '당신에 대해 알려 주세요.',
         next: 'backstory',
         condition: (rep) => rep >= REPUTATION_BOUNDS.FRIENDLY_MIN,
       },
       {
-        text: 'I understand the risks of bad deals.',
+        text: '나쁜 거래의 위험은 알고 있어요.',
         next: 'bad_deal_sympathy',
         condition: (rep, context) => {
           // Only available if player has bad karma (suggesting they've made questionable choices)
@@ -94,7 +94,7 @@ export const WEI_CHEN_DIALOGUE = {
         },
       },
       {
-        text: 'Any advice for staying out of trouble with authorities?',
+        text: '당국과 문제를 피하는 조언이 있나요?',
         next: 'authority_advice',
         condition: (rep, context) => {
           // Only available if player is wanted by authorities and has warm+ reputation
@@ -106,7 +106,7 @@ export const WEI_CHEN_DIALOGUE = {
         },
       },
       {
-        text: 'I try to help people when I can.',
+        text: '할 수 있을 때 사람들을 도우려고 해요.',
         next: 'good_karma_response',
         condition: (rep, context) => {
           // Only available if player has good karma and neutral+ reputation
@@ -118,13 +118,13 @@ export const WEI_CHEN_DIALOGUE = {
         },
       },
       {
-        text: '"What\'s the deal with Bore Station 7?"',
+        text: '"보어 정거장 7은 뭐가 문제죠?"',
         next: 'station_gossip',
         condition: (_rep, context) =>
           context && !context.narrativeFlags?.tanaka_met,
       },
       {
-        text: '"Know anything about Tanaka?"',
+        text: '"타나카에 대해 아는 게 있나요?"',
         next: 'tanaka_gossip',
         condition: (_rep, context) => {
           if (!context || !context.narrativeFlags?.tanaka_met) return false;
@@ -132,7 +132,7 @@ export const WEI_CHEN_DIALOGUE = {
         },
       },
       {
-        text: '"How\'s Tanaka doing these days?"',
+        text: '"요즘 타나카는 어때요?"',
         next: 'tanaka_progress',
         condition: (_rep, context) => {
           if (!context || !context.narrativeFlags?.tanaka_met) return false;
@@ -143,57 +143,57 @@ export const WEI_CHEN_DIALOGUE = {
         },
       },
       {
-        text: 'Nothing right now. Take care.',
+        text: '지금은 없어요. 몸 조심하세요.',
         next: null,
       },
     ],
   },
 
   small_talk: {
-    text: "Work's work. Docks don't run themselves. Ships come, ships go. Some captains know what they're doing, others... well, you learn to spot the difference.",
+    text: "일은 일이지. 부두가 저절로 돌아가진 않아. 배가 오고 배가 가고. 자기가 뭘 하는지 아는 선장도 있고, 그렇지 않은 선장도 있어. 구별하는 법을 배우게 돼.",
     choices: [
       {
-        text: 'Sounds boring.',
+        text: '지루하게 들리네요.',
         next: 'boring_response',
         repGain: -2,
       },
       {
-        text: 'Honest work is good work.',
+        text: '정직한 일은 좋은 일이죠.',
         next: 'honest_work',
         repGain: 3,
       },
       {
-        text: 'I should let you get back to it.',
+        text: '이만 일하시게 두는 게 좋겠네요.',
         next: 'greeting',
       },
     ],
   },
 
   boring_response: {
-    text: "Boring? Maybe to you. But every ship that docks safe, every cargo load that gets where it's going... that matters. Not everything has to be exciting to be important.",
+    text: "지루해? 당신한텐 그럴지도. 하지만 안전하게 도킹하는 배 하나하나, 목적지에 닿는 화물 하나하나... 그게 중요한 거야. 중요한 일이 다 흥미진진할 필요는 없어.",
     choices: [
       {
-        text: "You're right. I didn't mean to sound dismissive.",
+        text: "맞아요. 무시하려던 건 아니에요.",
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'If you say so.',
+        text: '그렇다면야.',
         next: 'greeting',
       },
     ],
   },
 
   honest_work: {
-    text: "Exactly. Used to think excitement was everything. Adventure, risk, big scores... learned better. Steady work, steady pay, steady ground under your feet. That's worth something.",
+    text: "맞아. 예전엔 흥분이 전부라고 생각했지. 모험, 위험, 큰 건... 더 잘 배웠어. 꾸준한 일, 꾸준한 보수, 발밑의 단단한 땅. 그것도 가치가 있어.",
     choices: [
       {
-        text: "Sounds like there's a story there.",
+        text: "사연이 있는 것 같네요.",
         next: 'greeting',
         repGain: 1,
       },
       {
-        text: 'Wise words. Thanks for the chat.',
+        text: '현명한 말이네요. 얘기 고마워요.',
         next: 'greeting',
       },
     ],
@@ -202,25 +202,25 @@ export const WEI_CHEN_DIALOGUE = {
   backstory: {
     text: (rep) => {
       if (rep >= REPUTATION_BOUNDS.TRUSTED_MIN) {
-        return "Since you asked... used to captain my own ship. The 'Lucky Strike.' Thought I was smart, taking risks others wouldn't. One bad deal with the wrong people, and... well, now I work the docks. Ship's gone, crew scattered. But I'm still here.";
+        return "물어봤으니 말하는데... 한때 내 배의 선장이었어. '럭키 스트라이크'호. 남들이 안 하는 위험을 감수하는 내가 똑똑한 줄 알았지. 엉뚱한 사람들과의 나쁜 거래 한 번에... 그래서 지금은 부두에서 일해. 배는 사라지고 선원은 흩어졌지. 그래도 난 여기 있어.";
       } else {
-        return "Had my own ship once. Made some bad choices, trusted wrong people. Lost everything. But that's ancient history now. Docks are good to me.";
+        return "한때 내 배가 있었어. 잘못된 선택을 하고 엉뚱한 사람을 믿어서 모든 걸 잃었지. 하지만 이제 옛날 얘기야. 부두는 나한테 잘해 줘.";
       }
     },
     flags: ['chen_backstory_1'],
     choices: [
       {
-        text: "I'm sorry that happened to you.",
+        text: "그런 일을 겪으셨다니 유감이에요.",
         next: 'backstory_2',
         repGain: 3,
       },
       {
-        text: 'What kind of bad deal?',
+        text: '어떤 나쁜 거래였나요?',
         next: 'backstory_2',
         repGain: 1,
       },
       {
-        text: 'We all make mistakes.',
+        text: '누구나 실수는 하죠.',
         next: 'greeting',
         repGain: 1,
       },
@@ -228,16 +228,16 @@ export const WEI_CHEN_DIALOGUE = {
   },
 
   backstory_2: {
-    text: "Appreciate that. Point is, learned my lesson. These days I help other captains avoid the same mistakes. See a lot of young hotshots come through here, think they know everything. Try to give them good advice when they'll listen.",
+    text: "고마워. 요점은 교훈을 얻었다는 거야. 요즘은 다른 선장들이 같은 실수를 피하도록 도와. 자기가 다 안다고 생각하는 젊은 허세꾼들이 많이 지나가거든. 들을 때는 좋은 조언을 주려고 해.",
     flags: ['chen_backstory_2'],
     choices: [
       {
-        text: 'Any advice for me?',
+        text: '저한테 해 줄 조언이 있나요?',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'Thanks for sharing that with me.',
+        text: '이야기해 주셔서 고마워요.',
         next: 'greeting',
         repGain: 2,
       },
@@ -245,16 +245,16 @@ export const WEI_CHEN_DIALOGUE = {
   },
 
   ask_tip: {
-    text: "Dock worker tip? Sure. Been working these docks for years - learned a few things about keeping cargo and ships safe. Here's something that might help you out there...",
+    text: "부두 일꾼 요령? 물론이지. 몇 년 동안 이 부두에서 일하면서 화물과 배를 안전하게 지키는 법을 몇 가지 배웠어. 저 바깥에서 도움이 될 만한 걸 하나 알려 줄게...",
     flags: ['chen_tip_requested'],
     choices: [
       {
-        text: "That's really helpful. Thanks!",
+        text: "정말 도움이 되네요. 고마워요!",
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'Good to know. I appreciate it.',
+        text: '알아 둘게요. 고맙습니다.',
         next: 'greeting',
         repGain: 1,
       },
@@ -262,21 +262,21 @@ export const WEI_CHEN_DIALOGUE = {
   },
 
   bad_deal_sympathy: {
-    text: "Yeah... I can see it in your eyes. You've made some hard choices, haven't you? The sector doesn't always give you clean options. Sometimes you do what you have to do to survive. I get that.",
+    text: "그래... 눈에서 보여. 힘든 선택을 했겠지? 섹터가 늘 깔끔한 선택지를 주진 않아. 때로는 살아남으려고 해야 할 일을 하는 거지. 이해해.",
     flags: ['chen_bad_deal_sympathy'],
     choices: [
       {
-        text: 'Exactly. Sometimes there are no good choices.',
+        text: '맞아요. 때로는 좋은 선택지가 없죠.',
         next: 'greeting',
         repGain: 3,
       },
       {
-        text: 'I try to do better when I can.',
+        text: '할 수 있을 때는 더 잘하려고 해요.',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'Survival comes first.',
+        text: '생존이 먼저죠.',
         next: 'greeting',
         repGain: 1,
       },
@@ -284,16 +284,16 @@ export const WEI_CHEN_DIALOGUE = {
   },
 
   authority_advice: {
-    text: "Authorities giving you trouble? Look, I've seen plenty of captains get sideways with the law. Best advice? Keep your head down, pay your fines, and don't give them more reasons to notice you. Time heals most grudges if you let it.",
+    text: "당국이 괴롭혀? 이봐, 법과 엇나간 선장을 많이 봤어. 최고의 조언? 고개 숙이고, 벌금 내고, 눈에 띌 이유를 더 주지 마. 시간은 대부분의 앙금을 풀어 줘, 가만히 두면.",
     flags: ['chen_authority_advice'],
     choices: [
       {
-        text: 'Good advice. I appreciate the warning.',
+        text: '좋은 조언이에요. 경고 고마워요.',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'Sometimes they make it hard to stay clean.',
+        text: '깨끗하게 지내기 어렵게 만들 때가 있어요.',
         next: 'greeting',
         repGain: 1,
       },
@@ -301,16 +301,16 @@ export const WEI_CHEN_DIALOGUE = {
   },
 
   good_karma_response: {
-    text: "That's good to hear. Sector needs more people like that. Too many captains only look out for themselves. When you help others, word gets around. Makes a difference in how people see you.",
+    text: "듣기 좋네. 섹터엔 그런 사람이 더 필요해. 너무 많은 선장이 자기만 챙기거든. 남을 도우면 소문이 나. 사람들이 당신을 보는 시선이 달라지지.",
     flags: ['chen_good_karma_response'],
     choices: [
       {
-        text: 'We all need to look out for each other.',
+        text: '우리 모두 서로를 챙겨야 해요.',
         next: 'greeting',
         repGain: 3,
       },
       {
-        text: 'It feels like the right thing to do.',
+        text: '그게 옳은 일 같아요.',
         next: 'greeting',
         repGain: 2,
       },
@@ -323,45 +323,45 @@ export const WEI_CHEN_DIALOGUE = {
         context &&
         context.systemsVisited >= ENDGAME_CONFIG.TANAKA_UNLOCK_SYSTEMS_VISITED
       ) {
-        return '"Engineer works in the back bay. Tanaka. Keeps to herself mostly. Does something with drive systems — way over my head." She glances toward the engineering section. "You\'ve been around enough, she might actually talk to you. Worth checking in next time you dock."';
+        return '"엔지니어는 뒤쪽 베이에서 일해. 타나카. 대부분 혼자 지내. 구동 시스템 관련 일을 하는데 난 이해도 못 해." 그녀가 엔지니어링 구역 쪽을 힐끗 본다. "당신은 충분히 돌아다녔으니 정말로 말을 걸어줄지도 몰라. 다음에 도킹할 때 들러 볼 만해."';
       }
-      return '"Engineer works in the back bay. Tanaka. Keeps to herself mostly. Does something with drive systems — way over my head." She shrugs. "Doesn\'t talk to just anyone though. Wants to see you\'ve actually been around the network before she\'ll give you the time of day. Can\'t blame her."';
+      return '"엔지니어는 뒤쪽 베이에서 일해. 타나카. 대부분 혼자 지내. 구동 시스템 관련 일을 하는데 난 이해도 못 해." 그녀가 어깨를 으쓱한다. "아무하고나 얘기하진 않아. 네트워크를 실제로 돌아다녀 봤다는 걸 보여 줘야 상대해 줄 거야. 이해는 가."';
     },
     choices: [
       {
-        text: '"I\'ll keep that in mind."',
+        text: '"명심할게요."',
         next: 'greeting',
       },
       {
-        text: '"What kind of drive systems?"',
+        text: '"어떤 구동 시스템이죠?"',
         next: 'greeting',
       },
     ],
   },
 
   tanaka_gossip: {
-    text: `"She's always short on supplies for her research. Electronics, medicine — that kind of thing. Bring her ${TANAKA_SUPPLY_CONFIG.QUANTITY} units of either and she'll notice." Wei Chen lowers her voice. "Not the type to ask for help, but she won't turn it down."`,
+    text: `"연구용 물자가 늘 부족해. 전자제품, 의약품, 그런 거. 둘 중 하나를 ${TANAKA_SUPPLY_CONFIG.QUANTITY}단위 가져가면 눈여겨볼 거야." 웨이 첸이 목소리를 낮춘다. "도움을 청하는 타입은 아니지만 거절하지도 않을 거야."`,
     choices: [
       {
-        text: '"Good to know. Thanks."',
+        text: '"알아 둘게요. 고마워요."',
         next: 'greeting',
       },
       {
-        text: `"${TANAKA_SUPPLY_CONFIG.QUANTITY} units? I can manage that."`,
+        text: `"${TANAKA_SUPPLY_CONFIG.QUANTITY}단위요? 해낼 수 있어요."`,
         next: 'greeting',
       },
     ],
   },
 
   tanaka_progress: {
-    text: "\"Tanaka's been mentioning your name. She's warming up, but she's careful. Keep bringing her research supplies — electronics or medicine. She notices, even if she doesn't say it.\"",
+    text: "\"타나카가 당신 이름을 말하고 있어. 마음을 열고 있지만 조심스러워. 계속 연구 물자를 가져다줘, 전자제품이나 의약품. 말은 안 해도 알아봐.\"",
     choices: [
       {
-        text: '"I\'ll keep at it."',
+        text: '"계속해 볼게요."',
         next: 'greeting',
       },
       {
-        text: '"Thanks for the heads up."',
+        text: '"귀띔 고마워요."',
         next: 'greeting',
       },
     ],

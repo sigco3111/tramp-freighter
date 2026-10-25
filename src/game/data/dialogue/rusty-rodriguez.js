@@ -36,20 +36,20 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
       let baseText;
       if (rep >= REPUTATION_BOUNDS.FAMILY_MIN) {
         baseText =
-          "Well, well! Look who's back. Your ship's been treating you right, I hope? She's a good one - I can tell by how you care for her. What can old Rusty do for you today?";
+          "이야, 이게 누구야! 돌아왔구먼. 배가 잘 해 주고 있길 바라네. 좋은 배야. 자네가 돌보는 걸 보면 알지. 오늘은 이 러스티가 뭘 해 줄까?";
       } else if (rep >= REPUTATION_BOUNDS.TRUSTED_MIN) {
         baseText =
-          "Good to see you again, captain. Your ship's looking better each time I see her. You're learning to treat her right. What brings you to my shop?";
+          "다시 보니 반갑군, 선장. 볼 때마다 배 상태가 나아지는구먼. 배를 제대로 대하는 법을 배우고 있어. 내 가게엔 무슨 일로?";
       } else if (rep >= REPUTATION_BOUNDS.FRIENDLY_MIN) {
         baseText =
-          "Hey there! Your ship's been behaving herself, I hope? I can always tell when a captain knows what they're doing. How can I help you?";
+          "어이! 배는 얌전히 굴고 있겠지? 선장이 뭘 아는지는 늘 알아보지. 뭘 도와줄까?";
       } else if (rep >= REPUTATION_BOUNDS.WARM_MIN) {
         baseText =
-          "Back again, eh? Your ship's looking decent. Better than some of the rust buckets that limp in here. What do you need?";
+          "또 왔나? 배 상태가 괜찮군. 여기 절뚝거리며 들어오는 녹슨 통들보단 낫지. 뭐가 필요한가?";
       } else {
         // Neutral, Cold, or Hostile
         baseText =
-          "Another ship, another captain. Let me guess - something's broken and you need it fixed yesterday. What's the problem?";
+          "배 한 척에 선장 한 명 더. 맞혀 볼까, 뭔가 고장 났고 어제까지 고쳐 달라는 거지? 뭐가 문제야?";
       }
 
       // Add loan status if there's an outstanding loan (only if context provided)
@@ -62,11 +62,11 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
 
           if (daysRemaining <= 0) {
             baseText +=
-              '\n\n*About that loan, captain... five hundred credits, and it was due yesterday. Your ship needs you to be reliable.*';
+              '\n\n*그 대출 말이네, 선장... 오백 크레딧이고 어제가 기한이었어. 자네 배는 자네가 믿음직하길 바라고 있네.*';
           } else if (daysRemaining <= COLE_DEBT_CONFIG.LOAN_REMINDER_DAYS) {
-            baseText += `\n\n*Don't forget - you owe me five hundred credits, due in ${daysRemaining} days. Your ship's counting on you.*`;
+            baseText += `\n\n*잊지 말게, 오백 크레딧을 ${daysRemaining}일 안에 갚아야 하네. 자네 배가 자네를 믿고 있어.*`;
           } else {
-            baseText += `\n\n*By the way, you still owe me five hundred credits - ${daysRemaining} days left to pay up.*`;
+            baseText += `\n\n*참, 아직 오백 크레딧을 갚아야 하네. 갚을 날이 ${daysRemaining}일 남았어.*`;
           }
         }
       }
@@ -75,11 +75,11 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
     },
     choices: [
       {
-        text: 'Tell me about ship maintenance.',
+        text: '배 정비에 대해 알려 주세요.',
         next: 'ship_talk',
       },
       {
-        text: 'Any maintenance tips for me?',
+        text: '정비 요령이 있나요?',
         next: 'ask_tip',
         condition: (rep, context) => {
           // Check both reputation requirement and tip availability
@@ -88,7 +88,7 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
         },
       },
       {
-        text: 'I need an emergency loan.',
+        text: '긴급 대출이 필요해요.',
         next: 'request_loan',
         condition: (rep, context) => {
           // Check both reputation requirement and favor availability
@@ -97,7 +97,7 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
         },
       },
       {
-        text: 'Can you store some cargo for me?',
+        text: '화물을 좀 맡아 주실 수 있나요?',
         next: 'request_storage',
         condition: (rep, context) => {
           // Check both reputation requirement and favor availability
@@ -106,7 +106,7 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
         },
       },
       {
-        text: 'I want to repay my loan.',
+        text: '대출을 갚고 싶어요.',
         next: 'repay_loan',
         condition: (_rep, context) => {
           // Check if NPC has an outstanding loan
@@ -115,7 +115,7 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
         },
       },
       {
-        text: 'I want to retrieve my stored cargo.',
+        text: '맡겨 둔 화물을 찾고 싶어요.',
         next: 'retrieve_cargo',
         condition: (_rep, context) => {
           // Check if NPC has stored cargo
@@ -126,32 +126,32 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
         },
       },
       {
-        text: 'Nothing right now. Thanks, Rusty.',
+        text: '지금은 없어요. 고마워요, 러스티.',
         next: null,
       },
     ],
   },
 
   ship_talk: {
-    text: "Ships are living things, you know. Not literally, but... they got personalities. Quirks. Moods. Treat 'em right, and they'll get you home safe. Neglect 'em, and they'll strand you in the void when you least expect it. Your ship talks to you - you just gotta learn to listen.",
+    text: "배는 살아 있는 존재라네. 말 그대로는 아니지만... 성격이 있어. 버릇도, 기분도. 제대로 대하면 무사히 집에 데려다주지. 소홀히 하면 가장 예상치 못한 순간에 공허에 발을 묶어 버려. 배가 자네에게 말을 건다네. 듣는 법만 배우면 돼.",
     choices: [
       {
-        text: 'I try to take good care of my ship.',
+        text: '제 배를 잘 돌보려고 해요.',
         next: 'ship_care',
         repGain: 3,
       },
       {
-        text: 'Regular maintenance is important.',
+        text: '정기 정비가 중요하죠.',
         next: 'maintenance_matters',
         repGain: 2,
       },
       {
-        text: "It's just a machine to me.",
+        text: "저한텐 그냥 기계예요.",
         next: 'just_machine',
         repGain: -2,
       },
       {
-        text: 'Interesting perspective.',
+        text: '흥미로운 관점이네요.',
         next: 'greeting',
         repGain: 1,
       },
@@ -159,15 +159,15 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
   },
 
   ship_care: {
-    text: "Now that's what I like to hear! A captain who respects their ship. She'll remember that kindness when things get rough out there. I've seen ships push beyond their limits for captains who treated 'em right. It's not just maintenance - it's partnership.",
+    text: "그거야말로 내가 듣고 싶은 말이야! 배를 존중하는 선장이라. 저 바깥에서 힘든 일이 닥치면 배가 그 친절을 기억할 거야. 자기를 제대로 대해 준 선장을 위해 한계를 넘어서는 배를 봤지. 정비만이 아니라 동반자 관계라네.",
     choices: [
       {
-        text: 'My ship and I are a team.',
+        text: '저와 제 배는 한 팀이에요.',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'She deserves the best care I can give.',
+        text: '최고의 보살핌을 받을 자격이 있어요.',
         next: 'greeting',
         repGain: 2,
       },
@@ -175,15 +175,15 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
   },
 
   maintenance_matters: {
-    text: "Exactly! Regular maintenance isn't just about preventing breakdowns - though that's important too. It's about understanding your ship's rhythms. When the engine sounds different, when the hull flexes under stress, when life support cycles change. Knowledge keeps you alive out there.",
+    text: "바로 그거야! 정기 정비는 고장을 막는 것만이 아니야. 물론 그것도 중요하지만. 배의 리듬을 이해하는 거라네. 엔진 소리가 달라질 때, 선체가 압력에 휠 때, 생명 유지 주기가 바뀔 때. 지식이 저 바깥에서 자네를 살려 두지.",
     choices: [
       {
-        text: 'What should I watch for specifically?',
+        text: '구체적으로 뭘 봐야 하죠?',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'Good advice. Thank you.',
+        text: '좋은 조언이에요. 고맙습니다.',
         next: 'greeting',
         repGain: 1,
       },
@@ -191,20 +191,20 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
   },
 
   just_machine: {
-    text: "Just a machine? *shakes head* That's where you're wrong, captain. Machines don't develop quirks that save your life. Machines don't push past their specs when you need 'em most. Your ship's more than metal and circuits - she's your lifeline. Better start treating her like one.",
+    text: "그냥 기계라고? *고개를 젓는다* 거기서 자네가 틀렸어, 선장. 기계는 생명을 구하는 버릇을 만들지 않아. 기계는 가장 필요할 때 사양을 넘어서지 않지. 자네 배는 금속과 회로 이상이야. 생명줄이지. 그렇게 대하기 시작하는 게 좋을 걸세.",
     choices: [
       {
-        text: "Maybe you're right about that.",
+        text: "맞는 말씀일지도 모르겠네요.",
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: "I'll think about what you said.",
+        text: "말씀하신 걸 생각해 볼게요.",
         next: 'greeting',
         repGain: 1,
       },
       {
-        text: 'Still just a machine to me.',
+        text: '제겐 여전히 그냥 기계예요.',
         next: 'greeting',
         repGain: -1,
       },
@@ -212,16 +212,16 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
   },
 
   ask_tip: {
-    text: "Sure thing, captain. Been working on ships for twenty years - learned a thing or two about keeping 'em healthy. Here's something that might save you some trouble down the line...",
+    text: "물론이지, 선장. 이십 년을 배를 만져 왔네. 건강하게 유지하는 법을 한두 가지 배웠지. 나중에 골칫거리를 덜어 줄 만한 걸 하나 알려 주지...",
     flags: ['rusty_tip_requested'],
     choices: [
       {
-        text: 'That could save me a lot of trouble.',
+        text: '골칫거리를 많이 덜어 주겠네요.',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'Thanks for the maintenance advice.',
+        text: '정비 조언 고맙습니다.',
         next: 'greeting',
         repGain: 1,
       },
@@ -229,11 +229,11 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
   },
 
   request_loan: {
-    text: "Emergency loan, eh? Five hundred credits... *wipes hands on coveralls* Look, I know what it's like when your ship needs work and your wallet's empty. I can spot you the credits, but I expect it back in thirty days. Fair enough?",
+    text: "긴급 대출이라, 응? 오백 크레딧... *작업복에 손을 닦는다* 이봐, 배는 수리가 필요한데 지갑이 비면 어떤지 아네. 크레딧은 빌려줄 수 있지만 삼십 일 안에 돌려받아야 해. 공정하지?",
     flags: ['rusty_loan_discussed'],
     choices: [
       {
-        text: 'I accept those terms. Thank you.',
+        text: '그 조건 받아들일게요. 고맙습니다.',
         next: 'greeting',
         repGain: 3,
         action: (context) => {
@@ -241,18 +241,18 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
         },
       },
       {
-        text: 'Let me think about it first.',
+        text: '먼저 생각해 볼게요.',
         next: 'greeting',
       },
     ],
   },
 
   request_storage: {
-    text: "Cargo storage? Sure, I got secure space in the back of the shop. Up to ten units, safe from the elements and prying eyes. Consider it a favor between professionals - we mechanics gotta stick together, even if you're on the other side of the wrench.",
+    text: "화물 보관? 물론이지, 가게 뒤쪽에 안전한 공간이 있어. 열 단위까지, 비바람과 눈치 빠른 눈에서 안전하게. 전문가끼리의 호의로 쳐 주게. 정비공끼리는 뭉쳐야지, 자네가 렌치 반대편에 있더라도.",
     flags: ['rusty_storage_discussed'],
     choices: [
       {
-        text: 'That would be a huge help.',
+        text: '정말 큰 도움이 되겠어요.',
         next: 'greeting',
         repGain: 2,
         action: (context) => {
@@ -260,7 +260,7 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
         },
       },
       {
-        text: 'I appreciate the offer, Rusty.',
+        text: '제안 감사합니다, 러스티.',
         next: 'greeting',
         repGain: 1,
       },
@@ -268,11 +268,11 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
   },
 
   repay_loan: {
-    text: "Loan repayment? *wipes hands on coveralls* Good to see you're keeping your word, captain. Five hundred credits, right? Your ship'll be proud - she likes it when her captain's reliable.",
+    text: "대출 상환? *작업복에 손을 닦는다* 약속을 지키는 모습이 보기 좋군, 선장. 오백 크레딧 맞지? 자네 배가 자랑스러워할 거야. 선장이 믿음직하면 좋아하거든.",
     flags: ['rusty_loan_repaid'],
     choices: [
       {
-        text: 'Here are the credits. Thanks for the help.',
+        text: '여기 크레딧이에요. 도와주셔서 감사해요.',
         next: 'greeting',
         repGain: 2,
         action: (context) => {
@@ -280,18 +280,18 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
         },
       },
       {
-        text: 'I need a bit more time to get the credits.',
+        text: '크레딧을 마련할 시간이 조금 더 필요해요.',
         next: 'greeting',
       },
     ],
   },
 
   retrieve_cargo: {
-    text: "Retrieve your cargo? Sure thing, captain. *heads to the back* Got your stuff safe and sound. Let me get it loaded back onto your ship. If your hold's getting tight, just say the word - we can work something out.",
+    text: "화물을 찾는다고? 물론이지, 선장. *뒤쪽으로 간다* 물건은 안전하게 있네. 자네 배에 다시 실어 주지. 화물칸이 빠듯하면 말만 하게. 방법을 찾아보세.",
     flags: ['rusty_cargo_retrieved'],
     choices: [
       {
-        text: 'Transfer what you can to my ship.',
+        text: '실을 수 있는 만큼 제 배로 옮겨 주세요.',
         next: 'greeting',
         repGain: 1,
         action: (context) => {
@@ -299,7 +299,7 @@ export const RUSTY_RODRIGUEZ_DIALOGUE = {
         },
       },
       {
-        text: 'Let me make some room first.',
+        text: '먼저 공간을 좀 만들게요.',
         next: 'greeting',
       },
     ],

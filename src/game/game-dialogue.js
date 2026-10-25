@@ -175,7 +175,7 @@ export function showDialogue(npcId, nodeId = 'greeting', gameStateManager) {
       dialogueText += `\n\n"${tip}"`;
     } else {
       // This shouldn't happen if dialogue conditions are correct, but handle gracefully
-      dialogueText += `\n\nActually, I don't have any tips for you right now.`;
+      dialogueText += `\n\n사실 지금은 알려 줄 팁이 없어.`;
     }
   }
 

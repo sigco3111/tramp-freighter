@@ -36,15 +36,15 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_HIGH,
     content: {
       text: [
-        'Sol Station. The heart of human civilization.',
-        'Massive. Gleaming. Expensive.',
-        'You feel very small, and very poor.',
+        '솔 정거장. 인류 문명의 심장.',
+        '거대하다. 번쩍인다. 비싸다.',
+        '당신은 아주 작고 아주 가난하다고 느낀다.',
       ],
       speaker: null,
       mood: 'neutral',
       choices: [
         {
-          text: 'Time to get to work.',
+          text: '이제 일하러 갈 시간이다.',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -62,25 +62,25 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_HIGH,
     content: {
       text: [
-        'The docking clamps engage with a shudder.',
-        "Barnard's Station is smaller than you expected — a retrofitted mining platform.",
-        "A dock worker waves you toward Bay 3. Her jumpsuit says 'CHEN' in faded stencil.",
+        '도킹 클램프가 몸서리치며 맞물린다.',
+        "바너드 정거장은 예상보다 작다. 개조한 채굴 플랫폼이다.",
+        "부두 일꾼이 3번 베이로 가라고 손짓한다. 작업복에 빛바랜 스텐실로 'CHEN'이라고 적혀 있다.",
       ],
       speaker: null,
       mood: 'neutral',
       choices: [
         {
-          text: 'Wave back and head to the trading post.',
+          text: '손을 흔들어 답하고 교역소로 향한다.',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
         {
-          text: 'Stop to introduce yourself.',
+          text: '멈춰서 자기소개를 한다.',
           next: null,
           effects: { costs: {}, rewards: { karma: 1 } },
         },
         {
-          text: 'Ignore her and check your cargo manifest.',
+          text: '무시하고 화물 목록을 확인한다.',
           next: null,
           effects: { costs: {}, rewards: { karma: -1 } },
         },
@@ -115,8 +115,8 @@ export const NARRATIVE_EVENTS = [
         if (system && commodity) {
           return {
             text: [
-              'A dockworker sidles up while you wait for clearance.',
-              `"Heard ${commodity} prices are through the roof at ${system.name}. Just saying."`,
+              '허가를 기다리는 동안 부두 일꾼이 슬쩍 다가온다.',
+              `"${system.name}에서 ${commodity} 가격이 천정부지라더군. 그냥 하는 말이야."`,
             ],
           };
         }
@@ -124,26 +124,26 @@ export const NARRATIVE_EVENTS = [
 
       return {
         text: [
-          'A dockworker sidles up while you wait for clearance.',
-          '"Markets are shifting out there. Keep your eyes open."',
+          '허가를 기다리는 동안 부두 일꾼이 슬쩍 다가온다.',
+          '"저 바깥 시장이 변하고 있어. 눈 크게 뜨고 다니게."',
         ],
       };
     },
     content: {
       text: [
-        'A dockworker sidles up while you wait for clearance.',
-        '"Markets are shifting out there. Keep your eyes open."',
+        '허가를 기다리는 동안 부두 일꾼이 슬쩍 다가온다.',
+        '"저 바깥 시장이 변하고 있어. 눈 크게 뜨고 다니게."',
       ],
       speaker: null,
       mood: 'neutral',
       choices: [
         {
-          text: '"Thanks for the tip."',
+          text: '"팁 고마워요."',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
         {
-          text: '"Mind your own business."',
+          text: '"신경 꺼요."',
           next: null,
           effects: { costs: {}, rewards: { karma: -1 } },
         },
@@ -170,20 +170,20 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_LOW,
     content: {
       text: [
-        'A dockworker sidles up while you wait for clearance.',
-        '"You ever talk to the old hands? Some of them swear there are routes that don\'t show on any starmap. Places beyond the wormhole network."',
-        'She shrugs. "Probably just spacer talk. But who knows?"',
+        '허가를 기다리는 동안 부두 일꾼이 슬쩍 다가온다.',
+        '"고참들하고 얘기해 본 적 있어? 어떤 사람들은 어떤 별지도에도 안 나오는 항로가 있다고 맹세해. 웜홀 네트워크 너머의 장소들."',
+        '그녀가 어깨를 으쓱한다. "그냥 우주 뱃사람들 얘기겠지. 하지만 누가 알겠어?"',
       ],
       speaker: null,
       mood: 'mysterious',
       choices: [
         {
-          text: '"Interesting. Where would I hear more?"',
+          text: '"흥미롭네요. 어디서 더 들을 수 있죠?"',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
         {
-          text: '"I\'ve got enough to worry about on the known routes."',
+          text: '"알려진 항로만으로도 걱정할 게 충분해요."',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -214,20 +214,20 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_DEFAULT,
     content: {
       text: [
-        'A dockworker sidles up while you wait for clearance.',
-        '"Hey, you run a Tanaka drive, right? Heard the designer\'s daughter works out of Barnard\'s Star. Does something with experimental drive tech — pushing ships further than the wormhole network was meant to go."',
-        'He lowers his voice. "Picky about who she works with, though."',
+        '허가를 기다리는 동안 부두 일꾼이 슬쩍 다가온다.',
+        '"이봐, 타나카 구동계 쓰지? 설계자의 딸이 바너드 항성에서 일한다던데. 실험적인 구동 기술을 다뤄, 웜홀 네트워크가 의도한 것보다 더 멀리 배를 보내는 거."',
+        '그가 목소리를 낮춘다. "같이 일할 사람은 까다롭게 고르지만."',
       ],
       speaker: null,
       mood: 'neutral',
       choices: [
         {
-          text: '"Thanks. Might be worth a visit."',
+          text: '"고마워요. 한번 가 볼 만하네요."',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
         {
-          text: '"Mind your own business."',
+          text: '"신경 꺼요."',
           next: null,
           effects: { costs: {}, rewards: { karma: -1 } },
         },
@@ -249,8 +249,8 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_DEFAULT,
     content: {
       text: [
-        'A mechanic notices your fuel gauge as you dock.',
-        '"Running on fumes, huh? I got some fuel canisters that fell off a transport. Half price."',
+        '정비공이 도킹하는 당신의 연료 게이지를 알아챈다.',
+        '"연료가 바닥났군, 응? 수송선에서 떨어진 연료통이 좀 있어. 반값에 줄게."',
       ],
       speaker: null,
       mood: 'tense',
@@ -261,7 +261,7 @@ export const NARRATIVE_EVENTS = [
           effects: { costs: { credits: 50 }, rewards: { fuelMinimum: 30 } },
         },
         {
-          text: '"No thanks, I like living dangerously."',
+          text: '"됐어요, 위험하게 사는 게 좋아서요."',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -281,19 +281,19 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_DEFAULT,
     content: {
       text: [
-        'Your sensors ping. Debris field ahead.',
-        'Looks like a cargo container. Intact, maybe.',
+        '센서가 울린다. 전방에 잔해 지대.',
+        '화물 컨테이너 같다. 멀쩡할지도.',
       ],
       speaker: null,
       mood: 'neutral',
       choices: [
         {
-          text: 'Investigate the wreckage.',
+          text: '잔해를 조사한다.',
           next: 'jump_salvage_result',
           effects: { costs: { fuel: 2 }, rewards: {} },
         },
         {
-          text: 'Keep moving.',
+          text: '계속 간다.',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -311,14 +311,14 @@ export const NARRATIVE_EVENTS = [
     priority: 0,
     content: {
       text: [
-        'You crack the seal. Inside: a crate of spare parts.',
-        'Salvage rights. Finders keepers.',
+        '봉인을 연다. 안에는 예비 부품 상자가 있다.',
+        '인양권. 먼저 줍는 사람이 임자.',
       ],
       speaker: null,
       mood: 'neutral',
       choices: [
         {
-          text: 'Load it up.',
+          text: '실어 올린다.',
           next: null,
           effects: {
             costs: {},
@@ -328,7 +328,7 @@ export const NARRATIVE_EVENTS = [
                   good: 'parts',
                   qty: 3,
                   buyPrice: 0,
-                  buySystemName: 'Salvaged',
+                  buySystemName: '인양함',
                 },
               ],
             },
@@ -348,20 +348,20 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_LOW,
     content: {
       text: [
-        'The wormhole transit is smooth. Unusually smooth.',
-        'For a moment, the stars outside look almost peaceful.',
-        'You wonder how many other freighter captains are out here right now, alone with their thoughts.',
+        '웜홀 통과가 매끄럽다. 이상하리만치 매끄럽다.',
+        '잠시 창밖의 별들이 거의 평화로워 보인다.',
+        '지금 이 순간 얼마나 많은 화물선 선장이 저 바깥에서 홀로 생각에 잠겨 있을지 궁금해진다.',
       ],
       speaker: null,
       mood: 'calm',
       choices: [
         {
-          text: 'Enjoy the silence.',
+          text: '고요를 즐긴다.',
           next: null,
           effects: { costs: {}, rewards: { karma: 1 } },
         },
         {
-          text: 'Back to work.',
+          text: '다시 일하러.',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -379,20 +379,20 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_DEFAULT,
     content: {
       text: [
-        'Your comms array picks up a signal. Old. Looping.',
-        'It sounds like a distress beacon, but the encryption is centuries out of date.',
-        'Whatever sent it is long gone.',
+        '통신 배열이 신호를 잡는다. 오래된 신호. 반복 재생 중이다.',
+        '조난 신호처럼 들리지만 암호화 방식이 수백 년은 뒤처졌다.',
+        '이걸 보낸 무언가는 이미 오래전에 사라졌다.',
       ],
       speaker: null,
       mood: 'mysterious',
       choices: [
         {
-          text: 'Log the coordinates and move on.',
+          text: '좌표를 기록하고 넘어간다.',
           next: null,
           effects: { costs: {}, rewards: { karma: 1 } },
         },
         {
-          text: 'Ignore it. Not your problem.',
+          text: '무시한다. 내 문제가 아니다.',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -419,14 +419,14 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_HIGH,
     content: {
       text: [
-        'A message from Marcus Cole.',
-        '"Grace period\'s over. Interest starts accruing. And the lien on your trades just got heavier."',
+        '마커스 콜의 메시지.',
+        '"유예 기간은 끝났네. 이자가 쌓이기 시작하지. 그리고 자네 거래에 걸린 담보권이 방금 더 무거워졌어."',
       ],
-      speaker: 'Marcus Cole',
+      speaker: '마커스 콜',
       mood: 'threatening',
       choices: [
         {
-          text: 'Delete message.',
+          text: '메시지를 삭제한다.',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -450,14 +450,14 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_HIGH,
     content: {
       text: [
-        'A message from Marcus Cole.',
-        '"Good. You\'re learning." A pause. "But clearing your slate is just the first step \u2014 the captains who really get out of this life? They made the right friends along the way."',
+        '마커스 콜의 메시지.',
+        '"좋아. 배우고 있군." 잠시 침묵. "하지만 장부를 비운 건 첫걸음일 뿐이네. 이 삶에서 정말 벗어나는 선장들은 가는 길에 제대로 된 친구를 사귀었지."',
       ],
-      speaker: 'Marcus Cole',
+      speaker: '마커스 콜',
       mood: 'neutral',
       choices: [
         {
-          text: '"I\'ll keep that in mind."',
+          text: '"기억해 둘게요."',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -479,20 +479,20 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_LOW,
     content: {
       text: [
-        'The newsfeed crackles to life.',
-        '"...trade disputes continue between the inner and outer colonies. Commodity prices remain volatile..."',
-        'Same old story.',
+        '뉴스피드가 지지직거리며 켜진다.',
+        '"...내행성과 외행성 식민지 간의 무역 분쟁이 이어지고 있습니다. 상품 가격은 계속 불안정합니다..."',
+        '맨날 똑같은 얘기.',
       ],
       speaker: null,
       mood: 'neutral',
       choices: [
         {
-          text: 'Keep listening.',
+          text: '계속 듣는다.',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
         {
-          text: 'Switch it off.',
+          text: '끈다.',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -516,15 +516,15 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_DEFAULT,
     content: {
       text: [
-        'The fuel warning light blinks insistently.',
-        'You tap it. It keeps blinking.',
-        "You're running on fumes.",
+        '연료 경고등이 끈질기게 깜빡인다.',
+        '두드려 본다. 계속 깜빡인다.',
+        "연료가 바닥나 가고 있다.",
       ],
       speaker: null,
       mood: 'tense',
       choices: [
         {
-          text: 'Better find a station soon.',
+          text: '빨리 정거장을 찾는 게 좋겠다.',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -546,15 +546,15 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_DEFAULT,
     content: {
       text: [
-        'A deep groan reverberates through the hull.',
-        'The patch job from last time is holding, but barely.',
-        "One more hard knock and you'll be breathing vacuum.",
+        '선체 전체에 깊은 신음이 울린다.',
+        '지난번 땜질은 버티고 있지만 간신히다.',
+        "한 번만 더 세게 부딪히면 진공을 마시게 된다.",
       ],
       speaker: null,
       mood: 'tense',
       choices: [
         {
-          text: 'Note to self: find a repair dock.',
+          text: '메모: 수리 부두를 찾을 것.',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -576,16 +576,16 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_HIGH,
     content: {
       text: [
-        'You stare at the balance sheet. Read it again.',
-        'Zero. You owe nothing.',
-        'The weight lifts. For the first time since you bought this ship, you can breathe.',
-        "Perhaps it's time to see what opportunities the stations ahead have to offer.",
+        '대차대조표를 바라본다. 다시 읽는다.',
+        '0. 빚이 하나도 없다.',
+        '무게가 가신다. 이 배를 산 뒤 처음으로 숨을 쉴 수 있다.',
+        "이제 앞에 있는 정거장들이 어떤 기회를 줄지 볼 때다.",
       ],
       speaker: null,
       mood: 'triumphant',
       choices: [
         {
-          text: "I'm free.",
+          text: "자유다.",
           next: null,
           effects: { costs: {}, rewards: { karma: 2 } },
         },
@@ -605,14 +605,14 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_DEFAULT,
     content: {
       text: [
-        'Your passenger complains about the cramped quarters.',
-        "They're clearly uncomfortable.",
+        '승객이 좁은 선실에 대해 불평한다.',
+        "분명히 불편해 보인다.",
       ],
       speaker: null,
       mood: 'annoyed',
       choices: [
         {
-          text: 'Apologize and offer refreshments.',
+          text: '사과하고 다과를 내놓는다.',
           next: null,
           effects: {
             costs: { credits: 20 },
@@ -620,12 +620,12 @@ export const NARRATIVE_EVENTS = [
           },
         },
         {
-          text: "It's a freighter, not a cruise ship.",
+          text: "여긴 화물선이지 유람선이 아니다.",
           next: null,
           effects: { costs: { passengerSatisfaction: 10 }, rewards: {} },
         },
         {
-          text: 'Ignore the complaint.',
+          text: '불평을 무시한다.',
           next: null,
           effects: { costs: { passengerSatisfaction: 5 }, rewards: {} },
         },
@@ -643,19 +643,19 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_DEFAULT,
     content: {
       text: [
-        'Your wealthy passenger is impressed with your service.',
-        'They offer a generous tip.',
+        '부유한 승객이 당신의 서비스에 감명받았다.',
+        '후한 팁을 내놓는다.',
       ],
       speaker: null,
       mood: 'pleased',
       choices: [
         {
-          text: 'Accept graciously.',
+          text: '정중히 받는다.',
           next: null,
           effects: { costs: {}, rewards: { credits: 500 } },
         },
         {
-          text: 'Decline politely.',
+          text: '정중히 사양한다.',
           next: null,
           effects: { costs: {}, rewards: { passengerSatisfaction: 10 } },
         },
@@ -673,19 +673,19 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_DEFAULT,
     content: {
       text: [
-        'The children are getting restless.',
-        'The parents look apologetic.',
+        '아이들이 슬슬 안절부절못한다.',
+        '부모들은 미안해하는 표정이다.',
       ],
       speaker: null,
       mood: 'neutral',
       choices: [
         {
-          text: 'Show them the cockpit.',
+          text: '조종실을 보여 준다.',
           next: null,
           effects: { costs: {}, rewards: { passengerSatisfaction: 15 } },
         },
         {
-          text: 'Give them some snacks.',
+          text: '간식을 준다.',
           next: null,
           effects: {
             costs: { credits: 10 },
@@ -693,7 +693,7 @@ export const NARRATIVE_EVENTS = [
           },
         },
         {
-          text: 'Ignore it.',
+          text: '무시한다.',
           next: null,
           effects: { costs: { passengerSatisfaction: 5 }, rewards: {} },
         },
@@ -727,20 +727,20 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_HIGH,
     content: {
       text: [
-        'You ask around about an engineer who works on drive modifications.',
-        'A dock tech looks you over. "Tanaka? Yeah, she\'s here. But she doesn\'t talk to green pilots."',
-        '"She wants pilots who\'ve seen the sector — been to enough ports to prove they\'re not just running one lane back and forth."',
+        '구동계 개조를 하는 엔지니어에 대해 수소문한다.',
+        '부두 기술자가 당신을 훑어본다. "타나카? 응, 여기 있어. 하지만 풋내기 조종사하고는 말 안 해."',
+        '"그녀는 섹터를 직접 본 조종사를 원해. 한 항로만 왕복하는 게 아니라는 걸 증명할 만큼 여러 항구를 다녀 본 사람."',
       ],
       speaker: null,
       mood: 'neutral',
       choices: [
         {
-          text: '"How many ports are we talking?"',
+          text: '"항구가 몇 군데나 필요하죠?"',
           next: 'dock_barnards_pre_tanaka_followup',
           effects: { costs: {}, rewards: {} },
         },
         {
-          text: '"I\'ll be back."',
+          text: '"다시 올게요."',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -758,14 +758,14 @@ export const NARRATIVE_EVENTS = [
     priority: 0,
     content: {
       text: [
-        '"More than you\'ve got." The dock tech counts on her fingers.',
-        '"Visit more systems. Get to know the network. She\'ll notice when you\'ve earned your stripes."',
+        '"당신이 간 것보다 많아." 부두 기술자가 손가락을 꼽는다.',
+        '"더 많은 항성계를 가 봐. 네트워크를 익혀. 실력을 쌓으면 그녀가 알아챌 거야."',
       ],
       speaker: null,
       mood: 'neutral',
       choices: [
         {
-          text: '"Got it. I\'ll explore more first."',
+          text: '"알겠어요. 먼저 더 탐험해 볼게요."',
           next: null,
           effects: { costs: {}, rewards: {} },
         },
@@ -793,28 +793,28 @@ export const NARRATIVE_EVENTS = [
     priority: NARRATIVE_PRIORITY_CRITICAL,
     content: {
       text: [
-        "A woman in engineer's coveralls watches your ship dock. She approaches as you exit the airlock.",
-        '"Tanaka drive. Mark III, if I\'m not mistaken."',
-        'She circles your ship, running a hand along the hull.',
-        '"I\'m Yuki Tanaka. I designed that drive. Well, my father did. I improved it."',
+        "엔지니어 작업복을 입은 여자가 당신의 배가 도킹하는 걸 지켜본다. 당신이 에어록을 나서자 다가온다.",
+        '"타나카 구동계. 마크 III, 내가 틀리지 않았다면."',
+        '그녀가 배 주위를 돌며 선체를 손으로 쓸어 본다.',
+        '"유키 타나카예요. 그 구동계를 설계했죠. 정확히는 아버지가 했고, 제가 개량했어요."',
       ],
-      speaker: 'Yuki Tanaka',
+      speaker: '유키 타나카',
       mood: 'mysterious',
       choices: [
         {
-          text: '"It\'s a good drive. Reliable."',
+          text: '"좋은 구동계예요. 믿을 만하죠."',
           next: null,
           effects: { rewards: { karma: 1 } },
           flags: ['tanaka_met'],
         },
         {
-          text: '"You\'re THE Tanaka? I\'ve heard of you."',
+          text: '"당신이 그 타나카예요? 얘기 들었어요."',
           next: null,
           effects: { rewards: { karma: 1 } },
           flags: ['tanaka_met'],
         },
         {
-          text: '"What do you want?"',
+          text: '"원하는 게 뭐죠?"',
           next: null,
           effects: {},
           flags: ['tanaka_met'],

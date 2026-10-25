@@ -77,7 +77,7 @@ export function NarrativeEventPanel({ event, onClose }) {
       data-panel
       role="dialog"
       aria-modal="true"
-      aria-label="Narrative event"
+      aria-label="서사 이벤트"
     >
       {content.speaker && (
         <div className="event-speaker">{content.speaker}</div>

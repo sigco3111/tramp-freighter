@@ -219,7 +219,7 @@
   border: 1px solid rgba(0, 255, 136, 0.3);
   border-radius: 5px;
   color: #ffffff;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   font-size: var(--font-size-large);
   cursor: pointer;
   transition: all 0.2s;

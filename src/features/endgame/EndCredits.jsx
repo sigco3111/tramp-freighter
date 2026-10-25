@@ -13,7 +13,7 @@ export function EndCredits({ onCreditsComplete }) {
   const animationRef = useRef(null);
 
   // Direct access acceptable: read-only mount-time value that never changes during credits
-  const shipName = useMemo(() => game.getShip()?.name || 'Your Ship', [game]);
+  const shipName = useMemo(() => game.getShip()?.name || '당신의 함선', [game]);
   const cast = useMemo(() => buildCastList(), []);
 
   const handleSkip = useCallback(() => {
@@ -181,9 +181,9 @@ export function EndCredits({ onCreditsComplete }) {
               </div>
             ))}
             <div className="credits-cast-ship">
-              <div>And introducing</div>
+              <div>그리고 특별 출연</div>
               <div className="credits-ship-name">{shipName}</div>
-              <div>as itself</div>
+              <div>본인 역</div>
             </div>
           </div>
 
@@ -198,16 +198,16 @@ export function EndCredits({ onCreditsComplete }) {
           <button
             className="credits-pause-btn"
             onClick={handleTogglePause}
-            aria-label={paused ? 'Play credits' : 'Pause credits'}
+            aria-label={paused ? '크레딧 재생' : '크레딧 일시정지'}
           >
-            {paused ? 'Play' : 'Pause'}
+            {paused ? '재생' : '일시정지'}
           </button>
           <button
             className="credits-skip-btn"
             onClick={handleSkip}
-            aria-label="Skip credits"
+            aria-label="크레딧 건너뛰기"
           >
-            Skip
+            건너뛰기
           </button>
         </div>
       )}

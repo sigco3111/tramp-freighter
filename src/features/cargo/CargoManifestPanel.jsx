@@ -63,7 +63,7 @@ export function CargoManifestPanel({ onClose }) {
    */
   const renderCargoItem = (cargoEntry, index) => {
     const cargoValue = TradingSystem.calculateCargoValue(cargoEntry);
-    const locationName = cargoEntry.buySystemName || 'Unknown';
+    const locationName = cargoEntry.buySystemName || '알 수 없음';
     const ageText = formatCargoAge(currentDay, cargoEntry.buyDate || 0);
 
     return (
@@ -73,25 +73,25 @@ export function CargoManifestPanel({ onClose }) {
         </div>
         <div className="cargo-manifest-details">
           <div className="cargo-manifest-detail">
-            <span className="detail-label">Quantity:</span>
+            <span className="detail-label">수량:</span>
             <span className="detail-value">
               {pluralizeUnit(cargoEntry.qty)}
             </span>
           </div>
           <div className="cargo-manifest-detail">
-            <span className="detail-label">Purchased at:</span>
+            <span className="detail-label">구매 장소:</span>
             <span className="detail-value">{locationName}</span>
           </div>
           <div className="cargo-manifest-detail">
-            <span className="detail-label">Purchase price:</span>
-            <span className="detail-value">₡{cargoEntry.buyPrice}/unit</span>
+            <span className="detail-label">구매 가격:</span>
+            <span className="detail-value">₡{cargoEntry.buyPrice}/단위</span>
           </div>
           <div className="cargo-manifest-detail">
-            <span className="detail-label">Purchased:</span>
+            <span className="detail-label">구매일:</span>
             <span className="detail-value">{ageText}</span>
           </div>
           <div className="cargo-manifest-detail cargo-manifest-value">
-            <span className="detail-label">Current value:</span>
+            <span className="detail-label">현재 가치:</span>
             <span className="detail-value">₡{cargoValue.toLocaleString()}</span>
           </div>
         </div>
@@ -101,26 +101,26 @@ export function CargoManifestPanel({ onClose }) {
 
   return (
     <div id="cargo-manifest-panel" className="panel-base visible">
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         ×
       </button>
       <h2>
-        CARGO MANIFEST — <span id="cargo-manifest-ship-name">{shipName}</span>
+        화물 목록 —  <span id="cargo-manifest-ship-name">{shipName}</span>
       </h2>
 
       <div className="cargo-manifest-content">
         {/* Capacity Display */}
         <div className="cargo-manifest-section">
           <div className="cargo-capacity-display">
-            <span className="capacity-label">Capacity:</span>
+            <span className="capacity-label">적재량:</span>
             <span id="cargo-manifest-used">{cargoUsed}</span>
             <span> / </span>
             <span id="cargo-manifest-capacity">{cargoCapacity}</span>
-            <span className="capacity-units"> units</span>
+            <span className="capacity-units">  단위</span>
             {passengerSpace > 0 && (
               <span className="capacity-breakdown">
                 {' '}
-                ({tradeCargoUsed} cargo + {passengerSpace} passengers)
+                ({tradeCargoUsed}  화물 +  {passengerSpace}  승객)
               </span>
             )}
           </div>
@@ -129,7 +129,7 @@ export function CargoManifestPanel({ onClose }) {
         {/* Passenger Manifest */}
         {passengerMissions.length > 0 && (
           <div className="cargo-manifest-section">
-            <h3>Passengers</h3>
+            <h3>승객</h3>
             <div className="cargo-manifest-list">
               {passengerMissions.map((mission) => {
                 const typeConfig =
@@ -139,15 +139,15 @@ export function CargoManifestPanel({ onClose }) {
                   starData.find(
                     (s) => s.id === mission.requirements?.destination
                   )?.name ||
-                  'Unknown';
+                  '알 수 없음';
                 return (
                   <div key={mission.id} className="cargo-manifest-item">
                     <div className="cargo-manifest-name">
-                      {mission.passenger?.name || 'Unknown Passenger'}
+                      {mission.passenger?.name || '이름 모를 승객'}
                     </div>
                     <div className="cargo-manifest-details">
                       <div className="cargo-manifest-detail">
-                        <span className="detail-label">Type:</span>
+                        <span className="detail-label">종류:</span>
                         <span className="detail-value">
                           {capitalizeFirst(
                             mission.passenger?.type || 'unknown'
@@ -155,17 +155,17 @@ export function CargoManifestPanel({ onClose }) {
                         </span>
                       </div>
                       <div className="cargo-manifest-detail">
-                        <span className="detail-label">Cargo space:</span>
+                        <span className="detail-label">화물 공간:</span>
                         <span className="detail-value">
                           {pluralizeUnit(typeConfig.cargoSpace || 0)}
                         </span>
                       </div>
                       <div className="cargo-manifest-detail">
-                        <span className="detail-label">Destination:</span>
+                        <span className="detail-label">목적지:</span>
                         <span className="detail-value">{destName}</span>
                       </div>
                       <div className="cargo-manifest-detail">
-                        <span className="detail-label">Satisfaction:</span>
+                        <span className="detail-label">만족도:</span>
                         <span className="detail-value">
                           {Math.round(mission.passenger?.satisfaction ?? 50)}%
                         </span>
@@ -180,10 +180,10 @@ export function CargoManifestPanel({ onClose }) {
 
         {/* Cargo List */}
         <div className="cargo-manifest-section">
-          <h3>Cargo</h3>
+          <h3>화물</h3>
           <div id="cargo-manifest-list" className="cargo-manifest-list">
             {cargo.length === 0 ? (
-              <div className="cargo-manifest-empty">No cargo</div>
+              <div className="cargo-manifest-empty">화물 없음</div>
             ) : (
               cargo.map((cargoEntry, index) =>
                 renderCargoItem(cargoEntry, index)
@@ -195,7 +195,7 @@ export function CargoManifestPanel({ onClose }) {
         {/* Total Value */}
         <div className="cargo-manifest-section">
           <div className="cargo-manifest-total">
-            <span className="total-label">Total Value:</span>
+            <span className="total-label">총 가치:</span>
             <span id="cargo-manifest-total-value" className="total-value">
               ₡{totals.totalValue.toLocaleString()}
             </span>

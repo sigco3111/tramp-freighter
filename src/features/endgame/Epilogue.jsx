@@ -50,39 +50,39 @@ export function Epilogue({ onCreditsComplete }) {
         {isFading && <div className="credits-blackout" />}
         <div id="epilogue" className="visible">
           <div className="endgame-panel">
-            <h2>VOYAGE STATISTICS</h2>
+            <h2>항해 통계</h2>
             <div className="stats-grid">
               <div className="stat-row">
-                <span>Final date:</span>
+                <span>최종 날짜:</span>
                 <span>{gameDayToDate(stats.daysElapsed ?? 0)}</span>
               </div>
               <div className="stat-row">
-                <span>Systems visited:</span>
+                <span>방문한 항성계:</span>
                 <span>{stats.systemsVisited}</span>
               </div>
               <div className="stat-row">
-                <span>Credits earned:</span>
+                <span>번 크레딧:</span>
                 <span>₡{stats.creditsEarned.toLocaleString()}</span>
               </div>
               <div className="stat-row">
-                <span>Missions completed:</span>
+                <span>완료한 임무:</span>
                 <span>{stats.missionsCompleted}</span>
               </div>
               <div className="stat-row">
-                <span>NPCs at Trusted or higher:</span>
+                <span>신뢰 이상 NPC:</span>
                 <span>{stats.trustedNPCs}</span>
               </div>
               <div className="stat-row">
-                <span>Cargo hauled:</span>
-                <span>{stats.cargoHauled} units</span>
+                <span>수송한 화물:</span>
+                <span>{stats.cargoHauled}  단위</span>
               </div>
               <div className="stat-row">
-                <span>Jumps made:</span>
+                <span>점프 횟수:</span>
                 <span>{stats.jumpsCompleted}</span>
               </div>
             </div>
             <Button onClick={handleCreditsClick} disabled={isFading}>
-              Credits
+              크레딧
             </Button>
           </div>
         </div>
@@ -93,13 +93,13 @@ export function Epilogue({ onCreditsComplete }) {
   return (
     <div id="epilogue" className="visible">
       <div className="endgame-panel">
-        <h2>EPILOGUE</h2>
+        <h2>에필로그</h2>
         {sections.map((section) => (
           <p key={section.id} className="epilogue-text">
             {section.text}
           </p>
         ))}
-        <Button onClick={() => setPhase('stats')}>Continue</Button>
+        <Button onClick={() => setPhase('stats')}>계속</Button>
       </div>
     </div>
   );

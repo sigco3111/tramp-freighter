@@ -100,7 +100,7 @@ export class NegotiationManager extends BaseManager {
           },
           rewards: {},
           description:
-            'Successfully negotiated a reduced payment with the pirates.',
+            '해적과 협상해 지불액을 성공적으로 깎았습니다.',
         };
       }
 
@@ -114,7 +114,7 @@ export class NegotiationManager extends BaseManager {
           credits: reducedCredits,
         },
         rewards: {},
-        description: `Talked the pirates down to ₡${reducedCredits} in credits.`,
+        description: `해적을 설득해 ₡${reducedCredits}로 낮췄습니다.`,
       };
     } else {
       return {
@@ -122,7 +122,7 @@ export class NegotiationManager extends BaseManager {
         escalate: true,
         costs: {},
         rewards: {},
-        description: "The pirates don't take kindly to your offer.",
+        description: "해적은 당신의 제안을 곱게 받아들이지 않습니다.",
       };
     }
   }
@@ -152,7 +152,7 @@ export class NegotiationManager extends BaseManager {
         costs: {},
         rewards: {},
         description:
-          'Pirates discovered you have no medicine. They see through the lie.',
+          '해적이 당신에게 의약품이 없다는 걸 알아챘습니다. 거짓말이 들통났습니다.',
       };
     }
 
@@ -169,7 +169,7 @@ export class NegotiationManager extends BaseManager {
         costs: {},
         rewards: {},
         description:
-          'Pirates showed sympathy for your medical mission and let you pass.',
+          '해적이 당신의 의료 임무에 동정을 보이며 통과시켜 주었습니다.',
       };
     } else {
       return {
@@ -181,7 +181,7 @@ export class NegotiationManager extends BaseManager {
         },
         rewards: {},
         description:
-          'Pirates acknowledged your medicine but still demanded payment.',
+          '해적이 의약품은 인정했지만 여전히 대가를 요구했습니다.',
       };
     }
   }
@@ -207,7 +207,7 @@ export class NegotiationManager extends BaseManager {
         success: false,
         costs: {},
         rewards: {},
-        description: 'You have nothing the pirates want.',
+        description: '해적이 원하는 것이 당신에겐 없습니다.',
       };
     }
 
@@ -228,7 +228,7 @@ export class NegotiationManager extends BaseManager {
           },
         },
         description:
-          'Pirates accepted your intelligence and let you pass. Your cooperation was noted.',
+          '해적이 당신의 정보를 받아들이고 통과시켜 주었습니다. 당신의 협조가 기록되었습니다.',
       };
     } else {
       return {
@@ -240,7 +240,7 @@ export class NegotiationManager extends BaseManager {
           },
         },
         description:
-          'Pirates rejected your intelligence offer and became suspicious.',
+          '해적이 당신의 정보 제안을 거절하고 의심하기 시작했습니다.',
       };
     }
   }
@@ -276,7 +276,7 @@ export class NegotiationManager extends BaseManager {
         },
         rewards: {},
         description:
-          'Paid the pirates their demanded tribute and continued safely.',
+          '해적이 요구한 상납금을 내고 무사히 갈 길을 갔습니다.',
       };
     }
 
@@ -301,7 +301,7 @@ export class NegotiationManager extends BaseManager {
           credits: creditDemand,
         },
         rewards: {},
-        description: `No cargo to plunder. Pirates demanded ₡${creditDemand} in credits instead.`,
+        description: `약탈할 화물이 없습니다. 해적은 대신 ₡${creditDemand}를 요구했습니다.`,
       };
     }
 
@@ -354,7 +354,7 @@ export class NegotiationManager extends BaseManager {
             kidnappedPassengerId: target.id,
           },
           rewards: {},
-          description: `You couldn't pay. The pirates seized your passenger, ${target.passenger.name}.`,
+          description: `돈을 낼 수 없었습니다. 해적이 승객 ${target.passenger.name}을(를) 붙잡았습니다.`,
         };
       }
     }
@@ -376,7 +376,7 @@ export class NegotiationManager extends BaseManager {
       success: false,
       costs,
       rewards: {},
-      description: `You couldn't pay. Pirates damaged your ${targetSystem === 'lifeSupport' ? 'life support' : targetSystem} before leaving.`,
+      description: `돈을 낼 수 없었습니다. 해적이 떠나기 전에 ${targetSystem === 'lifeSupport' ? '생명 유지 장치' : targetSystem}을(를) 손상시켰습니다.`,
     };
   }
 }

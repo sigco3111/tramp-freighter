@@ -1,3 +1,12 @@
+const DISPLAY_KO = {
+  grain: '곡물',
+  ore: '광석',
+  tritium: '트리튬',
+  parts: '부품',
+  medicine: '의약품',
+  electronics: '전자제품',
+};
+
 /**
  * String utility functions for text formatting and display
  *
@@ -41,6 +50,8 @@ export function sanitizeShipName(name) {
  */
 export function capitalizeFirst(str) {
   if (!str || typeof str !== 'string') return String(str ?? '');
+  const ko = DISPLAY_KO[str.toLowerCase()];
+  if (ko) return ko;
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 

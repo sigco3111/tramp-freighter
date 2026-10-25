@@ -43,15 +43,15 @@ export function ActiveMissions() {
 
   return (
     <div className="active-missions-hud">
-      <h2>Active Missions</h2>
+      <h2>진행 중인 임무</h2>
       {tanakaMission && (
         <div className="mission-hud-item quest-mission">
-          <span className="mission-hud-quest-label">Quest</span>
+          <span className="mission-hud-quest-label">퀘스트</span>
           <div className="mission-hud-title">{tanakaMission.title}</div>
           {tanakaMission.progress && (
             <div className="mission-hud-cargo">{tanakaMission.progress}</div>
           )}
-          <div className="mission-hud-deadline">Ongoing</div>
+          <div className="mission-hud-deadline">지속</div>
         </div>
       )}
       {missions?.active?.map((mission) => {
@@ -75,7 +75,7 @@ export function ActiveMissions() {
             )}
             {mission.missionCargo?.isIllegal &&
               (cargo || []).some((c) => c.missionId === mission.id) && (
-                <div className="mission-hud-rumor">Rumors spreading</div>
+                <div className="mission-hud-rumor">소문 확산 중</div>
               )}
             {cargoProgress && (
               <div
@@ -86,13 +86,13 @@ export function ActiveMissions() {
               </div>
             )}
             <div className="mission-hud-deadline">
-              {daysRemaining > 0 ? `${daysRemaining}d remaining` : 'EXPIRED'}
+              {daysRemaining > 0 ? `${daysRemaining}일 남음` : '기한 만료'}
             </div>
             <button
               className="mission-abandon-btn"
               onClick={() => setMissionToAbandon(mission)}
             >
-              Abandon
+              포기
             </button>
           </div>
         );
@@ -101,14 +101,14 @@ export function ActiveMissions() {
         isOpen={!!missionToAbandon}
         onConfirm={handleAbandonConfirm}
         onCancel={() => setMissionToAbandon(null)}
-        title="Abandon Mission?"
+        title="임무를 포기하시겠습니까?"
         message={
           missionToAbandon
-            ? `Abandon "${missionToAbandon.title}"? This will mark the mission as failed and apply any penalties.`
+            ? `"${missionToAbandon.title}" 임무를 포기하시겠습니까? 임무가 실패로 처리되고 불이익이 적용될 수 있습니다.`
             : ''
         }
-        confirmText="Abandon"
-        cancelText="Keep Mission"
+        confirmText="포기"
+        cancelText="임무 유지"
       />
     </div>
   );

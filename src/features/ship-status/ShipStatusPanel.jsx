@@ -93,7 +93,7 @@ export function ShipStatusPanel({ onClose }) {
         </div>
         <div className="quirk-description">{upgrade.description}</div>
         {upgrade.tradeoff && (
-          <div className="quirk-flavor">Tradeoff: {upgrade.tradeoff}</div>
+          <div className="quirk-flavor">단점:  {upgrade.tradeoff}</div>
         )}
       </div>
     );
@@ -101,19 +101,19 @@ export function ShipStatusPanel({ onClose }) {
 
   return (
     <div id="ship-status-panel" className="ship-status-panel visible">
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         ×
       </button>
-      <h2>SHIP STATUS — {shipName}</h2>
+      <h2>함선 상태 —  {shipName}</h2>
 
       {/* Ship Condition Section */}
       <div className="ship-status-section">
-        <h3>Condition</h3>
+        <h3>상태</h3>
         <div className="ship-status-conditions">
-          {renderConditionBar('Hull', shipCondition.hull, 'hull')}
-          {renderConditionBar('Engine', shipCondition.engine, 'engine')}
+          {renderConditionBar('선체', shipCondition.hull, 'hull')}
+          {renderConditionBar('엔진', shipCondition.engine, 'engine')}
           {renderConditionBar(
-            'Life Support',
+            '생명 유지',
             shipCondition.lifeSupport,
             'life-support'
           )}
@@ -122,10 +122,10 @@ export function ShipStatusPanel({ onClose }) {
 
       {/* Upgrades Section */}
       <div className="ship-status-section">
-        <h3>Upgrades</h3>
+        <h3>업그레이드</h3>
         <div className="ship-quirks-list">
           {upgrades.length === 0 ? (
-            <div className="ship-quirks-empty">No upgrades installed</div>
+            <div className="ship-quirks-empty">설치된 업그레이드 없음</div>
           ) : (
             upgrades.map((upgradeId) => renderUpgrade(upgradeId))
           )}
@@ -134,10 +134,10 @@ export function ShipStatusPanel({ onClose }) {
 
       {/* Quirks Section */}
       <div className="ship-status-section">
-        <h3>Ship Quirks</h3>
+        <h3>함선 특성</h3>
         <div className="ship-quirks-list">
           {quirks.length === 0 ? (
-            <div className="ship-quirks-empty">No quirks</div>
+            <div className="ship-quirks-empty">특성 없음</div>
           ) : (
             quirks.map((quirkId) => renderQuirk(quirkId))
           )}

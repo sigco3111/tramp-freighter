@@ -5,11 +5,11 @@ import { Modal } from '../../components/Modal';
 import { EVENT_NAMES } from '../../game/constants.js';
 
 function getSatisfactionLabel(satisfaction) {
-  if (satisfaction >= 80) return 'Very Satisfied';
-  if (satisfaction >= 60) return 'Satisfied';
-  if (satisfaction >= 40) return 'Neutral';
-  if (satisfaction >= 20) return 'Dissatisfied';
-  return 'Very Dissatisfied';
+  if (satisfaction >= 80) return '매우 만족';
+  if (satisfaction >= 60) return '만족';
+  if (satisfaction >= 40) return '보통';
+  if (satisfaction >= 20) return '불만';
+  return '매우 불만';
 }
 
 export function MissionCompleteNotifier() {
@@ -59,16 +59,16 @@ export function MissionCompleteNotifier() {
     <Modal
       isOpen={true}
       onClose={handleDismiss}
-      title="Mission Complete!"
+      title="임무 완료!"
       showCloseButton={false}
     >
       <div className="mission-complete-body">
         <p className="mission-complete-title">{current.title}</p>
         {current.type === 'passenger' && current.passenger && (
           <div className="passenger-delivery-info">
-            <p>{current.passenger.name} disembarks.</p>
+            <p>{current.passenger.name}  하선.</p>
             <div className="passenger-satisfaction">
-              Satisfaction: {current.passenger.satisfaction}% (
+              만족도:  {current.passenger.satisfaction}% (
               {getSatisfactionLabel(current.passenger.satisfaction)})
             </div>
           </div>
@@ -80,14 +80,14 @@ export function MissionCompleteNotifier() {
               calculateTradeWithholding(gross);
             return (
               <div className="mission-complete-rewards">
-                <h4>Rewards:</h4>
+                <h4>보상:</h4>
                 <div>₡{gross}</div>
                 {withheld > 0 && (
                   <>
                     <div className="withholding-line">
-                      Cole&apos;s cut: -₡{withheld} (does not reduce your debt)
+                      콜의 몫: -₡{withheld}  (부채는 줄어들지 않음)
                     </div>
-                    <div>You receive: ₡{playerReceives}</div>
+                    <div>수령액: ₡{playerReceives}</div>
                   </>
                 )}
               </div>
@@ -96,10 +96,10 @@ export function MissionCompleteNotifier() {
       </div>
       <div className="modal-actions">
         <button className="modal-cancel" onClick={handleDismiss}>
-          Later
+          나중에
         </button>
         <button className="modal-confirm" onClick={handleComplete}>
-          Claim Reward
+          보상 받기
         </button>
       </div>
     </Modal>

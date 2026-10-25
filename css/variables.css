@@ -67,7 +67,7 @@
   --font-size-xlarge: 1rem;
   --font-size-xxlarge: 1.125rem;
   --font-size-title: 1.375rem;
-  --font-family-mono: 'Courier New', monospace;
+  --font-family-mono: 'Courier New', 'Noto Sans KR', monospace;
 
   /* Button Dimensions */
   --button-padding: 12px 24px;

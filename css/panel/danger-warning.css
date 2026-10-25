@@ -308,7 +308,7 @@
   border-radius: 5px;
   font-size: var(--font-size-large);
   font-weight: bold;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   cursor: pointer;
   transition: all 0.3s ease;
   border: 2px solid;

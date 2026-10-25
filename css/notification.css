@@ -19,7 +19,7 @@
   padding: 10px 20px;
   border-radius: 4px;
   font-size: var(--font-size-medium);
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   text-align: center;
   animation: notificationSlideIn 0.3s ease-out;
   pointer-events: auto;

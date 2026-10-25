@@ -58,21 +58,21 @@ export function MissionBoardPanel({ onClose }) {
     for (const mission of missions.board) {
       if (activeCount >= MISSION_CONFIG.MAX_ACTIVE) {
         reasons[mission.id] =
-          `Maximum ${MISSION_CONFIG.MAX_ACTIVE} active missions.`;
+          `진행 중인 임무는 최대 ${MISSION_CONFIG.MAX_ACTIVE}개입니다.`;
       } else if (activeIds.has(mission.id)) {
-        reasons[mission.id] = 'Already accepted.';
+        reasons[mission.id] = '이미 수락했습니다.';
       } else if (
         mission.type === 'passenger' &&
         mission.requirements.cargoSpace > cargoRemaining
       ) {
         reasons[mission.id] =
-          `Need ${mission.requirements.cargoSpace} cargo space (${cargoRemaining} available).`;
+          `화물 공간 ${mission.requirements.cargoSpace} 필요 (남은 공간 ${cargoRemaining}).`;
       } else if (
         mission.missionCargo &&
         mission.missionCargo.quantity > cargoRemaining
       ) {
         reasons[mission.id] =
-          `Need ${mission.missionCargo.quantity} cargo space (${cargoRemaining} available).`;
+          `화물 공간 ${mission.missionCargo.quantity} 필요 (남은 공간 ${cargoRemaining}).`;
       }
     }
     return reasons;
@@ -83,16 +83,16 @@ export function MissionBoardPanel({ onClose }) {
     if (!result.success) {
       setFeedback(result.reason);
     } else {
-      setFeedback(`Accepted: ${mission.title}`);
+      setFeedback(`수락함: ${mission.title}`);
     }
   };
 
   return (
     <div id="mission-board-panel" className="visible">
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         &times;
       </button>
-      <h2>Mission Board</h2>
+      <h2>임무 게시판</h2>
       {feedback && <div className="mission-feedback">{feedback}</div>}
       <div className="mission-list">
         {missions?.board?.map((mission) => (
@@ -100,7 +100,7 @@ export function MissionBoardPanel({ onClose }) {
             <h3>
               {mission.title}
               {mission.priority && (
-                <span className="priority-badge">PRIORITY</span>
+                <span className="priority-badge">우선</span>
               )}
             </h3>
             <p>{mission.description}</p>
@@ -119,29 +119,29 @@ export function MissionBoardPanel({ onClose }) {
                     &ldquo;{mission.passenger.dialogue}&rdquo;
                   </div>
                   <div>
-                    Space Required:{' '}
+                    필요 공간:{' '}
                     {pluralizeUnit(mission.requirements.cargoSpace)}
                   </div>
                 </>
               ) : mission.missionCargo ? (
                 <>
                   <div>
-                    Cargo: {mission.missionCargo.quantity}{' '}
+                    화물:  {mission.missionCargo.quantity}{' '}
                     {mission.missionCargo.good
                       .replace(/_/g, ' ')
                       .replace(/\b\w/g, (c) => c.toUpperCase())}
                   </div>
                   {mission.missionCargo.isIllegal && (
-                    <div className="illegal-warning">Discreet Delivery</div>
+                    <div className="illegal-warning">은밀한 배달</div>
                   )}
                 </>
               ) : mission.requirements?.cargo ? (
                 <div>
-                  Deliver: {mission.requirements.quantity}{' '}
+                  배달:  {mission.requirements.quantity}{' '}
                   {mission.requirements.cargo}
                 </div>
               ) : null}
-              <div>Deadline: {mission.requirements.deadline} days</div>
+              <div>기한:  {mission.requirements.deadline} 일</div>
               {(() => {
                 const warning = getFeasibilityWarning(
                   routeIndicators[mission.id]?.totalDays,
@@ -156,12 +156,12 @@ export function MissionBoardPanel({ onClose }) {
                 ) : null;
               })()}
               <div className={mission.saturated ? 'reward-saturated' : ''}>
-                Reward: ₡{mission.rewards.credits}
+                보수: ₡{mission.rewards.credits}
                 {mission.saturated && (
                   <span
                     className="saturation-hint"
-                    title="Haulers on this route are plentiful — reduced pay"
-                    aria-label="Reduced pay: haulers on this route are plentiful"
+                    title="이 항로에는 운송업자가 많아 보수가 줄었습니다"
+                    aria-label="보수 감소: 이 항로에는 운송업자가 많습니다"
                   >
                     {' '}
                     ▼
@@ -175,7 +175,7 @@ export function MissionBoardPanel({ onClose }) {
               disabled={!!disabledReasons[mission.id]}
               title={disabledReasons[mission.id] || ''}
             >
-              Accept
+              수락
             </button>
             {disabledReasons[mission.id] && (
               <div className="mission-disabled-reason">
@@ -185,11 +185,11 @@ export function MissionBoardPanel({ onClose }) {
           </div>
         ))}
         {(!missions?.board || missions.board.length === 0) && (
-          <p>No contracts available. Check back tomorrow.</p>
+          <p>의뢰가 없습니다. 내일 다시 확인하세요.</p>
         )}
       </div>
       <button className="station-btn secondary" onClick={onClose}>
-        Back to Station
+        정거장으로 돌아가기
       </button>
     </div>
   );

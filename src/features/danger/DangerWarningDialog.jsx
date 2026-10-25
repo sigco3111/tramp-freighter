@@ -73,19 +73,19 @@ export function DangerWarningDialog({
       aria-modal="true"
       aria-labelledby="danger-warning-title"
     >
-      <button className="close-btn" onClick={onCancel} aria-label="Close">
+      <button className="close-btn" onClick={onCancel} aria-label="닫기">
         ×
       </button>
-      <h2 id="danger-warning-title">Jump Warning</h2>
+      <h2 id="danger-warning-title">점프 경고</h2>
 
       <div className="warning-content">
         {/* Destination Info Section */}
         <div className="warning-section destination-info">
-          <h3>Destination</h3>
+          <h3>목적지</h3>
           <div className="destination-details">
             <div className="destination-name">{destinationSystemName}</div>
             <div className="danger-classification">
-              <span className="classification-label">Security Level:</span>
+              <span className="classification-label">보안 등급:</span>
               <span
                 className={`classification-value ${dangerZone}`}
                 style={{ color: zoneInfo.color }}
@@ -99,23 +99,23 @@ export function DangerWarningDialog({
 
         {/* Risk Assessment Section */}
         <div className="warning-section risk-assessment">
-          <h3>Risk Assessment</h3>
+          <h3>위험 평가</h3>
           <div className="risk-grid">
             <div className="risk-item">
               <div className="risk-header">
-                <span className="risk-label">Pirate Encounters</span>
+                <span className="risk-label">해적 조우</span>
                 <span className={`risk-value ${getRiskLevel(pirateChance)}`}>
                   {Math.round(pirateChance * 100)}%
                 </span>
               </div>
               <div className="risk-description">
-                Probability of hostile pirate encounters during jump
+                점프 중 적대적인 해적과 마주칠 확률
               </div>
             </div>
 
             <div className="risk-item">
               <div className="risk-header">
-                <span className="risk-label">Customs Inspections</span>
+                <span className="risk-label">세관 검문</span>
                 <span
                   className={`risk-value ${getRiskLevel(inspectionChance)}`}
                 >
@@ -123,7 +123,7 @@ export function DangerWarningDialog({
                 </span>
               </div>
               <div className="risk-description">
-                Probability of customs inspection upon arrival
+                도착 시 세관 검문을 받을 확률
               </div>
             </div>
           </div>
@@ -135,13 +135,13 @@ export function DangerWarningDialog({
             (factions?.authorities && factions.authorities !== 0) ||
             (factions?.outlaws && factions.outlaws !== 0)) && (
             <div className="risk-factors">
-              <h4>Risk Modifiers</h4>
+              <h4>위험 보정 요인</h4>
               <div className="factors-list">
                 {cargo?.length > 0 && (
                   <div className="factor">
                     <span className="factor-icon">📦</span>
                     <span className="factor-text">
-                      Cargo value affects pirate encounter chance
+                      화물 가치가 해적 조우 확률에 영향을 줍니다
                     </span>
                   </div>
                 )}
@@ -149,7 +149,7 @@ export function DangerWarningDialog({
                   <div className="factor warning">
                     <span className="factor-icon">⚠️</span>
                     <span className="factor-text">
-                      Poor engine condition increases pirate risk
+                      엔진 상태가 나쁘면 해적 위험이 커집니다
                     </span>
                   </div>
                 )}
@@ -157,7 +157,7 @@ export function DangerWarningDialog({
                   <div className="factor positive">
                     <span className="factor-icon">📡</span>
                     <span className="factor-text">
-                      Advanced sensors reduce pirate detection
+                      고급 센서는 해적 탐지 확률을 낮춥니다
                     </span>
                   </div>
                 )}
@@ -165,7 +165,7 @@ export function DangerWarningDialog({
                   <div className="factor positive">
                     <span className="factor-icon">🛡️</span>
                     <span className="factor-text">
-                      Good authority standing reduces inspection risk
+                      당국과의 관계가 좋으면 검문 위험이 줄어듭니다
                     </span>
                   </div>
                 )}
@@ -173,7 +173,7 @@ export function DangerWarningDialog({
                   <div className="factor warning">
                     <span className="factor-icon">🛡️</span>
                     <span className="factor-text">
-                      Poor authority standing increases inspection risk
+                      당국과의 관계가 나쁘면 검문 위험이 커집니다
                     </span>
                   </div>
                 )}
@@ -181,7 +181,7 @@ export function DangerWarningDialog({
                   <div className="factor positive">
                     <span className="factor-icon">🏴‍☠️</span>
                     <span className="factor-text">
-                      Outlaw reputation may deter some pirates
+                      무법자 평판이 일부 해적을 물러서게 할 수 있습니다
                     </span>
                   </div>
                 )}
@@ -189,7 +189,7 @@ export function DangerWarningDialog({
                   <div className="factor warning">
                     <span className="factor-icon">🏴‍☠️</span>
                     <span className="factor-text">
-                      Poor outlaw standing increases pirate aggression
+                      무법자 평판이 낮으면 해적이 더 공격적입니다
                     </span>
                   </div>
                 )}
@@ -201,20 +201,20 @@ export function DangerWarningDialog({
         {/* Safety Recommendations */}
         {dangerZone !== 'safe' && (
           <div className="warning-section safety-recommendations">
-            <h3>Safety Recommendations</h3>
+            <h3>안전 권고</h3>
             <div className="recommendations-list">
               {dangerZone === 'dangerous' && (
                 <>
                   <div className="recommendation critical">
                     <span className="rec-icon">⚠️</span>
                     <span className="rec-text">
-                      Dangerous zone - high pirate activity expected
+                      위험 지대 - 해적 활동이 활발할 것으로 예상됩니다
                     </span>
                   </div>
                   <div className="recommendation">
                     <span className="rec-icon">🔧</span>
                     <span className="rec-text">
-                      Ensure ship systems are in good condition
+                      함선 시스템 상태를 양호하게 유지하세요
                     </span>
                   </div>
                 </>
@@ -223,20 +223,20 @@ export function DangerWarningDialog({
                 <div className="recommendation warning">
                   <span className="rec-icon">⚠️</span>
                   <span className="rec-text">
-                    Contested zone - moderate risk of encounters
+                    분쟁 지대 - 조우 위험이 중간 수준입니다
                   </span>
                 </div>
               )}
               <div className="recommendation">
                 <span className="rec-icon">💰</span>
                 <span className="rec-text">
-                  Consider cargo value vs. risk tolerance
+                  화물 가치와 위험 감수 수준을 비교해 보세요
                 </span>
               </div>
               <div className="recommendation">
                 <span className="rec-icon">🛣️</span>
                 <span className="rec-text">
-                  Alternative routes through safer systems may be available
+                  더 안전한 항성계를 거치는 대체 경로가 있을 수 있습니다
                 </span>
               </div>
             </div>
@@ -247,10 +247,10 @@ export function DangerWarningDialog({
       {/* Action Buttons */}
       <div className="warning-actions">
         <button className="warning-btn primary" onClick={handleProceedClick}>
-          {dangerZone === 'dangerous' ? 'Accept Risk & Proceed' : 'Proceed'}
+          {dangerZone === 'dangerous' ? '위험을 감수하고 진행' : '진행'}
         </button>
         <button className="warning-btn secondary" onClick={onCancel}>
-          Cancel Jump
+          점프 취소
         </button>
       </div>
     </div>
@@ -269,30 +269,30 @@ function getZoneDisplayInfo(dangerZone) {
   switch (dangerZone) {
     case 'safe':
       return {
-        name: 'Safe',
+        name: '안전',
         color: '#00ff88',
         description:
-          'Core systems with strong law enforcement presence and minimal pirate activity.',
+          '법 집행이 강력하고 해적 활동이 거의 없는 핵심 항성계.',
       };
     case 'contested':
       return {
-        name: 'Contested',
+        name: '분쟁',
         color: '#ffaa00',
         description:
-          'Systems with mixed control, moderate pirate activity, and regular patrols.',
+          '통제권이 뒤섞여 있고 해적 활동이 보통이며 순찰이 잦은 항성계.',
       };
     case 'dangerous':
       return {
-        name: 'Dangerous',
+        name: '위험',
         color: '#ff6b6b',
         description:
-          'Frontier systems with high pirate activity and limited law enforcement.',
+          '해적 활동이 활발하고 법 집행이 부족한 변경 항성계.',
       };
     default:
       return {
-        name: 'Unknown',
+        name: '알 수 없음',
         color: '#ffffff',
-        description: 'System classification unknown.',
+        description: '분류되지 않은 항성계.',
       };
   }
 }

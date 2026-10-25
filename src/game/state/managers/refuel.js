@@ -74,7 +74,7 @@ export class RefuelManager extends BaseManager {
     if (amount <= 0) {
       return {
         valid: false,
-        reason: 'Refuel amount must be positive',
+        reason: '주유량은 양수여야 합니다',
         cost: totalCost,
       };
     }
@@ -86,7 +86,7 @@ export class RefuelManager extends BaseManager {
     ) {
       return {
         valid: false,
-        reason: `Cannot refuel beyond ${maxFuel}% capacity`,
+        reason: `${maxFuel}% 용량을 넘겨 주유할 수 없습니다`,
         cost: totalCost,
       };
     }
@@ -94,7 +94,7 @@ export class RefuelManager extends BaseManager {
     if (totalCost > credits) {
       return {
         valid: false,
-        reason: 'Insufficient credits for refuel',
+        reason: '주유할 크레딧이 부족합니다',
         cost: totalCost,
       };
     }

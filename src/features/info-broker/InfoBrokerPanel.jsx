@@ -126,7 +126,7 @@ export function InfoBrokerPanel({ onClose }) {
     setRumor(generatedRumor);
 
     // Show success message — persists until next user action
-    setValidationMessage('Rumor purchased successfully');
+    setValidationMessage('소문을 구매했습니다');
     setValidationClass('info');
   };
 
@@ -144,8 +144,8 @@ export function InfoBrokerPanel({ onClose }) {
 
     // Show success message — persists until next user action
     const systemName =
-      starData.find((s) => s.id === systemId)?.name || 'Unknown System';
-    setValidationMessage(`Intelligence purchased for ${systemName}`);
+      starData.find((s) => s.id === systemId)?.name || '알 수 없는 항성계';
+    setValidationMessage(`${systemName} 정보를 구매했습니다`);
     setValidationClass('info');
 
     // Refresh intelligence options to reflect the purchase
@@ -196,7 +196,7 @@ export function InfoBrokerPanel({ onClose }) {
           <div className="intelligence-cost">
             ₡{finalCost}
             {bestDiscount.discount > 0 && baseCost !== finalCost && (
-              <span className="original-cost"> (was ₡{baseCost})</span>
+              <span className="original-cost">  (이전 ₡{baseCost})</span>
             )}
           </div>
           <button
@@ -204,7 +204,7 @@ export function InfoBrokerPanel({ onClose }) {
             onClick={() => handlePurchaseIntelligence(option.systemId)}
             disabled={!validation.valid || isCurrentSystem}
           >
-            {isCurrentSystem ? 'Current' : 'Purchase'}
+            {isCurrentSystem ? '현재' : '구매'}
           </button>
         </div>
       </div>
@@ -220,8 +220,7 @@ export function InfoBrokerPanel({ onClose }) {
     if (knownSystems.length === 0) {
       return (
         <div className="market-data-empty">
-          No market data available. Purchase intelligence or visit systems to
-          gather price information.
+          시장 데이터가 없습니다. 정보를 구매하거나 항성계를 방문해 가격 정보를 모으세요.
         </div>
       );
     }
@@ -277,18 +276,18 @@ export function InfoBrokerPanel({ onClose }) {
 
   return (
     <div id="info-broker-panel" className="visible">
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         ×
       </button>
       <h2>
-        Information Broker - <span>{currentSystem.name}</span>
+        정보 중개인 -  <span>{currentSystem.name}</span>
       </h2>
 
       {/* Tab Navigation */}
       <div
         className="info-broker-tabs"
         role="tablist"
-        aria-label="Information broker sections"
+        aria-label="정보 중개인 구역"
       >
         <button
           ref={purchaseTabRef}
@@ -301,7 +300,7 @@ export function InfoBrokerPanel({ onClose }) {
           onKeyDown={handleTabKeyDown}
           tabIndex={activeTab === 'purchase' ? 0 : -1}
         >
-          Purchase Intelligence
+          정보 구매
         </button>
         <button
           ref={marketDataTabRef}
@@ -314,7 +313,7 @@ export function InfoBrokerPanel({ onClose }) {
           onKeyDown={handleTabKeyDown}
           tabIndex={activeTab === 'marketData' ? 0 : -1}
         >
-          Market Data
+          시장 데이터
         </button>
       </div>
 
@@ -328,9 +327,9 @@ export function InfoBrokerPanel({ onClose }) {
         >
           {/* Rumor Section */}
           <div className="rumor-section">
-            <h3>Market Rumors</h3>
+            <h3>시장 소문</h3>
             <p className="rumor-description">
-              Buy a rumor for hints about market conditions and opportunities.
+              소문을 사서 시장 상황과 기회에 대한 힌트를 얻으세요.
             </p>
             <div className="rumor-purchase">
               <button
@@ -339,7 +338,7 @@ export function InfoBrokerPanel({ onClose }) {
                 onClick={handleBuyRumor}
                 disabled={!rumorValidation.valid}
               >
-                Buy Rumor (₡{finalRumorCost})
+                소문 구매 (₡{finalRumorCost})
               </button>
             </div>
             {rumor && (
@@ -351,14 +350,14 @@ export function InfoBrokerPanel({ onClose }) {
 
           {/* Intelligence List */}
           <div className="intelligence-section">
-            <h3>System Intelligence</h3>
+            <h3>항성계 정보</h3>
             <p className="intelligence-description">
-              Purchase current market prices for connected systems.
+              연결된 항성계의 현재 시장 가격을 구매합니다.
             </p>
             <div id="intelligence-list" className="intelligence-list">
               {sortedIntelligence.length === 0 ? (
                 <div className="intelligence-empty">
-                  No systems available for intelligence purchase.
+                  정보를 구매할 수 있는 항성계가 없습니다.
                 </div>
               ) : (
                 sortedIntelligence.map(renderIntelligenceItem)
@@ -369,16 +368,16 @@ export function InfoBrokerPanel({ onClose }) {
           {/* NPC Discount Section */}
           {bestDiscount.discount > 0 && (
             <div className="intelligence-section">
-              <h3>NPC Discount Applied</h3>
+              <h3>NPC 할인 적용</h3>
               <div className="discount-info">
                 <div className="discount-details">
                   <p>
-                    <strong>{bestDiscount.npcName}</strong> is providing a{' '}
+                    <strong>{bestDiscount.npcName}</strong>  님이 정보 서비스를 {' '}
                     <strong>{Math.round(bestDiscount.discount * 100)}%</strong>{' '}
-                    discount on intelligence services.
+                    할인해 주고 있습니다.
                   </p>
                   <p className="discount-note">
-                    <em>All prices shown above include this discount.</em>
+                    <em>위에 표시된 모든 가격에는 이 할인이 포함되어 있습니다.</em>
                   </p>
                 </div>
               </div>
@@ -406,7 +405,7 @@ export function InfoBrokerPanel({ onClose }) {
           className="info-broker-content active"
         >
           <div className="market-data-section">
-            <h3>Known Market Prices</h3>
+            <h3>알려진 시장 가격</h3>
             <div id="market-data-list" className="market-data-list">
               {renderMarketData()}
             </div>
@@ -416,7 +415,7 @@ export function InfoBrokerPanel({ onClose }) {
 
       <div className="info-broker-actions">
         <button className="station-btn secondary" onClick={onClose}>
-          Back to Station
+          정거장으로 돌아가기
         </button>
       </div>
     </div>

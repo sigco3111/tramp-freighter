@@ -108,14 +108,14 @@ export class InspectionManager extends BaseManager {
     if (restrictedGoodsConfiscated || hiddenCargoConfiscated) {
       if (hiddenCargoConfiscated) {
         description =
-          'They found the hidden compartment. This is going to be expensive.';
+          '숨겨진 칸을 찾아냈습니다. 비싸게 먹히겠군요.';
       } else {
         description =
-          "The inspector's expression hardens. Restricted goods. There will be a fine.";
+          "검사관의 표정이 굳습니다. 제한 품목입니다. 벌금이 부과됩니다.";
       }
     } else {
       description =
-        'Inspection complete. Everything checks out. The inspector nods approvingly.';
+        '검사 완료. 모두 이상 없습니다. 검사관이 만족스럽게 고개를 끄덕입니다.';
     }
 
     const outcome = {
@@ -159,15 +159,15 @@ export class InspectionManager extends BaseManager {
     const success = rng < INSPECTION_CONFIG.BRIBE.BASE_CHANCE;
 
     let totalCost = INSPECTION_CONFIG.BRIBE.COST;
-    let description = 'Attempted to bribe customs inspector.';
+    let description = '세관 검사관에게 뇌물을 쓰려 했습니다.';
 
     if (success) {
       description =
-        'The inspector pockets your credits and waves you through. You doubt this stays off the books.';
+        '검사관이 크레딧을 챙기고 통과시켜 줍니다. 이게 장부에서 빠질 거라곤 믿기 어렵군요.';
     } else {
       totalCost += INSPECTION_CONFIG.BRIBE.FAILURE_ADDITIONAL_FINE;
       description =
-        'Bribery attempt failed. Inspector imposed additional penalties.';
+        '뇌물 시도 실패. 검사관이 추가 벌금을 부과했습니다.';
     }
 
     const costs = { credits: totalCost };
@@ -208,7 +208,7 @@ export class InspectionManager extends BaseManager {
         },
       },
       description:
-        'You punch the throttle and break away. The emergency burn costs fuel and rattles the hull.',
+        '스로틀을 밟고 이탈합니다. 비상 연소로 연료가 소모되고 선체가 흔들립니다.',
     };
   }
 }

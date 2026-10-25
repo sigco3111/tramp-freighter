@@ -3,6 +3,7 @@ import { useGame } from '../../context/GameContext';
 import { STAR_DATA } from '../../game/data/star-data';
 import { getNPCsAtSystem } from '../../game/game-npcs';
 import { ENDGAME_CONFIG } from '../../game/constants';
+import { tierKo } from '../../game/tier-ko.js';
 
 export function PostCreditsStation({ onOpenPanel, onReturnToTitle }) {
   const game = useGame();
@@ -26,17 +27,17 @@ export function PostCreditsStation({ onOpenPanel, onReturnToTitle }) {
 
   return (
     <div id="station-interface" className="visible" data-panel>
-      <h2>{system?.name || 'Delta Pavonis'} Colony</h2>
+      <h2>{system?.name || '델타 파보니스'}  식민지</h2>
       <div className="station-info">
         <div className="info-row">
-          <span className="label">System:</span>
-          <span>{system?.name || 'Delta Pavonis'}</span>
+          <span className="label">항성계:</span>
+          <span>{system?.name || '델타 파보니스'}</span>
         </div>
       </div>
 
       {npcsAtSystem.length > 0 && (
         <div className="station-people">
-          <h3>PEOPLE</h3>
+          <h3>사람들</h3>
           <div className="npc-list">
             {npcDisplayData.map((npcDisplay) => (
               <button
@@ -49,7 +50,7 @@ export function PostCreditsStation({ onOpenPanel, onReturnToTitle }) {
                 <span
                   className={`npc-tier tier-${npcDisplay.tierName.toLowerCase()}`}
                 >
-                  {npcDisplay.tierName}
+                  {tierKo(npcDisplay.tierName)}
                 </span>
               </button>
             ))}
@@ -59,7 +60,7 @@ export function PostCreditsStation({ onOpenPanel, onReturnToTitle }) {
 
       <div className="station-actions">
         <button className="station-btn" onClick={onReturnToTitle}>
-          Return to Title
+          타이틀로 돌아가기
         </button>
       </div>
     </div>

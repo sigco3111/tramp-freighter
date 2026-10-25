@@ -11,7 +11,7 @@ export function buildCastList() {
 export const CREDITS_SECTIONS = [
   {
     type: 'title',
-    lines: ['TRAMP FREIGHTER BLUES'],
+    lines: ['트램프 프레이터 블루스'],
   },
   {
     type: 'separator',
@@ -19,11 +19,11 @@ export const CREDITS_SECTIONS = [
   },
   {
     type: 'role',
-    lines: ['Directed by', 'Curtis "Ovid" Poe'],
+    lines: ['감독', 'Curtis "Ovid" Poe'],
   },
   {
     type: 'role',
-    lines: ['Screenplay by', 'Claude'],
+    lines: ['각본', 'Claude'],
   },
   {
     type: 'separator',
@@ -31,7 +31,7 @@ export const CREDITS_SECTIONS = [
   },
   {
     type: 'heading',
-    lines: ['CAST', '(All NPCs played by themselves)'],
+    lines: ['CAST', '(모든 NPC는 본인 역을 맡았습니다)'],
   },
   // NPC cast list is built dynamically by the component via buildCastList()
   {
@@ -40,23 +40,23 @@ export const CREDITS_SECTIONS = [
   },
   {
     type: 'heading',
-    lines: ['PRODUCTION'],
+    lines: ['제작'],
   },
   {
     type: 'role',
-    lines: ['Produced by', 'Curtis "Ovid" Poe'],
+    lines: ['제작', 'Curtis "Ovid" Poe'],
   },
   {
     type: 'role',
-    lines: ['Executive Producer', 'Claude'],
+    lines: ['총괄 프로듀서', 'Claude'],
   },
   {
     type: 'role',
-    lines: ['Art Direction', 'Curtis "Ovid" Poe'],
+    lines: ['아트 디렉션', 'Curtis "Ovid" Poe'],
   },
   {
     type: 'role',
-    lines: ['Sound Design', 'The Void of Space'],
+    lines: ['사운드 디자인', '우주의 공허'],
   },
   {
     type: 'separator',
@@ -64,17 +64,17 @@ export const CREDITS_SECTIONS = [
   },
   {
     type: 'heading',
-    lines: ['ENGINEERING'],
+    lines: ['엔지니어링'],
   },
   {
     type: 'credit-pair',
     lines: [],
     pairs: [
-      ['Game Engine', 'React 18'],
-      ['3D Starmap', 'Three.js'],
-      ['Build System', 'Vite'],
-      ['Test Framework', 'Vitest'],
-      ['Property Testing', 'fast-check'],
+      ['게임 엔진', 'React 18'],
+      ['3D 별지도', 'Three.js'],
+      ['빌드 시스템', 'Vite'],
+      ['테스트 프레임워크', 'Vitest'],
+      ['속성 기반 테스트', 'fast-check'],
     ],
   },
   {
@@ -83,17 +83,17 @@ export const CREDITS_SECTIONS = [
   },
   {
     type: 'heading',
-    lines: ['NAVIGATION'],
+    lines: ['항법'],
   },
   {
     type: 'credit-pair',
     lines: [],
     pairs: [
-      ['Star Catalogue', 'HYG Stellar Database'],
-      ['Wormhole Cartography', 'Purely Fictional'],
-      ['Stars Featured', '117 of 131 known (so far)'],
-      ['Nearest Star to Sol', 'Proxima Centauri \u2014 4.25 ly'],
-      ['Longest Route', 'Sol to Delta Pavonis \u2014 19.89 ly'],
+      ['항성 목록', 'HYG 항성 데이터베이스'],
+      ['웜홀 지도 제작', '순수한 허구'],
+      ['수록 항성', '알려진 131개 중 117개 (아직까지는)'],
+      ['태양에서 가장 가까운 항성', '프록시마 센타우리 — 4.25광년'],
+      ['가장 긴 항로', '태양에서 델타 파보니스까지 — 19.89광년'],
     ],
   },
   {
@@ -102,17 +102,17 @@ export const CREDITS_SECTIONS = [
   },
   {
     type: 'heading',
-    lines: ['FILMED ON LOCATION'],
+    lines: ['현지 촬영'],
   },
   {
     type: 'location',
     lines: [
-      "Sol \u00b7 Alpha Centauri \u00b7 Barnard's Star",
-      'Sirius \u00b7 Wolf 359 \u00b7 Tau Ceti',
-      'Epsilon Eridani \u00b7 Procyon \u00b7 Ross 154',
-      "Luyten's Star",
-      'and 107 other star systems',
-      'that were kind enough not to move',
+      "태양 · 알파 센타우리 · 바너드별",
+      '시리우스 · 볼프 359 · 타우 세티',
+      '엡실론 에리다니 · 프로키온 · 로스 154',
+      "루이텐별",
+      '그리고 다른 항성계 107곳',
+      '움직이지 않고 얌전히 있어 준',
     ],
   },
   {
@@ -121,21 +121,21 @@ export const CREDITS_SECTIONS = [
   },
   {
     type: 'heading',
-    lines: ['SPECIAL THANKS'],
+    lines: ['특별히 감사드립니다'],
   },
   {
     type: 'thanks',
     lines: [
-      'The real stars within 20 light-years of Sol,',
-      'for existing in convenient locations.',
-      '(Apologies to the 14 we left out. Budget constraints.)',
+      '태양에서 20광년 이내의 실제 별들,',
+      '편리한 위치에 존재해 준 것에 대하여.',
+      '(제외된 14곳에는 사과드립니다. 예산 문제였습니다.)',
     ],
   },
   {
     type: 'thanks',
     lines: [
-      'Every freighter captain who kept flying',
-      'when the numbers said to quit.',
+      '숫자가 그만두라고 말할 때도',
+      '계속 비행한 모든 화물선 선장들.',
     ],
   },
   {
@@ -145,8 +145,8 @@ export const CREDITS_SECTIONS = [
   {
     type: 'humor',
     lines: [
-      'No NPCs were harmed during the making of this game.',
-      '(Except by pirates. And customs officers. And occasionally you.)',
+      '이 게임을 만드는 동안 NPC는 한 명도 다치지 않았습니다.',
+      '(해적과 세관원, 그리고 가끔은 당신이 해친 경우는 제외하고요.)',
     ],
   },
   {
@@ -156,9 +156,9 @@ export const CREDITS_SECTIONS = [
   {
     type: 'disclaimer',
     lines: [
-      'All characters appearing in this work are fictitious.',
-      'Any resemblance to real persons, living or dead,',
-      'is purely coincidental.',
+      '이 작품에 등장하는 모든 인물은 허구입니다.',
+      '실존 인물과 닮은 점이 있더라도',
+      '순전히 우연의 일치입니다.',
     ],
   },
   {
@@ -167,7 +167,7 @@ export const CREDITS_SECTIONS = [
   },
   {
     type: 'thankyou',
-    lines: ['THANK YOU FOR PLAYING'],
+    lines: ['플레이해 주셔서 감사합니다'],
   },
   {
     type: 'separator',
@@ -176,7 +176,7 @@ export const CREDITS_SECTIONS = [
   {
     type: 'quote',
     lines: [
-      '\u201cThe stars don\u2019t remember you. The people between them might.\u201d',
+      '“별은 당신을 기억하지 않는다. 그 사이에 있는 사람들은 기억할지도 모른다.”',
     ],
   },
 ];

@@ -16,7 +16,7 @@ export function DateDisplay() {
   return (
     <div className="hud-section hud-time">
       <div className="hud-row">
-        <span className="hud-label">Date:</span>
+        <span className="hud-label">날짜:</span>
         <span className="hud-value">{gameDayToDate(daysElapsed ?? 0)}</span>
       </div>
     </div>

@@ -32,7 +32,7 @@ export class DistressManager extends BaseManager {
         id: `distress_${Date.now()}`,
         type: 'civilian_distress',
         description:
-          'A civilian vessel is broadcasting a distress signal. Their engines have failed and they need assistance.',
+          '민간 선박이 조난 신호를 보내고 있습니다. 엔진이 고장 나 도움이 필요합니다.',
         options: ['respond', 'ignore', 'loot'],
       };
     }
@@ -94,7 +94,7 @@ export class DistressManager extends BaseManager {
         karma: DISTRESS_CONFIG.RESPOND.KARMA_REWARD,
       },
       description:
-        'You helped the distressed vessel repair their engines. They were grateful and offered payment for your assistance.',
+        '조난 선박의 엔진 수리를 도왔습니다. 그들은 고마워하며 도움에 대한 보수를 지불했습니다.',
     };
   }
 
@@ -113,7 +113,7 @@ export class DistressManager extends BaseManager {
         karma: DISTRESS_CONFIG.IGNORE.KARMA_PENALTY,
       },
       description:
-        'You ignored the distress call and continued on your way. The decision weighs on your conscience.',
+        '조난 신호를 무시하고 갈 길을 갔습니다. 그 결정이 양심을 짓누릅니다.',
     };
   }
 
@@ -142,12 +142,12 @@ export class DistressManager extends BaseManager {
             good: 'parts',
             qty: DISTRESS_CONFIG.LOOT.SALVAGE_PARTS_QTY,
             buyPrice: 0,
-            buySystemName: 'Salvaged',
+            buySystemName: '인양함',
           },
         ],
       },
       description:
-        'You salvaged valuable parts from the distressed vessel. The crew will remember your betrayal.',
+        '조난 선박에서 값진 부품을 인양했습니다. 선원들은 당신의 배신을 기억할 것입니다.',
     };
   }
 }

@@ -44,11 +44,11 @@ export class QuestManager extends BaseManager {
 
   advanceQuest(questId) {
     const questDef = this.questDefinitions[questId];
-    if (!questDef) return { success: false, reason: 'Quest not found' };
+    if (!questDef) return { success: false, reason: '퀘스트를 찾을 수 없습니다' };
 
     const questState = this.getQuestState(questId);
     if (questState.completedDay != null) {
-      return { success: false, reason: 'Quest already complete' };
+      return { success: false, reason: '이미 완료된 퀘스트입니다' };
     }
 
     const nextStage = questState.stage + 1;
@@ -74,21 +74,21 @@ export class QuestManager extends BaseManager {
     const questDef = this.questDefinitions[questId];
     const questState = this.getQuestState(questId);
     if (!questDef || !questState) {
-      return { success: false, reason: 'Quest not found' };
+      return { success: false, reason: '퀘스트를 찾을 수 없습니다' };
     }
 
     const currentStage = questState.stage;
     const stageDef = questDef.stages.find((s) => s.stage === currentStage);
     if (!stageDef) {
-      return { success: false, reason: 'Invalid stage' };
+      return { success: false, reason: '잘못된 단계입니다' };
     }
 
     if ((questState.data._rewardsClaimedStage || 0) >= currentStage) {
-      return { success: false, reason: 'Rewards already claimed' };
+      return { success: false, reason: '이미 보상을 받았습니다' };
     }
 
     if (!this.checkObjectivesComplete(questId)) {
-      return { success: false, reason: 'Objectives not complete' };
+      return { success: false, reason: '목표를 아직 완료하지 않았습니다' };
     }
 
     if (stageDef.rewards) {
@@ -248,7 +248,7 @@ export class QuestManager extends BaseManager {
 
   contributeSupply() {
     if (!this.canContributeSupply()) {
-      return { success: false, reason: 'Not eligible' };
+      return { success: false, reason: '자격이 없습니다' };
     }
 
     const cargo = this.capabilities.getShipCargo();
@@ -265,7 +265,7 @@ export class QuestManager extends BaseManager {
     }
 
     if (!goodToDonate) {
-      return { success: false, reason: 'No qualifying cargo' };
+      return { success: false, reason: '조건에 맞는 화물이 없습니다' };
     }
 
     this.capabilities.removeCargoForMission(

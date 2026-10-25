@@ -84,11 +84,10 @@ export class ErrorBoundary extends React.Component {
           }}
         >
           <h2 style={{ color: '#ff6b6b', marginBottom: '20px' }}>
-            Something went wrong
+            문제가 발생했습니다
           </h2>
           <p style={{ marginBottom: '20px' }}>
-            An error occurred in the application. You can try reloading the page
-            to recover.
+            애플리케이션에서 오류가 발생했습니다. 페이지를 새로고침하면 복구될 수 있습니다.
           </p>
           {this.state.error && (
             <div
@@ -103,11 +102,11 @@ export class ErrorBoundary extends React.Component {
                 overflowX: 'auto',
               }}
             >
-              <strong>Error:</strong> {this.state.error.toString()}
+              <strong>오류:</strong> {this.state.error.toString()}
               {this.state.errorInfo && (
                 <details style={{ marginTop: '10px' }}>
                   <summary style={{ cursor: 'pointer', color: '#aaa' }}>
-                    Component Stack
+                    컴포넌트 스택
                   </summary>
                   <pre
                     style={{
@@ -134,7 +133,7 @@ export class ErrorBoundary extends React.Component {
               borderRadius: '4px',
             }}
           >
-            Reload Application
+            애플리케이션 새로고침
           </button>
         </div>
       );

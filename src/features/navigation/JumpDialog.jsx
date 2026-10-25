@@ -93,24 +93,24 @@ export function JumpDialog({ targetSystemId, onClose, onJumpComplete }) {
     <div className="jump-dialog">
       <div className="jump-dialog-header">
         <h3>{targetSystem.name}</h3>
-        <button className="close-btn" onClick={onClose} aria-label="Close">
+        <button className="close-btn" onClick={onClose} aria-label="닫기">
           ×
         </button>
       </div>
 
       <div className="jump-dialog-content">
         <div className="jump-info-row">
-          <span className="label">Distance:</span>
-          <span className="value">{validation.distance.toFixed(1)} LY</span>
+          <span className="label">거리:</span>
+          <span className="value">{validation.distance.toFixed(1)}  광년</span>
         </div>
         <div className="jump-info-row">
-          <span className="label">Fuel Cost:</span>
+          <span className="label">연료 비용:</span>
           <span className="value">{Math.round(validation.fuelCost)}%</span>
         </div>
         <div className="jump-info-row">
-          <span className="label">Jump Time:</span>
+          <span className="label">점프 시간:</span>
           <span className="value">
-            {validation.jumpTime} day{validation.jumpTime !== 1 ? 's' : ''}
+            {validation.jumpTime} 일{validation.jumpTime !== 1 ? 's' : ''}
           </span>
         </div>
 
@@ -122,31 +122,31 @@ export function JumpDialog({ targetSystemId, onClose, onJumpComplete }) {
               <span className="danger-icon">⚠️</span>
               <span className="danger-title">
                 {dangerZone === 'dangerous'
-                  ? 'Dangerous System'
-                  : 'Contested System'}
+                  ? '위험한 항성계'
+                  : '분쟁 항성계'}
               </span>
             </div>
             <div className="danger-details">
               <div className="danger-info-row">
-                <span className="danger-label">Pirate Activity:</span>
+                <span className="danger-label">해적 활동:</span>
                 <span className="danger-value">
                   {Math.round(pirateChance * 100)}%
                 </span>
               </div>
               <div className="danger-info-row">
-                <span className="danger-label">Inspection Risk:</span>
+                <span className="danger-label">검문 위험:</span>
                 <span className="danger-value">
                   {Math.round(inspectionChance * 100)}%
                 </span>
               </div>
               {dangerZone === 'dangerous' && (
                 <div className="danger-note">
-                  Frontier system with minimal law enforcement presence.
+                  법 집행이 거의 없는 변경 항성계입니다.
                 </div>
               )}
               {dangerZone === 'contested' && (
                 <div className="danger-note">
-                  System with mixed control and moderate security.
+                  통제권이 뒤섞이고 보안이 중간 수준인 항성계입니다.
                 </div>
               )}
             </div>
@@ -162,7 +162,7 @@ export function JumpDialog({ targetSystemId, onClose, onJumpComplete }) {
           onClick={handleJump}
           disabled={!validation.valid}
         >
-          Jump to System
+          항성계로 점프
         </button>
       </div>
     </div>

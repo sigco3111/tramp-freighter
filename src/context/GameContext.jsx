@@ -19,7 +19,7 @@ export function GameProvider({ game, children }) {
   if (!game) {
     return (
       <div className="game-loading">
-        <p>Loading game...</p>
+        <p>게임 불러오는 중...</p>
       </div>
     );
   }

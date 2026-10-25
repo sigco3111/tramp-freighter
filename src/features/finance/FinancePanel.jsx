@@ -33,7 +33,7 @@ export function FinancePanel({ onClose }) {
   const handleBorrow = (amount) => {
     const result = borrowFromCole(amount);
     if (result.success) {
-      setMessage({ type: 'info', text: `Borrowed ₡${amount} from Cole` });
+      setMessage({ type: 'info', text: `콜에게서 ₡${amount} 차입` });
     } else {
       setMessage({ type: 'error', text: result.reason });
     }
@@ -42,13 +42,13 @@ export function FinancePanel({ onClose }) {
   const handlePayment = (amount) => {
     const result = makeDebtPayment(amount);
     if (result.success) {
-      const feeText = result.fee > 0 ? ` (+ ₡${result.fee} fee)` : '';
+      const feeText = result.fee > 0 ? ` (+ 수수료 ₡${result.fee})` : '';
       setMessage({
         type: 'info',
         text:
           result.amount === debt
-            ? 'Debt paid in full!'
-            : `Paid ₡${result.amount}${feeText} toward debt`,
+            ? '빚을 모두 갚았습니다!'
+            : `빚 상환에 ₡${result.amount}${feeText} 지불`,
       });
     } else {
       setMessage({ type: 'error', text: result.reason });
@@ -70,31 +70,31 @@ export function FinancePanel({ onClose }) {
 
   return (
     <div id="finance-panel" className="visible">
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         ×
       </button>
-      <h2>Cole Credit Line</h2>
+      <h2>콜 신용 한도</h2>
 
       <div className="finance-content">
         <div className="finance-section">
-          <h3>Debt Overview</h3>
+          <h3>부채 개요</h3>
           <div className="info-row">
-            <span className="label">Outstanding:</span>
+            <span className="label">잔액:</span>
             <span className="value">₡{debtInfo.debt.toLocaleString()}</span>
           </div>
           <div className="info-row">
-            <span className="label">Withholding:</span>
-            <span className="value">{lienPercent}% of trade sales</span>
+            <span className="label">원천징수:</span>
+            <span className="value">{lienPercent}% (거래 매출 기준)</span>
           </div>
           <div className="info-row">
-            <span className="label">Interest:</span>
+            <span className="label">이자:</span>
             <span className="value">
-              {interestPercent}% every {COLE_DEBT_CONFIG.INTEREST_PERIOD_DAYS}{' '}
-              days
+              {interestPercent}% /  {COLE_DEBT_CONFIG.INTEREST_PERIOD_DAYS}{' '}
+              일마다
             </span>
           </div>
           <div className="info-row">
-            <span className="label">Next interest:</span>
+            <span className="label">다음 이자:</span>
             <span className="value">
               {debtInfo.debt > 0 ? `${daysUntilInterest} days` : 'N/A'}
             </span>
@@ -103,12 +103,11 @@ export function FinancePanel({ onClose }) {
 
         {debtInfo.debt > 0 && (
           <div className="finance-section">
-            <h3>Make Payment</h3>
+            <h3>상환하기</h3>
             {debtInfo.earlyRepaymentFeeRate > 0 && (
               <p className="finance-warning">
-                Early repayment:{' '}
-                {Math.round(debtInfo.earlyRepaymentFeeRate * 100)}% processing
-                fee applies.
+                조기 상환:{' '}
+                {Math.round(debtInfo.earlyRepaymentFeeRate * 100)}% 처리 수수료가 부과됩니다.
               </p>
             )}
             <div className="finance-buttons">
@@ -125,8 +124,8 @@ export function FinancePanel({ onClose }) {
                     disabled={credits < payAmount + fee || debtInfo.debt === 0}
                     onClick={() => handlePayment(payAmount)}
                   >
-                    Pay ₡{payAmount}
-                    {fee > 0 ? ` (+₡${fee} fee)` : ''}
+                    ₡{payAmount}
+                    {fee > 0 ? ` 지불 (+수수료 ₡${fee})` : ''}
                   </button>
                 );
               })}
@@ -141,8 +140,8 @@ export function FinancePanel({ onClose }) {
                     disabled={payAllAmount <= 0 || debtInfo.debt === 0}
                     onClick={payAll}
                   >
-                    Pay All (₡{payAllAmount.toLocaleString()}
-                    {payAllFee > 0 ? ` +₡${payAllFee} fee` : ''})
+                    전액 상환 (₡{payAllAmount.toLocaleString()}
+                    {payAllFee > 0 ? ` +수수료 ₡${payAllFee}` : ''})
                   </button>
                 );
               })()}
@@ -151,14 +150,14 @@ export function FinancePanel({ onClose }) {
         )}
 
         <div className="finance-section">
-          <h3>Emergency Credit</h3>
+          <h3>긴급 대출</h3>
           <p className="finance-warning">
-            Borrowing increases withholding and draws Cole&apos;s attention.
+            대출을 받으면 원천징수율이 오르고 콜의 이목을 끌게 됩니다.
           </p>
           <div className="info-row">
-            <span className="label">Available:</span>
+            <span className="label">가능 한도:</span>
             <span className="value">
-              up to ₡{debtInfo.maxDraw.toLocaleString()}
+              최대 ₡{debtInfo.maxDraw.toLocaleString()}
             </span>
           </div>
           <div className="finance-buttons">
@@ -168,7 +167,7 @@ export function FinancePanel({ onClose }) {
                 className="station-btn borrow-btn"
                 onClick={() => handleBorrow(amount)}
               >
-                Borrow ₡{amount}
+                ₡ 차입{amount}
               </button>
             ))}
           </div>

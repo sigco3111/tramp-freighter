@@ -13,8 +13,8 @@ export class EconomicEventsSystem {
    */
   static EVENT_TYPES = {
     mining_strike: {
-      name: 'Mining Strike',
-      description: 'Workers strike — ore and tritium in short supply',
+      name: '광산 파업',
+      description: '노동자 파업 - 광석과 트리튬 부족',
       duration: [10, 18], // Min/max days
       modifiers: {
         ore: 1.5,
@@ -24,8 +24,8 @@ export class EconomicEventsSystem {
       targetSystems: 'mining', // Systems with ore production advantage
     },
     medical_emergency: {
-      name: 'Medical Emergency',
-      description: 'Outbreak requires urgent medicine',
+      name: '의료 비상사태',
+      description: '확산 사태로 의약품이 시급하다',
       duration: [8, 14],
       modifiers: {
         medicine: 2.0,
@@ -34,8 +34,8 @@ export class EconomicEventsSystem {
       targetSystems: 'any',
     },
     festival: {
-      name: 'Cultural Festival',
-      description: 'Celebration drives demand for electronics and grain',
+      name: '문화 축제',
+      description: '축하 분위기로 전자제품과 곡물 수요가 늘어난다',
       duration: [7, 12],
       modifiers: {
         electronics: 1.75,

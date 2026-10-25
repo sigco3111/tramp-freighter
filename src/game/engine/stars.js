@@ -58,7 +58,7 @@ function createLabel(text, fontSize = 18) {
   }
 
   // Set font for measuring text
-  ctx.font = `${fontSize}px 'Courier New', monospace`;
+  ctx.font = `${fontSize}px 'Courier New', 'Noto Sans KR', monospace`;
 
   // Measure text to size canvas appropriately
   const metrics = ctx.measureText(text);
@@ -70,7 +70,7 @@ function createLabel(text, fontSize = 18) {
   canvas.height = textHeight + 10;
 
   // Re-set font after canvas resize (canvas resize clears context)
-  ctx.font = `${fontSize}px 'Courier New', monospace`;
+  ctx.font = `${fontSize}px 'Courier New', 'Noto Sans KR', monospace`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 

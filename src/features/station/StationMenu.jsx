@@ -8,6 +8,7 @@ import { STAR_DATA } from '../../game/data/star-data';
 import { calculateDistanceFromSol } from '../../game/constants';
 import { getNPCsAtSystem } from '../../game/game-npcs';
 import { Modal } from '../../components/Modal';
+import { tierKo } from '../../game/tier-ko.js';
 
 /**
  * Station menu component.
@@ -77,26 +78,26 @@ export function StationMenu({ onOpenPanel, onUndock }) {
   return (
     <div id="station-interface" className="visible" ref={ref} data-panel>
       <div className="station-header">
-        <h2>{system.name} Station</h2>
-        <button className="close-btn" onClick={onUndock} aria-label="Close">
+        <h2>{system.name}  정거장</h2>
+        <button className="close-btn" onClick={onUndock} aria-label="닫기">
           ×
         </button>
       </div>
       <div className="station-info">
         <div className="info-row">
-          <span className="label">System:</span>
+          <span className="label">항성계:</span>
           <span>{system.name}</span>
         </div>
         <div className="info-row">
-          <span className="label">Distance from Sol:</span>
-          <span>{distance.toFixed(1)} LY</span>
+          <span className="label">태양으로부터 거리:</span>
+          <span>{distance.toFixed(1)}  광년</span>
         </div>
       </div>
 
       {/* PEOPLE section - only shown when NPCs are present */}
       {npcsAtSystem.length > 0 && (
         <div className="station-people">
-          <h3>PEOPLE</h3>
+          <h3>사람들</h3>
           <div className="npc-list">
             {npcDisplayData.map((npcDisplay) => (
               <button
@@ -109,7 +110,7 @@ export function StationMenu({ onOpenPanel, onUndock }) {
                 <span
                   className={`npc-tier tier-${npcDisplay.tierName.toLowerCase()}`}
                 >
-                  {npcDisplay.tierName}
+                  {tierKo(npcDisplay.tierName)}
                 </span>
               </button>
             ))}
@@ -122,55 +123,55 @@ export function StationMenu({ onOpenPanel, onUndock }) {
           className="station-btn"
           onClick={() => onOpenPanel('mission-board')}
         >
-          Mission Board
+          임무 게시판
         </button>
         <button className="station-btn" onClick={() => onOpenPanel('finance')}>
-          Finance
+          금융
         </button>
         <button className="station-btn" onClick={() => onOpenPanel('trade')}>
-          Trade
+          거래
         </button>
         <button className="station-btn" onClick={() => onOpenPanel('refuel')}>
-          Refuel
+          주유
         </button>
         <button className="station-btn" onClick={() => onOpenPanel('repair')}>
-          Repairs
+          수리
         </button>
         <button
           className="station-btn"
           onClick={() => onOpenPanel('info-broker')}
         >
-          Info Broker
+          정보 중개인
         </button>
         <button className="station-btn" onClick={() => onOpenPanel('upgrades')}>
-          Upgrades
+          업그레이드
         </button>
         <button
           className="station-btn"
           onClick={() => onOpenPanel('cargo-manifest')}
         >
-          Cargo Manifest
+          화물 목록
         </button>
         <button
           className="station-btn"
           onClick={() => onOpenPanel('ship-status')}
         >
-          Ship Status
+          함선 상태
         </button>
       </div>
       <Modal
         isOpen={currentNotice !== null}
         onClose={() => dismissMissionFailureNotice(currentNotice?.id)}
-        title="Mission Failed"
+        title="임무 실패"
         showCloseButton={true}
       >
         <p>
           {currentNotice?.title}
           {currentNotice?.destination
-            ? ` — delivery to ${currentNotice.destination} was not completed in time.`
-            : ' — the deadline has passed.'}
+            ? ` — ${currentNotice.destination}행 배달을 제시간에 완료하지 못했습니다.`
+            : ' — 기한이 지났습니다.'}
         </p>
-        <p>The contact won&apos;t be working with you again.</p>
+        <p>이 의뢰인은 다시는 당신과 일하지 않을 것입니다.</p>
       </Modal>
     </div>
   );

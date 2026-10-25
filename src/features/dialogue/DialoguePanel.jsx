@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useDialogue } from '../../hooks/useDialogue';
+import { tierKo } from '../../game/tier-ko.js';
 
 /**
  * DialoguePanel - React component for NPC dialogue interactions
@@ -96,10 +97,10 @@ export function DialoguePanel({ npcId, onClose }) {
   if (!dialogueState.isActive || !dialogueState.display) {
     return (
       <div className="dialogue-panel">
-        <button className="close-btn" onClick={handleClose} aria-label="Close">
+        <button className="close-btn" onClick={handleClose} aria-label="닫기">
           ×
         </button>
-        <div className="dialogue-loading">Loading dialogue...</div>
+        <div className="dialogue-loading">대화 불러오는 중...</div>
       </div>
     );
   }
@@ -108,7 +109,7 @@ export function DialoguePanel({ npcId, onClose }) {
 
   return (
     <div className="dialogue-panel visible">
-      <button className="close-btn" onClick={handleClose} aria-label="Close">
+      <button className="close-btn" onClick={handleClose} aria-label="닫기">
         ×
       </button>
 
@@ -121,7 +122,7 @@ export function DialoguePanel({ npcId, onClose }) {
           <span
             className={`reputation-tier tier-${dialogueDisplay.reputationTier.name.toLowerCase()}`}
           >
-            {dialogueDisplay.reputationTier.name}
+            {tierKo(dialogueDisplay.reputationTier.name)}
           </span>
         </div>
       </div>
@@ -130,15 +131,15 @@ export function DialoguePanel({ npcId, onClose }) {
       {dialogueDisplay.questProgress && (
         <div className="quest-progress">
           <div className="quest-progress-label">
-            Trust: {dialogueDisplay.questProgress.currentRep} / 100
+            신뢰도:  {dialogueDisplay.questProgress.currentRep} / 100
             {dialogueDisplay.questProgress.nextRepThreshold !== null && (
               <span className="quest-stage-name">
                 {dialogueDisplay.questProgress.currentRep >=
                 dialogueDisplay.questProgress.nextRepThreshold
                   ? dialogueDisplay.questProgress.allRequirementsMet
                     ? ' (Ready!)'
-                    : ` (${dialogueDisplay.reputationTier.name})`
-                  : ` (Next: ${dialogueDisplay.questProgress.stageName} at ${dialogueDisplay.questProgress.nextRepThreshold})`}
+                    : ` (${tierKo(dialogueDisplay.reputationTier.name)})`
+                  : ` (다음: ${dialogueDisplay.questProgress.stageName} / ${dialogueDisplay.questProgress.nextRepThreshold})`}
               </span>
             )}
           </div>
@@ -151,7 +152,7 @@ export function DialoguePanel({ npcId, onClose }) {
             )}
             aria-valuemin={0}
             aria-valuemax={100}
-            aria-label="Quest progress"
+            aria-label="퀘스트 진행도"
           >
             <div
               className="quest-progress-fill"
@@ -172,7 +173,7 @@ export function DialoguePanel({ npcId, onClose }) {
 
         {/* Player Response Choices */}
         <div className="dialogue-choices">
-          <h3>Your Response:</h3>
+          <h3>당신의 대답:</h3>
           <div className="choices-list">
             {dialogueDisplay.choices.map((choice, index) => (
               <button

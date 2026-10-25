@@ -7,6 +7,7 @@ import {
 } from '../../constants.js';
 import { ALL_NPCS } from '../../data/npc-data.js';
 import { SeededRandom } from '../../utils/seeded-random.js';
+import { tierKo } from '../../tier-ko.js';
 
 /**
  * NPCManager - Manages NPC reputation, benefits, loans, and storage
@@ -202,7 +203,7 @@ export class NPCManager extends BaseManager {
     if (npcState.rep < REPUTATION_BOUNDS.WARM_MIN) {
       return {
         available: false,
-        reason: `Requires Warm relationship (currently ${repTier.name})`,
+        reason: `따뜻한 관계가 필요합니다 (현재: ${tierKo(repTier.name)})`,
       };
     }
 
@@ -210,7 +211,7 @@ export class NPCManager extends BaseManager {
     if (!npcData.tips || npcData.tips.length === 0) {
       return {
         available: false,
-        reason: 'NPC has no tips available',
+        reason: 'NPC에게 알려 줄 팁이 없습니다',
       };
     }
 
@@ -223,7 +224,7 @@ export class NPCManager extends BaseManager {
           NPC_BENEFITS_CONFIG.TIP_COOLDOWN_DAYS - daysSinceLastTip;
         return {
           available: false,
-          reason: `Tip cooldown active (${daysRemaining} days remaining)`,
+          reason: `팁 쿨다운 중입니다 (${daysRemaining}일 남음)`,
         };
       }
     }
@@ -330,7 +331,7 @@ export class NPCManager extends BaseManager {
     if (!npcs[npcId]) {
       return {
         available: false,
-        reason: 'NPC not met',
+        reason: '아직 만나지 않은 NPC입니다',
       };
     }
 
@@ -344,7 +345,7 @@ export class NPCManager extends BaseManager {
         const repTier = this.getRepTier(npcState.rep);
         return {
           available: false,
-          reason: `Requires Trusted relationship (currently ${repTier.name})`,
+          reason: `신뢰하는 관계가 필요합니다 (현재: ${tierKo(repTier.name)})`,
         };
       }
     } else if (favorType === 'storage') {
@@ -353,7 +354,7 @@ export class NPCManager extends BaseManager {
         const repTier = this.getRepTier(npcState.rep);
         return {
           available: false,
-          reason: `Requires Friendly relationship (currently ${repTier.name})`,
+          reason: `우호적인 관계가 필요합니다 (현재: ${tierKo(repTier.name)})`,
         };
       }
     } else {
@@ -372,7 +373,7 @@ export class NPCManager extends BaseManager {
           NPC_BENEFITS_CONFIG.FAVOR_COOLDOWN_DAYS - daysSinceLastFavor;
         return {
           available: false,
-          reason: `Favor used recently (wait ${daysRemaining} days)`,
+          reason: `최근에 호의를 사용했습니다 (${daysRemaining}일 후에 가능)`,
           daysRemaining: daysRemaining,
         };
       }
@@ -382,7 +383,7 @@ export class NPCManager extends BaseManager {
     if (favorType === 'loan' && npcState.loanAmount !== null) {
       return {
         available: false,
-        reason: 'Outstanding loan must be repaid first',
+        reason: '기존 대출을 먼저 갚아야 합니다',
       };
     }
 
@@ -446,7 +447,7 @@ export class NPCManager extends BaseManager {
 
     return {
       success: true,
-      message: `Received ₡${NPC_BENEFITS_CONFIG.EMERGENCY_LOAN_AMOUNT} emergency loan`,
+      message: `₡${NPC_BENEFITS_CONFIG.EMERGENCY_LOAN_AMOUNT} 긴급 대출을 받았습니다`,
     };
   }
 
@@ -470,7 +471,7 @@ export class NPCManager extends BaseManager {
     if (npcState.loanAmount === null) {
       return {
         success: false,
-        message: 'No outstanding loan',
+        message: '남은 대출이 없습니다',
       };
     }
 
@@ -480,7 +481,7 @@ export class NPCManager extends BaseManager {
     ) {
       return {
         success: false,
-        message: 'Insufficient credits',
+        message: '크레딧이 부족합니다',
       };
     }
 
@@ -501,7 +502,7 @@ export class NPCManager extends BaseManager {
 
     return {
       success: true,
-      message: `Repaid ₡${NPC_BENEFITS_CONFIG.EMERGENCY_LOAN_AMOUNT} loan`,
+      message: `₡${NPC_BENEFITS_CONFIG.EMERGENCY_LOAN_AMOUNT} 대출을 상환했습니다`,
     };
   }
 
@@ -634,7 +635,7 @@ export class NPCManager extends BaseManager {
       return {
         success: false,
         stored: 0,
-        message: 'No cargo to store',
+        message: '보관할 화물이 없습니다',
       };
     }
 
@@ -695,7 +696,7 @@ export class NPCManager extends BaseManager {
     return {
       success: true,
       stored: unitsToStore,
-      message: `Stored ${unitsToStore} cargo units with ${this.validateAndGetNPCData(npcId).name}`,
+      message: `${this.validateAndGetNPCData(npcId).name}에게 화물 ${unitsToStore}단위를 맡겼습니다`,
     };
   }
 

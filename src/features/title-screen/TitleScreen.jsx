@@ -55,17 +55,17 @@ export function TitleScreen({ onStartGame }) {
   return (
     <div className="title-screen">
       <div className="menu-content">
-        <h1 className="menu-title">Tramp Freighter Blues</h1>
-        <div className="menu-subtitle">Sol Sector Trading Simulation</div>
+        <h1 className="menu-title">트램프 프레이터 블루스</h1>
+        <div className="menu-subtitle">솔 섹터 교역 시뮬레이션</div>
 
         <div className="menu-buttons">
           {hasSave && (
             <button className="menu-btn" onClick={handleContinue}>
-              Continue Game
+              이어하기
             </button>
           )}
           <button className="menu-btn" onClick={handleNewGame}>
-            New Game
+            새 게임
           </button>
         </div>
 
@@ -78,10 +78,10 @@ export function TitleScreen({ onStartGame }) {
         isOpen={showConfirmation}
         onConfirm={handleConfirmNewGame}
         onCancel={handleCancelNewGame}
-        title="Start New Game"
-        message="Starting a new game will overwrite your existing save. Continue?"
+        title="새 게임 시작"
+        message="새 게임을 시작하면 기존 저장 데이터를 덮어씁니다. 계속하시겠습니까?"
         confirmText="OK"
-        cancelText="Cancel"
+        cancelText="취소"
       />
     </div>
   );

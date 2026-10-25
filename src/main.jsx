@@ -102,10 +102,9 @@ function renderErrorUI(error) {
         margin: '0 auto',
       }}
     >
-      <h1>Failed to Load Game</h1>
+      <h1>게임을 불러오지 못했습니다</h1>
       <p>
-        The game failed to initialize. This could be due to corrupted save data
-        or a browser compatibility issue.
+        \n        게임을 초기화하지 못했습니다. 저장 데이터가 손상되었거나\n        브라우저 호환성 문제일 수 있습니다.\n      
       </p>
       <p style={{ color: '#c00', fontFamily: 'monospace', fontSize: '14px' }}>
         {error.message}
@@ -114,7 +113,7 @@ function renderErrorUI(error) {
         onClick={() => {
           if (
             confirm(
-              'This will delete your saved game and start fresh. Continue?'
+              '저장된 게임이 삭제되고 새로 시작합니다. 계속할까요?'
             )
           ) {
             localStorage.clear();
@@ -128,13 +127,13 @@ function renderErrorUI(error) {
           marginRight: '10px',
         }}
       >
-        Clear Save and Restart
+        \n        저장 삭제 후 다시 시작\n      
       </button>
       <button
         onClick={() => window.location.reload()}
         style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}
       >
-        Retry
+        \n        다시 시도\n      
       </button>
     </div>
   );

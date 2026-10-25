@@ -164,41 +164,41 @@ export function getKarmaFirstImpression(karma, npcPersonality = 'neutral') {
     // Very good karma
     switch (npcPersonality) {
       case 'lawful':
-        return ' You have an honest look about you.';
+        return ' 정직해 보이는 분이군요.';
       case 'chaotic':
-        return ' You seem... too clean for these parts.';
+        return ' 이 동네치고는... 너무 깨끗해 보이는군요.';
       default:
-        return ' You have a trustworthy air about you.';
+        return ' 믿음직한 분위기가 있군요.';
     }
   } else if (karma >= KARMA_CONFIG.THRESHOLDS.GOOD) {
     // Good karma
     switch (npcPersonality) {
       case 'lawful':
-        return ' You seem like a decent sort.';
+        return ' 괜찮은 사람 같군요.';
       case 'chaotic':
-        return ' You look like you follow the rules.';
+        return ' 규칙을 잘 지킬 것 같은 분이군요.';
       default:
-        return ' You seem reliable.';
+        return ' 믿을 만해 보이는군요.';
     }
   } else if (karma <= KARMA_CONFIG.THRESHOLDS.VERY_BAD) {
     // Very bad karma
     switch (npcPersonality) {
       case 'lawful':
-        return ' I can see trouble in your eyes.';
+        return ' 눈에 말썽이 보이는군요.';
       case 'chaotic':
-        return " Now here's someone who knows how the sector really works.";
+        return " 이제야 섹터가 실제로 어떻게 돌아가는지 아는 사람이 왔군요.";
       default:
-        return ' You have a dangerous look about you.';
+        return ' 위험한 기운이 느껴지는군요.';
     }
   } else if (karma <= KARMA_CONFIG.THRESHOLDS.BAD) {
     // Bad karma
     switch (npcPersonality) {
       case 'lawful':
-        return ' You look like someone I should be careful around.';
+        return ' 조심해야 할 사람 같아 보이는군요.';
       case 'chaotic':
-        return ' You look like you know how to bend the rules.';
+        return ' 규칙을 구부릴 줄 아는 사람 같아 보이는군요.';
       default:
-        return " You seem like you've seen some rough times.";
+        return " 힘든 시절을 겪은 사람 같군요.";
     }
   }
 
@@ -220,13 +220,13 @@ export function getFactionAttitudeModifier(npcFaction, context) {
   const factionRep = context.factionReps[npcFaction] || 0;
 
   if (factionRep >= FACTION_CONFIG.REPUTATION_THRESHOLDS.VERY_HIGH) {
-    return " You're a true friend to our cause.";
+    return " 당신은 우리 대의의 진정한 친구입니다.";
   } else if (factionRep >= FACTION_CONFIG.REPUTATION_THRESHOLDS.HIGH) {
-    return ' We appreciate your support.';
+    return ' 당신의 지지에 감사드립니다.';
   } else if (factionRep <= FACTION_CONFIG.REPUTATION_THRESHOLDS.EXTREME_LOW) {
-    return " Your reputation precedes you, and it's not good.";
+    return " 당신의 평판이 앞서 오는군요, 좋지 않은 쪽으로요.";
   } else if (factionRep <= FACTION_CONFIG.REPUTATION_THRESHOLDS.VERY_LOW) {
-    return ' We have... concerns about your activities.';
+    return ' 당신의 활동이... 우려스럽습니다.';
   }
 
   return '';

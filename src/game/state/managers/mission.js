@@ -22,14 +22,14 @@ export class MissionManager extends BaseManager {
     if (effectiveCount >= MISSION_CONFIG.MAX_ACTIVE) {
       return {
         success: false,
-        reason: 'You have the maximum number of active missions.',
+        reason: '진행 중인 임무가 최대 개수입니다.',
       };
     }
 
     if (missions.active.some((m) => m.id === mission.id)) {
       return {
         success: false,
-        reason: 'You already have this mission active.',
+        reason: '이미 진행 중인 임무입니다.',
       };
     }
 
@@ -39,7 +39,7 @@ export class MissionManager extends BaseManager {
     ) {
       return {
         success: false,
-        reason: 'Not enough cargo space for this passenger.',
+        reason: '이 승객을 태울 화물 공간이 부족합니다.',
       };
     }
 
@@ -50,7 +50,7 @@ export class MissionManager extends BaseManager {
       ) {
         return {
           success: false,
-          reason: 'Not enough cargo space for mission cargo.',
+          reason: '임무 화물을 실을 공간이 부족합니다.',
         };
       }
     }
@@ -92,7 +92,7 @@ export class MissionManager extends BaseManager {
     if (missionIndex === -1) {
       return {
         success: false,
-        reason: 'Mission not found in active missions.',
+        reason: '진행 중인 임무에서 찾을 수 없습니다.',
       };
     }
 
@@ -102,7 +102,7 @@ export class MissionManager extends BaseManager {
       if (mission.requirements.destination !== currentSystem) {
         return {
           success: false,
-          reason: 'You are not at the mission destination.',
+          reason: '임무 목적지에 있지 않습니다.',
         };
       }
       // New-style cargo runs: check missionId-tagged cargo
@@ -111,7 +111,7 @@ export class MissionManager extends BaseManager {
         if (!hasMissionCargo) {
           return {
             success: false,
-            reason: 'Mission cargo is no longer in your hold.',
+            reason: '임무 화물이 더 이상 화물칸에 없습니다.',
           };
         }
       } else if (mission.requirements.cargo) {
@@ -122,7 +122,7 @@ export class MissionManager extends BaseManager {
         if (totalCargo < mission.requirements.quantity) {
           return {
             success: false,
-            reason: `Not enough ${mission.requirements.cargo} in cargo.`,
+            reason: `화물에 ${mission.requirements.cargo}이(가) 부족합니다.`,
           };
         }
       }
@@ -135,7 +135,7 @@ export class MissionManager extends BaseManager {
       ) {
         return {
           success: false,
-          reason: 'You are not at the mission destination.',
+          reason: '임무 목적지에 있지 않습니다.',
         };
       }
       if (mission.requirements.cargo) {
@@ -145,7 +145,7 @@ export class MissionManager extends BaseManager {
         if (totalCargo < mission.requirements.quantity) {
           return {
             success: false,
-            reason: `Not enough ${mission.requirements.cargo} in cargo.`,
+            reason: `화물에 ${mission.requirements.cargo}이(가) 부족합니다.`,
           };
         }
       }
@@ -158,7 +158,7 @@ export class MissionManager extends BaseManager {
       ) {
         return {
           success: false,
-          reason: 'You are not at the mission destination.',
+          reason: '임무 목적지에 있지 않습니다.',
         };
       }
       if (mission.requirements.targets) {
@@ -169,7 +169,7 @@ export class MissionManager extends BaseManager {
         if (unvisited.length > 0) {
           return {
             success: false,
-            reason: 'Not all target systems have been visited.',
+            reason: '아직 방문하지 않은 목표 항성계가 있습니다.',
           };
         }
       }
@@ -179,7 +179,7 @@ export class MissionManager extends BaseManager {
       if (mission.requirements.destination !== currentSystem) {
         return {
           success: false,
-          reason: 'You are not at the passenger destination.',
+          reason: '승객 목적지에 있지 않습니다.',
         };
       }
     }
@@ -338,14 +338,14 @@ export class MissionManager extends BaseManager {
     if (missionIndex === -1) {
       return {
         success: false,
-        reason: 'Mission not found in active missions.',
+        reason: '진행 중인 임무에서 찾을 수 없습니다.',
       };
     }
 
     const mission = missions.active[missionIndex];
 
     if (mission.abandonable === false) {
-      return { success: false, reason: 'This mission cannot be abandoned.' };
+      return { success: false, reason: '이 임무는 포기할 수 없습니다.' };
     }
 
     missions.active.splice(missionIndex, 1);

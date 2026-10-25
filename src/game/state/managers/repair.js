@@ -5,6 +5,7 @@ import {
   REPUTATION_BOUNDS,
   NPC_BENEFITS_CONFIG,
 } from '../../constants.js';
+import { tierKo } from '../../tier-ko.js';
 
 /**
  * RepairManager - Manages ship repair operations
@@ -54,7 +55,7 @@ export class RepairManager extends BaseManager {
     // Validate system type
     const validSystems = ['hull', 'engine', 'lifeSupport'];
     if (!validSystems.includes(systemType)) {
-      return { success: false, reason: 'Invalid system type' };
+      return { success: false, reason: '잘못된 시스템 유형입니다' };
     }
 
     const condition = this.capabilities.getShipCondition();
@@ -74,21 +75,21 @@ export class RepairManager extends BaseManager {
     // 4. Check if would exceed max (player can fix by reducing amount)
 
     if (amount <= 0) {
-      return { success: false, reason: 'Repair amount must be positive' };
+      return { success: false, reason: '수리량은 양수여야 합니다' };
     }
 
     if (currentCondition >= SHIP_CONFIG.CONDITION_BOUNDS.MAX) {
-      return { success: false, reason: 'System already at maximum condition' };
+      return { success: false, reason: '이미 최대 상태입니다' };
     }
 
     if (cost > credits) {
-      return { success: false, reason: 'Insufficient credits for repair' };
+      return { success: false, reason: '수리할 크레딧이 부족합니다' };
     }
 
     if (currentCondition + amount > SHIP_CONFIG.CONDITION_BOUNDS.MAX) {
       return {
         success: false,
-        reason: 'Repair would exceed maximum condition',
+        reason: '수리하면 최대 상태를 초과합니다',
       };
     }
 
@@ -122,7 +123,7 @@ export class RepairManager extends BaseManager {
 
     const validSystems = ['hull', 'engine', 'lifeSupport'];
     if (!validSystems.includes(systemType)) {
-      return { success: false, reason: 'Invalid system type' };
+      return { success: false, reason: '잘못된 시스템 유형입니다' };
     }
 
     const condition = this.capabilities.getShipCondition();
@@ -131,7 +132,7 @@ export class RepairManager extends BaseManager {
     if (currentCondition > REPAIR_CONFIG.CRITICAL_SYSTEM_THRESHOLD) {
       return {
         success: false,
-        reason: `${systemType} is not critically damaged`,
+        reason: `${systemType}은(는) 심각하게 손상되지 않았습니다`,
       };
     }
 
@@ -140,7 +141,7 @@ export class RepairManager extends BaseManager {
     const repairCost = repairAmount * REPAIR_CONFIG.COST_PER_PERCENT;
 
     if (this.capabilities.getCredits() >= repairCost) {
-      return { success: false, reason: 'You can afford standard repair' };
+      return { success: false, reason: '표준 수리 비용을 감당할 수 있습니다' };
     }
 
     const newConditions = { ...condition };
@@ -177,13 +178,13 @@ export class RepairManager extends BaseManager {
 
     const validSystems = ['hull', 'engine', 'lifeSupport'];
     const systemDisplayNames = {
-      hull: 'Hull',
-      engine: 'Engine',
-      lifeSupport: 'Life Support',
+      hull: '선체',
+      engine: '엔진',
+      lifeSupport: '생명 유지 장치',
     };
 
     if (!validSystems.includes(targetType)) {
-      return { success: false, reason: 'Invalid system type' };
+      return { success: false, reason: '잘못된 시스템 유형입니다' };
     }
 
     const condition = this.capabilities.getShipCondition();
@@ -192,24 +193,24 @@ export class RepairManager extends BaseManager {
     if (currentTargetCondition > REPAIR_CONFIG.CRITICAL_SYSTEM_THRESHOLD) {
       return {
         success: false,
-        reason: `${targetType} is not critically damaged`,
+        reason: `${targetType}은(는) 심각하게 손상되지 않았습니다`,
       };
     }
 
     for (const donation of donations) {
       if (!validSystems.includes(donation.system)) {
-        return { success: false, reason: 'Invalid donor system type' };
+        return { success: false, reason: '잘못된 기증 시스템 유형입니다' };
       }
 
       if (donation.system === targetType) {
         return {
           success: false,
-          reason: `${systemDisplayNames[donation.system]} cannot donate to itself`,
+          reason: `${systemDisplayNames[donation.system]}은(는) 자기 자신에게 기증할 수 없습니다`,
         };
       }
 
       if (donation.amount <= 0) {
-        return { success: false, reason: 'Donation amount must be positive' };
+        return { success: false, reason: '기증량은 양수여야 합니다' };
       }
 
       const donorCondition = condition[donation.system];
@@ -217,7 +218,7 @@ export class RepairManager extends BaseManager {
       if (donorCondition <= REPAIR_CONFIG.CRITICAL_SYSTEM_THRESHOLD) {
         return {
           success: false,
-          reason: `${systemDisplayNames[donation.system]} is critically damaged and cannot donate`,
+          reason: `${systemDisplayNames[donation.system]}이(가) 심각하게 손상되어 기증할 수 없습니다`,
         };
       }
 
@@ -227,7 +228,7 @@ export class RepairManager extends BaseManager {
       ) {
         return {
           success: false,
-          reason: `${systemDisplayNames[donation.system]} would fall below minimum safe condition`,
+          reason: `${systemDisplayNames[donation.system]}이(가) 최소 안전 상태 아래로 떨어집니다`,
         };
       }
     }
@@ -241,7 +242,7 @@ export class RepairManager extends BaseManager {
     if (totalDonated < requiredDonation) {
       return {
         success: false,
-        reason: `Total donated (${totalDonated}) is insufficient — need at least ${requiredDonation}`,
+        reason: `기증 총량(${totalDonated})이 부족합니다 - 최소 ${requiredDonation} 필요`,
       };
     }
 
@@ -292,7 +293,7 @@ export class RepairManager extends BaseManager {
       return {
         available: false,
         maxHullPercent: 0,
-        reason: `Requires Trusted relationship (currently ${repTier.name})`,
+        reason: `신뢰하는 관계가 필요합니다 (현재: ${tierKo(repTier.name)})`,
       };
     }
 
@@ -305,7 +306,7 @@ export class RepairManager extends BaseManager {
       return {
         available: false,
         maxHullPercent: 0,
-        reason: 'Free repair already used once per visit',
+        reason: '무료 수리는 방문당 한 번만 가능합니다',
       };
     }
 
@@ -357,7 +358,7 @@ export class RepairManager extends BaseManager {
       return {
         success: false,
         repairedPercent: 0,
-        message: 'Invalid hull damage percentage',
+        message: '잘못된 선체 손상 비율입니다',
       };
     }
 
@@ -395,7 +396,7 @@ export class RepairManager extends BaseManager {
     return {
       success: true,
       repairedPercent: actualRepairPercent,
-      message: `Repaired ${actualRepairPercent}% hull damage`,
+      message: `선체 손상 ${actualRepairPercent}% 수리 완료`,
     };
   }
 }

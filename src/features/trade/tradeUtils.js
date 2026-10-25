@@ -20,24 +20,24 @@
  */
 export function validateBuy(goodType, quantity, price, state) {
   if (!goodType || typeof goodType !== 'string') {
-    return { valid: false, reason: 'Invalid good type' };
+    return { valid: false, reason: '잘못된 상품 종류입니다' };
   }
 
   if (!quantity || quantity <= 0) {
-    return { valid: false, reason: 'Quantity must be positive' };
+    return { valid: false, reason: '수량은 양수여야 합니다' };
   }
 
   if (!price || price <= 0) {
-    return { valid: false, reason: 'Price must be positive' };
+    return { valid: false, reason: '가격은 양수여야 합니다' };
   }
 
   if (!state || !state.player || !state.ship) {
-    return { valid: false, reason: 'Invalid game state' };
+    return { valid: false, reason: '잘못된 게임 상태입니다' };
   }
 
   const totalCost = price * quantity;
   if (state.player.credits < totalCost) {
-    return { valid: false, reason: 'Insufficient credits for purchase' };
+    return { valid: false, reason: '구매할 크레딧이 부족합니다' };
   }
 
   const tradeCargoUsed = state.ship.cargo.reduce(
@@ -49,7 +49,7 @@ export function validateBuy(goodType, quantity, price, state) {
     state.ship.cargoCapacity - tradeCargoUsed - passengerSpace;
 
   if (cargoRemaining < quantity) {
-    return { valid: false, reason: 'Insufficient cargo capacity' };
+    return { valid: false, reason: '화물 적재량이 부족합니다' };
   }
 
   return { valid: true, reason: '' };
@@ -65,24 +65,24 @@ export function validateBuy(goodType, quantity, price, state) {
  */
 export function validateSell(stackIndex, quantity, state) {
   if (stackIndex < 0) {
-    return { valid: false, reason: 'Invalid stack index' };
+    return { valid: false, reason: '잘못된 스택 번호입니다' };
   }
 
   if (!quantity || quantity <= 0) {
-    return { valid: false, reason: 'Quantity must be positive' };
+    return { valid: false, reason: '수량은 양수여야 합니다' };
   }
 
   if (!state || !state.ship || !state.ship.cargo) {
-    return { valid: false, reason: 'Invalid game state' };
+    return { valid: false, reason: '잘못된 게임 상태입니다' };
   }
 
   if (stackIndex >= state.ship.cargo.length) {
-    return { valid: false, reason: 'Stack index out of bounds' };
+    return { valid: false, reason: '스택 번호가 범위를 벗어났습니다' };
   }
 
   const stack = state.ship.cargo[stackIndex];
   if (quantity > stack.qty) {
-    return { valid: false, reason: 'Insufficient quantity in stack' };
+    return { valid: false, reason: '스택의 수량이 부족합니다' };
   }
 
   return { valid: true, reason: '' };

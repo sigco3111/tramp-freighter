@@ -36,20 +36,20 @@ export const ZARA_OSMAN_DIALOGUE = {
       let baseText;
       if (rep >= REPUTATION_BOUNDS.FAMILY_MIN) {
         baseText =
-          'Hey there, partner! Always good to see family in the trade. Business has been solid - how about you? Ready to make some serious credits together?';
+          '어이, 파트너! 같은 업계 식구를 보니 언제나 좋아. 장사는 탄탄해, 자네는 어때? 같이 크레딧 좀 크게 벌어 볼 준비됐어?';
       } else if (rep >= REPUTATION_BOUNDS.TRUSTED_MIN) {
         baseText =
-          "Well, well! Look who's back. You've really got the hang of this trading game, haven't you? What's the play today, hotshot?";
+          "오호! 누가 돌아왔나 했더니. 이 거래 게임 요령을 제대로 잡았네, 안 그래? 오늘은 어떤 수야, 허세꾼?";
       } else if (rep >= REPUTATION_BOUNDS.FRIENDLY_MIN) {
         baseText =
-          "Hey, good to see you again! You're starting to get a real feel for the markets. I like that in a trader. What brings you by?";
+          "어이, 다시 봐서 반가워! 시장 감각이 제대로 붙고 있어. 그런 상인이 마음에 들어. 무슨 일로 왔어?";
       } else if (rep >= REPUTATION_BOUNDS.WARM_MIN) {
         baseText =
-          "Back for more action, eh? I can respect that. The markets have been interesting lately. What's your angle?";
+          "또 한 판 하러 왔나? 존중해 줄게. 요즘 시장이 흥미롭거든. 어떤 각도로 가려고?";
       } else {
         // Neutral, Cold, or Hostile
         baseText =
-          "Another trader looking to make their fortune. The sector's got room for everyone... if you know what you're doing. What do you need?";
+          "재산을 일구려는 또 한 명의 상인. 섹터엔 모두를 위한 자리가 있지... 뭘 하는지 안다면. 뭐가 필요해?";
       }
 
       // Add loan status if there's an outstanding loan (only if context provided)
@@ -62,11 +62,11 @@ export const ZARA_OSMAN_DIALOGUE = {
 
           if (daysRemaining <= 0) {
             baseText +=
-              "\n\n*Hey, about that loan - five hundred credits, and the clock's run out. Time to settle up, partner.*";
+              "\n\n*이봐, 그 대출 말인데, 오백 크레딧이고 시계가 다 됐어. 정산할 시간이야, 파트너.*";
           } else if (daysRemaining <= COLE_DEBT_CONFIG.LOAN_REMINDER_DAYS) {
-            baseText += `\n\n*Quick reminder - you owe me five hundred credits, due in ${daysRemaining} days. Don't let it slip, yeah?*`;
+            baseText += `\n\n*간단히 알려 줄게, 오백 크레딧을 ${daysRemaining}일 안에 갚아야 해. 놓치지 마, 응?*`;
           } else {
-            baseText += `\n\n*Oh, and you still owe me five hundred credits - ${daysRemaining} days left on the clock.*`;
+            baseText += `\n\n*아, 그리고 아직 오백 크레딧 갚아야 해. 시계가 ${daysRemaining}일 남았어.*`;
           }
         }
       }
@@ -75,11 +75,11 @@ export const ZARA_OSMAN_DIALOGUE = {
     },
     choices: [
       {
-        text: 'Tell me about the trading business.',
+        text: '거래 사업에 대해 알려 줘요.',
         next: 'trading_business',
       },
       {
-        text: 'Got any market tips for me?',
+        text: '시장 팁이 있나요?',
         next: 'ask_tip',
         condition: (rep, context) => {
           // Check both reputation requirement and tip availability
@@ -88,7 +88,7 @@ export const ZARA_OSMAN_DIALOGUE = {
         },
       },
       {
-        text: 'I need an emergency loan.',
+        text: '긴급 대출이 필요해요.',
         next: 'request_loan',
         condition: (rep, context) => {
           // Check both reputation requirement and favor availability
@@ -97,7 +97,7 @@ export const ZARA_OSMAN_DIALOGUE = {
         },
       },
       {
-        text: 'Can you store some cargo for me?',
+        text: '화물을 좀 맡아 줄 수 있나요?',
         next: 'request_storage',
         condition: (rep, context) => {
           // Check both reputation requirement and favor availability
@@ -106,7 +106,7 @@ export const ZARA_OSMAN_DIALOGUE = {
         },
       },
       {
-        text: 'I want to repay my loan.',
+        text: '대출을 갚고 싶어요.',
         next: 'repay_loan',
         condition: (_rep, context) => {
           // Check if NPC has an outstanding loan
@@ -115,7 +115,7 @@ export const ZARA_OSMAN_DIALOGUE = {
         },
       },
       {
-        text: 'I want to retrieve my stored cargo.',
+        text: '맡겨 둔 화물을 찾고 싶어요.',
         next: 'retrieve_cargo',
         condition: (_rep, context) => {
           // Check if NPC has stored cargo
@@ -126,47 +126,47 @@ export const ZARA_OSMAN_DIALOGUE = {
         },
       },
       {
-        text: 'Nothing right now. Catch you later.',
+        text: '지금은 없어요. 나중에 봐요.',
         next: null,
       },
     ],
   },
 
   trading_business: {
-    text: "Trading's all about reading the flow, you know? Markets breathe - they expand, contract, shift with the currents. Smart money follows the patterns, but smarter money gets ahead of them. It's not just buy low, sell high - it's knowing when the tide's about to turn.",
+    text: "거래는 흐름을 읽는 거야, 알지? 시장은 숨을 쉬어. 팽창하고, 수축하고, 해류를 따라 변하지. 똑똑한 돈은 패턴을 따르고 더 똑똑한 돈은 패턴을 앞서가. 싸게 사서 비싸게 파는 게 다가 아니야. 조류가 언제 바뀔지 아는 거지.",
     choices: [
       {
-        text: 'How do you read market patterns?',
+        text: '시장 패턴을 어떻게 읽나요?',
         next: 'market_knowledge',
         repGain: 2,
       },
       {
-        text: 'Sounds like tough competition out there.',
+        text: '경쟁이 치열할 것 같네요.',
         next: 'competition_talk',
         repGain: 1,
       },
       {
-        text: 'The markets can be unpredictable.',
+        text: '시장은 예측하기 어려울 수 있죠.',
         next: 'market_unpredictable',
         repGain: 1,
       },
       {
-        text: 'Interesting perspective.',
+        text: '흥미로운 관점이네요.',
         next: 'greeting',
       },
     ],
   },
 
   market_knowledge: {
-    text: "Now you're asking the right questions! It's all about connections, intel, and timing. Watch the mining stations - when they're flush with ore, luxury systems are your goldmine. Economic events ripple through the sector like waves. Catch the wave right, and you ride it to profit city.",
+    text: "이제야 제대로 된 질문이야! 전부 인맥, 정보, 타이밍이야. 광산 정거장을 지켜봐. 광석이 넘쳐날 때 사치품 항성계가 금광이 돼. 경제 이벤트는 파도처럼 섹터를 퍼져 나가. 파도를 제대로 타면 이윤의 도시까지 가는 거야.",
     choices: [
       {
-        text: 'Where do you get your market intel?',
+        text: '시장 정보는 어디서 얻나요?',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'That makes a lot of sense.',
+        text: '아주 일리 있네요.',
         next: 'greeting',
         repGain: 1,
       },
@@ -174,20 +174,20 @@ export const ZARA_OSMAN_DIALOGUE = {
   },
 
   competition_talk: {
-    text: "Competition keeps us sharp, keeps the markets honest. I don't mind other traders making credits - sector's big enough for everyone who's got the skills. But I do mind amateurs crashing prices with panic selling. That hurts everyone's bottom line.",
+    text: "경쟁은 우릴 날카롭게 하고 시장을 정직하게 만들어. 다른 상인이 돈 버는 건 상관없어. 실력 있는 사람에겐 섹터가 충분히 넓으니까. 하지만 아마추어가 패닉 매도로 가격을 무너뜨리는 건 싫어. 모두의 수익에 타격이니까.",
     choices: [
       {
-        text: 'How do you deal with price crashes?',
+        text: '가격 폭락엔 어떻게 대처하나요?',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'Fair competition benefits everyone.',
+        text: '공정한 경쟁은 모두에게 이득이죠.',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'Every trader for themselves, I say.',
+        text: '전 각자도생이라고 생각해요.',
         next: 'greeting',
         repGain: -1,
       },
@@ -195,15 +195,15 @@ export const ZARA_OSMAN_DIALOGUE = {
   },
 
   market_unpredictable: {
-    text: "True that! Markets can flip faster than a ship in a gravity well. That's why you need multiple angles - diversified cargo, flexible routes, solid contacts. Never put all your credits in one trade, no matter how sweet it looks. The void's full of traders who learned that lesson the hard way.",
+    text: "맞아! 시장은 중력 우물 속 배보다 빨리 뒤집혀. 그래서 여러 각도가 필요해. 분산된 화물, 유연한 항로, 탄탄한 인맥. 아무리 달콤해 보여도 크레딧을 한 거래에 다 걸지 마. 공허엔 그 교훈을 뼈아프게 배운 상인이 가득해.",
     choices: [
       {
-        text: 'Diversification is smart strategy.',
+        text: '분산은 영리한 전략이죠.',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'Good advice. Thanks.',
+        text: '좋은 조언이에요. 고마워요.',
         next: 'greeting',
         repGain: 1,
       },
@@ -211,16 +211,16 @@ export const ZARA_OSMAN_DIALOGUE = {
   },
 
   ask_tip: {
-    text: "Sure thing! Always happy to share market wisdom with a fellow trader. Information flows both ways in this business - what goes around, comes around. Here's something hot off the trade networks...",
+    text: "물론이지! 동료 상인에게 시장 지혜를 나누는 건 늘 즐거워. 이 바닥에선 정보가 양방향으로 흘러. 뿌린 대로 거두는 법이지. 교역망에서 갓 나온 따끈한 걸 알려 줄게...",
     flags: ['osman_tip_requested'],
     choices: [
       {
-        text: 'That intel could be worth serious credits.',
+        text: '그 정보는 상당한 크레딧 가치가 있겠네요.',
         next: 'greeting',
         repGain: 2,
       },
       {
-        text: 'Thanks for the market tip, Zara.',
+        text: '시장 팁 고마워요, 자라.',
         next: 'greeting',
         repGain: 1,
       },
@@ -228,11 +228,11 @@ export const ZARA_OSMAN_DIALOGUE = {
   },
 
   request_loan: {
-    text: "Emergency loan? Five hundred credits... *leans back in chair* Look, I've been where you are - sometimes the markets throw you a curveball and you need capital fast. I can front you the credits, but standard terms apply - thirty days, no extensions. Deal?",
+    text: "긴급 대출? 오백 크레딧... *의자에 기대앉는다* 이봐, 나도 그런 처지였어. 가끔 시장이 변화구를 던져서 자본이 급히 필요해지지. 크레딧은 빌려줄 수 있지만 표준 조건이야. 삼십 일, 연장 없음. 거래할래?",
     flags: ['osman_loan_discussed'],
     choices: [
       {
-        text: 'Deal. I appreciate this, Zara.',
+        text: '좋아요. 고마워요, 자라.',
         next: 'greeting',
         repGain: 3,
         action: (context) => {
@@ -240,18 +240,18 @@ export const ZARA_OSMAN_DIALOGUE = {
         },
       },
       {
-        text: 'Let me think about those terms.',
+        text: '그 조건을 생각해 볼게요.',
         next: 'greeting',
       },
     ],
   },
 
   request_storage: {
-    text: 'Cargo storage? Yeah, I can swing that. Got secure space here at the outpost - up to ten units, climate controlled, the works. Consider it professional courtesy between traders. We gotta look out for each other in this business.',
+    text: '화물 보관? 응, 처리해 줄 수 있어. 이 전초기지에 안전한 공간이 있어. 열 단위까지, 온도 조절되고 갖출 건 다 갖췄지. 상인끼리의 직업적 예우로 쳐 줘. 이 바닥에선 서로 챙겨야지.',
     flags: ['osman_storage_discussed'],
     choices: [
       {
-        text: 'That would really help me out.',
+        text: '정말 도움이 되겠어요.',
         next: 'greeting',
         repGain: 2,
         action: (context) => {
@@ -259,7 +259,7 @@ export const ZARA_OSMAN_DIALOGUE = {
         },
       },
       {
-        text: 'Professional courtesy appreciated.',
+        text: '직업적 예우 감사해요.',
         next: 'greeting',
         repGain: 1,
       },
@@ -267,11 +267,11 @@ export const ZARA_OSMAN_DIALOGUE = {
   },
 
   repay_loan: {
-    text: "Loan repayment? *checks her ledger* Right, five hundred credits. Good to see you're keeping your word - that's what separates the pros from the amateurs in this business. Reputation's everything in the trade.",
+    text: "대출 상환? *장부를 확인한다* 그래, 오백 크레딧. 약속을 지키는 모습이 보기 좋네. 이 바닥에서 프로와 아마추어를 가르는 게 그거야. 거래에선 평판이 전부거든.",
     flags: ['osman_loan_repaid'],
     choices: [
       {
-        text: 'Here are the credits. Thanks for the stake.',
+        text: '여기 크레딧이에요. 판돈 고마워요.',
         next: 'greeting',
         repGain: 2,
         action: (context) => {
@@ -279,18 +279,18 @@ export const ZARA_OSMAN_DIALOGUE = {
         },
       },
       {
-        text: 'I need more time to get the credits together.',
+        text: '크레딧을 모을 시간이 더 필요해요.',
         next: 'greeting',
       },
     ],
   },
 
   retrieve_cargo: {
-    text: "Retrieve your cargo? No problem, sport. *heads to storage* Got your stuff locked up tight - climate controlled, security monitored, the full package. Let me get it transferred back to your ship. If your hold's getting cramped, we can work something out.",
+    text: "화물을 찾는다고? 문제없어, 친구. *보관소로 간다* 물건은 단단히 잠가 놨어. 온도 조절에 보안 감시까지 풀 패키지지. 네 배로 옮겨 줄게. 화물칸이 좁아지면 방법을 찾아보자고.",
     flags: ['osman_cargo_retrieved'],
     choices: [
       {
-        text: 'Transfer what you can to my ship.',
+        text: '실을 수 있는 만큼 제 배로 옮겨 줘요.',
         next: 'greeting',
         repGain: 1,
         action: (context) => {
@@ -298,7 +298,7 @@ export const ZARA_OSMAN_DIALOGUE = {
         },
       },
       {
-        text: 'Let me clear some space first.',
+        text: '먼저 공간을 좀 비울게요.',
         next: 'greeting',
       },
     ],

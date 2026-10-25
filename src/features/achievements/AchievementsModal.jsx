@@ -4,7 +4,7 @@ import { AchievementsList } from './AchievementsList';
 
 export function AchievementsModal({ isOpen, onClose }) {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Achievements & Stats">
+    <Modal isOpen={isOpen} onClose={onClose} title="업적 및 통계">
       <div id="achievements-modal">
         <StatsSection />
         <hr

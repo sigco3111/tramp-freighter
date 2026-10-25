@@ -132,7 +132,7 @@ export function Modal({
             <button
               className="modal-close"
               onClick={onClose}
-              aria-label="Close modal"
+              aria-label="창 닫기"
             >
               ×
             </button>
@@ -164,10 +164,10 @@ export function ConfirmModal({
   isOpen,
   onConfirm,
   onCancel,
-  title = 'Confirm',
+  title = '확인',
   message,
   confirmText = 'OK',
-  cancelText = 'Cancel',
+  cancelText = '취소',
 }) {
   return (
     <Modal

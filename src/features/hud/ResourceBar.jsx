@@ -17,11 +17,11 @@ export function ResourceBar() {
   return (
     <div className="hud-section hud-finances">
       <div className="hud-row">
-        <span className="hud-label">Credits:</span>
+        <span className="hud-label">크레딧:</span>
         <span className="hud-value">₡{credits.toLocaleString()}</span>
       </div>
       <div className="hud-row">
-        <span className="hud-label">Debt:</span>
+        <span className="hud-label">부채:</span>
         <span className="hud-value">₡{debt.toLocaleString()}</span>
       </div>
     </div>

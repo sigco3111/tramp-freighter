@@ -588,7 +588,7 @@ export class GameCoordinator {
     if (!isVersionCompatible(rawState.meta?.version)) {
       return {
         success: false,
-        reason: `Incompatible save version: ${rawState.meta?.version}`,
+        reason: `호환되지 않는 저장 버전: ${rawState.meta?.version}`,
       };
     }
 
@@ -597,7 +597,7 @@ export class GameCoordinator {
     if (!validateStateStructure(migratedState)) {
       return {
         success: false,
-        reason: 'Save data failed structure validation',
+        reason: '저장 데이터의 구조 검증에 실패했습니다',
       };
     }
 
@@ -1012,31 +1012,31 @@ export class GameCoordinator {
     if (!questState || !questDef) return null;
 
     const stageDef = questDef.stages.find((s) => s.stage === questState.stage);
-    const stageName = stageDef ? stageDef.name : 'Unknown';
+    const stageName = stageDef ? stageDef.name : '알 수 없음';
 
     let progress = null;
     if (questState.stage === 1) {
-      progress = `${questState.data.jumpsCompleted || 0}/${ENDGAME_CONFIG.STAGE_1_JUMPS} jumps`;
+      progress = `${questState.data.jumpsCompleted || 0}/${ENDGAME_CONFIG.STAGE_1_JUMPS}회 점프`;
     } else if (questState.stage === 2) {
-      progress = `${questState.data.exoticMaterials || 0}/${ENDGAME_CONFIG.STAGE_2_EXOTIC_NEEDED} samples`;
+      progress = `${questState.data.exoticMaterials || 0}/${ENDGAME_CONFIG.STAGE_2_EXOTIC_NEEDED}개 시료`;
     } else if (questState.stage === 4) {
       if (questState.data.messageDelivered) {
         const tanakaSystem = this.starData?.find(
           (s) => s.id === ENDGAME_CONFIG.TANAKA_SYSTEM
         );
         progress = tanakaSystem
-          ? `Return to Tanaka at ${tanakaSystem.name}`
+          ? `${tanakaSystem.name}의 타나카에게 돌아가기`
           : null;
       } else {
         const deliverySystem = this.starData?.find(
           (s) => s.id === ENDGAME_CONFIG.STAGE_4_DELIVERY_SYSTEM
         );
-        progress = deliverySystem ? `Deliver to ${deliverySystem.name}` : null;
+        progress = deliverySystem ? `${deliverySystem.name}으로 배달` : null;
       }
     }
 
     return {
-      title: `Tanaka: ${stageName}`,
+      title: `타나카: ${stageName}`,
       progress,
       stage: questState.stage,
     };

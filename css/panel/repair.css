@@ -131,7 +131,7 @@
   border: 1px solid #00ff88;
   border-radius: 3px;
   font-size: var(--font-size-normal);
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
@@ -163,7 +163,7 @@
   border-radius: 5px;
   font-size: var(--font-size-large);
   font-weight: bold;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -264,7 +264,7 @@
   border-radius: 5px;
   font-size: var(--font-size-medium);
   font-weight: bold;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;

@@ -381,14 +381,14 @@ export class TradingSystem {
     if (totalCost > credits) {
       return {
         valid: false,
-        reason: 'Insufficient credits',
+        reason: '크레딧이 부족합니다',
       };
     }
 
     if (quantity > cargoSpace) {
       return {
         valid: false,
-        reason: 'Not enough cargo space',
+        reason: '화물 공간이 부족합니다',
       };
     }
 

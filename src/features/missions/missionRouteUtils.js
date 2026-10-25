@@ -47,10 +47,10 @@ export function formatRouteIndicator(routeData) {
   const hopLabel = routeData.hops === 1 ? 'hop' : 'hops';
 
   if (routeData.hops === 1) {
-    return `1 hop \u2014 direct jump`;
+    return `1홉 — 직행 점프`;
   }
 
-  return `${routeData.hops} ${hopLabel} \u2014 ~${routeData.totalDays} days travel`;
+  return `${routeData.hops} ${hopLabel} — 약 ${routeData.totalDays}일 소요`;
 }
 
 /**
@@ -73,8 +73,8 @@ export function getFeasibilityWarning(
   const ratio = totalDays / deadline;
 
   if (ratio >= 1.0)
-    return { level: 'impossible', text: 'Deadline likely impossible' };
-  if (ratio > threshold) return { level: 'tight', text: 'Tight deadline' };
+    return { level: 'impossible', text: '기한을 맞추기 어려움' };
+  if (ratio > threshold) return { level: 'tight', text: '빠듯한 기한' };
 
   return null;
 }

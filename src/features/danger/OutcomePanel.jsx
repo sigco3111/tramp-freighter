@@ -35,7 +35,7 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
       success: outcome.success || false,
       encounterType: outcome.encounterType || 'unknown',
       choiceMade: outcome.choiceMade || 'unknown',
-      explanation: outcome.explanation || 'Encounter resolved.',
+      explanation: outcome.explanation || '조우가 종료되었습니다.',
       modifiers: outcome.modifiers || [],
       consequences: outcome.consequences || {},
       karmaChanges: outcome.karmaChanges || [],
@@ -62,15 +62,15 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
       aria-modal="true"
       aria-labelledby="outcome-panel-title"
     >
-      <button className="close-btn" onClick={onClose} aria-label="Close">
+      <button className="close-btn" onClick={onClose} aria-label="닫기">
         ×
       </button>
-      <h2 id="outcome-panel-title">Encounter Outcome</h2>
+      <h2 id="outcome-panel-title">조우 결과</h2>
 
       <div className="outcome-content">
         {/* Outcome Summary Section */}
         <div className="outcome-section outcome-summary">
-          <h3>Result</h3>
+          <h3>결과</h3>
           <div className="outcome-result">
             <div className="result-header">
               <span className="encounter-type">
@@ -79,11 +79,11 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
               <span
                 className={`result-status ${outcomeAnalysis.success ? 'success' : 'failure'}`}
               >
-                {outcomeAnalysis.success ? 'Success' : 'Failure'}
+                {outcomeAnalysis.success ? '성공' : '실패'}
               </span>
             </div>
             <div className="choice-made">
-              <span className="choice-label">Your Choice:</span>
+              <span className="choice-label">당신의 선택:</span>
               <span className="choice-value">
                 {formatChoiceName(outcomeAnalysis.choiceMade)}
               </span>
@@ -97,7 +97,7 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
         {/* Modifiers That Affected Result */}
         {outcomeAnalysis.modifiers.length > 0 && (
           <div className="outcome-section modifiers-section">
-            <h3>Factors That Influenced the Outcome</h3>
+            <h3>결과에 영향을 준 요인</h3>
             <div className="modifiers-list">
               {outcomeAnalysis.modifiers.map((modifier, index) => (
                 <div
@@ -126,12 +126,12 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
           outcomeAnalysis.karmaChanges.length > 0 ||
           outcomeAnalysis.reputationChanges.length > 0) && (
           <div className="outcome-section consequences-section">
-            <h3>Consequences</h3>
+            <h3>결과로 인한 영향</h3>
             <div className="consequences-grid">
               {/* Resource Changes */}
               {Object.keys(outcomeAnalysis.resourceChanges).length > 0 && (
                 <div className="consequence-category resource-changes">
-                  <h4>Ship & Resources</h4>
+                  <h4>함선 및 자원</h4>
                   <div className="changes-list">
                     {Object.entries(outcomeAnalysis.resourceChanges).map(
                       ([resource, change]) => (
@@ -154,11 +154,11 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
               {/* Karma Changes */}
               {outcomeAnalysis.karmaChanges.length > 0 && (
                 <div className="consequence-category karma-changes">
-                  <h4>Moral Standing</h4>
+                  <h4>도덕적 입지</h4>
                   <div className="changes-list">
                     {outcomeAnalysis.karmaChanges.map((change, index) => (
                       <div key={index} className="change-item karma">
-                        <span className="change-label">Karma:</span>
+                        <span className="change-label">카르마:</span>
                         <span
                           className={`change-value ${change.amount >= 0 ? 'positive' : 'negative'}`}
                         >
@@ -169,7 +169,7 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
                       </div>
                     ))}
                     <div className="current-karma">
-                      <span className="current-label">Current Karma:</span>
+                      <span className="current-label">현재 카르마:</span>
                       <span className={`current-value ${getKarmaClass(karma)}`}>
                         {karma}
                       </span>
@@ -181,7 +181,7 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
               {/* Reputation Changes */}
               {outcomeAnalysis.reputationChanges.length > 0 && (
                 <div className="consequence-category reputation-changes">
-                  <h4>Faction Standing</h4>
+                  <h4>세력 입지</h4>
                   <div className="changes-list">
                     {outcomeAnalysis.reputationChanges.map((change, index) => (
                       <div key={index} className="change-item reputation">
@@ -199,7 +199,7 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
                     ))}
                     {/* Current Faction Standings */}
                     <div className="current-standings">
-                      <h5>Current Standing:</h5>
+                      <h5>현재 입지:</h5>
                       {FACTION_CONFIG.FACTIONS.map((faction) => (
                         <div key={faction} className="current-standing">
                           <span className="faction-name">
@@ -225,7 +225,7 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
         {/* Additional Consequences */}
         {outcomeAnalysis.consequences.additionalEffects && (
           <div className="outcome-section additional-effects">
-            <h3>Additional Effects</h3>
+            <h3>추가 효과</h3>
             <div className="effects-list">
               {outcomeAnalysis.consequences.additionalEffects.map(
                 (effect, index) => (
@@ -242,11 +242,11 @@ export function OutcomePanel({ outcome, onClose, onContinue }) {
         {/* Action Buttons */}
         <div className="outcome-actions">
           <button className="outcome-btn primary" onClick={handleContinue}>
-            Continue
+            계속
           </button>
           {onClose && (
             <button className="outcome-btn secondary" onClick={onClose}>
-              Close
+              닫기
             </button>
           )}
         </div>
@@ -265,21 +265,21 @@ function formatEncounterType(encounterType) {
   switch (encounterType) {
     case 'pirate':
     case 'pirate_encounter':
-      return 'Pirate Encounter';
+      return '해적 조우';
     case 'inspection':
     case 'customs_inspection':
-      return 'Customs Inspection';
+      return '세관 검문';
     case 'mechanical_failure':
-      return 'Mechanical Failure';
+      return '기계 고장';
     case 'distress_call':
     case 'civilian_distress':
-      return 'Distress Call';
+      return '조난 신호';
     case 'combat':
-      return 'Combat';
+      return '전투';
     case 'negotiation':
-      return 'Negotiation';
+      return '협상';
     default:
-      return 'Encounter';
+      return '조우';
   }
 }
 
@@ -312,11 +312,11 @@ function formatModifierImpact(value, type) {
 
   switch (type) {
     case 'bonus':
-      return 'Positive';
+      return '긍정적';
     case 'penalty':
-      return 'Negative';
+      return '부정적';
     default:
-      return 'Neutral';
+      return '중립';
   }
 }
 
@@ -329,19 +329,19 @@ function formatModifierImpact(value, type) {
 function formatResourceName(resource) {
   switch (resource) {
     case 'hull':
-      return 'Hull Integrity';
+      return '선체 무결성';
     case 'engine':
-      return 'Engine Condition';
+      return '엔진 상태';
     case 'fuel':
-      return 'Fuel';
+      return '연료';
     case 'lifeSupport':
-      return 'Life Support';
+      return '생명 유지';
     case 'credits':
-      return 'Credits';
+      return '크레딧';
     case 'cargo':
-      return 'Cargo';
+      return '화물';
     case 'days':
-      return 'Time Delay';
+      return '시간 지연';
     default:
       return resource.charAt(0).toUpperCase() + resource.slice(1);
   }
@@ -366,8 +366,8 @@ function formatResourceChange(resource, change) {
 
   if (resource === 'cargo') {
     const percent = Math.abs(change);
-    if (percent >= 100) return 'All cargo lost';
-    return `-${percent}% cargo`;
+    if (percent >= 100) return '모든 화물 손실';
+    return `-${percent}% 화물`;
   }
 
   // For percentage-based resources (hull, engine, fuel, lifeSupport)
@@ -383,13 +383,13 @@ function formatResourceChange(resource, change) {
 function formatFactionName(faction) {
   switch (faction) {
     case 'authorities':
-      return 'Authorities';
+      return '당국';
     case 'traders':
-      return 'Traders';
+      return '상인';
     case 'outlaws':
-      return 'Outlaws';
+      return '무법자';
     case 'civilians':
-      return 'Civilians';
+      return '민간인';
     default:
       return faction.charAt(0).toUpperCase() + faction.slice(1);
   }

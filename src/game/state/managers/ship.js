@@ -113,12 +113,12 @@ export class ShipManager extends BaseManager {
 
     const quirk = SHIP_CONFIG.QUIRKS[quirkId];
     if (!quirk) {
-      return { success: false, reason: 'Unknown quirk' };
+      return { success: false, reason: '알 수 없는 특성' };
     }
 
     const ship = this.capabilities.getOwnState();
     if (ship.quirks.includes(quirkId)) {
-      return { success: false, reason: 'Quirk already installed' };
+      return { success: false, reason: '이미 설치된 특성입니다' };
     }
 
     ship.quirks.push(quirkId);
@@ -142,7 +142,7 @@ export class ShipManager extends BaseManager {
     const ship = this.capabilities.getOwnState();
     const index = ship.quirks.indexOf(quirkId);
     if (index === -1) {
-      return { success: false, reason: 'Quirk not installed' };
+      return { success: false, reason: '설치되지 않은 특성입니다' };
     }
 
     ship.quirks.splice(index, 1);
@@ -179,12 +179,12 @@ export class ShipManager extends BaseManager {
 
     const upgrade = SHIP_CONFIG.UPGRADES[upgradeId];
     if (!upgrade) {
-      return { success: false, reason: 'Unknown upgrade' };
+      return { success: false, reason: '알 수 없는 업그레이드' };
     }
 
     const ship = this.capabilities.getOwnState();
     if (ship.upgrades.includes(upgradeId)) {
-      return { success: false, reason: 'Upgrade already installed' };
+      return { success: false, reason: '이미 설치된 업그레이드입니다' };
     }
 
     ship.upgrades.push(upgradeId);
@@ -231,7 +231,7 @@ export class ShipManager extends BaseManager {
     const ship = this.capabilities.getOwnState();
     const index = ship.upgrades.indexOf(upgradeId);
     if (index === -1) {
-      return { success: false, reason: 'Upgrade not installed' };
+      return { success: false, reason: '설치되지 않은 업그레이드입니다' };
     }
 
     ship.upgrades.splice(index, 1);
@@ -361,7 +361,7 @@ export class ShipManager extends BaseManager {
     if (condition.hull < SHIP_CONFIG.CONDITION_WARNING_THRESHOLDS.HULL) {
       warnings.push({
         system: 'hull',
-        message: 'Risk of cargo loss during jumps',
+        message: '점프 중 화물 유실 위험',
         severity: 'warning',
       });
     }
@@ -370,7 +370,7 @@ export class ShipManager extends BaseManager {
     if (condition.engine < SHIP_CONFIG.CONDITION_WARNING_THRESHOLDS.ENGINE) {
       warnings.push({
         system: 'engine',
-        message: 'Jump failure risk - immediate repairs recommended',
+        message: '점프 실패 위험 - 즉시 수리 권장',
         severity: 'warning',
       });
     }
@@ -382,7 +382,7 @@ export class ShipManager extends BaseManager {
     ) {
       warnings.push({
         system: 'lifeSupport',
-        message: 'Critical condition - urgent repairs required',
+        message: '위험 상태 - 긴급 수리 필요',
         severity: 'critical',
       });
     }
@@ -403,17 +403,17 @@ export class ShipManager extends BaseManager {
     const upgrade = SHIP_CONFIG.UPGRADES[upgradeId];
 
     if (!upgrade) {
-      return { valid: false, reason: 'Unknown upgrade' };
+      return { valid: false, reason: '알 수 없는 업그레이드' };
     }
 
     // Check if already installed
     if (ship.upgrades.includes(upgradeId)) {
-      return { valid: false, reason: 'Already installed' };
+      return { valid: false, reason: '이미 설치됨' };
     }
 
     // Check credits
     if (this.capabilities.getCredits() < upgrade.cost) {
-      return { valid: false, reason: 'Insufficient credits' };
+      return { valid: false, reason: '크레딧이 부족합니다' };
     }
 
     return { valid: true, reason: '' };
@@ -584,12 +584,12 @@ export class ShipManager extends BaseManager {
     // Find cargo stack with matching good
     const cargoIndex = ship.cargo.findIndex((stack) => stack.good === good);
     if (cargoIndex === -1) {
-      return { success: false, reason: 'Good not found in cargo' };
+      return { success: false, reason: '화물에서 해당 품목을 찾을 수 없습니다' };
     }
 
     const cargoStack = ship.cargo[cargoIndex];
     if (qty > cargoStack.qty) {
-      return { success: false, reason: 'Not enough quantity in cargo' };
+      return { success: false, reason: '화물 수량이 부족합니다' };
     }
 
     // Check hidden cargo capacity
@@ -602,7 +602,7 @@ export class ShipManager extends BaseManager {
       capabilities.hiddenCargoCapacity - hiddenCargoUsed;
 
     if (qty > hiddenCargoRemaining) {
-      return { success: false, reason: 'Not enough hidden cargo space' };
+      return { success: false, reason: '숨겨진 화물 공간이 부족합니다' };
     }
 
     // Remove from regular cargo
@@ -643,12 +643,12 @@ export class ShipManager extends BaseManager {
       (stack) => stack.good === good
     );
     if (hiddenIndex === -1) {
-      return { success: false, reason: 'Good not found in hidden cargo' };
+      return { success: false, reason: '숨겨진 화물에서 해당 품목을 찾을 수 없습니다' };
     }
 
     const hiddenStack = ship.hiddenCargo[hiddenIndex];
     if (qty > hiddenStack.qty) {
-      return { success: false, reason: 'Not enough quantity in hidden cargo' };
+      return { success: false, reason: '숨겨진 화물 수량이 부족합니다' };
     }
 
     // Check regular cargo capacity
@@ -656,7 +656,7 @@ export class ShipManager extends BaseManager {
     const cargoRemaining = ship.cargoCapacity - cargoUsed;
 
     if (qty > cargoRemaining) {
-      return { success: false, reason: 'Not enough regular cargo space' };
+      return { success: false, reason: '일반 화물 공간이 부족합니다' };
     }
 
     // Remove from hidden cargo
@@ -718,7 +718,7 @@ export class ShipManager extends BaseManager {
     const totalAvailable = relevantStacks.reduce((sum, c) => sum + c.qty, 0);
 
     if (totalAvailable < quantity) {
-      return { success: false, reason: `Not enough ${goodType}.` };
+      return { success: false, reason: `${goodType}이(가) 부족합니다.` };
     }
 
     let remaining = quantity;

@@ -142,7 +142,7 @@
   transition: all 0.2s;
   cursor: pointer;
   text-align: left;
-  font-family: 'Courier New', monospace;
+  font-family: 'Courier New', 'Noto Sans KR', monospace;
 }
 
 .connection-item:hover {

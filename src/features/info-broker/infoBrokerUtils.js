@@ -11,7 +11,7 @@ export function validateIntelligencePurchase(cost, credits) {
   if (credits < cost) {
     return {
       valid: false,
-      reason: 'Insufficient credits for intelligence',
+      reason: '정보를 구매할 크레딧이 부족합니다',
     };
   }
 
@@ -30,7 +30,7 @@ export function validateRumorPurchase(credits) {
   if (credits < rumorCost) {
     return {
       valid: false,
-      reason: 'Insufficient credits for rumor',
+      reason: '소문을 구매할 크레딧이 부족합니다',
     };
   }
 
@@ -88,14 +88,14 @@ export function getIntelligencePriority(option) {
  */
 export function formatSource(source) {
   if (source === INTELLIGENCE_CONFIG.SOURCES.VISITED) {
-    return 'Visited';
+    return '방문함';
   } else if (source === INTELLIGENCE_CONFIG.SOURCES.INTELLIGENCE_BROKER) {
-    return 'Information Broker';
+    return '정보 중개인';
   } else if (source === INTELLIGENCE_CONFIG.SOURCES.ORBIT) {
-    return 'Orbit only';
+    return '궤도만 통과';
   } else {
     // Fallback for old saves without source field
-    return 'Unknown';
+    return '알 수 없음';
   }
 }
 
@@ -110,15 +110,15 @@ export function formatSource(source) {
  */
 export function formatStaleness(lastVisit) {
   if (lastVisit === 0) {
-    return { text: 'Current', cssClass: '' };
+    return { text: '현재', cssClass: '' };
   } else if (lastVisit === 1) {
-    return { text: '1 day old', cssClass: '' };
+    return { text: '1일 경과', cssClass: '' };
   } else if (lastVisit <= INTELLIGENCE_CONFIG.STALENESS_THRESHOLDS.RECENT) {
-    return { text: `${lastVisit} days old`, cssClass: '' };
+    return { text: `${lastVisit}일 경과`, cssClass: '' };
   } else if (lastVisit <= INTELLIGENCE_CONFIG.STALENESS_THRESHOLDS.STALE) {
-    return { text: `${lastVisit} days old`, cssClass: 'stale' };
+    return { text: `${lastVisit}일 경과`, cssClass: 'stale' };
   } else {
-    return { text: `${lastVisit} days old`, cssClass: 'very-stale' };
+    return { text: `${lastVisit}일 경과`, cssClass: 'very-stale' };
   }
 }
 
@@ -130,16 +130,16 @@ export function formatStaleness(lastVisit) {
  */
 export function formatVisitInfo(lastVisit, source) {
   if (source === INTELLIGENCE_CONFIG.SOURCES.ORBIT) {
-    return 'Visited but never docked';
+    return '방문했지만 도킹한 적 없음';
   }
   if (lastVisit === null) {
-    return 'Never visited';
+    return '방문한 적 없음';
   } else if (lastVisit === 0) {
-    return 'Current prices';
+    return '현재 가격';
   } else if (lastVisit === 1) {
-    return 'Last visited 1 day ago';
+    return '마지막 방문: 1일 전';
   } else {
-    return `Last visited ${lastVisit} days ago`;
+    return `마지막 방문: ${lastVisit}일 전`;
   }
 }
 

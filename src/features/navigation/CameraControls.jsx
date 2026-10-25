@@ -122,61 +122,61 @@ export function CameraControls({
       <button
         className="camera-controls-toggle"
         onClick={toggleExpanded}
-        aria-label="Toggle settings"
+        aria-label="설정 전환"
       >
         ⚙
       </button>
 
       {isExpanded && (
         <div className="settings-panel">
-          <div className="settings-header">Settings</div>
+          <div className="settings-header">설정</div>
 
           <div className="settings-list">
             {/* Toggle switches */}
             <label className="settings-toggle-row">
-              <span className="settings-label">Star Rotation</span>
+              <span className="settings-label">별 회전</span>
               <input
                 type="checkbox"
                 className="settings-toggle-input"
                 checked={cameraState.autoRotationEnabled}
                 onChange={onToggleRotation}
-                aria-label="Star Rotation"
+                aria-label="별 회전"
               />
               <span className="settings-toggle-slider" />
             </label>
 
             <label className="settings-toggle-row">
-              <span className="settings-label">Boundary</span>
+              <span className="settings-label">경계선</span>
               <input
                 type="checkbox"
                 className="settings-toggle-input"
                 checked={cameraState.boundaryVisible}
                 onChange={onToggleBoundary}
-                aria-label="Boundary"
+                aria-label="경계선"
               />
               <span className="settings-toggle-slider" />
             </label>
 
             <label className="settings-toggle-row">
-              <span className="settings-label">Antimatter</span>
+              <span className="settings-label">반물질</span>
               <input
                 type="checkbox"
                 className="settings-toggle-input"
                 checked={antimatter}
                 onChange={toggleAntimatter}
-                aria-label="Antimatter"
+                aria-label="반물질"
               />
               <span className="settings-toggle-slider" />
             </label>
 
             <label className="settings-toggle-row">
-              <span className="settings-label">Jump Warnings</span>
+              <span className="settings-label">점프 경고</span>
               <input
                 type="checkbox"
                 className="settings-toggle-input"
                 checked={jumpWarningsEnabled}
                 onChange={toggleJumpWarnings}
-                aria-label="Jump Warnings"
+                aria-label="점프 경고"
               />
               <span className="settings-toggle-slider" />
             </label>
@@ -184,7 +184,7 @@ export function CameraControls({
             <div className="settings-divider" />
 
             <div className="settings-star-finder">
-              <span className="settings-label">Find Star</span>
+              <span className="settings-label">별 찾기</span>
               <CustomSelect
                 className="star-finder-select"
                 options={sortedStars.map((star) => ({
@@ -198,8 +198,8 @@ export function CameraControls({
                     selectStarById(systemId);
                   }
                 }}
-                placeholder="-- Select --"
-                aria-label="Find star system"
+                placeholder="-- 선택 --"
+                aria-label="항성계 찾기"
               />
             </div>
 
@@ -207,22 +207,22 @@ export function CameraControls({
 
             {/* Action buttons */}
             <button className="settings-action-btn" onClick={onZoomIn}>
-              Zoom In
+              확대
             </button>
             <button className="settings-action-btn" onClick={onZoomOut}>
-              Zoom Out
+              축소
             </button>
             <button
               className="settings-action-btn"
               onClick={() => setShowInstructions(true)}
             >
-              Instructions
+              설명서
             </button>
             <button
               className="settings-action-btn"
               onClick={() => setShowAchievements(true)}
             >
-              Achievements
+              업적
             </button>
             <a
               className="settings-action-btn"

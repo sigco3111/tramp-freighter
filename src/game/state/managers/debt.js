@@ -149,11 +149,11 @@ export class DebtManager extends BaseManager {
     const maxDraw = this.getMaxDraw();
 
     if (amount > maxDraw) {
-      return { success: false, reason: 'Amount exceeds maximum draw' };
+      return { success: false, reason: '최대 인출 한도를 초과합니다' };
     }
 
     if (amount < COLE_DEBT_CONFIG.MIN_DRAW) {
-      return { success: false, reason: 'Amount below minimum draw' };
+      return { success: false, reason: '최소 인출 금액 미만입니다' };
     }
 
     const credits = this.capabilities.getCredits();
@@ -196,13 +196,13 @@ export class DebtManager extends BaseManager {
     const debt = this.getDebt();
 
     if (debt === 0) {
-      return { success: false, reason: 'No outstanding debt' };
+      return { success: false, reason: '남은 부채가 없습니다' };
     }
 
     let actualPayment = Math.min(amount, debt);
 
     if (actualPayment <= 0) {
-      return { success: false, reason: 'Invalid payment amount' };
+      return { success: false, reason: '잘못된 상환 금액입니다' };
     }
 
     const credits = this.capabilities.getCredits();
@@ -230,14 +230,14 @@ export class DebtManager extends BaseManager {
         );
         actualPayment = Math.min(actualPayment, debt);
         if (actualPayment <= 0) {
-          return { success: false, reason: 'Insufficient credits' };
+          return { success: false, reason: '크레딧이 부족합니다' };
         }
         fee = Math.ceil(
           actualPayment * COLE_DEBT_CONFIG.EARLY_REPAYMENT_FEE_RATE
         );
       } else {
         if (credits < actualPayment) {
-          return { success: false, reason: 'Insufficient credits' };
+          return { success: false, reason: '크레딧이 부족합니다' };
         }
       }
     }

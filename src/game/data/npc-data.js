@@ -98,8 +98,8 @@ export function validateNPCDefinition(npc) {
  */
 export const WEI_CHEN = {
   id: 'chen_barnards',
-  name: 'Wei Chen',
-  role: 'Dock Worker',
+  name: '웨이 첸',
+  role: '부두 일꾼',
   system: 4, // Barnard's Star
   station: 'Bore Station 7',
   personality: {
@@ -114,22 +114,22 @@ export const WEI_CHEN = {
     quirk: 'drops articles', // "Ship needs fuel" instead of "The ship needs fuel"
   },
   description:
-    'A weathered dock worker with calloused hands and knowing eyes. Former ship captain.',
+    '굳은살 박인 손과 모든 걸 아는 눈을 가진 풍파 겪은 부두 일꾼. 전직 선장.',
   initialRep: NPC_INITIAL_REPUTATION.NEUTRAL, // Neutral starting relationship
   tips: [
-    'Heavy cargo shifts during transit. Secure it properly.',
-    'Dock fees vary by station. Sol and Alpha Centauri charge premium.',
-    'Some captains overload their holds. Bad idea in rough space.',
+    '무거운 화물은 운송 중에 쏠려요. 제대로 고정해요.',
+    '부두 요금은 정거장마다 달라요. 솔과 알파 센타우리는 할증이 붙어요.',
+    '화물칸을 과적하는 선장들이 있어요. 험한 우주에선 나쁜 생각이죠.',
   ],
   discountService: 'docking',
   tierBenefits: {
-    warm: { discount: 0, benefit: 'Dock worker tips' },
-    friendly: { discount: 0.05, benefit: '5% discount on docking services' },
+    warm: { discount: 0, benefit: '부두 일꾼 팁' },
+    friendly: { discount: 0.05, benefit: '도킹 서비스 5% 할인' },
     trusted: {
       discount: 0.05,
-      benefit: 'Advance warning about dock inspections',
+      benefit: '부두 검사에 대한 사전 경고',
     },
-    family: { discount: 0.1, benefit: 'Priority docking and cargo handling' },
+    family: { discount: 0.1, benefit: '우선 도킹 및 화물 처리' },
   },
 };
 
@@ -151,8 +151,8 @@ export const WEI_CHEN = {
  */
 export const MARCUS_COLE = {
   id: 'cole_sol',
-  name: 'Marcus Cole',
-  role: 'Loan Shark',
+  name: '마커스 콜',
+  role: '고리대금업자',
   system: 0, // Sol
   station: 'Sol Central',
   personality: {
@@ -167,19 +167,19 @@ export const MARCUS_COLE = {
     quirk: 'short clipped sentences', // "Payment. Due. Now."
   },
   description:
-    'Impeccably dressed financier with cold eyes and a calculating smile. Your creditor.',
+    '흠잡을 데 없이 차려입은 금융업자. 차가운 눈과 계산적인 미소. 당신의 채권자.',
   initialRep: NPC_INITIAL_REPUTATION.HOSTILE, // Starts cold due to player debt
   tips: [
-    'Debt compounds. Pay early when you can.',
-    'Credit is a tool. Use it wisely, not desperately.',
-    'Some traders leverage debt for bigger hauls. Risky but effective.',
+    '빚은 복리로 불어납니다. 가능하면 일찍 갚으세요.',
+    '신용은 도구입니다. 절박하지 않게, 현명하게 쓰세요.',
+    '더 큰 화물을 위해 빚을 지렛대로 쓰는 상인도 있습니다. 위험하지만 효과적이죠.',
   ],
   discountService: 'debt',
   tierBenefits: {
-    warm: { discount: 0, benefit: 'Financial tips' },
-    friendly: { discount: 0.1, benefit: '10% reduction in debt interest' },
-    trusted: { discount: 0.1, benefit: 'Debt restructuring options' },
-    family: { discount: 0.15, benefit: 'Favorable loan terms' },
+    warm: { discount: 0, benefit: '금융 팁' },
+    friendly: { discount: 0.1, benefit: '부채 이자 10% 감면' },
+    trusted: { discount: 0.1, benefit: '부채 재조정 옵션' },
+    family: { discount: 0.15, benefit: '유리한 대출 조건' },
   },
 };
 
@@ -202,8 +202,8 @@ export const MARCUS_COLE = {
  */
 export const FATHER_OKONKWO = {
   id: 'okonkwo_ross154',
-  name: 'Father Okonkwo',
-  role: 'Chaplain',
+  name: '오콘쿠오 신부',
+  role: '사제',
   system: 11, // Ross 154
   station: 'Ross 154 Medical',
   personality: {
@@ -218,19 +218,19 @@ export const FATHER_OKONKWO = {
     quirk: 'religious metaphors', // "May your journey be blessed with fair winds"
   },
   description:
-    'Gentle chaplain with kind eyes and a warm smile. Offers comfort to weary travelers.',
+    '다정한 눈빛과 따뜻한 미소를 가진 온화한 사제. 지친 여행자들에게 위안을 줍니다.',
   initialRep: NPC_INITIAL_REPUTATION.FRIENDLY, // Starts warm and welcoming
   tips: [
-    'The frontier stations pay more for medicine than you might think. Compassion and commerce are not always at odds.',
-    'Many traders overlook grain as unprofitable. But hungry miners at the outer systems will pay what they must.',
-    'If you must carry restricted goods, know that the authorities are less watchful beyond the core systems.',
+    '변경 정거장은 생각보다 의약품에 더 후하게 쳐줍니다. 연민과 상업이 늘 대립하는 건 아닙니다.',
+    '많은 상인이 곡물을 돈 안 되는 물건으로 여깁니다. 하지만 외곽 항성계의 굶주린 광부들은 값이 얼마든 치릅니다.',
+    '제한 품목을 실어야 한다면, 당국은 중심 항성계 바깥에서는 덜 감시한다는 걸 아세요.',
   ],
   discountService: 'medical',
   tierBenefits: {
-    warm: { discount: 0, benefit: 'Spiritual guidance' },
-    friendly: { discount: 0, benefit: 'Free medical supplies once per visit' },
-    trusted: { discount: 0, benefit: 'Sanctuary (safe harbor) benefits' },
-    family: { discount: 0, benefit: 'Emergency medical care' },
+    warm: { discount: 0, benefit: '영적 안내' },
+    friendly: { discount: 0, benefit: '방문당 1회 무료 의약품' },
+    trusted: { discount: 0, benefit: '성역(안전 항구) 혜택' },
+    family: { discount: 0, benefit: '응급 의료' },
   },
 };
 
@@ -253,8 +253,8 @@ export const FATHER_OKONKWO = {
  */
 export const WHISPER = {
   id: 'whisper_sirius',
-  name: 'Whisper',
-  role: 'Information Broker',
+  name: '위스퍼',
+  role: '정보 중개인',
   system: 7, // Sirius A
   station: 'Sirius Exchange',
   personality: {
@@ -269,19 +269,19 @@ export const WHISPER = {
     quirk: 'cryptic measured tones',
   },
   description:
-    "Mysterious info broker. Knows everyone's secrets. Including yours.",
+    "수수께끼의 정보 중개인. 모두의 비밀을 안다. 당신의 비밀까지.",
   initialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
   tips: [
-    'Procyon is buying ore at premium prices this week.',
-    'Avoid Tau Ceti. Inspections are up 300%.',
-    'Someone at Ross 154 is looking for electronics. Big buyer.',
+    '프로키온이 이번 주 광석을 웃돈에 사들이고 있습니다.',
+    '타우 세티는 피하세요. 검문이 300% 늘었습니다.',
+    '로스 154의 누군가가 전자제품을 찾고 있습니다. 큰손이에요.',
   ],
   discountService: 'intel',
   tierBenefits: {
-    warm: { discount: 0.1, benefit: '10% discount on intel purchases' },
-    friendly: { discount: 0.1, benefit: 'Free rumors once per visit' },
-    trusted: { discount: 0.15, benefit: 'Advance warning of inspections' },
-    family: { discount: 0.2, benefit: 'Exclusive insider information' },
+    warm: { discount: 0.1, benefit: '정보 구매 10% 할인' },
+    friendly: { discount: 0.1, benefit: '방문당 1회 무료 소문' },
+    trusted: { discount: 0.15, benefit: '검문 사전 경고' },
+    family: { discount: 0.2, benefit: '독점 내부 정보' },
   },
 };
 
@@ -305,8 +305,8 @@ export const WHISPER = {
  */
 export const CAPTAIN_VASQUEZ = {
   id: 'vasquez_epsilon',
-  name: 'Captain Vasquez',
-  role: 'Retired Trader',
+  name: '바스케스 선장',
+  role: '은퇴한 상인',
   system: 13, // Epsilon Eridani
   station: 'Eridani Hub',
   personality: {
@@ -321,25 +321,25 @@ export const CAPTAIN_VASQUEZ = {
     quirk: 'trading stories',
   },
   description:
-    'Retired freighter captain. Mentor figure. Knows the old routes.',
+    '은퇴한 화물선 선장. 멘토 같은 존재. 옛 항로를 안다.',
   initialRep: 5, // Starts with 5 rep as mentor figure
   tips: [
-    "Barnard's Star always needs ore. Mining station, you know.",
-    'Sirius A pays top credit for luxury goods. Rich folks.',
-    'The Procyon run is profitable if you can afford the fuel.',
+    "바너드 항성은 늘 광석이 필요하지. 채굴 정거장이거든.",
+    '시리우스 A는 사치품에 최고가를 쳐줘. 부자들이니까.',
+    '프로키온 항로는 연료비를 감당할 수만 있다면 돈이 돼.',
   ],
   discountService: null, // Mentor, not service provider
   tierBenefits: {
-    warm: { discount: 0, benefit: 'Trading tips and route suggestions' },
+    warm: { discount: 0, benefit: '거래 팁과 항로 제안' },
     friendly: {
       discount: 0,
-      benefit: 'Old star charts reveal profitable routes',
+      benefit: '옛 성도가 수익성 좋은 항로를 알려 준다',
     },
     trusted: {
       discount: 0,
-      benefit: 'Co-investment opportunities (50/50 splits)',
+      benefit: '공동 투자 기회(50/50 분배)',
     },
-    family: { discount: 0, benefit: 'Pavonis route hints (endgame content)' },
+    family: { discount: 0, benefit: '파보니스 항로 힌트(엔드게임 콘텐츠)' },
   },
 };
 
@@ -362,8 +362,8 @@ export const CAPTAIN_VASQUEZ = {
  */
 export const DR_SARAH_KIM = {
   id: 'kim_tau_ceti',
-  name: 'Dr. Sarah Kim',
-  role: 'Station Administrator',
+  name: '사라 김 박사',
+  role: '정거장 관리자',
   system: 31, // Tau Ceti
   station: 'Tau Ceti Station',
   personality: {
@@ -378,19 +378,19 @@ export const DR_SARAH_KIM = {
     quirk: 'regulation citations',
   },
   description:
-    'Efficient station administrator. By-the-book. Respects professionalism.',
+    '효율적인 정거장 관리자. 규정을 중시한다. 전문성을 존중한다.',
   initialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
   tips: [
-    'We have strict customs here. Keep your cargo manifest accurate.',
-    'Medicine prices are stable at Ross 154. Good for planning.',
-    'Fuel efficiency matters on long routes. Upgrade your engine.',
+    '이곳은 세관이 엄격합니다. 화물 명세서를 정확히 작성하세요.',
+    '로스 154의 의약품 가격은 안정적입니다. 계획 세우기에 좋습니다.',
+    '장거리 항로에서는 연료 효율이 중요합니다. 엔진을 업그레이드하세요.',
   ],
   discountService: 'docking',
   tierBenefits: {
-    warm: { discount: 0, benefit: 'Operational tips' },
-    friendly: { discount: 0, benefit: 'Docking fee waiver' },
-    trusted: { discount: 0, benefit: 'Advance customs notice' },
-    family: { discount: 0, benefit: 'Priority docking clearance' },
+    warm: { discount: 0, benefit: '운영 팁' },
+    friendly: { discount: 0, benefit: '도킹 요금 면제' },
+    trusted: { discount: 0, benefit: '세관 사전 통보' },
+    family: { discount: 0, benefit: '우선 도킹 허가' },
   },
 };
 
@@ -413,8 +413,8 @@ export const DR_SARAH_KIM = {
  */
 export const RUSTY_RODRIGUEZ = {
   id: 'rodriguez_procyon',
-  name: '"Rusty" Rodriguez',
-  role: 'Mechanic',
+  name: '"러스티" 로드리게스',
+  role: '정비공',
   system: 19, // Procyon
   station: 'Procyon Depot',
   personality: {
@@ -428,22 +428,22 @@ export const RUSTY_RODRIGUEZ = {
     vocabulary: 'technical',
     quirk: 'ship personification',
   },
-  description: 'Gruff but skilled mechanic. Loves ships more than people.',
+  description: '무뚝뚝하지만 솜씨 좋은 정비공. 사람보다 배를 더 사랑한다.',
   initialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
   tips: [
-    "Don't let your hull drop below 50%. Expensive to fix after that.",
-    'Engine degradation is real. Budget for maintenance.',
-    'Life support is critical. Never skip those repairs.',
+    "선체가 50% 아래로 떨어지게 두지 마. 그 뒤로는 고치는 데 돈이 많이 들어.",
+    '엔진 노후화는 현실이야. 정비 예산을 잡아 둬.',
+    '생명 유지 장치는 핵심이야. 그 수리는 절대 건너뛰지 마.',
   ],
   discountService: 'repair',
   tierBenefits: {
-    warm: { discount: 0.05, benefit: '5% discount on repairs' },
-    friendly: { discount: 0.15, benefit: '15% discount on repairs' },
+    warm: { discount: 0.05, benefit: '수리 5% 할인' },
+    friendly: { discount: 0.15, benefit: '수리 15% 할인' },
     trusted: {
       discount: 0.15,
-      benefit: 'Maintenance tips and free diagnostics',
+      benefit: '정비 팁과 무료 진단',
     },
-    family: { discount: 0.2, benefit: 'Priority repair service' },
+    family: { discount: 0.2, benefit: '우선 수리 서비스' },
   },
 };
 
@@ -466,8 +466,8 @@ export const RUSTY_RODRIGUEZ = {
  */
 export const ZARA_OSMAN = {
   id: 'osman_luyten',
-  name: 'Zara Osman',
-  role: 'Trader',
+  name: '자라 오스만',
+  role: '상인',
   system: 34, // Luyten's Star
   station: "Luyten's Outpost",
   personality: {
@@ -482,19 +482,19 @@ export const ZARA_OSMAN = {
     quirk: 'trading jargon',
   },
   description:
-    'Sharp trader with connections across the sector. Competitive but fair.',
+    '섹터 곳곳에 인맥이 있는 날카로운 상인. 경쟁적이지만 공정하다.',
   initialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
   tips: [
-    'Buy low at mining stations, sell high at rich systems.',
-    'Luxury goods have the best margins if you can afford the capital.',
-    'Watch for economic events. They shift prices dramatically.',
+    '광산 정거장에서 싸게 사서 부유한 항성계에서 비싸게 팔아요.',
+    '자본만 있다면 사치품이 마진이 제일 좋아요.',
+    '경제 이벤트를 지켜봐요. 가격을 크게 흔들어요.',
   ],
   discountService: 'trade',
   tierBenefits: {
-    warm: { discount: 0, benefit: 'Market price tips' },
-    friendly: { discount: 0, benefit: 'Advance price shift notice' },
-    trusted: { discount: 0, benefit: 'Premium trading tips (105% buy rate)' },
-    family: { discount: 0, benefit: 'Exclusive trading partnerships' },
+    warm: { discount: 0, benefit: '시장 가격 팁' },
+    friendly: { discount: 0, benefit: '가격 변동 사전 통지' },
+    trusted: { discount: 0, benefit: '프리미엄 거래 팁(105% 매수율)' },
+    family: { discount: 0, benefit: '독점 거래 파트너십' },
   },
 };
 
@@ -517,8 +517,8 @@ export const ZARA_OSMAN = {
  */
 export const STATION_MASTER_KOWALSKI = {
   id: 'kowalski_alpha_centauri',
-  name: 'Station Master Kowalski',
-  role: 'Station Master',
+  name: '코왈스키 정거장장',
+  role: '정거장장',
   system: 1, // Alpha Centauri
   station: 'Centauri Station',
   personality: {
@@ -532,19 +532,19 @@ export const STATION_MASTER_KOWALSKI = {
     vocabulary: 'simple',
     quirk: 'no-nonsense direct',
   },
-  description: 'Veteran station master. Seen everything. Respects competence.',
+  description: '산전수전 다 겪은 정거장장. 안 본 게 없다. 유능함을 존중한다.',
   initialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
   tips: [
-    'Alpha Centauri is a hub. Good for buying and selling most goods.',
-    'We get a lot of traffic. Prices are competitive.',
-    'Keep your ship in good shape. We have standards here.',
+    '알파 센타우리는 허브야. 대부분의 물건을 사고팔기 좋지.',
+    '교통량이 많아. 가격도 경쟁력 있고.',
+    '배 상태를 잘 유지해. 여기엔 기준이 있어.',
   ],
   discountService: 'docking',
   tierBenefits: {
-    warm: { discount: 0, benefit: 'Station operation tips' },
-    friendly: { discount: 0, benefit: 'Station storage access' },
-    trusted: { discount: 0, benefit: 'Emergency fuel at cost' },
-    family: { discount: 0, benefit: 'Priority docking and services' },
+    warm: { discount: 0, benefit: '정거장 운영 팁' },
+    friendly: { discount: 0, benefit: '정거장 보관소 이용' },
+    trusted: { discount: 0, benefit: '원가로 비상 연료 제공' },
+    family: { discount: 0, benefit: '우선 도킹 및 서비스' },
   },
 };
 
@@ -568,8 +568,8 @@ export const STATION_MASTER_KOWALSKI = {
  */
 export const LUCKY_LIU = {
   id: 'liu_wolf359',
-  name: '"Lucky" Liu',
-  role: 'Gambler',
+  name: '"럭키" 리우',
+  role: '도박꾼',
   system: 5, // Wolf 359
   station: 'Wolf 359 Station',
   personality: {
@@ -584,19 +584,19 @@ export const LUCKY_LIU = {
     quirk: 'gambling metaphors',
   },
   description:
-    'Professional gambler and risk-taker. Loves long odds. Respects bold moves.',
+    '전문 도박꾼이자 위험 감수자. 낮은 확률을 사랑한다. 대담한 행동을 존중한다.',
   initialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
   tips: [
-    'Sometimes you gotta take risks. Big risks, big rewards.',
-    'I heard about a high-stakes cargo run. Interested?',
-    "Don't play it safe all the time. Fortune favors the bold.",
+    '가끔은 위험을 감수해야지. 큰 위험, 큰 보상.',
+    '고액 판돈이 걸린 화물 운송 얘기를 들었어. 관심 있어?',
+    "항상 안전하게만 하지 마. 행운은 대담한 자의 편이야.",
   ],
   discountService: null, // Gambler, not service provider
   tierBenefits: {
-    warm: { discount: 0, benefit: 'Risk-taking tips' },
-    friendly: { discount: 0, benefit: '₡500 stake mechanic' },
-    trusted: { discount: 0, benefit: 'Insider information' },
-    family: { discount: 0, benefit: 'High-risk exclusive opportunities' },
+    warm: { discount: 0, benefit: '위험 감수 팁' },
+    friendly: { discount: 0, benefit: '₡500 판돈 메커니즘' },
+    trusted: { discount: 0, benefit: '내부 정보' },
+    family: { discount: 0, benefit: '고위험 독점 기회' },
   },
 };
 
@@ -615,8 +615,8 @@ export const LUCKY_LIU = {
  */
 export const YUKI_TANAKA = {
   id: 'tanaka_barnards',
-  name: 'Yuki Tanaka',
-  role: 'Engineer',
+  name: '유키 타나카',
+  role: '엔지니어',
   system: 4, // Barnard's Star
   station: 'Bore Station 7',
   personality: {
@@ -631,22 +631,22 @@ export const YUKI_TANAKA = {
     quirk: 'Precise, measured speech. Never wastes words.',
   },
   description:
-    'Brilliant engineer working on experimental drive technology. Has her own reasons for wanting to reach Delta Pavonis.',
+    '실험적 구동 기술을 연구하는 뛰어난 엔지니어. 델타 파보니스에 가려는 나름의 이유가 있다.',
   initialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
   tips: [
-    'Your drive runs more efficiently when hull integrity is high. A damaged ship wastes fuel compensating for structural drag.',
-    'The wormhole network has patterns. Some routes see less traffic, which means fewer pirates but also fewer rescue options.',
-    'Parts are cheap at the core systems where they are manufactured. The further out you go, the more they cost.',
+    '선체 무결성이 높을수록 구동계가 더 효율적으로 돌아가요. 손상된 배는 구조적 항력을 보상하느라 연료를 낭비해요.',
+    '웜홀 네트워크에는 패턴이 있어요. 교통량이 적은 항로는 해적이 적지만 구조 옵션도 적어요.',
+    '부품은 제조되는 중심 항성계에서 쌉니다. 멀리 갈수록 비싸져요.',
   ],
   discountService: null,
   tierBenefits: {
     warm: {
       discount: 0,
-      benefit: 'Shares technical insights about the Tanaka Drive.',
+      benefit: '타나카 구동계에 대한 기술적 통찰을 공유한다.',
     },
-    friendly: { discount: 0, benefit: 'Discusses her research freely.' },
-    trusted: { discount: 0, benefit: 'Reveals her true mission.' },
-    family: { discount: 0, benefit: 'Partner for the Pavonis Run.' },
+    friendly: { discount: 0, benefit: '자신의 연구를 자유롭게 논한다.' },
+    trusted: { discount: 0, benefit: '진짜 임무를 밝힌다.' },
+    family: { discount: 0, benefit: '파보니스 항해의 파트너.' },
   },
   questId: 'tanaka',
   hidden: true,
@@ -661,8 +661,8 @@ export const YUKI_TANAKA = {
  */
 export const YUMI_TANAKA_POSTCREDITS = {
   id: 'yumi_delta_pavonis',
-  name: 'Yumi Tanaka',
-  role: 'Colony Director',
+  name: '유미 타나카',
+  role: '식민지 총괄',
   system: ENDGAME_CONFIG.DELTA_PAVONIS_ID,
   station: 'Delta Pavonis Colony',
   personality: {
@@ -677,17 +677,17 @@ export const YUMI_TANAKA_POSTCREDITS = {
     quirk: 'Fourth-wall-breaking irreverence.',
   },
   description:
-    "Colony Director at Delta Pavonis. Tanaka's sister. Seems to know more than she should.",
+    "델타 파보니스의 식민지 총괄. 타나카의 언니. 알아선 안 될 것까지 아는 듯하다.",
   initialRep: REPUTATION_BOUNDS.WARM_MIN,
   tips: [
-    'The credits already rolled. There is literally nothing left to do here.',
+    '크레딧은 이미 올라갔어요. 여기엔 정말로 할 일이 남아 있지 않아요.',
   ],
   discountService: null,
   tierBenefits: {
-    warm: { discount: 0, benefit: 'Post-credits banter.' },
-    friendly: { discount: 0, benefit: 'More post-credits banter.' },
-    trusted: { discount: 0, benefit: 'Even more post-credits banter.' },
-    family: { discount: 0, benefit: 'Maximum post-credits banter.' },
+    warm: { discount: 0, benefit: '크레딧 후 농담.' },
+    friendly: { discount: 0, benefit: '더 많은 크레딧 후 농담.' },
+    trusted: { discount: 0, benefit: '훨씬 더 많은 크레딧 후 농담.' },
+    family: { discount: 0, benefit: '최대치의 크레딧 후 농담.' },
   },
   hidden: true,
   revealFlag: 'post_credits',

@@ -178,7 +178,7 @@ export class InformationBroker {
       visitedCount >= ENDGAME_CONFIG.BARNARDS_ENGINEER_RUMOR_SYSTEMS &&
       rng.next() < ENDGAME_CONFIG.INFO_BROKER_TANAKA_CHANCE
     ) {
-      return "There's an engineer at Barnard's Star — Tanaka. Works on drive tech that could push ships beyond the known lanes. Doesn't talk to just anyone, though.";
+      return "바너드 항성에 엔지니어가 하나 있어요. 타나카. 알려진 항로 너머로 배를 보낼 수 있는 구동 기술을 다루죠. 아무하고나 말하진 않지만요.";
     }
 
     // If there are active events, 50% chance to hint about one
@@ -189,15 +189,15 @@ export class InformationBroker {
       if (system) {
         // Get event type name from the event object or use generic description
         const eventDescriptions = {
-          mining_strike: 'labor troubles',
-          medical_emergency: 'a health crisis',
+          mining_strike: '노동 분쟁',
+          medical_emergency: '보건 위기',
           festival: 'celebrations',
         };
 
         const description =
           eventDescriptions[marketDisruption.type] ||
-          'unusual market conditions';
-        return `I heard ${system.name} is experiencing ${description}. Might be worth checking out.`;
+          '이례적인 시장 상황';
+        return `${system.name}에 ${description}이(가) 있다고 들었습니다. 가 볼 만할지도 모릅니다.`;
       }
     }
 
@@ -224,11 +224,11 @@ export class InformationBroker {
     }
 
     if (bestSystem) {
-      return `Word on the street is that ${rumorCommodity} prices are pretty good at ${bestSystem.name} right now.`;
+      return `거리에선 지금 ${bestSystem.name}에서 ${rumorCommodity} 가격이 꽤 좋다는 소문입니다.`;
     }
 
     // Fallback generic rumor
-    return `The markets are always changing. Keep your eyes open for opportunities.`;
+    return `시장은 늘 변합니다. 기회를 놓치지 않도록 눈을 크게 뜨세요.`;
   }
 
   /**
@@ -242,7 +242,7 @@ export class InformationBroker {
     if (credits < cost) {
       return {
         valid: false,
-        reason: 'Insufficient credits for intelligence',
+        reason: '정보를 사기엔 크레딧이 부족합니다',
       };
     }
 

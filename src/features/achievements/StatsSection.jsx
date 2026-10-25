@@ -20,7 +20,7 @@ export function getKarmaLabel(karma) {
   for (const entry of ACHIEVEMENTS_CONFIG.KARMA_LABELS) {
     if (karma >= entry.min) return entry.label;
   }
-  return 'Neutral';
+  return '중립';
 }
 
 /**
@@ -36,7 +36,7 @@ export function getFactionLabel(rep) {
   for (const entry of ACHIEVEMENTS_CONFIG.FACTION_LABELS) {
     if (rep >= entry.min) return entry.label;
   }
-  return 'Neutral';
+  return '중립';
 }
 
 /**
@@ -53,13 +53,13 @@ function capitalize(str) {
  * Human-readable labels for danger flag keys.
  */
 const DANGER_FLAG_LABELS = {
-  piratesFought: 'Pirates Fought',
-  piratesNegotiated: 'Pirates Negotiated',
-  civiliansSaved: 'Civilians Saved',
-  civiliansLooted: 'Civilians Looted',
-  inspectionsPassed: 'Inspections Passed',
-  inspectionsBribed: 'Inspections Bribed',
-  inspectionsFled: 'Inspections Fled',
+  piratesFought: '싸운 해적',
+  piratesNegotiated: '협상한 해적',
+  civiliansSaved: '구한 민간인',
+  civiliansLooted: '약탈한 민간인',
+  inspectionsPassed: '통과한 검문',
+  inspectionsBribed: '뇌물로 넘긴 검문',
+  inspectionsFled: '도주한 검문',
 };
 
 /**
@@ -87,9 +87,9 @@ export function StatsSection() {
   return (
     <div className="stats-section">
       <div className="stats-group">
-        <h3 className="stats-group-title">Reputation &amp; Standing</h3>
+        <h3 className="stats-group-title">평판 및 입지</h3>
         <div className="stat-row">
-          <span className="stat-label">Karma</span>
+          <span className="stat-label">카르마</span>
           <span className="stat-value">
             {karma} ({getKarmaLabel(karma)})
           </span>
@@ -108,40 +108,40 @@ export function StatsSection() {
       </div>
 
       <div className="stats-group">
-        <h3 className="stats-group-title">Ship's Log</h3>
+        <h3 className="stats-group-title">항해 일지</h3>
         <div className="stat-row">
-          <span className="stat-label">Systems Visited</span>
+          <span className="stat-label">방문한 항성계</span>
           <span className="stat-value">
             {snapshot.visitedCount} /{' '}
             {ACHIEVEMENTS_CONFIG.THRESHOLDS.EXPLORATION_TIER_4}
           </span>
         </div>
         <div className="stat-row">
-          <span className="stat-label">Jumps Completed</span>
+          <span className="stat-label">완료한 점프</span>
           <span className="stat-value">{snapshot.jumpsCompleted}</span>
         </div>
         <div className="stat-row">
-          <span className="stat-label">Current Date</span>
+          <span className="stat-label">현재 날짜</span>
           <span className="stat-value">
             {gameDayToDate(snapshot.daysElapsed ?? 0)}
           </span>
         </div>
         <div className="stat-row">
-          <span className="stat-label">Credits Earned</span>
+          <span className="stat-label">번 크레딧</span>
           <span className="stat-value">{snapshot.creditsEarned}</span>
         </div>
         <div className="stat-row">
-          <span className="stat-label">Cargo Hauled</span>
+          <span className="stat-label">수송한 화물</span>
           <span className="stat-value">{snapshot.cargoHauled}</span>
         </div>
         <div className="stat-row">
-          <span className="stat-label">Charitable Acts</span>
+          <span className="stat-label">자선 행위</span>
           <span className="stat-value">{snapshot.charitableActs}</span>
         </div>
       </div>
 
       <div className="stats-group">
-        <h3 className="stats-group-title">Danger History</h3>
+        <h3 className="stats-group-title">위험 이력</h3>
         {Object.entries(DANGER_FLAG_LABELS).map(([key, label]) => (
           <div className="stat-row" key={key}>
             <span className="stat-label">{label}</span>

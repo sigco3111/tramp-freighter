@@ -193,17 +193,17 @@ export function calculateBaseJumpTime(distanceLY) {
  * quirks, and upgrades.
  */
 export const SHIP_CONFIG = {
-  DEFAULT_NAME: 'Serendipity',
+  DEFAULT_NAME: '세렌디피티',
   MAX_NAME_LENGTH: 50, // Maximum characters allowed in ship name
   NAME_SUGGESTIONS: [
-    'Serendipity',
-    'Lucky Break',
-    'Second Chance',
-    'Wanderer',
-    'Free Spirit',
-    "Horizon's Edge",
-    'Stardust Runner',
-    'Cosmic Drifter',
+    '세렌디피티',
+    '행운의 기회',
+    '두 번째 기회',
+    '방랑자',
+    '자유로운 영혼',
+    "지평선 끝",
+    '별먼지 러너',
+    '우주 떠돌이',
   ],
   FUEL_CAPACITY: 100,
   CARGO_CAPACITY: 50,
@@ -240,146 +240,146 @@ export const SHIP_CONFIG = {
   },
   QUIRKS: {
     sticky_seal: {
-      name: 'Sticky Cargo Seal',
-      description: 'The main cargo hatch sticks. Every. Single. Time.',
+      name: '끈적한 화물 봉인',
+      description: '주 화물 해치가 낀다. 매. 번. 마. 다.',
       effects: {
         loadingTime: 1.1, // +10% slower (future use)
         theftRisk: 0.95, // -5% theft risk (future use)
       },
-      effectLabel: '+10% loading time, -5% theft risk',
-      flavor: "You've learned to kick it in just the right spot.",
+      effectLabel: '적재 시간 +10%, 도난 위험 -5%',
+      flavor: "딱 알맞은 자리를 걷어차는 법을 익혔다.",
     },
     hot_thruster: {
-      name: 'Hot Thruster',
-      description: 'Port thruster runs hot. Burns extra fuel but responsive.',
+      name: '뜨거운 추진기',
+      description: '좌현 추진기가 과열된다. 연료를 더 먹지만 반응이 빠르다.',
       effects: {
         fuelConsumption: 1.05, // +5% fuel use
       },
-      effectLabel: '+5% fuel consumption',
-      flavor: "The engineers say it's 'within tolerances.' Barely.",
+      effectLabel: '연료 소비 +5%',
+      flavor: "엔지니어들은 '허용 오차 범위 내'라고 한다. 간신히.",
     },
     sensitive_sensors: {
-      name: 'Sensitive Sensors',
+      name: '예민한 센서',
       description:
-        'Sensor array picks up everything. Including false positives.',
+        '센서 어레이가 모든 걸 잡아낸다. 오탐까지 포함해서.',
       effects: {
         salvageDetection: 1.15, // +15% salvage (future use)
         falseAlarms: 1.1, // +10% false alarms (future use)
       },
-      effectLabel: '+15% salvage detection, +10% false alarms',
-      flavor: "You've learned to tell the difference. Mostly.",
+      effectLabel: '인양 탐지 +15%, 오경보 +10%',
+      flavor: "이제 구분할 줄 안다. 대체로.",
     },
     cramped_quarters: {
-      name: 'Cramped Quarters',
-      description: 'Living space is... cozy. Very cozy.',
+      name: '좁은 숙소',
+      description: '생활 공간이... 아늑하다. 아주 아늑하다.',
       effects: {
         lifeSupportDrain: 0.9, // -10% drain
       },
-      effectLabel: '-10% life support drain',
-      flavor: "At least you don't have to share.",
+      effectLabel: '생명 유지 소모 -10%',
+      flavor: "적어도 같이 쓸 사람은 없다.",
     },
     lucky_ship: {
-      name: 'Lucky Ship',
-      description: 'This ship has a history of beating the odds.',
+      name: '행운의 배',
+      description: '이 배는 확률을 뒤집은 전적이 있다.',
       effects: {
         negateEventChance: 0.05, // 5% to negate bad events (future use)
       },
-      effectLabel: '+5% chance to negate bad events',
-      flavor: 'Knock on hull plating.',
+      effectLabel: '나쁜 사건 무효화 확률 +5%',
+      flavor: '선체 장갑을 두드려 액땜을.',
     },
     fuel_sipper: {
-      name: 'Fuel Sipper',
-      description: 'Efficient drive core. Previous owner was meticulous.',
+      name: '연료 홀짝이',
+      description: '효율적인 구동 코어. 전 주인이 꼼꼼했다.',
       effects: {
         fuelConsumption: 0.85, // -15% fuel use
       },
-      effectLabel: '-15% fuel consumption',
-      flavor: 'One of the few things that actually works better than spec.',
+      effectLabel: '연료 소비 -15%',
+      flavor: '사양보다 실제로 더 잘 작동하는 몇 안 되는 것 중 하나.',
     },
     leaky_seals: {
-      name: 'Leaky Seals',
-      description: "Hull seals aren't quite right. Slow degradation.",
+      name: '새는 봉인',
+      description: "선체 봉인 상태가 영 좋지 않다. 서서히 열화된다.",
       effects: {
         hullDegradation: 1.5, // +50% hull damage
       },
-      effectLabel: '+50% hull degradation',
-      flavor: "You can hear the whistle when you're in the cargo bay.",
+      effectLabel: '선체 노후화 +50%',
+      flavor: "화물칸에 있으면 바람 새는 소리가 들린다.",
     },
     smooth_talker: {
-      name: "Smooth Talker's Ride",
-      description: 'Previous owner had a reputation. It rubs off.',
+      name: "입담꾼의 배",
+      description: '전 주인은 평판이 있었다. 그 덕을 본다.',
       effects: {
         npcRepGain: 1.05, // +5% reputation gains (future use)
       },
-      effectLabel: '+5% reputation gains',
-      flavor: 'People remember this ship. Usually fondly.',
+      effectLabel: '평판 획득 +5%',
+      flavor: '사람들이 이 배를 기억한다. 보통은 좋은 쪽으로.',
     },
   },
   UPGRADES: {
     extended_tank: {
-      name: 'Extended Fuel Tank',
+      name: '확장 연료 탱크',
       cost: 3000,
-      description: 'Increases fuel capacity by 50%',
+      description: '연료 용량 50% 증가',
       effects: {
         fuelCapacity: 50, // +50% of base 100
       },
-      tradeoff: 'Larger tank is more vulnerable to weapons fire.',
+      tradeoff: '큰 탱크는 무기 사격에 더 취약하다.',
     },
     reinforced_hull: {
-      name: 'Reinforced Hull Plating',
+      name: '강화 선체 장갑',
       cost: 5000,
-      description: 'Reduces hull degradation by 50%',
+      description: '선체 노후화 50% 감소',
       effects: {
         hullDegradation: 0.5, // Half degradation
         cargoCapacity: -5, // Costs 5 cargo space
       },
-      tradeoff: 'Extra plating takes up cargo space.',
+      tradeoff: '추가 장갑이 화물 공간을 차지한다.',
     },
     efficient_drive: {
-      name: 'Efficient Drive System',
+      name: '고효율 구동 시스템',
       cost: 4000,
-      description: 'Reduces fuel consumption by 20%',
+      description: '연료 소비 20% 감소',
       effects: {
         fuelConsumption: 0.8, // -20% fuel use
       },
-      tradeoff: 'Optimized for efficiency, not speed.',
+      tradeoff: '속도가 아니라 효율에 맞춰 최적화되었다.',
     },
     expanded_hold: {
-      name: 'Expanded Cargo Hold',
+      name: '확장 화물칸',
       cost: 6000,
-      description: 'Increases cargo capacity by 50%',
+      description: '화물 용량 50% 증가',
       effects: {
         cargoCapacity: 25, // +50% of base 50
       },
-      tradeoff: 'Heavier ship is less maneuverable.',
+      tradeoff: '무거운 배는 기동성이 떨어진다.',
     },
     smuggler_panels: {
-      name: "Smuggler's Panels",
+      name: "밀수업자의 패널",
       cost: 4500,
-      description: 'Hidden cargo compartment (10 units)',
+      description: '은닉 화물 공간 (10단위)',
       effects: {
         hiddenCargoCapacity: 10,
       },
-      tradeoff: 'If discovered, reputation loss with authorities.',
+      tradeoff: '발각되면 당국과의 평판이 떨어진다.',
     },
     advanced_sensors: {
-      name: 'Advanced Sensor Array',
+      name: '고급 센서 어레이',
       cost: 3500,
-      description: 'See economic events one jump ahead',
+      description: '한 번 앞선 경제 이벤트 확인',
       effects: {
         eventVisibility: 1, // Can see events in connected systems
       },
       tradeoff: 'None',
     },
     medical_bay: {
-      name: 'Medical Bay',
+      name: '의무실',
       cost: 2500,
-      description: 'Slower life support degradation',
+      description: '생명 유지 장치 열화 감소',
       effects: {
         lifeSupportDrain: 0.7, // -30% drain
         cargoCapacity: -5, // Costs 5 cargo space
       },
-      tradeoff: 'Takes up cargo space.',
+      tradeoff: '화물 공간을 차지한다.',
     },
   },
 };
@@ -718,23 +718,23 @@ export const PASSENGER_CONFIG = {
       urgency: 'high',
       cargoSpace: 1,
       dialogue: [
-        'Please, I need to get away from here.',
-        'Thank you for helping me.',
+        '제발, 여기서 벗어나야 해요.',
+        '도와주셔서 감사합니다.',
       ],
       satisfactionWeights: { speed: 0.8, comfort: 0.2 },
     },
     business: {
       urgency: 'medium',
       cargoSpace: 2,
-      dialogue: ['Time is money.', 'I expect professional service.'],
+      dialogue: ['시간은 돈이죠.', '전문적인 서비스를 기대합니다.'],
       satisfactionWeights: { speed: 0.6, comfort: 0.4 },
     },
     wealthy: {
       urgency: 'low',
       cargoSpace: 3,
       dialogue: [
-        'I trust the accommodations are adequate?',
-        'Money is no object.',
+        '숙소는 충분하겠죠?',
+        '돈은 문제가 아닙니다.',
       ],
       satisfactionWeights: { speed: 0.3, comfort: 0.7 },
     },
@@ -742,15 +742,15 @@ export const PASSENGER_CONFIG = {
       urgency: 'medium',
       cargoSpace: 2,
       dialogue: [
-        'Fascinating ship you have.',
-        "I'm studying stellar phenomena.",
+        '흥미로운 배를 가지고 계시네요.',
+        "저는 항성 현상을 연구하고 있습니다.",
       ],
       satisfactionWeights: { speed: 0.5, comfort: 0.3, safety: 0.2 },
     },
     family: {
       urgency: 'low',
       cargoSpace: 3,
-      dialogue: ['Are we there yet?', 'The children are excited.'],
+      dialogue: ['아직 멀었나요?', '아이들이 신나 있어요.'],
       satisfactionWeights: { speed: 0.4, comfort: 0.4, safety: 0.2 },
     },
   },
@@ -1721,7 +1721,7 @@ export const RESTRICTED_GOODS_CONFIG = {
   },
 
   RESTRICTED_TOOLTIP:
-    'Regulated in this zone. Risk of fines and confiscation during customs inspections.',
+    '이 구역에서는 규제 품목입니다. 세관 검사 시 벌금과 압수 위험이 있습니다.',
 
   // Core systems (Sol, Alpha Centauri) have additional restrictions
   CORE_SYSTEM_RESTRICTED: ['parts'], // Manufactured parts restricted to protect local industry

@@ -4,12 +4,12 @@ import { EVENT_NAMES } from '../../game/constants.js';
 import { ACHIEVEMENT_CATEGORIES } from '../../game/data/achievements-data.js';
 
 const CATEGORY_DISPLAY_NAMES = {
-  exploration: 'Exploration',
-  trading: 'Trading',
-  social: 'Social',
-  survival: 'Survival',
-  danger: 'Danger',
-  moral: 'Moral',
+  exploration: '탐험',
+  trading: '교역',
+  social: '사교',
+  survival: '생존',
+  danger: '위험',
+  moral: '도덕',
 };
 
 export function AchievementsList() {

@@ -43,13 +43,13 @@ import { PostCreditsStation } from './features/endgame/PostCreditsStation.jsx';
  * React Migration Spec: Requirements 9.1, 9.2, 9.3, 9.4, 9.5, 47.1, 48.1
  */
 const VIEW_MODES = {
-  TITLE: 'TITLE',
+  TITLE: '타이틀',
   SHIP_NAMING: 'SHIP_NAMING',
-  ORBIT: 'ORBIT',
-  STATION: 'STATION',
-  ENCOUNTER: 'ENCOUNTER',
+  ORBIT: '궤도',
+  STATION: '정거장',
+  ENCOUNTER: '조우',
   PAVONIS_RUN: 'PAVONIS_RUN',
-  EPILOGUE: 'EPILOGUE',
+  EPILOGUE: '에필로그',
 };
 
 /**
@@ -186,11 +186,11 @@ export default function App({ devMode = false }) {
 
     const handleCollected = (data) => {
       notificationCtx.showInfo(
-        `Scanner: Exotic matter detected. Sample collected. [${data.count}/${data.total}]`
+        `스캐너: 외계 물질 감지. 표본 채취 완료. [${data.count}/${data.total}]`
       );
     };
     const handleAlreadySampled = () => {
-      notificationCtx.showInfo('Scanner: Already sampled this station.');
+      notificationCtx.showInfo('스캐너: 이 정거장에서는 이미 표본을 채취했습니다.');
     };
 
     game.subscribe(EVENT_NAMES.EXOTIC_MATTER_COLLECTED, handleCollected);
@@ -398,7 +398,7 @@ export default function App({ devMode = false }) {
         {viewMode !== VIEW_MODES.TITLE &&
           viewMode !== VIEW_MODES.SHIP_NAMING && (
             <a href="#main-content" className="skip-link">
-              Skip to main content
+              본문으로 건너뛰기
             </a>
           )}
 
@@ -430,7 +430,7 @@ export default function App({ devMode = false }) {
                 </ErrorBoundary>
 
                 {/* HUD is always rendered */}
-                <nav aria-label="Game HUD">
+                <nav aria-label="게임 HUD">
                   <HUD
                     onDock={handleDock}
                     onSystemInfo={handleOpenSystemInfo}
@@ -478,7 +478,7 @@ export default function App({ devMode = false }) {
                       id="dev-admin-btn"
                       onClick={handleOpenDevAdmin}
                       style={{ display: 'flex' }}
-                      aria-label="Developer admin panel"
+                      aria-label="개발자 관리 패널"
                     >
                       ⚙
                     </button>

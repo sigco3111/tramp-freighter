@@ -34,11 +34,11 @@ export class TradingManager extends BaseManager {
 
     // Validate purchase constraints
     if (totalCost > credits) {
-      return { success: false, reason: 'Insufficient credits' };
+      return { success: false, reason: '크레딧이 부족합니다' };
     }
 
     if (quantity > cargoSpace) {
-      return { success: false, reason: 'Not enough cargo space' };
+      return { success: false, reason: '화물 공간이 부족합니다' };
     }
 
     this.capabilities.updateCredits(credits - totalCost);
@@ -80,22 +80,22 @@ export class TradingManager extends BaseManager {
 
     // Validate sale constraints
     if (stackIndex < 0 || stackIndex >= cargo.length) {
-      return { success: false, reason: 'Invalid cargo stack' };
+      return { success: false, reason: '잘못된 화물 묶음입니다' };
     }
 
     const stack = cargo[stackIndex];
 
     // Prevent players from selling cargo assigned to active missions
     if (stack.missionId) {
-      return { success: false, reason: 'Mission cargo cannot be sold' };
+      return { success: false, reason: '임무 화물은 판매할 수 없습니다' };
     }
 
     if (quantity <= 0) {
-      return { success: false, reason: 'Quantity must be positive' };
+      return { success: false, reason: '수량은 양수여야 합니다' };
     }
 
     if (quantity > stack.qty) {
-      return { success: false, reason: 'Not enough quantity in stack' };
+      return { success: false, reason: '묶음 내 수량이 부족합니다' };
     }
 
     const totalRevenue = quantity * salePrice;

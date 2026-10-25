@@ -104,26 +104,24 @@ export function CombatPanel({
       <button
         className="close-btn"
         onClick={() => onChoice('flee')}
-        aria-label="Flee combat"
+        aria-label="전투 이탈"
       >
         ×
       </button>
-      <h2 id="combat-panel-title">Combat Resolution</h2>
+      <h2 id="combat-panel-title">전투 결과</h2>
 
       <div className="combat-content">
         {/* Flee failed alert — shown when evasion was attempted and failed */}
         {fleeContext?.fleeAttemptFailed && (
           <div className="flee-failed-alert" role="alert">
             <div className="flee-failed-title">
-              EVASION FAILED — YOU COULD NOT FLEE
+              회피 실패 — 도주하지 못했습니다
             </div>
             <div className="flee-failed-body">
               <p>{fleeContext.description}</p>
               {fleeContext.hullDamage > 0 && (
                 <p className="flee-failed-damage">
-                  Hull took <strong>-{fleeContext.hullDamage}%</strong> damage
-                  during the failed escape attempt. You are still engaged —
-                  choose how to fight back.
+                  선체가  <strong>-{fleeContext.hullDamage}%</strong>  피해를 입었습니다. 도주를 시도하다 실패했습니다. 아직 교전 중입니다. 어떻게 맞설지 선택하세요.
                 </p>
               )}
             </div>
@@ -132,10 +130,10 @@ export function CombatPanel({
 
         {/* Combat Status Section */}
         <div className="combat-section combat-status">
-          <h3>Combat Status</h3>
+          <h3>전투 상황</h3>
           <div className="combat-info">
             <div className="combat-intensity">
-              <span className="intensity-label">Combat Intensity:</span>
+              <span className="intensity-label">전투 강도:</span>
               <span
                 className={`intensity-value ${intensity}`}
                 style={{ color: intensityColor }}
@@ -145,50 +143,50 @@ export function CombatPanel({
             </div>
             <div className="combat-description">
               {combat.description ||
-                'You are engaged in combat. Choose your tactical response carefully.'}
+                '교전 중입니다. 전술 대응을 신중하게 선택하세요.'}
             </div>
           </div>
         </div>
 
         {/* Ship Condition Section */}
         <div className="combat-section ship-condition">
-          <h3>Ship Condition</h3>
+          <h3>함선 상태</h3>
           <div className="condition-grid">
             <div className="condition-item">
-              <span className="condition-label">Hull Integrity:</span>
+              <span className="condition-label">선체 무결성:</span>
               <span className={`condition-value ${getConditionClass(hull)}`}>
                 {Math.round(hull ?? 100)}%
               </span>
               <span className="condition-impact">
                 {(hull ?? 100) < SHIP_CONFIG.CONDITION_WARNING_THRESHOLDS.HULL
-                  ? 'Reduced maneuverability'
-                  : 'Normal operation'}
+                  ? '기동성 저하'
+                  : '정상 작동'}
               </span>
             </div>
             <div className="condition-item">
-              <span className="condition-label">Engine Status:</span>
+              <span className="condition-label">엔진 상태:</span>
               <span className={`condition-value ${getConditionClass(engine)}`}>
                 {Math.round(engine ?? 100)}%
               </span>
               <span className="condition-impact">
                 {(engine ?? 100) < COMBAT_CONFIG.ENGINE_PENALTY_THRESHOLD
-                  ? 'Reduced evasion capability'
-                  : 'Full power available'}
+                  ? '회피 능력 저하'
+                  : '최대 출력 가능'}
               </span>
             </div>
             <div className="condition-item">
-              <span className="condition-label">Fuel Reserves:</span>
+              <span className="condition-label">연료 잔량:</span>
               <span className={`condition-value ${getConditionClass(fuel)}`}>
                 {Math.round(fuel ?? 100)}%
               </span>
               <span className="condition-impact">
                 {fuel < COMBAT_CONFIG.DISPLAY_THRESHOLDS.LOW_FUEL
-                  ? 'Limited maneuvering'
-                  : 'Sufficient for combat'}
+                  ? '기동 제한'
+                  : '전투에 충분'}
               </span>
             </div>
             <div className="condition-item">
-              <span className="condition-label">Life Support:</span>
+              <span className="condition-label">생명 유지:</span>
               <span
                 className={`condition-value ${getConditionClass(lifeSupport)}`}
               >
@@ -196,8 +194,8 @@ export function CombatPanel({
               </span>
               <span className="condition-impact">
                 {lifeSupport < COMBAT_CONFIG.DISPLAY_THRESHOLDS.LOW_LIFE_SUPPORT
-                  ? 'Emergency protocols active'
-                  : 'Stable environment'}
+                  ? '비상 프로토콜 가동'
+                  : '안정적인 환경'}
               </span>
             </div>
           </div>
@@ -205,7 +203,7 @@ export function CombatPanel({
           {/* Combat Modifiers Display */}
           {(upgrades?.length > 0 || quirks?.length > 0) && (
             <div className="combat-modifiers">
-              <h4>Combat Modifiers</h4>
+              <h4>전투 보정</h4>
               <div className="modifiers-grid">
                 {upgrades?.map((upgrade) => {
                   const modifier = COMBAT_CONFIG.MODIFIERS[upgrade];
@@ -242,7 +240,7 @@ export function CombatPanel({
 
         {/* Combat Options Section */}
         <div className="combat-section combat-options">
-          <h3>Combat Options</h3>
+          <h3>전투 선택지</h3>
           <div className="options-list">
             {/* Evasive Maneuvers Option */}
             <button
@@ -250,17 +248,16 @@ export function CombatPanel({
               onClick={() => handleOptionSelect('evasive')}
             >
               <div className="option-header">
-                <span className="option-name">Evasive Maneuvers</span>
-                <span className="option-type">Defensive</span>
+                <span className="option-name">회피 기동</span>
+                <span className="option-type">방어</span>
               </div>
               <div className="option-description">
-                Use your ship's agility and engine power to avoid enemy fire and
-                escape.
+                함선의 민첩성과 엔진 출력을 이용해 적의 사격을 피하고 탈출합니다.
               </div>
               <div className="option-analysis">
                 <div className="probability-breakdown">
                   <div className="base-chance">
-                    <span className="breakdown-label">Base Success Rate:</span>
+                    <span className="breakdown-label">기본 성공률:</span>
                     <span className="breakdown-value">
                       {Math.round(COMBAT_CONFIG.EVASIVE.BASE_CHANCE * 100)}%
                     </span>
@@ -278,7 +275,7 @@ export function CombatPanel({
                     </div>
                   ))}
                   <div className="final-chance">
-                    <span className="breakdown-label">Final Success Rate:</span>
+                    <span className="breakdown-label">최종 성공률:</span>
                     <span className="breakdown-value final">
                       {Math.round(combatAnalysis.evasive.finalChance * 100)}%
                     </span>
@@ -287,15 +284,15 @@ export function CombatPanel({
               </div>
               <div className="option-outcomes">
                 <div className="outcome success">
-                  <span className="outcome-label">Success:</span>
+                  <span className="outcome-label">성공:</span>
                   <span className="outcome-text">
-                    Escape combat, -15% fuel, -5% engine condition
+                    전투 이탈, 연료 -15%, 엔진 상태 -5%
                   </span>
                 </div>
                 <div className="outcome failure">
-                  <span className="outcome-label">Failure:</span>
+                  <span className="outcome-label">실패:</span>
                   <span className="outcome-text">
-                    Take hull damage (-20%), combat continues
+                    선체 피해(-20%), 전투 계속
                   </span>
                 </div>
               </div>
@@ -307,16 +304,16 @@ export function CombatPanel({
               onClick={() => handleOptionSelect('return_fire')}
             >
               <div className="option-header">
-                <span className="option-name">Return Fire</span>
-                <span className="option-type">Offensive</span>
+                <span className="option-name">응사</span>
+                <span className="option-type">공격</span>
               </div>
               <div className="option-description">
-                Engage the enemy directly with your ship's weapons systems.
+                함선의 무기 체계로 적을 정면으로 공격합니다.
               </div>
               <div className="option-analysis">
                 <div className="probability-breakdown">
                   <div className="base-chance">
-                    <span className="breakdown-label">Base Success Rate:</span>
+                    <span className="breakdown-label">기본 성공률:</span>
                     <span className="breakdown-value">
                       {Math.round(COMBAT_CONFIG.RETURN_FIRE.BASE_CHANCE * 100)}%
                     </span>
@@ -334,7 +331,7 @@ export function CombatPanel({
                     </div>
                   ))}
                   <div className="final-chance">
-                    <span className="breakdown-label">Final Success Rate:</span>
+                    <span className="breakdown-label">최종 성공률:</span>
                     <span className="breakdown-value final">
                       {Math.round(combatAnalysis.returnFire.finalChance * 100)}%
                     </span>
@@ -343,15 +340,15 @@ export function CombatPanel({
               </div>
               <div className="option-outcomes">
                 <div className="outcome success">
-                  <span className="outcome-label">Success:</span>
+                  <span className="outcome-label">성공:</span>
                   <span className="outcome-text">
-                    Drive off enemy, -10% hull, +5 outlaw reputation
+                    적 격퇴, 선체 -10%, 무법자 평판 +5
                   </span>
                 </div>
                 <div className="outcome failure">
-                  <span className="outcome-label">Failure:</span>
+                  <span className="outcome-label">실패:</span>
                   <span className="outcome-text">
-                    Heavy damage (-30% hull), lose cargo and ₡500
+                    큰 피해(선체 -30%), 화물과 ₡500 손실
                   </span>
                 </div>
               </div>
@@ -363,34 +360,33 @@ export function CombatPanel({
               onClick={() => handleOptionSelect('dump_cargo')}
             >
               <div className="option-header">
-                <span className="option-name">Dump Cargo</span>
-                <span className="option-type">Sacrifice</span>
+                <span className="option-name">화물 투하</span>
+                <span className="option-type">희생</span>
               </div>
               <div className="option-description">
-                Jettison cargo to distract the enemy and facilitate escape.
+                화물을 버려 적의 주의를 돌리고 탈출을 돕습니다.
               </div>
               <div className="option-analysis">
                 <div className="probability-breakdown">
                   <div className="guaranteed-success">
-                    <span className="breakdown-label">Success Rate:</span>
+                    <span className="breakdown-label">성공률:</span>
                     <span className="breakdown-value guaranteed">100%</span>
                   </div>
                   <div className="cargo-cost">
-                    <span className="breakdown-label">Cargo Lost:</span>
+                    <span className="breakdown-label">잃는 화물:</span>
                     <span className="breakdown-value">
-                      {COMBAT_CONFIG.DUMP_CARGO.CARGO_LOSS_PERCENT}% of cargo,{' '}
-                      {COMBAT_CONFIG.DUMP_CARGO.FUEL_COST}% fuel
+                      {COMBAT_CONFIG.DUMP_CARGO.CARGO_LOSS_PERCENT}% 화물,{' '}
+                      {COMBAT_CONFIG.DUMP_CARGO.FUEL_COST}% 연료
                     </span>
                   </div>
                 </div>
               </div>
               <div className="option-outcomes">
                 <div className="outcome guaranteed">
-                  <span className="outcome-label">Guaranteed:</span>
+                  <span className="outcome-label">확정:</span>
                   <span className="outcome-text">
-                    Escape combat, lose{' '}
-                    {COMBAT_CONFIG.DUMP_CARGO.CARGO_LOSS_PERCENT}% of cargo, no
-                    hull damage
+                    전투 이탈, 화물 {' '}
+                    {COMBAT_CONFIG.DUMP_CARGO.CARGO_LOSS_PERCENT}% 손실, 선체 피해 없음
                   </span>
                 </div>
               </div>
@@ -402,16 +398,16 @@ export function CombatPanel({
               onClick={() => handleOptionSelect('distress_call')}
             >
               <div className="option-header">
-                <span className="option-name">Distress Call</span>
-                <span className="option-type">Emergency</span>
+                <span className="option-name">조난 신호</span>
+                <span className="option-type">비상</span>
               </div>
               <div className="option-description">
-                Broadcast an emergency signal hoping for rescue or intervention.
+                구조나 개입을 바라며 비상 신호를 송출합니다.
               </div>
               <div className="option-analysis">
                 <div className="probability-breakdown">
                   <div className="base-chance">
-                    <span className="breakdown-label">Base Success Rate:</span>
+                    <span className="breakdown-label">기본 성공률:</span>
                     <span className="breakdown-value">
                       {Math.round(
                         COMBAT_CONFIG.DISTRESS_CALL.BASE_CHANCE * 100
@@ -432,7 +428,7 @@ export function CombatPanel({
                     </div>
                   ))}
                   <div className="final-chance">
-                    <span className="breakdown-label">Final Success Rate:</span>
+                    <span className="breakdown-label">최종 성공률:</span>
                     <span className="breakdown-value final">
                       {Math.round(
                         combatAnalysis.distressCall.finalChance * 100
@@ -444,15 +440,15 @@ export function CombatPanel({
               </div>
               <div className="option-outcomes">
                 <div className="outcome success">
-                  <span className="outcome-label">Success:</span>
+                  <span className="outcome-label">성공:</span>
                   <span className="outcome-text">
-                    Rescue arrives, escape combat, +10 authority reputation
+                    구조대 도착, 전투 이탈, 당국 평판 +10
                   </span>
                 </div>
                 <div className="outcome failure">
-                  <span className="outcome-label">Failure:</span>
+                  <span className="outcome-label">실패:</span>
                   <span className="outcome-text">
-                    No response, combat continues with -10% morale
+                    응답 없음, 사기 -10%로 전투 계속
                   </span>
                 </div>
               </div>
@@ -465,16 +461,16 @@ export function CombatPanel({
           {selectedOption && (
             <>
               <button className="combat-btn primary" onClick={handleConfirm}>
-                Execute {formatOptionName(selectedOption)}
+                실행:  {formatOptionName(selectedOption)}
               </button>
               <button className="combat-btn secondary" onClick={handleCancel}>
-                Change Option
+                선택 변경
               </button>
             </>
           )}
           {!selectedOption && (
             <div className="selection-prompt">
-              Select a combat option to proceed
+              진행할 전투 선택지를 고르세요
             </div>
           )}
         </div>
@@ -521,7 +517,7 @@ function calculateCombatProbabilities(
   if (engine < COMBAT_CONFIG.ENGINE_PENALTY_THRESHOLD) {
     evasiveChance += COMBAT_CONFIG.ENGINE_PENALTY_VALUE;
     evasiveModifiers.push({
-      name: 'Poor Engine Condition',
+      name: '엔진 상태 불량',
       value: COMBAT_CONFIG.ENGINE_PENALTY_VALUE,
       type: 'penalty',
     });
@@ -532,7 +528,7 @@ function calculateCombatProbabilities(
     const hotThrusterBonus = COMBAT_CONFIG.MODIFIERS.hot_thruster.evasiveBonus;
     evasiveChance += hotThrusterBonus;
     evasiveModifiers.push({
-      name: 'Hot Thruster Quirk',
+      name: '뜨거운 추진기 버릇',
       value: hotThrusterBonus,
       type: 'bonus',
     });
@@ -544,7 +540,7 @@ function calculateCombatProbabilities(
       COMBAT_CONFIG.MODIFIERS.efficient_drive.fleeBonus;
     evasiveChance += efficientDriveBonus;
     evasiveModifiers.push({
-      name: 'Efficient Drive Upgrade',
+      name: '고효율 구동 업그레이드',
       value: efficientDriveBonus,
       type: 'bonus',
     });
@@ -554,7 +550,7 @@ function calculateCombatProbabilities(
   if (Math.abs(karmaModifier) > 0.001) {
     evasiveChance += karmaModifier;
     evasiveModifiers.push({
-      name: karma > 0 ? 'Good Karma' : 'Bad Karma',
+      name: karma > 0 ? '선한 카르마' : '악한 카르마',
       value: karmaModifier,
       type: karma > 0 ? 'bonus' : 'penalty',
     });
@@ -570,7 +566,7 @@ function calculateCombatProbabilities(
   if (Math.abs(karmaModifier) > 0.001) {
     returnFireChance += karmaModifier;
     returnFireModifiers.push({
-      name: karma > 0 ? 'Good Karma' : 'Bad Karma',
+      name: karma > 0 ? '선한 카르마' : '악한 카르마',
       value: karmaModifier,
       type: karma > 0 ? 'bonus' : 'penalty',
     });
@@ -586,7 +582,7 @@ function calculateCombatProbabilities(
   if (Math.abs(karmaModifier) > 0.001) {
     distressCallChance += karmaModifier;
     distressCallModifiers.push({
-      name: karma > 0 ? 'Good Karma' : 'Bad Karma',
+      name: karma > 0 ? '선한 카르마' : '악한 카르마',
       value: karmaModifier,
       type: karma > 0 ? 'bonus' : 'penalty',
     });
@@ -659,16 +655,16 @@ function getModifierEffectsText(modifierName, modifier) {
   const effects = [];
 
   if (modifier.evasiveBonus) {
-    effects.push(`+${Math.round(modifier.evasiveBonus * 100)}% evasion`);
+    effects.push(`+${Math.round(modifier.evasiveBonus * 100)}% 회피`);
   }
 
   if (modifier.fleeBonus) {
-    effects.push(`+${Math.round(modifier.fleeBonus * 100)}% flee`);
+    effects.push(`+${Math.round(modifier.fleeBonus * 100)}% 도주`);
   }
 
   if (modifier.returnFireBonus) {
-    effects.push(`+${Math.round(modifier.returnFireBonus * 100)}% combat`);
+    effects.push(`+${Math.round(modifier.returnFireBonus * 100)}% 전투`);
   }
 
-  return effects.join(', ') || 'Combat modifier';
+  return effects.join(', ') || '전투 보정';
 }

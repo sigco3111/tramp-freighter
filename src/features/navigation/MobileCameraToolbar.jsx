@@ -23,19 +23,19 @@ export function MobileCameraToolbar({
       className="mobile-camera-toolbar"
       ref={toolbarRef}
       role="toolbar"
-      aria-label="Starmap controls"
+      aria-label="별지도 조작"
     >
       <button
         className="mobile-toolbar-btn"
         onClick={onZoomOut}
-        aria-label="Zoom out"
+        aria-label="축소"
       >
         −
       </button>
       <button
         className="mobile-toolbar-btn"
         onClick={onZoomIn}
-        aria-label="Zoom in"
+        aria-label="확대"
       >
         +
       </button>
@@ -48,10 +48,10 @@ export function MobileCameraToolbar({
             onFindStar(e.target.value);
             setSelectKey((k) => k + 1);
           }}
-          aria-label="Find star"
+          aria-label="별 찾기"
         >
           <option value="" disabled>
-            Find...
+            찾기...
           </option>
           {stars.map((star) => (
             <option key={star.id} value={star.id}>
@@ -64,7 +64,7 @@ export function MobileCameraToolbar({
       <button
         className="mobile-toolbar-btn"
         onClick={() => setShowSettings(!showSettings)}
-        aria-label="Settings"
+        aria-label="설정"
         aria-expanded={showSettings}
       >
         ⚙
@@ -96,7 +96,7 @@ export function MobileCameraToolbar({
                 onShowInstructions();
               }}
             >
-              Instructions
+              설명서
             </button>
           )}
           {onShowAchievements && (
@@ -107,7 +107,7 @@ export function MobileCameraToolbar({
                 onShowAchievements();
               }}
             >
-              Achievements
+              업적
             </button>
           )}
         </div>
