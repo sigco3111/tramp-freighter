@@ -5,6 +5,16 @@ const DISPLAY_KO = {
   parts: '부품',
   medicine: '의약품',
   electronics: '전자제품',
+  business: '사업가',
+  wealthy: '부유층',
+  scientist: '과학자',
+  family: '가족',
+  registered_freight: '등록 화물',
+  diplomatic_pouches: '외교 행낭',
+  scientific_samples: '과학 시료',
+  unmarked_crates: '무표기 상자',
+  prohibited_tech: '금지 기술',
+  black_market_goods: '암시장 물품',
 };
 
 /**
@@ -62,7 +72,7 @@ export function capitalizeFirst(str) {
  * @returns {string} Formatted string like "1 unit" or "3 units"
  */
 export function pluralizeUnit(count) {
-  return `${count} ${count === 1 ? 'unit' : 'units'}`;
+  return `${count}단위`;
 }
 
 /**
@@ -73,6 +83,7 @@ export function pluralizeUnit(count) {
  */
 export function formatCargoDisplayName(id) {
   if (!id || typeof id !== 'string') return '';
+  if (DISPLAY_KO[id]) return DISPLAY_KO[id];
   return id
     .split('_')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))

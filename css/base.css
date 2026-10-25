@@ -115,3 +115,4 @@ button.repair-option {
 
 /* 한글화: 한글 가독성을 위해 자간 보정 */
 html:lang(ko) body, html:lang(ko) body * { letter-spacing: normal !important; word-break: keep-all; }
+html:lang(ko) button, html:lang(ko) input, html:lang(ko) select, html:lang(ko) textarea { font-family: 'Courier New', 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', monospace; }

@@ -1824,24 +1824,24 @@ export const ACHIEVEMENTS_CONFIG = {
 
   // Karma display labels (evaluated top-to-bottom, first match wins)
   KARMA_LABELS: [
-    { min: 75, label: 'Saint' },
-    { min: 50, label: 'Virtuous' },
-    { min: 25, label: 'Decent' },
-    { min: -24, label: 'Neutral' },
-    { min: -49, label: 'Shady' },
-    { min: -74, label: 'Ruthless' },
-    { min: -100, label: 'Villain' },
+    { min: 75, label: '성인' },
+    { min: 50, label: '선량' },
+    { min: 25, label: '온건' },
+    { min: -24, label: '중립' },
+    { min: -49, label: '수상쩍음' },
+    { min: -74, label: '냉혹' },
+    { min: -100, label: '악당' },
   ],
 
   // Faction standing labels (evaluated top-to-bottom, first match wins)
   FACTION_LABELS: [
-    { min: 75, label: 'Allied' },
-    { min: 50, label: 'Respected' },
-    { min: 25, label: 'Favorable' },
-    { min: -24, label: 'Neutral' },
-    { min: -49, label: 'Suspicious' },
-    { min: -74, label: 'Hostile' },
-    { min: -100, label: 'Enemy' },
+    { min: 75, label: '동맹' },
+    { min: 50, label: '존경' },
+    { min: 25, label: '호의적' },
+    { min: -24, label: '중립' },
+    { min: -49, label: '의심' },
+    { min: -74, label: '적대' },
+    { min: -100, label: '원수' },
   ],
 
   TOAST_DURATION: 4000,

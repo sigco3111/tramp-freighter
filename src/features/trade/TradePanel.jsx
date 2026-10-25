@@ -260,7 +260,7 @@ export function TradePanel({ onClose }) {
                           )
                         }
                       >
-                        구매  {TRADE_CONFIG.QUICK_BUY_QUANTITY}
+                        {TRADE_CONFIG.QUICK_BUY_QUANTITY}개 구매
                       </button>
                       <button
                         className="buy-btn"

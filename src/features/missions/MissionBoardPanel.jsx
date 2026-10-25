@@ -4,7 +4,11 @@ import { useGameAction } from '../../hooks/useGameAction';
 import { useGame } from '../../context/GameContext';
 import { useStarData } from '../../hooks/useStarData';
 import { EVENT_NAMES, MISSION_CONFIG } from '../../game/constants.js';
-import { capitalizeFirst, pluralizeUnit } from '@game/utils/string-utils.js';
+import {
+  capitalizeFirst,
+  pluralizeUnit,
+  formatCargoDisplayName,
+} from '@game/utils/string-utils.js';
 import {
   calculateRouteIndicator,
   formatRouteIndicator,
@@ -138,7 +142,7 @@ export function MissionBoardPanel({ onClose }) {
               ) : mission.requirements?.cargo ? (
                 <div>
                   배달:  {mission.requirements.quantity}{' '}
-                  {mission.requirements.cargo}
+                  {formatCargoDisplayName(mission.requirements.cargo)}
                 </div>
               ) : null}
               <div>기한:  {mission.requirements.deadline} 일</div>

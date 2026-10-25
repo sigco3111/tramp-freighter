@@ -50,7 +50,7 @@ export function formatRouteIndicator(routeData) {
     return `1홉 — 직행 점프`;
   }
 
-  return `${routeData.hops} ${hopLabel} — 약 ${routeData.totalDays}일 소요`;
+  return `${routeData.hops}홉 — 약 ${routeData.totalDays}일 소요`;
 }
 
 /**

@@ -407,7 +407,7 @@ export class TradingSystem {
     if (quantity > stack.qty) {
       return {
         valid: false,
-        reason: 'Not enough quantity in stack',
+        reason: '묶음 내 수량이 부족합니다',
       };
     }
 

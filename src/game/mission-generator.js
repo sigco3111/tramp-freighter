@@ -12,6 +12,7 @@ import {
   getConnectedSystems as getCachedConnectedSystems,
   getReachableSystems as getCachedReachableSystems,
 } from './utils/wormhole-graph.js';
+import { formatCargoDisplayName } from './utils/string-utils.js';
 import { WORMHOLE_DATA } from './data/wormhole-data.js';
 
 function pickWeightedDestination(reachable, rng) {
@@ -185,9 +186,7 @@ export function generateCargoRun(
     failureFaction.outlaws = -2;
   }
 
-  const cargoLabel = good
-    .replace(/_/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  const cargoLabel = formatCargoDisplayName(good);
 
   return {
     id: `cargo_run_${Date.now()}_${Math.floor(rng() * 10000)}`,

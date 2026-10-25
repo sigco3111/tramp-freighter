@@ -15,23 +15,23 @@ export function getKarmaClass(karma = 0) {
 }
 
 const OUTLAW_TIER_LABELS = [
-  'Family',
-  'Trusted',
-  'Friendly',
-  'Warm',
-  'Neutral',
-  'Cold',
-  'Hostile',
+  '가족',
+  '신뢰',
+  '우호',
+  '온화',
+  '중립',
+  '냉담',
+  '적대',
 ];
 
 const AUTHORITY_TIER_LABELS = [
-  'Exemplary',
-  'Trusted',
-  'Respected',
-  'Good Standing',
-  'Neutral',
-  'Suspicious',
-  'Wanted',
+  '모범',
+  '신뢰',
+  '존경',
+  '양호',
+  '중립',
+  '의심',
+  '수배',
 ];
 
 /**

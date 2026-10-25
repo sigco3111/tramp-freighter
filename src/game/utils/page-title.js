@@ -1,4 +1,4 @@
-const BASE_TITLE = 'Tramp Freighter Blues';
+const BASE_TITLE = '트램프 프레이터 블루스';
 
 const VIEW_MODE_TITLES = {
   SHIP_NAMING: '배 이름 짓기',
