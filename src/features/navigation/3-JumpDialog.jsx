@@ -1,0 +1,170 @@
+import { useGameEvent } from '../../hooks/useGameEvent';
+import { useGameAction } from '../../hooks/useGameAction';
+import { useStarData } from '../../hooks/useStarData';
+import { useDangerZone } from '../../hooks/useDangerZone';
+import { useJumpValidation } from '../../hooks/useJumpValidation';
+import { useEncounterProbabilities } from '../../hooks/useEncounterProbabilities';
+import { EVENT_NAMES } from '../../game/constants.js';
+
+/**
+ * JumpDialog displays information about a selected target system and allows jumping to it.
+ *
+ * Shows:
+ * - Target system name
+ * - Distance, fuel cost, and jump time
+ * - Validation message if jump is not possible
+ * - Jump button (disabled if jump is invalid)
+ *
+ * @param {number} targetSystemId - ID of the selected target system
+ * @param {Function} onClose - Callback to close the dialog
+ * @param {Function} onJumpComplete - Callback after successful jump
+ */
+export function JumpDialog({ targetSystemId, onClose, onJumpComplete }) {
+  const starData = useStarData();
+  const currentSystemId = useGameEvent(EVENT_NAMES.LOCATION_CHANGED);
+  const fuel = useGameEvent(EVENT_NAMES.FUEL_CHANGED);
+  const cargo = useGameEvent(EVENT_NAMES.CARGO_CHANGED);
+  const shipCondition = useGameEvent(EVENT_NAMES.SHIP_CONDITION_CHANGED);
+  const factionRep = useGameEvent(EVENT_NAMES.FACTION_REP_CHANGED);
+  const upgrades = useGameEvent(EVENT_NAMES.UPGRADES_CHANGED);
+  const { executeJump } = useGameAction();
+
+  // Validate jump using Bridge Pattern
+  const validation = useJumpValidation(currentSystemId, targetSystemId, fuel);
+
+  // Get danger zone information for the destination
+  const dangerZone = useDangerZone(targetSystemId);
+
+  // Build game state object from Bridge Pattern hooks for danger calculations
+  const gameStateForDanger =
+    cargo && shipCondition && factionRep && upgrades
+      ? {
+          ship: {
+            cargo,
+            hull: shipCondition.hull,
+            engine: shipCondition.engine,
+            upgrades,
+          },
+          player: {
+            factions: factionRep,
+          },
+        }
+      : null;
+
+  // Calculate encounter probabilities using Bridge Pattern
+  const { pirateChance, inspectionChance } = useEncounterProbabilities(
+    targetSystemId,
+    gameStateForDanger
+  );
+
+  // Get system data
+  const targetSystem = starData.find((s) => s.id === targetSystemId);
+  const currentSystem = starData.find((s) => s.id === currentSystemId);
+
+  if (!targetSystem || !currentSystem) {
+    return null;
+  }
+
+  // Determine if we should show danger warning
+  const showDangerWarning =
+    dangerZone === 'contested' || dangerZone === 'dangerous';
+  const isHighRisk = dangerZone === 'dangerous' || pirateChance > 0.25;
+
+  const handleJump = async () => {
+    if (!validation.valid) return;
+
+    try {
+      const result = await executeJump(targetSystemId);
+      if (result.success) {
+        if (onJumpComplete) {
+          // Pass the destination system ID to the complete handler
+          onJumpComplete(targetSystemId);
+        }
+        onClose();
+      } else {
+        console.error('Jump failed:', result.error);
+      }
+    } catch (error) {
+      console.error('Jump failed:', error);
+    }
+  };
+
+  return (
+    <div className="jump-dialog">
+      <div className="jump-dialog-header">
+        <h3>{targetSystem.name}</h3>
+        <button className="close-btn" onClick={onClose} aria-label="닫기">
+          ×
+        </button>
+      </div>
+
+      <div className="jump-dialog-content">
+        <div className="jump-info-row">
+          <span className="label">거리:</span>
+          <span className="value">{validation.distance.toFixed(1)}  광년</span>
+        </div>
+        <div className="jump-info-row">
+          <span className="label">연료 비용:</span>
+          <span className="value">{Math.round(validation.fuelCost)}%</span>
+        </div>
+        <div className="jump-info-row">
+          <span className="label">점프 시간:</span>
+          <span className="value">
+            {validation.jumpTime} 일
+          </span>
+        </div>
+
+        {showDangerWarning && (
+          <div
+            className={`danger-warning ${isHighRisk ? 'high-risk' : 'moderate-risk'}`}
+          >
+            <div className="danger-header">
+              <span className="danger-icon">⚠️</span>
+              <span className="danger-title">
+                {dangerZone === 'dangerous'
+                  ? '위험한 항성계'
+                  : '분쟁 항성계'}
+              </span>
+            </div>
+            <div className="danger-details">
+              <div className="danger-info-row">
+                <span className="danger-label">해적 활동:</span>
+                <span className="danger-value">
+                  {Math.round(pirateChance * 100)}%
+                </span>
+              </div>
+              <div className="danger-info-row">
+                <span className="danger-label">검문 위험:</span>
+                <span className="danger-value">
+                  {Math.round(inspectionChance * 100)}%
+                </span>
+              </div>
+              {dangerZone === 'dangerous' && (
+                <div className="danger-note">
+                  법 집행이 거의 없는 변경 항성계입니다.
+                </div>
+              )}
+              {dangerZone === 'contested' && (
+                <div className="danger-note">
+                  통제권이 뒤섞이고 보안이 중간 수준인 항성계입니다.
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {!validation.valid && (
+          <div className="validation-message error">{validation.error}</div>
+        )}
+
+        <button
+          className="jump-btn"
+          onClick={handleJump}
+          disabled={!validation.valid}
+        >
+          항성계로 점프
+        </button>
+      </div>
+    </div>
+  );
+}
