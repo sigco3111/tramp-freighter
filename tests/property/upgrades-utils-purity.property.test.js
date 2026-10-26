@@ -89,7 +89,7 @@ describe('Property: Upgrade utility functions are pure', () => {
           const result = validateUpgradePurchase(upgradeId, state);
 
           expect(result.valid).toBe(false);
-          expect(result.reason).toBe('Upgrade already installed');
+          expect(result.reason).toBe('이미 설치된 업그레이드입니다');
         }
       ),
       { numRuns: 100 }
@@ -112,7 +112,7 @@ describe('Property: Upgrade utility functions are pure', () => {
           const result = validateUpgradePurchase(upgradeId, state);
 
           expect(result.valid).toBe(false);
-          expect(result.reason).toBe('Insufficient credits');
+          expect(result.reason).toBe('크레딧이 부족합니다');
         }
       ),
       { numRuns: 100 }

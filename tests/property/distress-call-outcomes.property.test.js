@@ -121,7 +121,7 @@ describe('Distress Call Outcomes Property Tests', () => {
                 expect(item).toHaveProperty('good');
                 expect(item).toHaveProperty('qty');
                 expect(item).toHaveProperty('buyPrice');
-                expect(item).toHaveProperty('buySystemName', 'Salvaged');
+                expect(item).toHaveProperty('buySystemName', '인양함');
                 expect(item).not.toHaveProperty('type');
                 expect(item).not.toHaveProperty('quantity');
                 expect(item).not.toHaveProperty('purchasePrice');

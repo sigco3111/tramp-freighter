@@ -45,7 +45,7 @@ describe('GameCoordinator.restoreState', () => {
       meta: { version: '99.0.0', timestamp: Date.now() },
     });
     expect(result.success).toBe(false);
-    expect(result.reason).toContain('Incompatible save version');
+    expect(result.reason).toContain('호환되지 않는 저장 버전');
   });
 
   it('rejects state that fails structure validation', () => {
@@ -54,7 +54,7 @@ describe('GameCoordinator.restoreState', () => {
       player: { credits: 'not-a-number' },
     });
     expect(result.success).toBe(false);
-    expect(result.reason).toContain('structure validation');
+    expect(result.reason).toContain('구조 검증');
   });
 
   it('migrates v1.0.0 state to current version', () => {

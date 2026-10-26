@@ -12,6 +12,6 @@ describe('PirateEncounterPanel Escalated Mode (#68/73)', () => {
   });
 
   it('should disable negotiate option when escalated', () => {
-    expect(source).toContain("They're done talking");
+    expect(source).toContain("그들은 이미 대화를 끝냈습니다");
   });
 });

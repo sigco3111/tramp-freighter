@@ -70,7 +70,7 @@ describe('Free Repair Tier Limits Property Tests', () => {
           if (!isEligibleTier) {
             // Lower tiers should not have access
             expect(result.available).toBe(false);
-            expect(result.reason).toContain('Requires Trusted');
+            expect(result.reason).toContain('신뢰하는 관계가 필요합니다');
           } else if (isOnCooldown) {
             // Should be unavailable if already used today
             expect(result.available).toBe(false);

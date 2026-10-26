@@ -98,7 +98,7 @@ describe('Integration: App StarmapProvider Integration', () => {
     );
 
     // Should show title screen, which doesn't need StarmapProvider
-    expect(screen.getByText(/Tramp Freighter Blues/i)).toBeInTheDocument();
+    expect(screen.getByText(/트램프 프레이터 블루스/)).toBeInTheDocument();
 
     // StarmapProvider should not be in the DOM yet
     expect(

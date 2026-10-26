@@ -146,7 +146,7 @@ describe('NPCManager coverage', () => {
       gsm.npcManager.getNPCState('chen_barnards').rep = 0;
       const result = gsm.npcManager.canGetTip('chen_barnards');
       expect(result.available).toBe(false);
-      expect(result.reason).toContain('Requires Warm');
+      expect(result.reason).toContain('따뜻한 관계가 필요합니다');
     });
 
     it('returns available for warm rep NPC with tips', () => {
@@ -162,7 +162,7 @@ describe('NPCManager coverage', () => {
       npcState.lastTipDay = gsm.state.player.daysElapsed;
       const result = gsm.npcManager.canGetTip('chen_barnards');
       expect(result.available).toBe(false);
-      expect(result.reason).toContain('cooldown');
+      expect(result.reason).toContain('쿨다운');
     });
 
     it('returns available after cooldown expires', () => {
@@ -245,7 +245,7 @@ describe('NPCManager coverage', () => {
     it('returns unavailable for unmet NPC', () => {
       const result = gsm.npcManager.canRequestFavor('chen_barnards', 'storage');
       expect(result.available).toBe(false);
-      expect(result.reason).toBe('NPC not met');
+      expect(result.reason).toBe('아직 만나지 않은 NPC입니다');
     });
 
     it('returns unavailable for unknown favor type', () => {
@@ -259,14 +259,14 @@ describe('NPCManager coverage', () => {
       gsm.npcManager.getNPCState('chen_barnards').rep = 30;
       const result = gsm.npcManager.canRequestFavor('chen_barnards', 'loan');
       expect(result.available).toBe(false);
-      expect(result.reason).toContain('Requires Trusted');
+      expect(result.reason).toContain('신뢰하는 관계가 필요합니다');
     });
 
     it('returns unavailable for storage with insufficient rep', () => {
       gsm.npcManager.getNPCState('chen_barnards').rep = 5;
       const result = gsm.npcManager.canRequestFavor('chen_barnards', 'storage');
       expect(result.available).toBe(false);
-      expect(result.reason).toContain('Requires Friendly');
+      expect(result.reason).toContain('우호적인 관계가 필요합니다');
     });
 
     it('returns unavailable during favor cooldown', () => {
@@ -284,7 +284,7 @@ describe('NPCManager coverage', () => {
       npcState.loanAmount = 500;
       const result = gsm.npcManager.canRequestFavor('chen_barnards', 'loan');
       expect(result.available).toBe(false);
-      expect(result.reason).toContain('Outstanding loan');
+      expect(result.reason).toContain('기존 대출');
     });
 
     it('returns available when all conditions met for loan', () => {
@@ -329,7 +329,7 @@ describe('NPCManager coverage', () => {
       gsm.npcManager.getNPCState('chen_barnards');
       const result = gsm.npcManager.repayLoan('chen_barnards');
       expect(result.success).toBe(false);
-      expect(result.message).toBe('No outstanding loan');
+      expect(result.message).toBe('남은 대출이 없습니다');
     });
 
     it('fails with insufficient credits', () => {
@@ -338,7 +338,7 @@ describe('NPCManager coverage', () => {
       gsm.state.player.credits = 100;
       const result = gsm.npcManager.repayLoan('chen_barnards');
       expect(result.success).toBe(false);
-      expect(result.message).toBe('Insufficient credits');
+      expect(result.message).toBe('크레딧이 부족합니다');
     });
 
     it('repays loan successfully', () => {
@@ -416,7 +416,7 @@ describe('NPCManager coverage', () => {
       gsm.state.ship.cargo = [];
       const result = gsm.npcManager.storeCargo('chen_barnards');
       expect(result.success).toBe(false);
-      expect(result.message).toBe('No cargo to store');
+      expect(result.message).toBe('보관할 화물이 없습니다');
     });
 
     it('stores cargo successfully', () => {

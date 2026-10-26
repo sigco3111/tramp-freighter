@@ -73,7 +73,7 @@ describe('AchievementToast queue', () => {
     });
 
     expect(screen.getByText('First Steps')).toBeInTheDocument();
-    expect(screen.getByText('Achievement Unlocked!')).toBeInTheDocument();
+    expect(screen.getByText('업적 달성!')).toBeInTheDocument();
   });
 
   it('should unmount toast element between sequential displays', () => {
@@ -99,7 +99,7 @@ describe('AchievementToast queue', () => {
 
     // The component must return null here (DOM element removed)
     // so the CSS slideIn animation replays when the next toast mounts
-    expect(screen.queryByText('Achievement Unlocked!')).not.toBeInTheDocument();
+    expect(screen.queryByText('업적 달성!')).not.toBeInTheDocument();
   });
 
   it('should display all queued toasts sequentially', () => {
@@ -150,6 +150,6 @@ describe('AchievementToast queue', () => {
     });
 
     // No toast should be visible
-    expect(screen.queryByText('Achievement Unlocked!')).not.toBeInTheDocument();
+    expect(screen.queryByText('업적 달성!')).not.toBeInTheDocument();
   });
 });

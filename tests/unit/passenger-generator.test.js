@@ -17,7 +17,7 @@ describe('Passenger Mission Generation', () => {
 
       expect(mission.id).toMatch(/^passenger_/);
       expect(mission.type).toBe('passenger');
-      expect(mission.title).toContain('Passenger:');
+      expect(mission.title).toContain('승객:');
       expect(mission.requirements.destination).toEqual(expect.any(Number));
       expect(mission.requirements.deadline).toBeGreaterThan(0);
       expect(mission.rewards.credits).toBeGreaterThan(0);
@@ -65,7 +65,7 @@ describe('Passenger Mission Generation', () => {
       );
 
       const destName = mission.destination.name;
-      expect(mission.title).toContain(`to ${destName}`);
+      expect(mission.title).toContain(`→ ${destName}`);
     });
 
     it('should generate destination that is a reachable system', () => {

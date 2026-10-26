@@ -62,15 +62,15 @@ describe('Panel Animation Hide Integration', () => {
     );
 
     // Start a new game to transition from title screen
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
     // Submit ship name to enter game
     const shipNameInput =
-      await screen.findByPlaceholderText(/enter ship name/i);
+      await screen.findByPlaceholderText(/함선 이름 입력/i);
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
 
-    const confirmButton = screen.getByText('Confirm');
+    const confirmButton = screen.getByText('확인');
     fireEvent.click(confirmButton);
 
     // Wait for game to load
@@ -104,15 +104,15 @@ describe('Panel Animation Hide Integration', () => {
     expect(container.querySelector('.app-container')).toBeInTheDocument();
 
     // Start a new game to transition from title screen
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
     // Submit ship name to enter game
     const shipNameInput =
-      await screen.findByPlaceholderText(/enter ship name/i);
+      await screen.findByPlaceholderText(/함선 이름 입력/i);
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
 
-    const confirmButton = screen.getByText('Confirm');
+    const confirmButton = screen.getByText('확인');
     fireEvent.click(confirmButton);
 
     // Wait for game to load
@@ -142,15 +142,15 @@ describe('Panel Animation Hide Integration', () => {
     );
 
     // Start a new game to transition from title screen
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
     // Submit ship name to enter game
     const shipNameInput =
-      await screen.findByPlaceholderText(/enter ship name/i);
+      await screen.findByPlaceholderText(/함선 이름 입력/i);
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
 
-    const confirmButton = screen.getByText('Confirm');
+    const confirmButton = screen.getByText('확인');
     fireEvent.click(confirmButton);
 
     // Wait for game to load
@@ -181,15 +181,15 @@ describe('Panel Animation Hide Integration', () => {
     );
 
     // Start a new game to transition from title screen
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
     // Submit ship name to enter game
     const shipNameInput =
-      await screen.findByPlaceholderText(/enter ship name/i);
+      await screen.findByPlaceholderText(/함선 이름 입력/i);
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
 
-    const confirmButton = screen.getByText('Confirm');
+    const confirmButton = screen.getByText('확인');
     fireEvent.click(confirmButton);
 
     // Wait for game to load
@@ -224,15 +224,15 @@ describe('Panel Animation Hide Integration', () => {
     );
 
     // Start a new game to transition from title screen
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
     // Submit ship name to enter game
     const shipNameInput =
-      await screen.findByPlaceholderText(/enter ship name/i);
+      await screen.findByPlaceholderText(/함선 이름 입력/i);
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
 
-    const confirmButton = screen.getByText('Confirm');
+    const confirmButton = screen.getByText('확인');
     fireEvent.click(confirmButton);
 
     // Wait for game to load
@@ -275,15 +275,15 @@ describe('Panel Animation Hide Integration', () => {
     );
 
     // Start a new game to transition from title screen
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
     // Submit ship name to enter game
     const shipNameInput =
-      await screen.findByPlaceholderText(/enter ship name/i);
+      await screen.findByPlaceholderText(/함선 이름 입력/i);
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
 
-    const confirmButton = screen.getByText('Confirm');
+    const confirmButton = screen.getByText('확인');
     fireEvent.click(confirmButton);
 
     // Wait for game to load
@@ -313,15 +313,15 @@ describe('Panel Animation Hide Integration', () => {
     );
 
     // Start a new game to transition from title screen
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
     // Submit ship name to enter game
     const shipNameInput =
-      await screen.findByPlaceholderText(/enter ship name/i);
+      await screen.findByPlaceholderText(/함선 이름 입력/i);
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
 
-    const confirmButton = screen.getByText('Confirm');
+    const confirmButton = screen.getByText('확인');
     fireEvent.click(confirmButton);
 
     // HUD should be visible with Sol

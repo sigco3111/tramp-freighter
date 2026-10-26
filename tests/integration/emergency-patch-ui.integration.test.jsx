@@ -46,7 +46,7 @@ describe('Emergency Patch UI', () => {
 
   it('should show emergency patch option when hull is critical and player is broke', () => {
     render(<RepairPanel onClose={vi.fn()} />);
-    const matches = screen.getAllByText(/Emergency Patch/i);
+    const matches = screen.getAllByText(/응급 패치/);
     expect(matches.length).toBeGreaterThan(0);
   });
 
@@ -56,8 +56,8 @@ describe('Emergency Patch UI', () => {
       .getAllByRole('button')
       .filter(
         (btn) =>
-          btn.textContent.includes('Emergency Patch') &&
-          btn.textContent.includes('Hull')
+          btn.textContent.includes('응급 패치') &&
+          btn.textContent.includes('선체')
       );
     expect(patchButtons.length).toBeGreaterThan(0);
     fireEvent.click(patchButtons[0]);

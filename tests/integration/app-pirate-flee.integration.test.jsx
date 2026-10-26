@@ -78,7 +78,7 @@ vi.mock('../../src/game/engine/game-animation', () => {
 /**
  * Integration tests for pirate flee path in App.jsx
  *
- * Tests handleEncounterChoice when the player chooses "Flee" from
+ * Tests handleEncounterChoice when the player chooses "도주" from
  * the initial pirate encounter panel, covering:
  * - Successful flee → OutcomePanel
  * - Failed flee → CombatPanel with flee context
@@ -111,10 +111,10 @@ describe('Pirate Flee Path Integration', () => {
 
   /** Navigate past title screen to orbit mode */
   async function navigateToOrbit() {
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
-    const shipNameInput = screen.getByPlaceholderText('Enter ship name...');
+    const shipNameInput = screen.getByPlaceholderText('함선 이름 입력...');
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
     fireEvent.keyDown(shipNameInput, { key: 'Enter' });
 
@@ -137,16 +137,16 @@ describe('Pirate Flee Path Integration', () => {
     fireEvent.click(pirateButton);
 
     await waitFor(() => {
-      expect(screen.getByText('Pirate Encounter')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
     });
   }
 
   /** Select Flee and confirm */
   function chooseFlee() {
-    const fleeOption = screen.getByText('Flee');
+    const fleeOption = screen.getByText('도주');
     fireEvent.click(fleeOption);
 
-    const confirmButton = screen.getByText('Confirm Flee');
+    const confirmButton = screen.getByText('확정 도주');
     fireEvent.click(confirmButton);
   }
 
@@ -172,11 +172,11 @@ describe('Pirate Flee Path Integration', () => {
 
     // OutcomePanel should appear with result
     await waitFor(() => {
-      expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+      expect(screen.getByText('조우 결과')).toBeInTheDocument();
     });
 
     // Should show Continue button
-    expect(screen.getByText('Continue')).toBeInTheDocument();
+    expect(screen.getByText('계속')).toBeInTheDocument();
   });
 
   it('should show CombatPanel with flee context after failed flee', async () => {
@@ -199,14 +199,14 @@ describe('Pirate Flee Path Integration', () => {
 
     chooseFlee();
 
-    // CombatPanel should appear (it has heading "Combat Resolution")
+    // CombatPanel should appear (it has heading "전투 결과")
     await waitFor(() => {
-      expect(screen.getByText('Combat Resolution')).toBeInTheDocument();
+      expect(screen.getByText('전투 결과')).toBeInTheDocument();
     });
 
     // Should show flee-failed alert
     expect(
-      screen.getByText('EVASION FAILED — YOU COULD NOT FLEE')
+      screen.getByText('회피 실패 — 도주하지 못했습니다')
     ).toBeInTheDocument();
     expect(
       screen.getByText('The pirates caught up to you!')
@@ -232,12 +232,12 @@ describe('Pirate Flee Path Integration', () => {
 
     // Should return to orbit — pirate encounter panel gone
     await waitFor(() => {
-      expect(screen.queryByText('Pirate Encounter')).not.toBeInTheDocument();
+      expect(screen.queryByText('해적 조우')).not.toBeInTheDocument();
     });
 
     // CombatPanel and OutcomePanel should not be present
-    expect(screen.queryByText('Combat Resolution')).not.toBeInTheDocument();
-    expect(screen.queryByText('Encounter Outcome')).not.toBeInTheDocument();
+    expect(screen.queryByText('전투 결과')).not.toBeInTheDocument();
+    expect(screen.queryByText('조우 결과')).not.toBeInTheDocument();
 
     // Error was logged
     expect(console.error).toHaveBeenCalledWith(

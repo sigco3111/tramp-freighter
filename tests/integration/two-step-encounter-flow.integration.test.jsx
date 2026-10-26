@@ -99,9 +99,9 @@ describe('Two-Step Encounter Flow', () => {
   });
 
   async function navigateToOrbit() {
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
-    const shipNameInput = screen.getByPlaceholderText('Enter ship name...');
+    const shipNameInput = screen.getByPlaceholderText('함선 이름 입력...');
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
     fireEvent.keyDown(shipNameInput, { key: 'Enter' });
     await waitFor(() => {
@@ -118,7 +118,7 @@ describe('Two-Step Encounter Flow', () => {
     });
     fireEvent.click(screen.getByText('🏴‍☠️ Pirate'));
     await waitFor(() => {
-      expect(screen.getByText('Pirate Encounter')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
     });
   }
 
@@ -134,16 +134,16 @@ describe('Two-Step Encounter Flow', () => {
     await triggerPirateEncounter();
 
     // Click Fight option
-    fireEvent.click(screen.getByText('Fight'));
-    fireEvent.click(screen.getByText('Confirm Fight'));
+    fireEvent.click(screen.getByText('교전'));
+    fireEvent.click(screen.getByText('확정 교전'));
 
     // Should now see CombatPanel with its 4 options
     await waitFor(() => {
-      expect(screen.getByText('Combat Resolution')).toBeInTheDocument();
-      expect(screen.getByText('Evasive Maneuvers')).toBeInTheDocument();
-      expect(screen.getByText('Return Fire')).toBeInTheDocument();
-      expect(screen.getByText('Dump Cargo')).toBeInTheDocument();
-      expect(screen.getByText('Distress Call')).toBeInTheDocument();
+      expect(screen.getByText('전투 결과')).toBeInTheDocument();
+      expect(screen.getByText('회피 기동')).toBeInTheDocument();
+      expect(screen.getByText('응사')).toBeInTheDocument();
+      expect(screen.getByText('화물 투하')).toBeInTheDocument();
+      expect(screen.getByText('조난 신호')).toBeInTheDocument();
     });
   });
 
@@ -159,14 +159,14 @@ describe('Two-Step Encounter Flow', () => {
     await triggerPirateEncounter();
 
     // Click Negotiate option
-    fireEvent.click(screen.getByText('Negotiate'));
-    fireEvent.click(screen.getByText('Confirm Negotiate'));
+    fireEvent.click(screen.getByText('협상'));
+    fireEvent.click(screen.getByText('확정 협상'));
 
     // Should now see NegotiationPanel
     await waitFor(() => {
-      expect(screen.getByText('Negotiation')).toBeInTheDocument();
-      expect(screen.getByText('Counter-Proposal')).toBeInTheDocument();
-      expect(screen.getByText('Accept Demand')).toBeInTheDocument();
+      expect(screen.getByText('협상')).toBeInTheDocument();
+      expect(screen.getByText('역제안')).toBeInTheDocument();
+      expect(screen.getByText('요구 수락')).toBeInTheDocument();
     });
   });
 
@@ -182,14 +182,14 @@ describe('Two-Step Encounter Flow', () => {
     await triggerPirateEncounter();
 
     // Click Surrender option
-    fireEvent.click(screen.getByText('Surrender'));
-    fireEvent.click(screen.getByText('Confirm Surrender'));
+    fireEvent.click(screen.getByText('항복'));
+    fireEvent.click(screen.getByText('확정 항복'));
 
     // Should go directly to OutcomePanel (not NegotiationPanel)
     await waitFor(() => {
-      expect(screen.queryByText('Negotiation')).not.toBeInTheDocument();
+      expect(screen.queryByText('협상')).not.toBeInTheDocument();
       // OutcomePanel should be visible
-      expect(screen.getByText('Continue')).toBeInTheDocument();
+      expect(screen.getByText('계속')).toBeInTheDocument();
     });
   });
 });

@@ -26,7 +26,7 @@ describe('Integration: Critical Damage Confinement Flow', () => {
       shipCondition
     );
     expect(blocked.valid).toBe(false);
-    expect(blocked.error).toContain('Hull');
+    expect(blocked.error).toContain('선체');
 
     // Step 2: Apply emergency patch
     const mockState = {

@@ -31,11 +31,11 @@ describe('TradePanel restricted badge rendering', () => {
     const wrapper = createWrapper(gsm);
     render(<TradePanel onClose={() => {}} />, { wrapper });
 
-    const badges = screen.getAllByText('RESTRICTED');
+    const badges = screen.getAllByText('제한 품목');
     expect(badges.length).toBeGreaterThan(0);
 
     // The badge should have an aria-label containing the tooltip
-    expect(badges[0].getAttribute('aria-label')).toContain('Restricted');
+    expect(badges[0].getAttribute('aria-label')).toContain('제한 품목');
   });
 
   it('does not render RESTRICTED badge for medicine in safe zone (Sol)', () => {
@@ -49,13 +49,13 @@ describe('TradePanel restricted badge rendering', () => {
     render(<TradePanel onClose={() => {}} />, { wrapper });
 
     // Only electronics should be restricted in safe zone, not medicine
-    const badges = screen.getAllByText('RESTRICTED');
+    const badges = screen.getAllByText('제한 품목');
     const badgeParents = badges.map((b) => b.closest('.good-item'));
     const restrictedGoodNames = badgeParents.map(
       (p) => p.querySelector('.good-name').textContent
     );
 
-    expect(restrictedGoodNames).not.toContain('Medicine');
+    expect(restrictedGoodNames).not.toContain('의약품');
   });
 
   it('renders RESTRICTED badge for medicine in contested zone (Sirius)', () => {
@@ -68,13 +68,13 @@ describe('TradePanel restricted badge rendering', () => {
     const wrapper = createWrapper(gsm);
     render(<TradePanel onClose={() => {}} />, { wrapper });
 
-    const badges = screen.getAllByText('RESTRICTED');
+    const badges = screen.getAllByText('제한 품목');
     const badgeParents = badges.map((b) => b.closest('.good-item'));
     const restrictedGoodNames = badgeParents.map(
       (p) => p.querySelector('.good-name').textContent
     );
 
-    expect(restrictedGoodNames).toContain('Medicine');
+    expect(restrictedGoodNames).toContain('의약품');
   });
 
   it('renders RESTRICTED badge for parts in core system (Sol)', () => {
@@ -87,13 +87,13 @@ describe('TradePanel restricted badge rendering', () => {
     const wrapper = createWrapper(gsm);
     render(<TradePanel onClose={() => {}} />, { wrapper });
 
-    const badges = screen.getAllByText('RESTRICTED');
+    const badges = screen.getAllByText('제한 품목');
     const badgeParents = badges.map((b) => b.closest('.good-item'));
     const restrictedGoodNames = badgeParents.map(
       (p) => p.querySelector('.good-name').textContent
     );
 
-    expect(restrictedGoodNames).toContain('Parts');
+    expect(restrictedGoodNames).toContain('부품');
   });
 
   it('does not render RESTRICTED badge for parts in non-core system', () => {
@@ -106,12 +106,12 @@ describe('TradePanel restricted badge rendering', () => {
     const wrapper = createWrapper(gsm);
     render(<TradePanel onClose={() => {}} />, { wrapper });
 
-    const badges = screen.getAllByText('RESTRICTED');
+    const badges = screen.getAllByText('제한 품목');
     const badgeParents = badges.map((b) => b.closest('.good-item'));
     const restrictedGoodNames = badgeParents.map(
       (p) => p.querySelector('.good-name').textContent
     );
 
-    expect(restrictedGoodNames).not.toContain('Parts');
+    expect(restrictedGoodNames).not.toContain('부품');
   });
 });

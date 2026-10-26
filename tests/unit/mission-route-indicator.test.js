@@ -131,17 +131,17 @@ describe('Mission Route Indicator', () => {
   describe('formatRouteIndicator', () => {
     it('formats a 1-hop route as direct jump', () => {
       const text = formatRouteIndicator({ hops: 1, totalDays: 3 });
-      expect(text).toBe('1 hop \u2014 direct jump');
+      expect(text).toBe('1홉 \u2014 직행 점프');
     });
 
     it('formats a 2-hop route with approximate travel time', () => {
       const text = formatRouteIndicator({ hops: 2, totalDays: 10 });
-      expect(text).toBe('2 hops \u2014 ~10 days travel');
+      expect(text).toBe('2홉 \u2014 약 10일 소요');
     });
 
     it('formats a 3-hop route with approximate travel time', () => {
       const text = formatRouteIndicator({ hops: 3, totalDays: 18 });
-      expect(text).toBe('3 hops \u2014 ~18 days travel');
+      expect(text).toBe('3홉 \u2014 약 18일 소요');
     });
 
     it('returns empty string for null input', () => {

@@ -38,8 +38,8 @@ const NPC_TEST_CASES = [
     label: 'Whisper (Information Broker at Sirius A)',
     expectedBasic: {
       id: 'whisper_sirius',
-      name: 'Whisper',
-      role: 'Information Broker',
+      name: '위스퍼',
+      role: '정보 중개인',
       system: 7,
       station: 'Sirius Exchange',
     },
@@ -63,8 +63,8 @@ const NPC_TEST_CASES = [
     label: 'Captain Vasquez (Retired Trader at Epsilon Eridani)',
     expectedBasic: {
       id: 'vasquez_epsilon',
-      name: 'Captain Vasquez',
-      role: 'Retired Trader',
+      name: '바스케스 선장',
+      role: '은퇴한 상인',
       system: 13,
       station: 'Eridani Hub',
     },
@@ -82,9 +82,9 @@ const NPC_TEST_CASES = [
     expectedInitialRep: 5,
     expectedDiscountService: null,
     expectedTipSamples: [
-      "Barnard's Star always needs ore. Mining station, you know.",
-      'Sirius A pays top credit for luxury goods. Rich folks.',
-      'The Procyon run is profitable if you can afford the fuel.',
+      '바너드 항성은 늘 광석이 필요하지. 채굴 정거장이거든.',
+      '시리우스 A는 사치품에 최고가를 쳐줘. 부자들이니까.',
+      '프로키온 항로는 연료비를 감당할 수만 있다면 돈이 돼.',
     ],
   },
   {
@@ -92,8 +92,8 @@ const NPC_TEST_CASES = [
     label: 'Dr. Sarah Kim (Station Administrator at Tau Ceti)',
     expectedBasic: {
       id: 'kim_tau_ceti',
-      name: 'Dr. Sarah Kim',
-      role: 'Station Administrator',
+      name: '사라 김 박사',
+      role: '정거장 관리자',
       system: 31,
       station: 'Tau Ceti Station',
     },
@@ -111,18 +111,18 @@ const NPC_TEST_CASES = [
     expectedInitialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
     expectedDiscountService: 'docking',
     expectedTipSamples: [
-      'We have strict customs here. Keep your cargo manifest accurate.',
-      'Medicine prices are stable at Ross 154. Good for planning.',
-      'Fuel efficiency matters on long routes. Upgrade your engine.',
+      '이곳은 세관이 엄격합니다. 화물 명세서를 정확히 작성하세요.',
+      '로스 154의 의약품 가격은 안정적입니다. 계획 세우기에 좋습니다.',
+      '장거리 항로에서는 연료 효율이 중요합니다. 엔진을 업그레이드하세요.',
     ],
   },
   {
     npc: RUSTY_RODRIGUEZ,
-    label: '"Rusty" Rodriguez (Mechanic at Procyon)',
+    label: '"러스티" 로드리게스 (Mechanic at Procyon)',
     expectedBasic: {
       id: 'rodriguez_procyon',
-      name: '"Rusty" Rodriguez',
-      role: 'Mechanic',
+      name: '"러스티" 로드리게스',
+      role: '정비공',
       system: 19,
       station: 'Procyon Depot',
     },
@@ -140,9 +140,9 @@ const NPC_TEST_CASES = [
     expectedInitialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
     expectedDiscountService: 'repair',
     expectedTipSamples: [
-      "Don't let your hull drop below 50%. Expensive to fix after that.",
-      'Engine degradation is real. Budget for maintenance.',
-      'Life support is critical. Never skip those repairs.',
+      '선체가 50% 아래로 떨어지게 두지 마. 그 뒤로는 고치는 데 돈이 많이 들어.',
+      '엔진 노후화는 현실이야. 정비 예산을 잡아 둬.',
+      '생명 유지 장치는 핵심이야. 그 수리는 절대 건너뛰지 마.',
     ],
   },
   {
@@ -150,8 +150,8 @@ const NPC_TEST_CASES = [
     label: "Zara Osman (Trader at Luyten's Star)",
     expectedBasic: {
       id: 'osman_luyten',
-      name: 'Zara Osman',
-      role: 'Trader',
+      name: '자라 오스만',
+      role: '상인',
       system: 34,
       station: "Luyten's Outpost",
     },
@@ -169,9 +169,9 @@ const NPC_TEST_CASES = [
     expectedInitialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
     expectedDiscountService: 'trade',
     expectedTipSamples: [
-      'Buy low at mining stations, sell high at rich systems.',
-      'Luxury goods have the best margins if you can afford the capital.',
-      'Watch for economic events. They shift prices dramatically.',
+      '광산 정거장에서 싸게 사서 부유한 항성계에서 비싸게 팔아요.',
+      '자본만 있다면 사치품이 마진이 제일 좋아요.',
+      '경제 이벤트를 지켜봐요. 가격을 크게 흔들어요.',
     ],
   },
   {
@@ -179,8 +179,8 @@ const NPC_TEST_CASES = [
     label: 'Station Master Kowalski (Station Master at Alpha Centauri)',
     expectedBasic: {
       id: 'kowalski_alpha_centauri',
-      name: 'Station Master Kowalski',
-      role: 'Station Master',
+      name: '코왈스키 정거장장',
+      role: '정거장장',
       system: 1,
       station: 'Centauri Station',
     },
@@ -201,11 +201,11 @@ const NPC_TEST_CASES = [
   },
   {
     npc: LUCKY_LIU,
-    label: '"Lucky" Liu (Gambler at Wolf 359)',
+    label: '"럭키" 리우 (Gambler at Wolf 359)',
     expectedBasic: {
       id: 'liu_wolf359',
-      name: '"Lucky" Liu',
-      role: 'Gambler',
+      name: '"럭키" 리우',
+      role: '도박꾼',
       system: 5,
       station: 'Wolf 359 Station',
     },
@@ -223,9 +223,9 @@ const NPC_TEST_CASES = [
     expectedInitialRep: NPC_INITIAL_REPUTATION.NEUTRAL,
     expectedDiscountService: null,
     expectedTipSamples: [
-      'Sometimes you gotta take risks. Big risks, big rewards.',
-      'I heard about a high-stakes cargo run. Interested?',
-      "Don't play it safe all the time. Fortune favors the bold.",
+      '가끔은 위험을 감수해야지. 큰 위험, 큰 보상.',
+      '고액 판돈이 걸린 화물 운송 얘기를 들었어. 관심 있어?',
+      "항상 안전하게만 하지 마. 행운은 대담한 자의 편이야.",
     ],
   },
 ];

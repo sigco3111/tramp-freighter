@@ -57,8 +57,8 @@ describe('MechanicalFailurePanel', () => {
       />
     );
 
-    expect(screen.getByText('Engine Failure')).toBeTruthy();
-    expect(screen.getByText('Critical')).toBeTruthy();
+    expect(screen.getByText('엔진 고장')).toBeTruthy();
+    expect(screen.getByText('위급')).toBeTruthy();
   });
 
   // 2. Engine failure shows three repair options
@@ -71,9 +71,9 @@ describe('MechanicalFailurePanel', () => {
       />
     );
 
-    expect(screen.getByText('Emergency Restart')).toBeTruthy();
-    expect(screen.getByText('Call for Help')).toBeTruthy();
-    expect(screen.getByText('Jury-Rig Repair')).toBeTruthy();
+    expect(screen.getByText('긴급 재시동')).toBeTruthy();
+    expect(screen.getByText('도움 요청')).toBeTruthy();
+    expect(screen.getByText('임시 수리')).toBeTruthy();
   });
 
   // 3. Selecting an option highlights it and shows confirm/cancel buttons
@@ -86,10 +86,10 @@ describe('MechanicalFailurePanel', () => {
       />
     );
 
-    fireEvent.click(screen.getByText('Emergency Restart'));
+    fireEvent.click(screen.getByText('긴급 재시동'));
 
-    expect(screen.getByText('Attempt Emergency Restart')).toBeTruthy();
-    expect(screen.getByText('Reconsider')).toBeTruthy();
+    expect(screen.getByText('긴급 재시동 시도')).toBeTruthy();
+    expect(screen.getByText('다시 생각하기')).toBeTruthy();
   });
 
   // 4. Confirm calls onChoice with selected option
@@ -102,8 +102,8 @@ describe('MechanicalFailurePanel', () => {
       />
     );
 
-    fireEvent.click(screen.getByText('Emergency Restart'));
-    fireEvent.click(screen.getByText('Attempt Emergency Restart'));
+    fireEvent.click(screen.getByText('긴급 재시동'));
+    fireEvent.click(screen.getByText('긴급 재시동 시도'));
 
     expect(onChoice).toHaveBeenCalledWith('emergency_restart');
   });
@@ -118,13 +118,13 @@ describe('MechanicalFailurePanel', () => {
       />
     );
 
-    fireEvent.click(screen.getByText('Emergency Restart'));
-    expect(screen.getByText('Reconsider')).toBeTruthy();
+    fireEvent.click(screen.getByText('긴급 재시동'));
+    expect(screen.getByText('다시 생각하기')).toBeTruthy();
 
-    fireEvent.click(screen.getByText('Reconsider'));
+    fireEvent.click(screen.getByText('다시 생각하기'));
 
     expect(
-      screen.getByText('Choose a repair option to address the engine failure')
+      screen.getByText('엔진 고장을 해결할 수리 방법을 고르세요')
     ).toBeTruthy();
   });
 
@@ -141,11 +141,11 @@ describe('MechanicalFailurePanel', () => {
       />
     );
 
-    expect(screen.getByText('Insufficient Credits')).toBeTruthy();
+    expect(screen.getByText('크레딧 부족')).toBeTruthy();
 
     // Clicking the disabled option should not select it
-    fireEvent.click(screen.getByText('Call for Help'));
-    expect(screen.queryByText('Call for Professional Help')).not.toBeTruthy();
+    fireEvent.click(screen.getByText('도움 요청'));
+    expect(screen.queryByText('전문가 도움 요청')).not.toBeTruthy();
   });
 
   // 7. Hull breach renders info panel with Acknowledge button
@@ -158,12 +158,12 @@ describe('MechanicalFailurePanel', () => {
       />
     );
 
-    expect(screen.getByText('Hull Breach Damage')).toBeTruthy();
-    expect(screen.getByText('Acknowledge')).toBeTruthy();
-    expect(screen.getByText(/hull integrity/, { exact: false })).toBeTruthy();
+    expect(screen.getByText('선체 파손')).toBeTruthy();
+    expect(screen.getByText('확인')).toBeTruthy();
+    expect(screen.getByText(/구조 무결성이 손상/, { exact: false })).toBeTruthy();
 
     // Should not show engine failure options
-    expect(screen.queryByText('Emergency Restart')).toBeNull();
+    expect(screen.queryByText('긴급 재시동')).toBeNull();
   });
 
   // 8. Hull breach Acknowledge calls onChoice to route through encounter resolution
@@ -176,7 +176,7 @@ describe('MechanicalFailurePanel', () => {
       />
     );
 
-    fireEvent.click(screen.getByText('Acknowledge'));
+    fireEvent.click(screen.getByText('확인'));
     expect(onChoice).toHaveBeenCalledWith('acknowledge');
   });
 
@@ -191,10 +191,10 @@ describe('MechanicalFailurePanel', () => {
     );
 
     // "Life Support Emergency" appears twice (type-value and option-name)
-    const matches = screen.getAllByText('Life Support Emergency');
+    const matches = screen.getAllByText('생명 유지 비상');
     expect(matches.length).toBe(2);
-    expect(screen.getByText('Acknowledge')).toBeTruthy();
-    expect(screen.queryByText('Emergency Restart')).toBeNull();
+    expect(screen.getByText('확인')).toBeTruthy();
+    expect(screen.queryByText('긴급 재시동')).toBeNull();
   });
 
   // 10. Close button calls onClose
@@ -207,7 +207,7 @@ describe('MechanicalFailurePanel', () => {
       />
     );
 
-    fireEvent.click(screen.getByLabelText('Close'));
+    fireEvent.click(screen.getByLabelText('닫기'));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
@@ -228,11 +228,11 @@ describe('MechanicalFailurePanel', () => {
 
     // Check condition-based status messages
     // Hull at 80 >= HULL threshold (50), so "Hull stable"
-    expect(screen.getByText('Hull stable')).toBeTruthy();
+    expect(screen.getByText('선체 안정')).toBeTruthy();
     // Engine at 60 >= ENGINE threshold (30), so "Engine operational"
-    expect(screen.getByText('Engine operational')).toBeTruthy();
+    expect(screen.getByText('엔진 정상 작동')).toBeTruthy();
     // Life support at 90 >= LIFE_SUPPORT threshold (20), so "Environment stable"
-    expect(screen.getByText('Environment stable')).toBeTruthy();
+    expect(screen.getByText('환경 안정')).toBeTruthy();
   });
 
   // 12. Severity color mapping works for each failure type
@@ -245,7 +245,7 @@ describe('MechanicalFailurePanel', () => {
         onClose={onClose}
       />
     );
-    const engineSeverity = screen.getByText('Critical');
+    const engineSeverity = screen.getByText('위급');
     expect(engineSeverity.style.color).toBe('rgb(255, 0, 0)');
     u1();
 
@@ -257,7 +257,7 @@ describe('MechanicalFailurePanel', () => {
         onClose={onClose}
       />
     );
-    const hullSeverity = screen.getByText('Serious');
+    const hullSeverity = screen.getByText('심각');
     expect(hullSeverity.style.color).toBe('rgb(255, 68, 68)');
     u2();
 
@@ -269,7 +269,7 @@ describe('MechanicalFailurePanel', () => {
         onClose={onClose}
       />
     );
-    const lifeSeverity = screen.getByText('Emergency');
+    const lifeSeverity = screen.getByText('비상');
     expect(lifeSeverity.style.color).toBe('rgb(255, 0, 0)');
   });
 
@@ -284,11 +284,11 @@ describe('MechanicalFailurePanel', () => {
     );
 
     expect(
-      screen.getByText('Choose a repair option to address the engine failure')
+      screen.getByText('엔진 고장을 해결할 수리 방법을 고르세요')
     ).toBeTruthy();
 
     // Confirm/cancel buttons should not be visible
-    expect(screen.queryByText('Reconsider')).toBeNull();
+    expect(screen.queryByText('다시 생각하기')).toBeNull();
   });
 
   // Additional: engine failure options display correct constants values
@@ -334,7 +334,7 @@ describe('MechanicalFailurePanel', () => {
       screen.getAllByText(new RegExp(`${helpCost.toLocaleString()}`)).length
     ).toBeGreaterThan(0);
     expect(
-      screen.getAllByText(new RegExp(`${helpDelay}\\s*days`)).length
+      screen.getAllByText(new RegExp(`${helpDelay}\\s*일`)).length
     ).toBeGreaterThan(0);
   });
 
@@ -348,8 +348,8 @@ describe('MechanicalFailurePanel', () => {
       />
     );
 
-    fireEvent.click(screen.getByText('Jury-Rig Repair'));
-    fireEvent.click(screen.getByText('Attempt Jury-Rig Repair'));
+    fireEvent.click(screen.getByText('임시 수리'));
+    fireEvent.click(screen.getByText('임시 수리 시도'));
 
     expect(onChoice).toHaveBeenCalledWith('jury_rig');
   });

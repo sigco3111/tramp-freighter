@@ -63,22 +63,22 @@ describe('NPC dialogue greetings', () => {
     it('appends overdue loan message when loan is past deadline', () => {
       const ctx = makeLoanOverdueContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('overdue');
-      expect(result).toContain('Regulation 12-A');
+      expect(result).toContain('연체');
+      expect(result).toContain('규정 12-A');
     });
 
     it('appends loan reminder when loan is due soon', () => {
       const ctx = makeLoanReminderContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('Financial reminder');
-      expect(result).toContain('days per standard terms');
+      expect(result).toContain('금융 안내');
+      expect(result).toContain('표준 조건에 따라');
     });
 
     it('appends standard loan obligation when loan is active but not urgent', () => {
       const ctx = makeLoanActiveContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('Outstanding financial obligation');
-      expect(result).toContain('days remaining per agreement');
+      expect(result).toContain('미결 금융 채무');
+      expect(result).toContain('약정에 따라');
     });
 
     it('request_loan action calls context.requestLoan', () => {
@@ -132,20 +132,20 @@ describe('NPC dialogue greetings', () => {
     it('appends overdue loan message when loan is past deadline', () => {
       const ctx = makeLoanOverdueContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('house always collects');
+      expect(result).toContain('하우스는 늘 받아 가지');
     });
 
     it('appends loan reminder when loan is due soon', () => {
       const ctx = makeLoanReminderContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain("Don't let it ride");
+      expect(result).toContain('너무 오래 끌지 마');
     });
 
     it('appends standard loan message when loan is active but not urgent', () => {
       const ctx = makeLoanActiveContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('you still owe me');
-      expect(result).toContain('days left on the clock');
+      expect(result).toContain('갚아야');
+      expect(result).toContain('시계가');
     });
 
     it('request_loan action calls context.requestLoan', () => {
@@ -192,21 +192,21 @@ describe('NPC dialogue greetings', () => {
     it('appends overdue loan message when loan is past deadline', () => {
       const ctx = makeLoanOverdueContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('due yesterday');
+      expect(result).toContain('어제가 기한이었어');
     });
 
     it('appends loan reminder when loan is due soon', () => {
       const ctx = makeLoanReminderContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain("Don't forget");
-      expect(result).toContain("ship's counting on you");
+      expect(result).toContain('잊지 말게');
+      expect(result).toContain('믿고 있어');
     });
 
     it('appends standard loan message when loan is active but not urgent', () => {
       const ctx = makeLoanActiveContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('you still owe me');
-      expect(result).toContain('days left to pay up');
+      expect(result).toContain('갚아야');
+      expect(result).toContain('갚을 날이');
     });
 
     it('request_loan action calls context.requestLoan', () => {
@@ -252,22 +252,22 @@ describe('NPC dialogue greetings', () => {
     it('appends overdue loan message when loan is past deadline', () => {
       const ctx = makeLoanOverdueContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('overdue');
-      expect(result).toContain('Station policy requires immediate repayment');
+      expect(result).toContain('연체');
+      expect(result).toContain('정거장 방침상 즉시 상환');
     });
 
     it('appends loan reminder when loan is due soon', () => {
       const ctx = makeLoanReminderContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('Reminder');
-      expect(result).toContain('no extensions');
+      expect(result).toContain('알림');
+      expect(result).toContain('연장은 없네');
     });
 
     it('appends standard loan message when loan is active but not urgent', () => {
       const ctx = makeLoanActiveContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('Outstanding loan');
-      expect(result).toContain('days remaining per station policy');
+      expect(result).toContain('미상환 대출');
+      expect(result).toContain('정거장 방침에 따라');
     });
 
     it('request_loan action calls context.requestLoan', () => {
@@ -317,21 +317,21 @@ describe('NPC dialogue greetings', () => {
     it('appends overdue loan message when loan is past deadline', () => {
       const ctx = makeLoanOverdueContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain("clock's run out");
+      expect(result).toContain('시계가 다 됐어');
     });
 
     it('appends loan reminder when loan is due soon', () => {
       const ctx = makeLoanReminderContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('Quick reminder');
-      expect(result).toContain("Don't let it slip");
+      expect(result).toContain('간단히 알려');
+      expect(result).toContain('놓치지 마');
     });
 
     it('appends standard loan message when loan is active but not urgent', () => {
       const ctx = makeLoanActiveContext();
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('you still owe me');
-      expect(result).toContain('days left on the clock');
+      expect(result).toContain('갚아야');
+      expect(result).toContain('시계가');
     });
 
     it('request_loan action calls context.requestLoan', () => {
@@ -382,7 +382,7 @@ describe('NPC dialogue greetings', () => {
 
     it('shows cold/hostile greeting for low rep without context', () => {
       const result = greeting.text(REPUTATION_BOUNDS.COLD_MIN);
-      expect(result).toBe('Information costs credits.');
+      expect(result).toBe('정보에는 크레딧이 듭니다.');
     });
 
     it('adds karma first impression for neutral rep with context', () => {
@@ -391,7 +391,7 @@ describe('NPC dialogue greetings', () => {
         factionReps: { authorities: 0, outlaws: 0, civilians: 0 },
       };
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('Welcome');
+      expect(result).toContain('어서 오세요');
     });
 
     it('adds trustworthy karma modifier for very good karma at low rep', () => {
@@ -400,7 +400,7 @@ describe('NPC dialogue greetings', () => {
         factionReps: { authorities: 0, outlaws: 0, civilians: 0 },
       };
       const result = greeting.text(REPUTATION_BOUNDS.NEUTRAL_MIN, ctx);
-      expect(result).toContain('trustworthy');
+      expect(result).toContain('믿음직한 분위기');
     });
 
     it('adds wanted by authorities commentary at warm rep', () => {
@@ -409,7 +409,7 @@ describe('NPC dialogue greetings', () => {
         factionReps: { authorities: -30, outlaws: 0, civilians: 0 },
       };
       const result = greeting.text(REPUTATION_BOUNDS.WARM_MIN, ctx);
-      expect(result).toContain('authorities have taken an interest');
+      expect(result).toContain('당국이 당신에게 관심을');
     });
 
     it('adds known to outlaws commentary at warm rep', () => {
@@ -418,7 +418,7 @@ describe('NPC dialogue greetings', () => {
         factionReps: { authorities: 0, outlaws: 55, civilians: 0 },
       };
       const result = greeting.text(REPUTATION_BOUNDS.WARM_MIN, ctx);
-      expect(result).toContain('interesting connections in the underworld');
+      expect(result).toContain('지하세계에서 흥미로운 인맥');
     });
 
     it('adds trusted by authorities commentary at warm rep', () => {
@@ -427,7 +427,7 @@ describe('NPC dialogue greetings', () => {
         factionReps: { authorities: 55, outlaws: 0, civilians: 0 },
       };
       const result = greeting.text(REPUTATION_BOUNDS.WARM_MIN, ctx);
-      expect(result).toContain('clean record opens certain doors');
+      expect(result).toContain('깨끗한 이력은 특정한 문을');
     });
 
     it('appends overdue loan message when loan is past deadline', () => {
@@ -437,7 +437,7 @@ describe('NPC dialogue greetings', () => {
         ...makeLoanOverdueContext(),
       };
       const result = greeting.text(REPUTATION_BOUNDS.WARM_MIN, ctx);
-      expect(result).toContain('overdue');
+      expect(result).toContain('연체');
     });
 
     it('appends loan reminder when loan is due soon', () => {
@@ -447,7 +447,7 @@ describe('NPC dialogue greetings', () => {
         ...makeLoanReminderContext(),
       };
       const result = greeting.text(REPUTATION_BOUNDS.WARM_MIN, ctx);
-      expect(result).toContain('Reminder');
+      expect(result).toContain('알림');
     });
 
     it('appends standard loan message when loan is active but not urgent', () => {
@@ -457,7 +457,7 @@ describe('NPC dialogue greetings', () => {
         ...makeLoanActiveContext(),
       };
       const result = greeting.text(REPUTATION_BOUNDS.WARM_MIN, ctx);
-      expect(result).toContain('Outstanding loan');
+      expect(result).toContain('미상환 대출');
     });
 
     it('request_loan action calls context.requestLoan', () => {
@@ -515,7 +515,7 @@ describe('NPC dialogue greetings', () => {
 
     it('returns simple greeting when context is null', () => {
       const result = greeting.text(0, null);
-      expect(result).toBe('Tanaka nods in your direction.');
+      expect(result).toBe('타나카가 당신 쪽으로 고개를 끄덕인다.');
     });
 
     it('shows stage 1 in-progress greeting with jumps remaining', () => {
@@ -525,7 +525,7 @@ describe('NPC dialogue greetings', () => {
         hasClaimedStageRewards: () => false,
       });
       const result = greeting.text(REPUTATION_BOUNDS.FRIENDLY_MIN, ctx);
-      expect(result).toContain('field test is in progress');
+      expect(result).toContain('현장 시험이 진행 중이에요');
       expect(result).toContain(`${ENDGAME_CONFIG.STAGE_1_JUMPS - 1}`);
     });
 
@@ -538,7 +538,7 @@ describe('NPC dialogue greetings', () => {
         hasClaimedStageRewards: () => false,
       });
       const result = greeting.text(REPUTATION_BOUNDS.FRIENDLY_MIN, ctx);
-      expect(result).toContain('field test data looks excellent');
+      expect(result).toContain('현장 시험 데이터가 훌륭해요');
     });
 
     it('shows stage 2 in-progress greeting with exotic materials count', () => {
@@ -548,8 +548,8 @@ describe('NPC dialogue greetings', () => {
         hasClaimedStageRewards: () => false,
       });
       const result = greeting.text(REPUTATION_BOUNDS.FRIENDLY_MIN, ctx);
-      expect(result).toContain('exotic materials search continues');
-      expect(result).toContain('2 of');
+      expect(result).toContain('외계 물질 탐색은 계속되고 있어요');
+      expect(result).toContain('5개 중 2개');
     });
 
     it('shows stage 2 complete greeting when all exotics found', () => {
@@ -564,7 +564,7 @@ describe('NPC dialogue greetings', () => {
       });
       const result = greeting.text(REPUTATION_BOUNDS.FRIENDLY_MIN, ctx);
       expect(result).toContain(
-        `all ${ENDGAME_CONFIG.STAGE_2_EXOTIC_NEEDED} samples`
+        `${ENDGAME_CONFIG.STAGE_2_EXOTIC_NEEDED}개를 전부 찾았군요`
       );
     });
 
@@ -576,7 +576,7 @@ describe('NPC dialogue greetings', () => {
         getUnmetRequirements: () => ['engine'],
       });
       const result = greeting.text(REPUTATION_BOUNDS.FRIENDLY_MIN, ctx);
-      expect(result).toContain("drive's running rough");
+      expect(result).toContain('구동계가 거칠게 돌아가네요');
     });
 
     it('shows hull requirement hint', () => {
@@ -587,7 +587,7 @@ describe('NPC dialogue greetings', () => {
         getUnmetRequirements: () => ['hull'],
       });
       const result = greeting.text(REPUTATION_BOUNDS.FRIENDLY_MIN, ctx);
-      expect(result).toContain("hull's taken a beating");
+      expect(result).toContain('선체가 많이 두들겨 맞았네요');
     });
 
     it('shows debt requirement hint', () => {
@@ -598,7 +598,7 @@ describe('NPC dialogue greetings', () => {
         getUnmetRequirements: () => ['debt'],
       });
       const result = greeting.text(REPUTATION_BOUNDS.FRIENDLY_MIN, ctx);
-      expect(result).toContain("Cole's pocket");
+      expect(result).toContain('콜의 주머니');
     });
 
     it('shows credits requirement hint with specific amount', () => {
@@ -609,7 +609,7 @@ describe('NPC dialogue greetings', () => {
         getUnmetRequirements: () => ['credits'],
       });
       const result = greeting.text(REPUTATION_BOUNDS.FRIENDLY_MIN, ctx);
-      expect(result).toContain('credits');
+      expect(result).toContain('크레딧');
       expect(result).toContain(ENDGAME_CONFIG.VICTORY_CREDITS.toLocaleString());
     });
 
@@ -621,7 +621,7 @@ describe('NPC dialogue greetings', () => {
         getUnmetRequirements: () => ['rep'],
       });
       const result = greeting.text(REPUTATION_BOUNDS.FRIENDLY_MIN, ctx);
-      expect(result).toContain("don't know you well enough");
+      expect(result).toContain('다음 단계를 하기엔 아직');
     });
 
     it('shows stage 0 requirement hint when stage 1 not available', () => {
@@ -631,7 +631,7 @@ describe('NPC dialogue greetings', () => {
         getUnmetRequirements: () => ['engine'],
       });
       const result = greeting.text(REPUTATION_BOUNDS.FRIENDLY_MIN, ctx);
-      expect(result).toContain("drive's running rough");
+      expect(result).toContain('구동계가 거칠게 돌아가네요');
     });
 
     it('mission_1_offer action calls context.advanceQuest', () => {
@@ -724,7 +724,7 @@ describe('NPC dialogue greetings', () => {
 
     it('mission_4_offer backstory choice routes to mission_4_yumi_backstory', () => {
       const backstoryChoice = YUKI_TANAKA_DIALOGUE.mission_4_offer.choices.find(
-        (c) => c.text.includes('Tell me more about Yumi')
+        (c) => c.text.includes('유미에 대해 더 알려')
       );
       expect(backstoryChoice).toBeDefined();
       expect(backstoryChoice.next).toBe('mission_4_yumi_backstory');
@@ -732,7 +732,7 @@ describe('NPC dialogue greetings', () => {
 
     it('mission_4_offer decline choice routes to greeting', () => {
       const declineChoice = YUKI_TANAKA_DIALOGUE.mission_4_offer.choices.find(
-        (c) => c.text.includes('not heading that way')
+        (c) => c.text.includes('그쪽으로 가지 않아요')
       );
       expect(declineChoice).toBeDefined();
       expect(declineChoice.next).toBe('greeting');
@@ -839,14 +839,14 @@ describe('NPC dialogue greetings', () => {
       gsm.getNPCState('vasquez_epsilon').rep = 20;
       gsm.state.player.karma = -30;
       const result = showDialogue('vasquez_epsilon', 'greeting', gsm);
-      expect(result.text).toContain('hard edge');
+      expect(result.text).toContain('눈매가 꽤 날카로워졌군');
     });
 
     it('includes good karma commentary for Vasquez at warm rep', () => {
       gsm.getNPCState('vasquez_epsilon').rep = 20;
       gsm.state.player.karma = 30;
       const result = showDialogue('vasquez_epsilon', 'greeting', gsm);
-      expect(result.text).toContain('good ones');
+      expect(result.text).toContain('괜찮은 사람이야');
     });
 
     it('includes civilian faction appreciation for Vasquez', () => {
@@ -858,7 +858,7 @@ describe('NPC dialogue greetings', () => {
         authorities: 0,
       };
       const result = showDialogue('vasquez_epsilon', 'greeting', gsm);
-      expect(result.text).toContain('helping folks');
+      expect(result.text).toContain('사람들을 돕고 다닌다는');
     });
 
     it('includes loan reminder for Vasquez when loan is active', () => {
@@ -876,7 +876,7 @@ describe('NPC dialogue greetings', () => {
       npcState.loanAmount = 500;
       npcState.loanDay = gsm.state.player.daysElapsed - 200;
       const result = showDialogue('vasquez_epsilon', 'greeting', gsm);
-      expect(result.text).toContain('overdue');
+      expect(result.text).toContain('연체');
     });
   });
 

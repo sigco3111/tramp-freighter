@@ -118,10 +118,10 @@ describe('Narrative Events and System Panel Integration', () => {
 
   /** Helper: navigate past title screen to orbit mode and dismiss instructions */
   async function navigateToOrbit() {
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
-    const shipNameInput = screen.getByPlaceholderText('Enter ship name...');
+    const shipNameInput = screen.getByPlaceholderText('함선 이름 입력...');
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
     fireEvent.keyDown(shipNameInput, { key: 'Enter' });
 
@@ -131,7 +131,7 @@ describe('Narrative Events and System Panel Integration', () => {
     expect(screen.queryByText('Something went wrong')).not.toBeInTheDocument();
 
     // Dismiss the instructions modal if it appeared
-    const closeModalBtn = screen.queryByLabelText('Close modal');
+    const closeModalBtn = screen.queryByLabelText('창 닫기');
     if (closeModalBtn) {
       fireEvent.click(closeModalBtn);
     }
@@ -261,7 +261,7 @@ describe('Narrative Events and System Panel Integration', () => {
       await navigateToOrbit();
 
       // Click the System Info button in HUD
-      const systemInfoButton = screen.getByText('System Info');
+      const systemInfoButton = screen.getByText('항성계 정보');
       fireEvent.click(systemInfoButton);
 
       // SystemPanel should appear showing the current system
@@ -270,7 +270,7 @@ describe('Narrative Events and System Panel Integration', () => {
       });
 
       // Should show system details like Spectral Class
-      expect(screen.getByText('Spectral Class:')).toBeInTheDocument();
+      expect(screen.getByText('분광형:')).toBeInTheDocument();
     });
 
     it('should close SystemPanel when System Info button is clicked again (toggle)', async () => {
@@ -283,7 +283,7 @@ describe('Narrative Events and System Panel Integration', () => {
       await navigateToOrbit();
 
       // Click System Info to open
-      const systemInfoButton = screen.getByText('System Info');
+      const systemInfoButton = screen.getByText('항성계 정보');
       fireEvent.click(systemInfoButton);
 
       await waitFor(() => {
@@ -308,7 +308,7 @@ describe('Narrative Events and System Panel Integration', () => {
       await navigateToOrbit();
 
       // Open system panel
-      const systemInfoButton = screen.getByText('System Info');
+      const systemInfoButton = screen.getByText('항성계 정보');
       fireEvent.click(systemInfoButton);
 
       await waitFor(() => {
@@ -316,7 +316,7 @@ describe('Narrative Events and System Panel Integration', () => {
       });
 
       // Click the close button on the SystemPanel
-      const closeButton = screen.getByLabelText('Close');
+      const closeButton = screen.getByLabelText('닫기');
       fireEvent.click(closeButton);
 
       await waitFor(() => {

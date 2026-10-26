@@ -153,7 +153,7 @@ describe('Property: Settings Panel', () => {
 
     // Find Star Rotation checkbox by aria-label
     let rotationCheckbox = container.querySelector(
-      'input[aria-label="Star Rotation"]'
+      'input[aria-label="별 회전"]'
     );
     expect(rotationCheckbox).toBeTruthy();
     expect(rotationCheckbox.checked).toBe(true);
@@ -172,7 +172,7 @@ describe('Property: Settings Panel', () => {
 
     // Checkbox should now be unchecked
     rotationCheckbox = container.querySelector(
-      'input[aria-label="Star Rotation"]'
+      'input[aria-label="별 회전"]'
     );
     expect(rotationCheckbox.checked).toBe(false);
   });
@@ -201,7 +201,7 @@ describe('Property: Settings Panel', () => {
 
     // Find Boundary checkbox by aria-label
     let boundaryCheckbox = container.querySelector(
-      'input[aria-label="Boundary"]'
+      'input[aria-label="경계선"]'
     );
     expect(boundaryCheckbox).toBeTruthy();
     expect(boundaryCheckbox.checked).toBe(true);
@@ -219,7 +219,7 @@ describe('Property: Settings Panel', () => {
     );
 
     // Checkbox should now be unchecked
-    boundaryCheckbox = container.querySelector('input[aria-label="Boundary"]');
+    boundaryCheckbox = container.querySelector('input[aria-label="경계선"]');
     expect(boundaryCheckbox.checked).toBe(false);
   });
 
@@ -245,7 +245,7 @@ describe('Property: Settings Panel', () => {
 
         // Find Star Rotation checkbox
         const rotationCheckbox = container.querySelector(
-          'input[aria-label="Star Rotation"]'
+          'input[aria-label="별 회전"]'
         );
 
         // Click the checkbox clickCount times
@@ -284,7 +284,7 @@ describe('Property: Settings Panel', () => {
 
         // Find Boundary checkbox
         const boundaryCheckbox = container.querySelector(
-          'input[aria-label="Boundary"]'
+          'input[aria-label="경계선"]'
         );
 
         // Click the checkbox clickCount times
@@ -365,10 +365,10 @@ describe('Property: Settings Panel', () => {
       btn.textContent.trim()
     );
     expect(actionTexts).toContain('GitHub');
-    expect(actionTexts).toContain('Achievements');
-    expect(actionTexts).toContain('Zoom In');
-    expect(actionTexts).toContain('Zoom Out');
-    expect(actionTexts).toContain('Instructions');
+    expect(actionTexts).toContain('업적');
+    expect(actionTexts).toContain('확대');
+    expect(actionTexts).toContain('축소');
+    expect(actionTexts).toContain('설명서');
   });
 
   it('should render Instructions button when expanded', async () => {
@@ -395,7 +395,7 @@ describe('Property: Settings Panel', () => {
 
     const actionBtns = container.querySelectorAll('.settings-action-btn');
     const instructionsButton = Array.from(actionBtns).find((btn) =>
-      btn.textContent.includes('Instructions')
+      btn.textContent.includes('설명서')
     );
 
     expect(instructionsButton).toBeTruthy();
@@ -421,10 +421,10 @@ describe('Property: Settings Panel', () => {
 
     const actionBtns = container.querySelectorAll('.settings-action-btn');
     const zoomInButton = Array.from(actionBtns).find((btn) =>
-      btn.textContent.includes('Zoom In')
+      btn.textContent.includes('확대')
     );
     const zoomOutButton = Array.from(actionBtns).find((btn) =>
-      btn.textContent.includes('Zoom Out')
+      btn.textContent.includes('축소')
     );
 
     fireEvent.click(zoomInButton);
@@ -456,7 +456,7 @@ describe('Property: Settings Panel', () => {
 
         const actionBtns = container.querySelectorAll('.settings-action-btn');
         const zoomInButton = Array.from(actionBtns).find((btn) =>
-          btn.textContent.includes('Zoom In')
+          btn.textContent.includes('확대')
         );
 
         for (let i = 0; i < clickCount; i++) {
@@ -493,7 +493,7 @@ describe('Property: Settings Panel', () => {
 
         const actionBtns = container.querySelectorAll('.settings-action-btn');
         const zoomOutButton = Array.from(actionBtns).find((btn) =>
-          btn.textContent.includes('Zoom Out')
+          btn.textContent.includes('축소')
         );
 
         for (let i = 0; i < clickCount; i++) {

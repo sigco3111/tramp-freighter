@@ -45,8 +45,8 @@ describe('System Info Always Accessible', () => {
       { wrapper }
     );
 
-    const systemInfoBtn = screen.getByText('System Info');
-    const dockBtn = screen.getByText('Dock');
+    const systemInfoBtn = screen.getByText('항성계 정보');
+    const dockBtn = screen.getByText('도킹');
 
     // System Info should NOT be disabled during animation
     expect(systemInfoBtn).not.toBeDisabled();
@@ -75,7 +75,7 @@ describe('System Info Always Accessible', () => {
       wrapper,
     });
 
-    const systemInfoBtn = screen.getByText('System Info');
+    const systemInfoBtn = screen.getByText('항성계 정보');
 
     // System Info should be enabled
     expect(systemInfoBtn).not.toBeDisabled();
@@ -108,7 +108,7 @@ describe('System Info Always Accessible', () => {
       wrapper,
     });
 
-    const systemInfoBtn = screen.getByText('System Info');
+    const systemInfoBtn = screen.getByText('항성계 정보');
 
     // System Info should be enabled
     expect(systemInfoBtn).not.toBeDisabled();
@@ -141,7 +141,7 @@ describe('System Info Always Accessible', () => {
       wrapper,
     });
 
-    const systemInfoBtn = screen.getByText('System Info');
+    const systemInfoBtn = screen.getByText('항성계 정보');
 
     // Click multiple times
     fireEvent.click(systemInfoBtn);
@@ -177,7 +177,7 @@ describe('System Info Always Accessible', () => {
       { wrapper }
     );
 
-    const systemInfoBtn = screen.getByText('System Info');
+    const systemInfoBtn = screen.getByText('항성계 정보');
 
     // Initially enabled
     expect(systemInfoBtn).not.toBeDisabled();
@@ -225,8 +225,8 @@ describe('System Info Always Accessible', () => {
       { wrapper }
     );
 
-    const systemInfoBtn = screen.getByText('System Info');
-    const dockBtn = screen.getByText('Dock');
+    const systemInfoBtn = screen.getByText('항성계 정보');
+    const dockBtn = screen.getByText('도킹');
 
     // Dock should be disabled (no station)
     expect(dockBtn).toBeDisabled();

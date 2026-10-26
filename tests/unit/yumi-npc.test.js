@@ -34,7 +34,7 @@ describe('Yumi Tanaka NPC definition', () => {
   });
 
   it('has Colony Director role', () => {
-    expect(YUMI_TANAKA_POSTCREDITS.role).toBe('Colony Director');
+    expect(YUMI_TANAKA_POSTCREDITS.role).toBe('식민지 총괄');
   });
 });
 
@@ -55,11 +55,11 @@ describe('Yumi Tanaka dialogue tree', () => {
     const greeting = YUMI_TANAKA_POSTCREDITS_DIALOGUE.greeting;
     const makeCtx = (interactions) => ({ npcState: { interactions } });
 
-    expect(greeting.text(10, makeCtx(0))).toContain('still here');
-    expect(greeting.text(10, makeCtx(1))).toContain("you're back");
-    expect(greeting.text(10, makeCtx(2))).toContain('Seriously');
-    expect(greeting.text(10, makeCtx(3))).toContain('game is over');
-    expect(greeting.text(10, makeCtx(99))).toContain('game is over');
+    expect(greeting.text(10, makeCtx(0))).toContain('아직도 여기 있어요');
+    expect(greeting.text(10, makeCtx(1))).toContain('돌아왔네요');
+    expect(greeting.text(10, makeCtx(2))).toContain('진짜요');
+    expect(greeting.text(10, makeCtx(3))).toContain('게임은 끝났으니까');
+    expect(greeting.text(10, makeCtx(99))).toContain('게임은 끝났으니까');
   });
 
   it('round 1 choices only visible when interactions === 0', () => {

@@ -25,7 +25,7 @@ describe('Property 0: New Game Initialization', () => {
     expect(state.player.daysElapsed).toBe(0);
 
     // Verify ship state
-    expect(state.ship.name).toBe('Serendipity');
+    expect(state.ship.name).toBe('세렌디피티');
     expect(state.ship.fuel).toBe(100);
     expect(state.ship.cargoCapacity).toBe(50);
 

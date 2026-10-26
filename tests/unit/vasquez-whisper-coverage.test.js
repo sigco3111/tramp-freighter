@@ -57,15 +57,15 @@ describe('Captain Vasquez dialogue coverage', () => {
         REPUTATION_BOUNDS.WARM_MIN,
         context
       );
-      expect(text).toContain('friendly reminder');
-      expect(text).toContain('3 days');
+      expect(text).toContain('친절하게 알려 주는 걸세');
+      expect(text).toContain('3일 남았네');
     });
   });
 
   describe('tanaka message action callback (lines 178-179)', () => {
     it('calls updateQuestData and returns success', () => {
       const tanakaChoice = CAPTAIN_VASQUEZ_DIALOGUE.greeting.choices.find(
-        (c) => c.text && c.text.includes('message from Yuki Tanaka')
+        (c) => c.text && c.text.includes('유키 타나카가 보낸 메시지')
       );
       expect(tanakaChoice).toBeDefined();
       expect(tanakaChoice.action).toBeDefined();
@@ -79,14 +79,14 @@ describe('Captain Vasquez dialogue coverage', () => {
         'messageDelivered',
         1
       );
-      expect(result).toEqual({ success: true, message: 'Message delivered.' });
+      expect(result).toEqual({ success: true, message: '메시지를 전했다.' });
     });
   });
 
   describe('request_loan action callback (line 430)', () => {
     it('calls context.requestLoan()', () => {
       const acceptChoice = CAPTAIN_VASQUEZ_DIALOGUE.request_loan.choices.find(
-        (c) => c.text && c.text.includes('accept')
+        (c) => c.text && c.text.includes('받아들일게요')
       );
       expect(acceptChoice).toBeDefined();
       expect(acceptChoice.action).toBeDefined();
@@ -103,7 +103,7 @@ describe('Captain Vasquez dialogue coverage', () => {
   describe('request_storage action callback (line 449)', () => {
     it('calls context.storeCargo()', () => {
       const storeChoice = CAPTAIN_VASQUEZ_DIALOGUE.request_storage.choices.find(
-        (c) => c.text && c.text.includes('huge help')
+        (c) => c.text && c.text.includes('큰 도움이')
       );
       expect(storeChoice).toBeDefined();
       expect(storeChoice.action).toBeDefined();
@@ -120,7 +120,7 @@ describe('Captain Vasquez dialogue coverage', () => {
   describe('repay_loan action callback (line 469)', () => {
     it('calls context.repayLoan()', () => {
       const repayChoice = CAPTAIN_VASQUEZ_DIALOGUE.repay_loan.choices.find(
-        (c) => c.text && c.text.includes('Here are the credits')
+        (c) => c.text && c.text.includes('여기 크레딧이에요')
       );
       expect(repayChoice).toBeDefined();
       expect(repayChoice.action).toBeDefined();
@@ -138,7 +138,7 @@ describe('Captain Vasquez dialogue coverage', () => {
     it('calls context.retrieveCargo()', () => {
       const retrieveChoice =
         CAPTAIN_VASQUEZ_DIALOGUE.retrieve_cargo.choices.find(
-          (c) => c.text && c.text.includes('Transfer what you can')
+          (c) => c.text && c.text.includes('실을 수 있는 만큼')
         );
       expect(retrieveChoice).toBeDefined();
       expect(retrieveChoice.action).toBeDefined();
@@ -188,7 +188,7 @@ describe('Whisper dialogue coverage', () => {
         REPUTATION_BOUNDS.WARM_MIN,
         context
       );
-      expect(text).toContain('interesting connections in the underworld');
+      expect(text).toContain('지하세계에서 흥미로운');
     });
   });
 
@@ -207,8 +207,8 @@ describe('Whisper dialogue coverage', () => {
         REPUTATION_BOUNDS.WARM_MIN,
         context
       );
-      expect(text).toContain('overdue');
-      expect(text).toContain('Immediate repayment');
+      expect(text).toContain('연체되었습니다');
+      expect(text).toContain('즉시 상환');
     });
 
     it('shows reminder when loan is due within LOAN_REMINDER_DAYS', () => {
@@ -227,8 +227,8 @@ describe('Whisper dialogue coverage', () => {
         REPUTATION_BOUNDS.WARM_MIN,
         context
       );
-      expect(text).toContain('Reminder');
-      expect(text).toContain('4 days');
+      expect(text).toContain('알림');
+      expect(text).toContain('4일 남았습니다');
     });
 
     it('shows standard loan message when not near deadline', () => {
@@ -245,15 +245,15 @@ describe('Whisper dialogue coverage', () => {
         REPUTATION_BOUNDS.WARM_MIN,
         context
       );
-      expect(text).toContain('Outstanding loan');
-      expect(text).toContain('25 days remaining');
+      expect(text).toContain('미상환 대출');
+      expect(text).toContain('25일 남았습니다');
     });
   });
 
   describe('request_loan action callback (line 299)', () => {
     it('calls context.requestLoan()', () => {
       const acceptChoice = WHISPER_DIALOGUE.request_loan.choices.find(
-        (c) => c.text && c.text.includes('accept')
+        (c) => c.text && c.text.includes('받아들일게요')
       );
       expect(acceptChoice).toBeDefined();
       expect(acceptChoice.action).toBeDefined();
@@ -270,7 +270,7 @@ describe('Whisper dialogue coverage', () => {
   describe('request_storage action callback (line 318)', () => {
     it('calls context.storeCargo()', () => {
       const storeChoice = WHISPER_DIALOGUE.request_storage.choices.find(
-        (c) => c.text && c.text.includes('very helpful')
+        (c) => c.text && c.text.includes('아주 도움이')
       );
       expect(storeChoice).toBeDefined();
       expect(storeChoice.action).toBeDefined();
@@ -287,7 +287,7 @@ describe('Whisper dialogue coverage', () => {
   describe('repay_loan action callback (line 338)', () => {
     it('calls context.repayLoan()', () => {
       const repayChoice = WHISPER_DIALOGUE.repay_loan.choices.find(
-        (c) => c.text && c.text.includes('Here are the credits')
+        (c) => c.text && c.text.includes('여기 크레딧이에요')
       );
       expect(repayChoice).toBeDefined();
       expect(repayChoice.action).toBeDefined();
@@ -304,7 +304,7 @@ describe('Whisper dialogue coverage', () => {
   describe('retrieve_cargo action callback (line 357)', () => {
     it('calls context.retrieveCargo()', () => {
       const retrieveChoice = WHISPER_DIALOGUE.retrieve_cargo.choices.find(
-        (c) => c.text && c.text.includes('Transfer what you can')
+        (c) => c.text && c.text.includes('실을 수 있는 만큼')
       );
       expect(retrieveChoice).toBeDefined();
       expect(retrieveChoice.action).toBeDefined();

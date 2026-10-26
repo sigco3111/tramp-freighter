@@ -182,7 +182,7 @@ describe('transformOutcomeForDisplay', () => {
 
     expect(result.consequences.additionalEffects).toBeDefined();
     expect(result.consequences.additionalEffects.length).toBeGreaterThan(0);
-    expect(result.consequences.additionalEffects[0]).toMatch(/aggressive/i);
+    expect(result.consequences.additionalEffects[0]).toMatch(/공격적/);
   });
 
   it('should show restricted goods confiscated in additionalEffects', () => {
@@ -201,8 +201,8 @@ describe('transformOutcomeForDisplay', () => {
 
     expect(result.consequences.additionalEffects).toBeDefined();
     expect(result.consequences.additionalEffects.length).toBeGreaterThan(0);
-    expect(result.consequences.additionalEffects[0]).toMatch(/restricted/i);
-    expect(result.consequences.additionalEffects[0]).toMatch(/confiscated/i);
+    expect(result.consequences.additionalEffects[0]).toMatch(/제한 품목/);
+    expect(result.consequences.additionalEffects[0]).toMatch(/압수/);
   });
 
   it('should show hidden cargo confiscated in additionalEffects', () => {
@@ -221,8 +221,8 @@ describe('transformOutcomeForDisplay', () => {
 
     expect(result.consequences.additionalEffects).toBeDefined();
     expect(result.consequences.additionalEffects.length).toBeGreaterThan(0);
-    expect(result.consequences.additionalEffects[0]).toMatch(/hidden cargo/i);
-    expect(result.consequences.additionalEffects[0]).toMatch(/confiscated/i);
+    expect(result.consequences.additionalEffects[0]).toMatch(/은닉 화물/);
+    expect(result.consequences.additionalEffects[0]).toMatch(/압수/);
   });
 
   it('should not have additionalEffects when escalate is absent', () => {

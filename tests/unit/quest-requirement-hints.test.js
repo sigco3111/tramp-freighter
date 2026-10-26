@@ -82,13 +82,13 @@ describe('Tanaka dialogue hints', () => {
       manager.getState().npcs.tanaka_barnards.rep,
       context
     );
-    expect(text).toContain('engine');
+    expect(text).toContain('엔진');
   });
 
   it('should show rep hint when stage 0 and rep below threshold', () => {
     manager.getState().npcs.tanaka_barnards.rep = 3;
     const context = buildDialogueContext(manager, 'tanaka_barnards');
     const text = YUKI_TANAKA_DIALOGUE.greeting.text(3, context);
-    expect(text).toContain("don't know you well enough");
+    expect(text).toContain('잘 몰라요');
   });
 });

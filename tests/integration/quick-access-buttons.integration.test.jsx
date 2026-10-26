@@ -53,33 +53,33 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('System Info')).toBeInTheDocument();
+        expect(screen.getByText('항성계 정보')).toBeInTheDocument();
       });
 
       // Click System Info button
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
       fireEvent.click(systemInfoBtn);
 
       // System panel should appear (check for unique element)
       await waitFor(() => {
-        expect(screen.getByText('Spectral Class:')).toBeInTheDocument();
+        expect(screen.getByText('분광형:')).toBeInTheDocument();
       });
 
       // Close system panel
@@ -91,7 +91,7 @@ describe('Quick Access Buttons Integration (React)', () => {
 
       // System panel should appear again
       await waitFor(() => {
-        expect(screen.getByText('Spectral Class:')).toBeInTheDocument();
+        expect(screen.getByText('분광형:')).toBeInTheDocument();
       });
     });
 
@@ -105,34 +105,34 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('Dock')).toBeInTheDocument();
+        expect(screen.getByText('도킹')).toBeInTheDocument();
       });
 
       // Dock at station
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
       fireEvent.click(dockBtn);
 
       // Station menu should appear
       await waitFor(() => {
-        expect(screen.getByText('Trade')).toBeInTheDocument();
-        expect(screen.getByText('Refuel')).toBeInTheDocument();
+        expect(screen.getByText('거래')).toBeInTheDocument();
+        expect(screen.getByText('주유')).toBeInTheDocument();
       });
 
       // Undock via close button
@@ -141,7 +141,7 @@ describe('Quick Access Buttons Integration (React)', () => {
 
       // Station menu should close
       await waitFor(() => {
-        expect(screen.queryByText('Trade')).not.toBeInTheDocument();
+        expect(screen.queryByText('거래')).not.toBeInTheDocument();
       });
 
       // Dock again
@@ -149,7 +149,7 @@ describe('Quick Access Buttons Integration (React)', () => {
 
       // Station menu should appear again
       await waitFor(() => {
-        expect(screen.getByText('Trade')).toBeInTheDocument();
+        expect(screen.getByText('거래')).toBeInTheDocument();
       });
     });
 
@@ -163,27 +163,27 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('System Info')).toBeInTheDocument();
+        expect(screen.getByText('항성계 정보')).toBeInTheDocument();
       });
 
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
 
       // Click multiple times
       fireEvent.click(systemInfoBtn);
@@ -192,7 +192,7 @@ describe('Quick Access Buttons Integration (React)', () => {
 
       // System panel should be visible (check for unique element)
       await waitFor(() => {
-        expect(screen.getByText('Spectral Class:')).toBeInTheDocument();
+        expect(screen.getByText('분광형:')).toBeInTheDocument();
       });
     });
 
@@ -206,27 +206,27 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('Dock')).toBeInTheDocument();
+        expect(screen.getByText('도킹')).toBeInTheDocument();
       });
 
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
 
       // Click multiple times
       fireEvent.click(dockBtn);
@@ -235,7 +235,7 @@ describe('Quick Access Buttons Integration (React)', () => {
 
       // Station menu should be visible
       await waitFor(() => {
-        expect(screen.getByText('Trade')).toBeInTheDocument();
+        expect(screen.getByText('거래')).toBeInTheDocument();
       });
     });
   });
@@ -260,24 +260,24 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        const systemInfoBtn = screen.getByText('System Info');
+        const systemInfoBtn = screen.getByText('항성계 정보');
         expect(systemInfoBtn).not.toBeDisabled();
       });
 
@@ -286,7 +286,7 @@ describe('Quick Access Buttons Integration (React)', () => {
 
       // System Info button should still be enabled
       await waitFor(() => {
-        const systemInfoBtn = screen.getByText('System Info');
+        const systemInfoBtn = screen.getByText('항성계 정보');
         expect(systemInfoBtn).not.toBeDisabled();
       });
     });
@@ -302,24 +302,24 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('Dock')).toBeInTheDocument();
+        expect(screen.getByText('도킹')).toBeInTheDocument();
       });
 
       // Select a system and start jump
@@ -328,13 +328,13 @@ describe('Quick Access Buttons Integration (React)', () => {
       }
 
       await waitFor(() => {
-        const jumpBtn = screen.queryByText('Jump to System');
+        const jumpBtn = screen.queryByText('항성계로 점프');
         if (jumpBtn) {
           fireEvent.click(jumpBtn);
 
           // During animation, Dock button should be disabled
           // Note: This test may be timing-dependent
-          screen.getByText('Dock');
+          screen.getByText('도킹');
           // Button might be disabled during animation
           // After animation completes, it should be enabled again
         }
@@ -353,37 +353,37 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('System Info')).toBeInTheDocument();
+        expect(screen.getByText('항성계 정보')).toBeInTheDocument();
       });
 
       // Click System Info button
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
       fireEvent.click(systemInfoBtn);
 
       // System panel should appear (check for unique element)
       await waitFor(() => {
-        expect(screen.getByText('Spectral Class:')).toBeInTheDocument();
+        expect(screen.getByText('분광형:')).toBeInTheDocument();
       });
 
       // Station interface should not be visible
-      expect(screen.queryByText('Trade')).not.toBeInTheDocument();
+      expect(screen.queryByText('거래')).not.toBeInTheDocument();
     });
 
     it('should open station interface without affecting system info panel', async () => {
@@ -396,32 +396,32 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('Dock')).toBeInTheDocument();
+        expect(screen.getByText('도킹')).toBeInTheDocument();
       });
 
       // Open system info panel
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
       fireEvent.click(systemInfoBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Spectral Class:')).toBeInTheDocument();
+        expect(screen.getByText('분광형:')).toBeInTheDocument();
       });
 
       // Close system panel
@@ -429,16 +429,16 @@ describe('Quick Access Buttons Integration (React)', () => {
       fireEvent.click(closeBtn);
 
       // Dock at station
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
       fireEvent.click(dockBtn);
 
       // Station interface should open
       await waitFor(() => {
-        expect(screen.getByText('Trade')).toBeInTheDocument();
+        expect(screen.getByText('거래')).toBeInTheDocument();
       });
 
       // System panel should not be visible
-      expect(screen.queryByText('Spectral Class:')).not.toBeInTheDocument();
+      expect(screen.queryByText('분광형:')).not.toBeInTheDocument();
     });
   });
 
@@ -453,32 +453,32 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load at Sol (has station)
       await waitFor(() => {
-        expect(screen.getByText('Dock')).toBeInTheDocument();
+        expect(screen.getByText('도킹')).toBeInTheDocument();
       });
 
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
       fireEvent.click(dockBtn);
 
       // Station menu should appear without errors
       await waitFor(() => {
-        expect(screen.getByText('Trade')).toBeInTheDocument();
+        expect(screen.getByText('거래')).toBeInTheDocument();
       });
     });
 
@@ -492,32 +492,32 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('System Info')).toBeInTheDocument();
+        expect(screen.getByText('항성계 정보')).toBeInTheDocument();
       });
 
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
       fireEvent.click(systemInfoBtn);
 
       // System panel should appear without errors (check for unique element)
       await waitFor(() => {
-        expect(screen.getByText('Spectral Class:')).toBeInTheDocument();
+        expect(screen.getByText('분광형:')).toBeInTheDocument();
       });
     });
   });
@@ -533,33 +533,33 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('System Info')).toBeInTheDocument();
-        expect(screen.getByText('Dock')).toBeInTheDocument();
+        expect(screen.getByText('항성계 정보')).toBeInTheDocument();
+        expect(screen.getByText('도킹')).toBeInTheDocument();
       });
 
       // Verify button text is descriptive
-      const systemInfoBtn = screen.getByText('System Info');
-      const dockBtn = screen.getByText('Dock');
+      const systemInfoBtn = screen.getByText('항성계 정보');
+      const dockBtn = screen.getByText('도킹');
 
-      expect(systemInfoBtn.textContent).toBe('System Info');
-      expect(dockBtn.textContent).toBe('Dock');
+      expect(systemInfoBtn.textContent).toBe('항성계 정보');
+      expect(dockBtn.textContent).toBe('도킹');
     });
 
     it('should properly disable Dock button when no station available', async () => {
@@ -580,24 +580,24 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        const systemInfoBtn = screen.getByText('System Info');
+        const systemInfoBtn = screen.getByText('항성계 정보');
         expect(systemInfoBtn).not.toBeDisabled();
         expect(systemInfoBtn.disabled).toBe(false);
       });
@@ -616,28 +616,28 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('Dock')).toBeInTheDocument();
+        expect(screen.getByText('도킹')).toBeInTheDocument();
       });
 
       // Verify Dock button is enabled initially
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
       expect(dockBtn).not.toBeDisabled();
 
       // Note: Testing animation lock state is challenging in jsdom
@@ -656,35 +656,35 @@ describe('Quick Access Buttons Integration (React)', () => {
       );
 
       // Start game
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       await waitFor(() => {
-        expect(screen.getByText('Confirm')).toBeInTheDocument();
+        expect(screen.getByText('확인')).toBeInTheDocument();
       });
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Dismiss the auto-shown instructions modal
       await waitFor(() => {
-        expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+        expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByLabelText('Close modal'));
+      fireEvent.click(screen.getByLabelText('창 닫기'));
 
       // Wait for game to load
       await waitFor(() => {
-        expect(screen.getByText('System Info')).toBeInTheDocument();
+        expect(screen.getByText('항성계 정보')).toBeInTheDocument();
       });
 
       // System Info button should always be enabled
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
       expect(systemInfoBtn).not.toBeDisabled();
 
       // Even during/after jump, System Info should remain enabled
       await navigationSystem.executeJump(game, 1);
 
       await waitFor(() => {
-        const systemInfoBtn = screen.getByText('System Info');
+        const systemInfoBtn = screen.getByText('항성계 정보');
         expect(systemInfoBtn).not.toBeDisabled();
       });
     });

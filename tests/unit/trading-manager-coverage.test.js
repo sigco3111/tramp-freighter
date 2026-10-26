@@ -299,7 +299,7 @@ describe('TradingManager coverage', () => {
       const result = gsm.tradingManager.buyGood('ore', 5, 100);
       expect(result).toEqual({
         success: false,
-        reason: 'Insufficient credits',
+        reason: '크레딧이 부족합니다',
       });
     });
 
@@ -310,7 +310,7 @@ describe('TradingManager coverage', () => {
       const result = gsm.tradingManager.buyGood('ore', 5, 10);
       expect(result).toEqual({
         success: false,
-        reason: 'Not enough cargo space',
+        reason: '화물 공간이 부족합니다',
       });
     });
 
@@ -347,11 +347,11 @@ describe('TradingManager coverage', () => {
     it('returns failure for invalid stack index', () => {
       expect(gsm.tradingManager.sellGood(-1, 5, 80)).toEqual({
         success: false,
-        reason: 'Invalid cargo stack',
+        reason: '잘못된 화물 묶음입니다',
       });
       expect(gsm.tradingManager.sellGood(99, 5, 80)).toEqual({
         success: false,
-        reason: 'Invalid cargo stack',
+        reason: '잘못된 화물 묶음입니다',
       });
     });
 
@@ -359,25 +359,25 @@ describe('TradingManager coverage', () => {
       gsm.state.ship.cargo[0].missionId = 'mission_123';
       expect(gsm.tradingManager.sellGood(0, 5, 80)).toEqual({
         success: false,
-        reason: 'Mission cargo cannot be sold',
+        reason: '임무 화물은 판매할 수 없습니다',
       });
     });
 
     it('returns failure for zero or negative quantity', () => {
       expect(gsm.tradingManager.sellGood(0, 0, 80)).toEqual({
         success: false,
-        reason: 'Quantity must be positive',
+        reason: '수량은 양수여야 합니다',
       });
       expect(gsm.tradingManager.sellGood(0, -1, 80)).toEqual({
         success: false,
-        reason: 'Quantity must be positive',
+        reason: '수량은 양수여야 합니다',
       });
     });
 
     it('returns failure when selling more than available', () => {
       expect(gsm.tradingManager.sellGood(0, 20, 80)).toEqual({
         success: false,
-        reason: 'Not enough quantity in stack',
+        reason: '묶음 내 수량이 부족합니다',
       });
     });
 

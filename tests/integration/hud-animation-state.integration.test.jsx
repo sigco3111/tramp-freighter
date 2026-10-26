@@ -166,7 +166,7 @@ describe('HUD Animation State Integration', () => {
     const initialState = game.getState();
     expect(initialState.ship.fuel).toBe(100);
 
-    const dateLabel = screen.getByText('Date:');
+    const dateLabel = screen.getByText('날짜:');
     expect(dateLabel.nextElementSibling).toHaveTextContent(gameDayToDate(0));
 
     // Execute jump

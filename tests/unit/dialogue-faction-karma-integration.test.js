@@ -141,8 +141,8 @@ describe('Dialogue Faction and Karma Integration', () => {
       const badImpression = getKarmaFirstImpression(-60, 'neutral');
       const neutralImpression = getKarmaFirstImpression(0, 'neutral');
 
-      expect(goodImpression).toContain('trustworthy');
-      expect(badImpression).toContain('dangerous');
+      expect(goodImpression).toContain('믿음직한 분위기');
+      expect(badImpression).toContain('위험한 기운');
       expect(neutralImpression).toBe('');
     });
 
@@ -150,8 +150,8 @@ describe('Dialogue Faction and Karma Integration', () => {
       const lawfulGoodImpression = getKarmaFirstImpression(60, 'lawful');
       const chaoticGoodImpression = getKarmaFirstImpression(60, 'chaotic');
 
-      expect(lawfulGoodImpression).toContain('honest');
-      expect(chaoticGoodImpression).toContain('clean');
+      expect(lawfulGoodImpression).toContain('정직해 보이는 분');
+      expect(chaoticGoodImpression).toContain('너무 깨끗해 보이는');
     });
   });
 
@@ -164,7 +164,7 @@ describe('Dialogue Faction and Karma Integration', () => {
 
       // Should have the bad deal sympathy option available
       const badDealOption = dialogue.choices.find((choice) =>
-        choice.text.includes('understand the risks of bad deals')
+        choice.text.includes('나쁜 거래의 위험')
       );
       expect(badDealOption).toBeDefined();
     });
@@ -178,7 +178,7 @@ describe('Dialogue Faction and Karma Integration', () => {
 
       // Should have the good karma discussion option available
       const goodKarmaOption = dialogue.choices.find((choice) =>
-        choice.text.includes('try to help people')
+        choice.text.includes('사람들을 도우려고')
       );
       expect(goodKarmaOption).toBeDefined();
     });
@@ -190,7 +190,7 @@ describe('Dialogue Faction and Karma Integration', () => {
       const dialogue = showDialogue('chen_barnards', 'greeting', game);
 
       // Text should include faction attitude modifier
-      expect(dialogue.text).toContain('appreciate your support');
+      expect(dialogue.text).toContain('지지에 감사드립니다');
     });
 
     it('should modify NPC text based on karma for new encounters', () => {
@@ -200,7 +200,7 @@ describe('Dialogue Faction and Karma Integration', () => {
       const dialogue = showDialogue('chen_barnards', 'greeting', game);
 
       // Text should include karma-based first impression
-      expect(dialogue.text).toContain('dangerous look');
+      expect(dialogue.text).toContain('위험한 기운');
     });
 
     it('should show authority-specific options for Whisper when player is wanted', () => {
@@ -212,7 +212,7 @@ describe('Dialogue Faction and Karma Integration', () => {
 
       // Should have authority intel option available
       const authorityIntelOption = dialogue.choices.find((choice) =>
-        choice.text.includes('authority patrol patterns')
+        choice.text.includes('순찰 패턴에 대한 정보')
       );
       expect(authorityIntelOption).toBeDefined();
     });
@@ -232,13 +232,13 @@ describe('Dialogue Faction and Karma Integration', () => {
       // If conditions are met, the option should be available
       if (whisperRep >= 30 && authorityRep >= 50) {
         const outlawIntelOption = dialogue.choices.find((choice) =>
-          choice.text.includes('intel on outlaw activities')
+          choice.text.includes('무법자 활동에 대한 정보')
         );
         expect(outlawIntelOption).toBeDefined();
       } else {
         // If conditions aren't met, test that the option is not available
         const outlawIntelOption = dialogue.choices.find((choice) =>
-          choice.text.includes('intel on outlaw activities')
+          choice.text.includes('무법자 활동에 대한 정보')
         );
         expect(outlawIntelOption).toBeUndefined();
       }

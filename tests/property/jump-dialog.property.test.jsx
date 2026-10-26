@@ -35,12 +35,12 @@ describe('Property: Jump Dialog', () => {
     expect(screen.getByText(/Alpha Centauri A/i)).toBeInTheDocument();
 
     // Should display distance, fuel cost, and jump time
-    expect(screen.getByText(/Distance:/i)).toBeInTheDocument();
-    expect(screen.getByText(/Fuel Cost:/i)).toBeInTheDocument();
-    expect(screen.getByText(/Jump Time:/i)).toBeInTheDocument();
+    expect(screen.getByText(/거리:/)).toBeInTheDocument();
+    expect(screen.getByText(/연료 비용:/)).toBeInTheDocument();
+    expect(screen.getByText(/점프 시간:/)).toBeInTheDocument();
 
     // Should have jump button
-    expect(screen.getByText(/Jump to System/i)).toBeInTheDocument();
+    expect(screen.getByText(/항성계로 점프/)).toBeInTheDocument();
   });
 
   it('should disable jump button when fuel is insufficient', () => {
@@ -59,11 +59,11 @@ describe('Property: Jump Dialog', () => {
       </GameProvider>
     );
 
-    const jumpButton = screen.getByText(/Jump to System/i);
+    const jumpButton = screen.getByText(/항성계로 점프/);
     expect(jumpButton).toBeDisabled();
 
     // Should show error message
-    expect(screen.getByText(/Insufficient fuel/i)).toBeInTheDocument();
+    expect(screen.getByText(/연료가 부족/)).toBeInTheDocument();
   });
 
   it('should disable jump button when no wormhole connection exists', () => {
@@ -88,11 +88,11 @@ describe('Property: Jump Dialog', () => {
       </GameProvider>
     );
 
-    const jumpButton = screen.getByText(/Jump to System/i);
+    const jumpButton = screen.getByText(/항성계로 점프/);
     expect(jumpButton).toBeDisabled();
 
     // Should show error message
-    expect(screen.getByText(/No wormhole connection/i)).toBeInTheDocument();
+    expect(screen.getByText(/웜홀 연결이 없습니다/)).toBeInTheDocument();
   });
 
   it('should call onClose when close button is clicked', () => {
@@ -128,15 +128,15 @@ describe('Property: Jump Dialog', () => {
       </GameProvider>
     );
 
-    const jumpButton = screen.getByText(/Jump to System/i);
+    const jumpButton = screen.getByText(/항성계로 점프/);
 
     // Button should be enabled for valid jump
     expect(jumpButton).not.toBeDisabled();
 
     // Should not show error message
-    expect(screen.queryByText(/Insufficient fuel/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/연료가 부족/)).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/No wormhole connection/i)
+      screen.queryByText(/웜홀 연결이 없습니다/)
     ).not.toBeInTheDocument();
   });
 
@@ -154,7 +154,7 @@ describe('Property: Jump Dialog', () => {
     );
 
     // Initially should be enabled (sufficient fuel)
-    let jumpButton = screen.getByText(/Jump to System/i);
+    let jumpButton = screen.getByText(/항성계로 점프/);
     expect(jumpButton).not.toBeDisabled();
 
     // Reduce fuel to insufficient level
@@ -174,9 +174,9 @@ describe('Property: Jump Dialog', () => {
     );
 
     // Should now be disabled
-    jumpButton = screen.getByText(/Jump to System/i);
+    jumpButton = screen.getByText(/항성계로 점프/);
     expect(jumpButton).toBeDisabled();
-    expect(screen.getByText(/Insufficient fuel/i)).toBeInTheDocument();
+    expect(screen.getByText(/연료가 부족/)).toBeInTheDocument();
   });
 
   it('should calculate correct fuel cost and jump time', () => {
@@ -213,7 +213,7 @@ describe('Property: Jump Dialog', () => {
 
     // Check that displayed values match calculated values
     expect(
-      screen.getByText(new RegExp(`${validation.distance.toFixed(1)} LY`))
+      screen.getByText(new RegExp(`${validation.distance.toFixed(1)} 광년`))
     ).toBeInTheDocument();
     expect(
       screen.getByText(new RegExp(`${Math.round(validation.fuelCost)}%`))
@@ -221,7 +221,7 @@ describe('Property: Jump Dialog', () => {
     expect(
       screen.getByText(
         new RegExp(
-          `${validation.jumpTime} day${validation.jumpTime !== 1 ? 's' : ''}`
+          `${validation.jumpTime} 일`
         )
       )
     ).toBeInTheDocument();

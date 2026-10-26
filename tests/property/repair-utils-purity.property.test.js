@@ -234,7 +234,7 @@ describe('Property: Repair utility functions are pure', () => {
           const result = validateRepair(systemType, amount, state);
 
           expect(result.valid).toBe(false);
-          expect(result.reason).toContain('positive');
+          expect(result.reason).toContain('수리량은 양수여야 합니다');
 
           return !result.valid;
         }
@@ -261,7 +261,7 @@ describe('Property: Repair utility functions are pure', () => {
           const result = validateRepair(systemType, amount, state);
 
           expect(result.valid).toBe(false);
-          expect(result.reason).toContain('maximum');
+          expect(result.reason).toContain('시스템이 이미 최대 상태입니다');
 
           return !result.valid;
         }
@@ -282,7 +282,7 @@ describe('Property: Repair utility functions are pure', () => {
         const result = validateRepairAll(condition, credits);
 
         expect(result.valid).toBe(false);
-        expect(result.reason).toContain('maximum');
+        expect(result.reason).toContain('모든 시스템이 이미 최대 상태입니다');
 
         return !result.valid;
       }),

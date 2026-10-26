@@ -66,7 +66,7 @@ describe('Configuration Object Structure', () => {
   describe('New Config Objects', () => {
     it('should have SHIP_CONFIG with expected properties', () => {
       expect(SHIP_CONFIG).toBeDefined();
-      expect(SHIP_CONFIG.DEFAULT_NAME).toBe('Serendipity');
+      expect(SHIP_CONFIG.DEFAULT_NAME).toBe('세렌디피티');
       expect(Array.isArray(SHIP_CONFIG.NAME_SUGGESTIONS)).toBe(true);
       expect(SHIP_CONFIG.FUEL_CAPACITY).toBe(100);
       expect(SHIP_CONFIG.CARGO_CAPACITY).toBe(50);

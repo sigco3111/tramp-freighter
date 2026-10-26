@@ -169,7 +169,7 @@ describe('Property 23: Panels rendered as React components', () => {
 
         // Initial state - no cargo
         let cargoStacks = container.querySelector('#cargo-stacks');
-        expect(cargoStacks.textContent).toContain('No cargo');
+        expect(cargoStacks.textContent).toContain('화물 없음');
 
         // Manually add cargo to state and emit event
         game.state.ship.cargo = [
@@ -186,8 +186,8 @@ describe('Property 23: Panels rendered as React components', () => {
         // Wait for component to re-render
         await waitFor(() => {
           cargoStacks = container.querySelector('#cargo-stacks');
-          expect(cargoStacks.textContent).not.toContain('No cargo');
-          expect(cargoStacks.textContent).toContain('Electronics');
+          expect(cargoStacks.textContent).not.toContain('화물 없음');
+          expect(cargoStacks.textContent).toContain('전자제품');
         });
       }),
       { numRuns: 100 }

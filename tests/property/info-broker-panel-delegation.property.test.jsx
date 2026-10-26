@@ -116,7 +116,7 @@ describe('Property: Info broker panel delegates to GameCoordinator', () => {
         render(<InfoBrokerPanel onClose={() => {}} />, { wrapper });
 
         // Find and click "Buy Rumor" button
-        const buyRumorButton = screen.getByText(/Buy Rumor/);
+        const buyRumorButton = screen.getByText(/소문 구매/);
         fireEvent.click(buyRumorButton);
 
         // Verify generateRumor was called
@@ -162,7 +162,7 @@ describe('Property: Info broker panel delegates to GameCoordinator', () => {
         render(<InfoBrokerPanel onClose={() => {}} />, { wrapper });
 
         // Find and click "Buy Rumor" button
-        const buyRumorButton = screen.getByText(/Buy Rumor/);
+        const buyRumorButton = screen.getByText(/소문 구매/);
         fireEvent.click(buyRumorButton);
 
         // Verify updateCredits was called
@@ -200,7 +200,7 @@ describe('Property: Info broker panel delegates to GameCoordinator', () => {
         });
 
         // Initial credits should be displayed
-        const buyRumorButton = screen.getByText(/Buy Rumor/);
+        const buyRumorButton = screen.getByText(/소문 구매/);
         expect(buyRumorButton).not.toBeDisabled();
 
         // Update credits to insufficient amount
@@ -295,12 +295,12 @@ describe('Property: Info broker panel delegates to GameCoordinator', () => {
         game.emit('priceKnowledgeChanged', {});
 
         // Switch to Market Data tab
-        const marketDataTab = screen.getByText('Market Data');
+        const marketDataTab = screen.getByText('시장 데이터');
         fireEvent.click(marketDataTab);
 
         // Initially should show "No market data available"
         await waitFor(() => {
-          expect(container.textContent).toContain('No market data available');
+          expect(container.textContent).toContain('시장 데이터가 없습니다');
         });
 
         // Add price knowledge
@@ -320,7 +320,7 @@ describe('Property: Info broker panel delegates to GameCoordinator', () => {
         // Market data should now be displayed after re-render
         await waitFor(() => {
           expect(container.textContent).not.toContain(
-            'No market data available'
+            '시장 데이터가 없습니다'
           );
         });
 
@@ -393,7 +393,7 @@ describe('Property: Info broker panel delegates to GameCoordinator', () => {
         });
 
         // Try to buy rumor (should fail with insufficient credits)
-        const buyRumorButton = screen.getByText(/Buy Rumor/);
+        const buyRumorButton = screen.getByText(/소문 구매/);
 
         // Button should be disabled due to insufficient credits
         expect(buyRumorButton).toBeDisabled();
@@ -428,24 +428,24 @@ describe('Property: Info broker panel delegates to GameCoordinator', () => {
         });
 
         // Initially on Purchase Intelligence tab
-        expect(container.textContent).toContain('Market Rumors');
-        expect(container.textContent).toContain('System Intelligence');
+        expect(container.textContent).toContain('시장 소문');
+        expect(container.textContent).toContain('항성계 정보');
 
         // Switch to Market Data tab
-        const marketDataTab = screen.getByText('Market Data');
+        const marketDataTab = screen.getByText('시장 데이터');
         fireEvent.click(marketDataTab);
 
         // Should show Market Data content
-        expect(container.textContent).toContain('Known Market Prices');
-        expect(container.textContent).not.toContain('Market Rumors');
+        expect(container.textContent).toContain('알려진 시장 가격');
+        expect(container.textContent).not.toContain('시장 소문');
 
         // Switch back to Purchase Intelligence tab
-        const purchaseTab = screen.getByText('Purchase Intelligence');
+        const purchaseTab = screen.getByText('정보 구매');
         fireEvent.click(purchaseTab);
 
         // Should show Purchase Intelligence content
-        expect(container.textContent).toContain('Market Rumors');
-        expect(container.textContent).toContain('System Intelligence');
+        expect(container.textContent).toContain('시장 소문');
+        expect(container.textContent).toContain('항성계 정보');
 
         return true;
       }),

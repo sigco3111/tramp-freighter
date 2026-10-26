@@ -217,9 +217,9 @@ describe('Property 36: Trade utility functions are pure', () => {
   });
 
   it('formatCargoAge should return correct format', () => {
-    expect(formatCargoAge(10, 10)).toBe('today');
-    expect(formatCargoAge(11, 10)).toBe('1 day ago');
-    expect(formatCargoAge(15, 10)).toBe('5 days ago');
+    expect(formatCargoAge(10, 10)).toBe('오늘');
+    expect(formatCargoAge(11, 10)).toBe('1일 전');
+    expect(formatCargoAge(15, 10)).toBe('5일 전');
     expect(formatCargoAge(10, undefined)).toBe('');
     expect(formatCargoAge(undefined, 10)).toBe('');
   });

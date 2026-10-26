@@ -47,7 +47,7 @@ describe('Station Menu NPC Integration', () => {
       );
 
       // Should show PEOPLE section
-      expect(screen.getByText('PEOPLE')).toBeInTheDocument();
+      expect(screen.getByText('사람들')).toBeInTheDocument();
     });
 
     it('should omit PEOPLE section when no NPCs are present at current system', () => {
@@ -69,7 +69,7 @@ describe('Station Menu NPC Integration', () => {
         );
 
         // Should NOT show PEOPLE section
-        expect(screen.queryByText('PEOPLE')).not.toBeInTheDocument();
+        expect(screen.queryByText('사람들')).not.toBeInTheDocument();
       }
     });
 
@@ -87,10 +87,10 @@ describe('Station Menu NPC Integration', () => {
       );
 
       // Marcus Cole should be displayed with name, role, and tier
-      expect(screen.getByText('Marcus Cole')).toBeInTheDocument();
-      expect(screen.getByText('Loan Shark')).toBeInTheDocument();
+      expect(screen.getByText('마커스 콜')).toBeInTheDocument();
+      expect(screen.getByText('고리대금업자')).toBeInTheDocument();
       // Marcus Cole starts at -20 rep which is "Cold" tier
-      expect(screen.getByText('Cold')).toBeInTheDocument();
+      expect(screen.getByText('냉담')).toBeInTheDocument();
     });
   });
 
@@ -111,7 +111,7 @@ describe('Station Menu NPC Integration', () => {
       );
 
       // Click on Marcus Cole
-      const npcButton = screen.getByText('Marcus Cole').closest('button');
+      const npcButton = screen.getByText('마커스 콜').closest('button');
       fireEvent.click(npcButton);
 
       // Should call onOpenPanel with dialogue panel and NPC ID
@@ -133,10 +133,10 @@ describe('Station Menu NPC Integration', () => {
         </GameProvider>
       );
 
-      expect(screen.getByText('Wei Chen')).toBeInTheDocument();
-      expect(screen.getByText('Dock Worker')).toBeInTheDocument();
+      expect(screen.getByText('웨이 첸')).toBeInTheDocument();
+      expect(screen.getByText('부두 일꾼')).toBeInTheDocument();
       // Wei Chen starts at 0 rep which is "Neutral" tier
-      expect(screen.getByText('Neutral')).toBeInTheDocument();
+      expect(screen.getByText('중립')).toBeInTheDocument();
     });
 
     it('should display Father Okonkwo at Ross 154', () => {
@@ -152,10 +152,10 @@ describe('Station Menu NPC Integration', () => {
         </GameProvider>
       );
 
-      expect(screen.getByText('Father Okonkwo')).toBeInTheDocument();
-      expect(screen.getByText('Chaplain')).toBeInTheDocument();
+      expect(screen.getByText('오콘쿠오 신부')).toBeInTheDocument();
+      expect(screen.getByText('사제')).toBeInTheDocument();
       // Father Okonkwo starts at 10 rep which is "Warm" tier
-      expect(screen.getByText('Warm')).toBeInTheDocument();
+      expect(screen.getByText('온화')).toBeInTheDocument();
     });
   });
 
@@ -182,7 +182,7 @@ describe('Station Menu NPC Integration', () => {
       );
 
       // Should now show Neutral tier instead of Cold
-      expect(screen.getByText('Neutral')).toBeInTheDocument();
+      expect(screen.getByText('중립')).toBeInTheDocument();
       expect(screen.queryByText('Cold')).not.toBeInTheDocument();
     });
   });

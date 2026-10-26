@@ -54,9 +54,9 @@ describe('DangerWarningDialog', () => {
     it('should render dialog with correct title and destination', () => {
       renderDangerWarningDialog();
 
-      expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+      expect(screen.getByText('점프 경고')).toBeInTheDocument();
       expect(screen.getByText('70 Ophiuchi A')).toBeInTheDocument();
-      expect(screen.getByText('Destination')).toBeInTheDocument();
+      expect(screen.getByText('목적지')).toBeInTheDocument();
     });
 
     it('should render close button', () => {
@@ -69,16 +69,16 @@ describe('DangerWarningDialog', () => {
     it('should render risk assessment section', () => {
       renderDangerWarningDialog();
 
-      expect(screen.getByText('Risk Assessment')).toBeInTheDocument();
-      expect(screen.getByText('Pirate Encounters')).toBeInTheDocument();
-      expect(screen.getByText('Customs Inspections')).toBeInTheDocument();
+      expect(screen.getByText('위험 평가')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
+      expect(screen.getByText('세관 검문')).toBeInTheDocument();
     });
 
     it('should render action buttons', () => {
       renderDangerWarningDialog();
 
-      expect(screen.getByText('Accept Risk & Proceed')).toBeInTheDocument();
-      expect(screen.getByText('Cancel Jump')).toBeInTheDocument();
+      expect(screen.getByText('위험을 감수하고 진행')).toBeInTheDocument();
+      expect(screen.getByText('점프 취소')).toBeInTheDocument();
     });
   });
 
@@ -89,8 +89,8 @@ describe('DangerWarningDialog', () => {
         destinationSystemName: '70 Ophiuchi A',
       });
 
-      expect(screen.getByText('Dangerous')).toBeInTheDocument();
-      expect(screen.getByText('Security Level:')).toBeInTheDocument();
+      expect(screen.getByText('위험')).toBeInTheDocument();
+      expect(screen.getByText('보안 등급:')).toBeInTheDocument();
     });
 
     it('should display "Contested" for contested systems', () => {
@@ -99,7 +99,7 @@ describe('DangerWarningDialog', () => {
         destinationSystemName: 'Sirius',
       });
 
-      expect(screen.getByText('Contested')).toBeInTheDocument();
+      expect(screen.getByText('분쟁')).toBeInTheDocument();
     });
 
     it('should display zone description', () => {
@@ -107,7 +107,7 @@ describe('DangerWarningDialog', () => {
 
       // Should show description for dangerous zone
       expect(
-        screen.getByText(/Frontier systems with high pirate activity/)
+        screen.getByText(/해적 활동이 활발하고 법 집행이 부족한 변경 항성계/)
       ).toBeInTheDocument();
     });
   });
@@ -125,7 +125,7 @@ describe('DangerWarningDialog', () => {
       renderDangerWarningDialog();
 
       expect(
-        screen.getByText('Probability of customs inspection upon arrival')
+        screen.getByText('도착 시 세관 검문을 받을 확률')
       ).toBeInTheDocument();
     });
 
@@ -142,9 +142,9 @@ describe('DangerWarningDialog', () => {
 
       renderDangerWarningDialog();
 
-      expect(screen.getByText('Risk Modifiers')).toBeInTheDocument();
+      expect(screen.getByText('위험 보정 요인')).toBeInTheDocument();
       expect(
-        screen.getByText('Cargo value affects pirate encounter chance')
+        screen.getByText('화물 가치가 해적 조우 확률에 영향을 줍니다')
       ).toBeInTheDocument();
     });
 
@@ -154,9 +154,9 @@ describe('DangerWarningDialog', () => {
 
       renderDangerWarningDialog();
 
-      expect(screen.getByText('Risk Modifiers')).toBeInTheDocument();
+      expect(screen.getByText('위험 보정 요인')).toBeInTheDocument();
       expect(
-        screen.getByText('Poor engine condition increases pirate risk')
+        screen.getByText('엔진 상태가 나쁘면 해적 위험이 커집니다')
       ).toBeInTheDocument();
     });
 
@@ -167,26 +167,26 @@ describe('DangerWarningDialog', () => {
 
       renderDangerWarningDialog();
 
-      expect(screen.getByText('Risk Modifiers')).toBeInTheDocument();
+      expect(screen.getByText('위험 보정 요인')).toBeInTheDocument();
       expect(
-        screen.getByText('Advanced sensors reduce pirate detection')
+        screen.getByText('고급 센서는 해적 탐지 확률을 낮춥니다')
       ).toBeInTheDocument();
     });
   });
 
-  describe('Safety Recommendations', () => {
+  describe('안전 권고', () => {
     it('should show safety recommendations for dangerous systems', () => {
       renderDangerWarningDialog({
         destinationSystemId: 73, // Dangerous system
         destinationSystemName: '70 Ophiuchi A',
       });
 
-      expect(screen.getByText('Safety Recommendations')).toBeInTheDocument();
+      expect(screen.getByText('안전 권고')).toBeInTheDocument();
       expect(
-        screen.getByText('Dangerous zone - high pirate activity expected')
+        screen.getByText('위험 지대 - 해적 활동이 활발할 것으로 예상됩니다')
       ).toBeInTheDocument();
       expect(
-        screen.getByText('Ensure ship systems are in good condition')
+        screen.getByText('함선 시스템 상태를 양호하게 유지하세요')
       ).toBeInTheDocument();
     });
 
@@ -196,9 +196,9 @@ describe('DangerWarningDialog', () => {
         destinationSystemName: 'Sirius',
       });
 
-      expect(screen.getByText('Safety Recommendations')).toBeInTheDocument();
+      expect(screen.getByText('안전 권고')).toBeInTheDocument();
       expect(
-        screen.getByText('Contested zone - moderate risk of encounters')
+        screen.getByText('분쟁 지대 - 조우 위험이 중간 수준입니다')
       ).toBeInTheDocument();
     });
 
@@ -206,11 +206,11 @@ describe('DangerWarningDialog', () => {
       renderDangerWarningDialog();
 
       expect(
-        screen.getByText('Consider cargo value vs. risk tolerance')
+        screen.getByText('화물 가치와 위험 감수 수준을 비교해 보세요')
       ).toBeInTheDocument();
       expect(
         screen.getByText(
-          'Alternative routes through safer systems may be available'
+          '더 안전한 항성계를 거치는 대체 경로가 있을 수 있습니다'
         )
       ).toBeInTheDocument();
     });
@@ -225,7 +225,7 @@ describe('DangerWarningDialog', () => {
         onProceed: mockOnProceed,
       });
 
-      const proceedButton = screen.getByText('Accept Risk & Proceed');
+      const proceedButton = screen.getByText('위험을 감수하고 진행');
       fireEvent.click(proceedButton);
 
       expect(mockOnProceed).toHaveBeenCalledTimes(1);
@@ -235,7 +235,7 @@ describe('DangerWarningDialog', () => {
       const mockOnCancel = vi.fn();
       renderDangerWarningDialog({ onCancel: mockOnCancel });
 
-      const cancelButton = screen.getByText('Cancel Jump');
+      const cancelButton = screen.getByText('점프 취소');
       fireEvent.click(cancelButton);
 
       expect(mockOnCancel).toHaveBeenCalledTimes(1);
@@ -259,7 +259,7 @@ describe('DangerWarningDialog', () => {
         onProceed: mockOnProceed,
       });
 
-      const proceedButton = screen.getByText('Proceed');
+      const proceedButton = screen.getByText('진행');
       fireEvent.click(proceedButton);
 
       // Should call onProceed directly without confirmation
@@ -274,7 +274,7 @@ describe('DangerWarningDialog', () => {
       });
 
       // Click proceed button - should call onProceed directly
-      const proceedButton = screen.getByText('Accept Risk & Proceed');
+      const proceedButton = screen.getByText('위험을 감수하고 진행');
       fireEvent.click(proceedButton);
 
       expect(mockOnProceed).toHaveBeenCalledTimes(1);
@@ -292,7 +292,7 @@ describe('DangerWarningDialog', () => {
         renderDangerWarningDialog();
       }).not.toThrow();
 
-      expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+      expect(screen.getByText('점프 경고')).toBeInTheDocument();
     });
 
     it('should handle missing ship condition data gracefully', () => {
@@ -301,7 +301,7 @@ describe('DangerWarningDialog', () => {
         renderDangerWarningDialog();
       }).not.toThrow();
 
-      expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+      expect(screen.getByText('점프 경고')).toBeInTheDocument();
     });
 
     it('should handle empty cargo array', () => {
@@ -313,7 +313,7 @@ describe('DangerWarningDialog', () => {
 
       // Should not show cargo risk factor
       expect(
-        screen.queryByText('Cargo value affects pirate encounter chance')
+        screen.queryByText('화물 가치가 해적 조우 확률에 영향을 줍니다')
       ).not.toBeInTheDocument();
     });
 
@@ -326,7 +326,7 @@ describe('DangerWarningDialog', () => {
 
       // Should not show advanced sensors benefit
       expect(
-        screen.queryByText('Advanced sensors reduce pirate detection')
+        screen.queryByText('고급 센서는 해적 탐지 확률을 낮춥니다')
       ).not.toBeInTheDocument();
     });
   });
@@ -346,7 +346,7 @@ describe('DangerWarningDialog', () => {
 
       // Should have h2 for main title
       const mainTitle = screen.getByRole('heading', { level: 2 });
-      expect(mainTitle).toHaveTextContent('Jump Warning');
+      expect(mainTitle).toHaveTextContent('점프 경고');
 
       // Should have h3 for sections
       const sectionHeadings = screen.getAllByRole('heading', { level: 3 });
@@ -356,8 +356,8 @@ describe('DangerWarningDialog', () => {
     it('should have focusable buttons', () => {
       renderDangerWarningDialog();
 
-      const proceedButton = screen.getByText('Accept Risk & Proceed');
-      const cancelButton = screen.getByText('Cancel Jump');
+      const proceedButton = screen.getByText('위험을 감수하고 진행');
+      const cancelButton = screen.getByText('점프 취소');
       const closeButton = screen.getByText('×');
 
       expect(proceedButton).not.toBeDisabled();

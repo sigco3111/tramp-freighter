@@ -46,7 +46,7 @@ describe('Passenger Satisfaction & Payment', () => {
       const result = manager.acceptMission(mission);
 
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('cargo space');
+      expect(result.reason).toContain('화물 공간');
     });
 
     it('should accept passenger mission when enough cargo space', () => {

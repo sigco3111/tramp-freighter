@@ -26,7 +26,7 @@ describe('Outcome text honesty', () => {
 
       expect(result.success).toBe(true);
       expect(result.description.toLowerCase()).toMatch(
-        /hull|hits|damage|scoring/
+        /선체|긁힌/
       );
     });
   });
@@ -44,7 +44,7 @@ describe('Outcome text honesty', () => {
 
       expect(result.success).toBe(true);
       expect(result.description.toLowerCase()).toMatch(
-        /books|noted|reputation|record/
+        /장부/
       );
     });
   });
@@ -65,7 +65,7 @@ describe('Outcome text honesty', () => {
       const result = manager.resolveInspectionCooperate(0.99);
 
       expect(result.description.toLowerCase()).toMatch(
-        /checks out|clean|clear|approv/
+        /이상 없습니다/
       );
     });
   });

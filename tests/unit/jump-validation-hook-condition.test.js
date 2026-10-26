@@ -37,7 +37,7 @@ describe('executeJump passes shipCondition to validateJump', () => {
 
     const result = await nav.executeJump(mockGSM, 1);
     expect(result.success).toBe(false);
-    expect(result.error).toContain('Hull');
+    expect(result.error).toContain('선체');
   });
 
   it('should allow jump when all systems are healthy', async () => {

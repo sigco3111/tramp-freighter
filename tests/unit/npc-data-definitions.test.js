@@ -39,8 +39,8 @@ describe('NPC Data Definitions', () => {
       npc: WEI_CHEN,
       expectedBasic: {
         id: 'chen_barnards',
-        name: 'Wei Chen',
-        role: 'Dock Worker',
+        name: '웨이 첸',
+        role: '부두 일꾼',
       },
       expectedPersonality: {
         trust: 0.3,
@@ -61,8 +61,8 @@ describe('NPC Data Definitions', () => {
       npc: MARCUS_COLE,
       expectedBasic: {
         id: 'cole_sol',
-        name: 'Marcus Cole',
-        role: 'Loan Shark',
+        name: '마커스 콜',
+        role: '고리대금업자',
       },
       expectedPersonality: {
         trust: 0.1,
@@ -83,8 +83,8 @@ describe('NPC Data Definitions', () => {
       npc: FATHER_OKONKWO,
       expectedBasic: {
         id: 'okonkwo_ross154',
-        name: 'Father Okonkwo',
-        role: 'Chaplain',
+        name: '오콘쿠오 신부',
+        role: '사제',
       },
       expectedPersonality: {
         trust: 0.7,

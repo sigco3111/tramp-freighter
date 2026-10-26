@@ -29,7 +29,7 @@ describe('RumorAlert', () => {
     // Simulate a jump to a new system
     mockGameEventValues.locationChanged = 4;
     rerender(<RumorAlert />);
-    expect(screen.getByText(/illicit cargo/i)).toBeInTheDocument();
+    expect(screen.getByText(/불법 화물/)).toBeInTheDocument();
   });
 
   it('should not display rumor alert when no illegal cargo', () => {
@@ -39,12 +39,12 @@ describe('RumorAlert', () => {
     const { rerender } = render(<RumorAlert />);
     mockGameEventValues.locationChanged = 4;
     rerender(<RumorAlert />);
-    expect(screen.queryByText(/illicit cargo/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/불법 화물/)).not.toBeInTheDocument();
   });
 
   it('should not display rumor alert on initial mount without a jump', () => {
     mockGameEventValues.locationChanged = 4;
     render(<RumorAlert />);
-    expect(screen.queryByText(/illicit cargo/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/불법 화물/)).not.toBeInTheDocument();
   });
 });

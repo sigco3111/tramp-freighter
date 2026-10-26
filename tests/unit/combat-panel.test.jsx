@@ -85,13 +85,13 @@ describe('CombatPanel', () => {
 
   it('should display combat panel title', () => {
     renderWithContext();
-    expect(screen.getByText('Combat Resolution')).toBeInTheDocument();
+    expect(screen.getByText('전투 결과')).toBeInTheDocument();
   });
 
   it('should display combat intensity', () => {
     renderWithContext();
-    expect(screen.getByText('Moderate')).toBeInTheDocument();
-    expect(screen.getByText('Combat Intensity:')).toBeInTheDocument();
+    expect(screen.getByText('보통')).toBeInTheDocument();
+    expect(screen.getByText('전투 강도:')).toBeInTheDocument();
   });
 
   it('should display combat description', () => {
@@ -103,23 +103,23 @@ describe('CombatPanel', () => {
 
   it('should display ship condition status', () => {
     renderWithContext();
-    expect(screen.getByText('Hull Integrity:')).toBeInTheDocument();
-    expect(screen.getByText('Engine Status:')).toBeInTheDocument();
-    expect(screen.getByText('Fuel Reserves:')).toBeInTheDocument();
-    expect(screen.getByText('Life Support:')).toBeInTheDocument();
+    expect(screen.getByText('선체 무결성:')).toBeInTheDocument();
+    expect(screen.getByText('엔진 상태:')).toBeInTheDocument();
+    expect(screen.getByText('연료 잔량:')).toBeInTheDocument();
+    expect(screen.getByText('생명 유지:')).toBeInTheDocument();
   });
 
   it('should display all combat options', () => {
     renderWithContext();
-    expect(screen.getByText('Evasive Maneuvers')).toBeInTheDocument();
-    expect(screen.getByText('Return Fire')).toBeInTheDocument();
-    expect(screen.getByText('Dump Cargo')).toBeInTheDocument();
-    expect(screen.getByText('Distress Call')).toBeInTheDocument();
+    expect(screen.getByText('회피 기동')).toBeInTheDocument();
+    expect(screen.getByText('응사')).toBeInTheDocument();
+    expect(screen.getByText('화물 투하')).toBeInTheDocument();
+    expect(screen.getByText('조난 신호')).toBeInTheDocument();
   });
 
   it('should show base success rates for combat options', () => {
     renderWithContext();
-    expect(screen.getAllByText('Base Success Rate:')).toHaveLength(3); // Three options have base rates
+    expect(screen.getAllByText('기본 성공률:')).toHaveLength(3); // Three options have base rates
     expect(screen.getAllByText('70%')).toHaveLength(2); // Evasive base and final rate
     expect(screen.getAllByText('45%')).toHaveLength(2); // Return fire base and final rate
     expect(screen.getAllByText('30%')).toHaveLength(2); // Distress call base and final rate
@@ -128,7 +128,7 @@ describe('CombatPanel', () => {
   it('should show guaranteed success for dump cargo', () => {
     renderWithContext();
     // Look for the guaranteed success rate specifically in the dump cargo section
-    expect(screen.getByText('Success Rate:')).toBeInTheDocument();
+    expect(screen.getByText('성공률:')).toBeInTheDocument();
     const guaranteedElements = screen.getAllByText('100%');
     expect(guaranteedElements.length).toBeGreaterThan(0);
   });
@@ -137,12 +137,12 @@ describe('CombatPanel', () => {
     renderWithContext();
 
     const evasiveOption = screen
-      .getByText('Evasive Maneuvers')
+      .getByText('회피 기동')
       .closest('.combat-option');
     fireEvent.click(evasiveOption);
 
     expect(evasiveOption).toHaveClass('selected');
-    expect(screen.getByText('Execute Evasive')).toBeInTheDocument();
+    expect(screen.getByText('실행: 회피 기동')).toBeInTheDocument();
   });
 
   it('should call onChoice when confirming selection', () => {
@@ -151,12 +151,12 @@ describe('CombatPanel', () => {
 
     // Select evasive maneuvers
     const evasiveOption = screen
-      .getByText('Evasive Maneuvers')
+      .getByText('회피 기동')
       .closest('.combat-option');
     fireEvent.click(evasiveOption);
 
     // Confirm selection
-    fireEvent.click(screen.getByText('Execute Evasive'));
+    fireEvent.click(screen.getByText('실행: 회피 기동'));
 
     expect(onChoice).toHaveBeenCalledWith('evasive');
   });
@@ -166,15 +166,15 @@ describe('CombatPanel', () => {
 
     // Select evasive maneuvers
     const evasiveOption = screen
-      .getByText('Evasive Maneuvers')
+      .getByText('회피 기동')
       .closest('.combat-option');
     fireEvent.click(evasiveOption);
 
     // Change selection
-    fireEvent.click(screen.getByText('Change Option'));
+    fireEvent.click(screen.getByText('선택 변경'));
 
     expect(
-      screen.getByText('Select a combat option to proceed')
+      screen.getByText('진행할 전투 선택지를 고르세요')
     ).toBeInTheDocument();
   });
 
@@ -207,7 +207,7 @@ describe('CombatPanel', () => {
     renderWithContext();
 
     // Since we're mocking empty upgrades, we shouldn't see the modifiers section
-    expect(screen.queryByText('Combat Modifiers')).not.toBeInTheDocument();
+    expect(screen.queryByText('전투 보정')).not.toBeInTheDocument();
   });
 
   it('should display different combat intensities with appropriate colors', () => {
@@ -218,14 +218,14 @@ describe('CombatPanel', () => {
 
     renderWithContext({ combat: intenseCombat });
 
-    const intensityValue = screen.getByText('Intense');
+    const intensityValue = screen.getByText('최대');
     expect(intensityValue).toHaveClass('intense');
   });
 
   it('should show selection prompt when no option is selected', () => {
     renderWithContext();
     expect(
-      screen.getByText('Select a combat option to proceed')
+      screen.getByText('진행할 전투 선택지를 고르세요')
     ).toBeInTheDocument();
   });
 
@@ -234,16 +234,16 @@ describe('CombatPanel', () => {
 
     // Check for success/failure outcomes
     expect(
-      screen.getByText(/Escape combat, -15% fuel, -5% engine condition/)
+      screen.getByText('전투 이탈, 연료 -15%, 엔진 상태 -5%')
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Take hull damage \(-20%\), combat continues/)
+      screen.getByText('선체 피해(-20%), 전투 계속')
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Drive off enemy, -10% hull, \+5 outlaw reputation/)
+      screen.getByText('적 격퇴, 선체 -10%, 무법자 평판 +5')
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Heavy damage \(-30% hull\), lose cargo and ₡500/)
+      screen.getByText('큰 피해(선체 -30%), 화물과 ₡500 손실')
     ).toBeInTheDocument();
   });
 });

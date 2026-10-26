@@ -775,13 +775,13 @@ describe('TradingSystem.validatePurchase', () => {
   it('returns invalid for insufficient credits', () => {
     const result = TradingSystem.validatePurchase(100, 50, 5, 100);
     expect(result.valid).toBe(false);
-    expect(result.reason).toBe('Insufficient credits');
+    expect(result.reason).toBe('크레딧이 부족합니다');
   });
 
   it('returns invalid for insufficient cargo space', () => {
     const result = TradingSystem.validatePurchase(10000, 3, 5, 100);
     expect(result.valid).toBe(false);
-    expect(result.reason).toBe('Not enough cargo space');
+    expect(result.reason).toBe('화물 공간이 부족합니다');
   });
 
   it('returns valid when cost exactly equals credits', () => {
@@ -798,7 +798,7 @@ describe('TradingSystem.validatePurchase', () => {
     // Both insufficient - should report credits first
     const result = TradingSystem.validatePurchase(10, 1, 5, 100);
     expect(result.valid).toBe(false);
-    expect(result.reason).toBe('Insufficient credits');
+    expect(result.reason).toBe('크레딧이 부족합니다');
   });
 });
 
@@ -846,7 +846,7 @@ describe('TradingSystem.validateSale', () => {
   it('returns invalid when quantity exceeds stack', () => {
     const result = TradingSystem.validateSale(cargo, 0, 15);
     expect(result.valid).toBe(false);
-    expect(result.reason).toBe('Not enough quantity in stack');
+    expect(result.reason).toBe('묶음 내 수량이 부족합니다');
   });
 });
 

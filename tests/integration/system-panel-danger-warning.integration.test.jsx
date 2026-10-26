@@ -67,28 +67,28 @@ describe('SystemPanel Danger Warning Integration', () => {
       renderSystemPanel(73); // 70 Ophiuchi A
 
       // Get the jump button and click it
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       // Assert: Danger warning dialog should appear
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
       // Check for system name specifically in the danger dialog
       const dangerDialog = screen
-        .getByText('Jump Warning')
+        .getByText('점프 경고')
         .closest('#danger-warning-dialog');
       expect(dangerDialog.querySelector('.destination-name')).toHaveTextContent(
         '70 Ophiuchi A'
       );
       expect(
         dangerDialog.querySelector('.classification-value.dangerous')
-      ).toHaveTextContent('Dangerous');
-      expect(screen.getByText('Pirate Encounters')).toBeInTheDocument();
-      expect(screen.getByText('Customs Inspections')).toBeInTheDocument();
-      expect(screen.getByText('Accept Risk & Proceed')).toBeInTheDocument();
-      expect(screen.getByText('Cancel Jump')).toBeInTheDocument();
+      ).toHaveTextContent('위험');
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
+      expect(screen.getByText('세관 검문')).toBeInTheDocument();
+      expect(screen.getByText('위험을 감수하고 진행')).toBeInTheDocument();
+      expect(screen.getByText('점프 취소')).toBeInTheDocument();
     });
 
     it('should show danger warning dialog when jumping to contested system', async () => {
@@ -100,26 +100,26 @@ describe('SystemPanel Danger Warning Integration', () => {
       renderSystemPanel(7); // Sirius
 
       // Get the jump button and click it
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       // Assert: Danger warning dialog should appear
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
       // Check for system name specifically in the danger dialog
       const dangerDialog = screen
-        .getByText('Jump Warning')
+        .getByText('점프 경고')
         .closest('#danger-warning-dialog');
       expect(dangerDialog.querySelector('.destination-name')).toHaveTextContent(
         'Sirius A'
       );
       expect(
         dangerDialog.querySelector('.classification-value.contested')
-      ).toHaveTextContent('Contested');
-      expect(screen.getByText('Proceed')).toBeInTheDocument(); // Not "Accept Risk" for contested
-      expect(screen.getByText('Cancel Jump')).toBeInTheDocument();
+      ).toHaveTextContent('분쟁');
+      expect(screen.getByText('진행')).toBeInTheDocument(); // Not "Accept Risk" for contested
+      expect(screen.getByText('점프 취소')).toBeInTheDocument();
     });
 
     it('should NOT show danger warning dialog when jumping to safe system', async () => {
@@ -137,7 +137,7 @@ describe('SystemPanel Danger Warning Integration', () => {
       }); // Alpha Centauri
 
       // Get the jump button and click it
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       // Assert: No danger warning dialog should appear
@@ -146,12 +146,12 @@ describe('SystemPanel Danger Warning Integration', () => {
         expect(mockOnClose).toHaveBeenCalled();
       });
 
-      expect(screen.queryByText('Jump Warning')).not.toBeInTheDocument();
+      expect(screen.queryByText('점프 경고')).not.toBeInTheDocument();
     });
   });
 
   describe('Danger Warning Dialog Interactions', () => {
-    it('should proceed with jump when user clicks "Accept Risk & Proceed"', async () => {
+    it('should proceed with jump when user clicks "위험을 감수하고 진행"', async () => {
       // Arrange: Set up dangerous system jump
       game.updateLocation(4); // Barnard's Star
       game.updateFuel(100);
@@ -165,15 +165,15 @@ describe('SystemPanel Danger Warning Integration', () => {
       }); // 70 Ophiuchi A
 
       // Act: Click jump button to show dialog
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
       // Click proceed button
-      const proceedButton = screen.getByText('Accept Risk & Proceed');
+      const proceedButton = screen.getByText('위험을 감수하고 진행');
       fireEvent.click(proceedButton);
 
       // Assert: Jump should execute
@@ -189,7 +189,7 @@ describe('SystemPanel Danger Warning Integration', () => {
       expect(game.getPlayer().currentSystem).toBe(73);
     });
 
-    it('should cancel jump when user clicks "Cancel Jump"', async () => {
+    it('should cancel jump when user clicks "점프 취소"', async () => {
       // Arrange: Set up dangerous system jump
       game.updateLocation(4); // Barnard's Star
       game.updateFuel(100);
@@ -203,20 +203,20 @@ describe('SystemPanel Danger Warning Integration', () => {
       }); // 70 Ophiuchi A
 
       // Act: Click jump button to show dialog
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
       // Click cancel button
-      const cancelButton = screen.getByText('Cancel Jump');
+      const cancelButton = screen.getByText('점프 취소');
       fireEvent.click(cancelButton);
 
       // Assert: Jump should NOT execute
       await waitFor(() => {
-        expect(screen.queryByText('Jump Warning')).not.toBeInTheDocument();
+        expect(screen.queryByText('점프 경고')).not.toBeInTheDocument();
       });
 
       expect(mockOnClose).not.toHaveBeenCalled();
@@ -234,23 +234,23 @@ describe('SystemPanel Danger Warning Integration', () => {
       renderSystemPanel(73); // 70 Ophiuchi A
 
       // Act: Click jump button to show dialog
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
       // Click close button (×) in the danger warning dialog
       const dangerDialog = screen
-        .getByText('Jump Warning')
+        .getByText('점프 경고')
         .closest('#danger-warning-dialog');
       const closeButton = dangerDialog.querySelector('.close-btn');
       fireEvent.click(closeButton);
 
       // Assert: Dialog should close without jumping
       await waitFor(() => {
-        expect(screen.queryByText('Jump Warning')).not.toBeInTheDocument();
+        expect(screen.queryByText('점프 경고')).not.toBeInTheDocument();
       });
 
       // Player should still be at origin
@@ -266,11 +266,11 @@ describe('SystemPanel Danger Warning Integration', () => {
 
       renderSystemPanel(0); // Sol
 
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       // Should not show danger warning for safe system
-      expect(screen.queryByText('Jump Warning')).not.toBeInTheDocument();
+      expect(screen.queryByText('점프 경고')).not.toBeInTheDocument();
     });
 
     it('should correctly classify contested systems', async () => {
@@ -279,21 +279,21 @@ describe('SystemPanel Danger Warning Integration', () => {
 
       renderSystemPanel(7); // Sirius (contested)
 
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
       // Look for "Contested" in the danger warning dialog specifically
       const dangerDialog = screen
-        .getByText('Jump Warning')
+        .getByText('점프 경고')
         .closest('#danger-warning-dialog');
       const contestedElement = dangerDialog.querySelector(
         '.classification-value.contested'
       );
-      expect(contestedElement).toHaveTextContent('Contested');
+      expect(contestedElement).toHaveTextContent('분쟁');
     });
 
     it('should correctly classify dangerous systems', async () => {
@@ -319,21 +319,21 @@ describe('SystemPanel Danger Warning Integration', () => {
       const dangerousSystemId = dangerousSystems[0];
       renderSystemPanel(dangerousSystemId);
 
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
       // Look for "Dangerous" in the danger warning dialog specifically
       const dangerDialog = screen
-        .getByText('Jump Warning')
+        .getByText('점프 경고')
         .closest('#danger-warning-dialog');
       const dangerousElement = dangerDialog.querySelector(
         '.classification-value.dangerous'
       );
-      expect(dangerousElement).toHaveTextContent('Dangerous');
+      expect(dangerousElement).toHaveTextContent('위험');
     });
   });
 
@@ -344,17 +344,17 @@ describe('SystemPanel Danger Warning Integration', () => {
 
       renderSystemPanel(73); // 70 Ophiuchi A
 
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
       // Should show risk assessment section
-      expect(screen.getByText('Risk Assessment')).toBeInTheDocument();
-      expect(screen.getByText('Pirate Encounters')).toBeInTheDocument();
-      expect(screen.getByText('Customs Inspections')).toBeInTheDocument();
+      expect(screen.getByText('위험 평가')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
+      expect(screen.getByText('세관 검문')).toBeInTheDocument();
 
       // Should show percentage values
       const percentageElements = screen.getAllByText(/%$/);
@@ -378,38 +378,38 @@ describe('SystemPanel Danger Warning Integration', () => {
 
       renderSystemPanel(73); // 70 Ophiuchi A
 
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
       // Should show risk modifiers section
-      expect(screen.getByText('Risk Modifiers')).toBeInTheDocument();
+      expect(screen.getByText('위험 보정 요인')).toBeInTheDocument();
       expect(
-        screen.getByText('Cargo value affects pirate encounter chance')
+        screen.getByText('화물 가치가 해적 조우 확률에 영향을 줍니다')
       ).toBeInTheDocument();
     });
   });
 
-  describe('Safety Recommendations', () => {
+  describe('안전 권고', () => {
     it('should show safety recommendations for dangerous systems', async () => {
       game.updateLocation(4); // Barnard's Star
       game.updateFuel(100);
 
       renderSystemPanel(73); // 70 Ophiuchi A (dangerous)
 
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
-      expect(screen.getByText('Safety Recommendations')).toBeInTheDocument();
+      expect(screen.getByText('안전 권고')).toBeInTheDocument();
       expect(
-        screen.getByText('Dangerous zone - high pirate activity expected')
+        screen.getByText('위험 지대 - 해적 활동이 활발할 것으로 예상됩니다')
       ).toBeInTheDocument();
     });
 
@@ -419,16 +419,16 @@ describe('SystemPanel Danger Warning Integration', () => {
 
       renderSystemPanel(7); // Sirius (contested)
 
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
-      expect(screen.getByText('Safety Recommendations')).toBeInTheDocument();
+      expect(screen.getByText('안전 권고')).toBeInTheDocument();
       expect(
-        screen.getByText('Contested zone - moderate risk of encounters')
+        screen.getByText('분쟁 지대 - 조우 위험이 중간 수준입니다')
       ).toBeInTheDocument();
     });
   });
@@ -446,12 +446,12 @@ describe('SystemPanel Danger Warning Integration', () => {
 
       renderSystemPanel(73); // 70 Ophiuchi A
 
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       // Should not crash and should show dialog
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
 
       // Restore faction data
@@ -464,12 +464,12 @@ describe('SystemPanel Danger Warning Integration', () => {
 
       renderSystemPanel(73); // 70 Ophiuchi A
 
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       fireEvent.click(jumpButton);
 
       // Should not crash and should show dialog
       await waitFor(() => {
-        expect(screen.getByText('Jump Warning')).toBeInTheDocument();
+        expect(screen.getByText('점프 경고')).toBeInTheDocument();
       });
     });
 
@@ -481,13 +481,13 @@ describe('SystemPanel Danger Warning Integration', () => {
       renderSystemPanel(73); // 70 Ophiuchi A
 
       // Jump button should be disabled
-      const jumpButton = screen.getByText('Jump to System');
+      const jumpButton = screen.getByText('항성계로 점프');
       expect(jumpButton).toBeDisabled();
 
       // Clicking disabled button should not show danger warning
       fireEvent.click(jumpButton);
 
-      expect(screen.queryByText('Jump Warning')).not.toBeInTheDocument();
+      expect(screen.queryByText('점프 경고')).not.toBeInTheDocument();
     });
   });
 });

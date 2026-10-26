@@ -54,8 +54,8 @@ describe('Marcus Cole Debt-Cleared Dialogue', () => {
         0,
         debtClearedContext
       );
-      expect(greetingText).toContain('surprised');
-      expect(greetingText).toContain('zero');
+      expect(greetingText).toContain('놀랍');
+      expect(greetingText).toContain('계정이 0');
     });
 
     it('should NOT return debt-cleared greeting when debt is outstanding', () => {
@@ -72,7 +72,7 @@ describe('Marcus Cole Debt-Cleared Dialogue', () => {
         0,
         tanakaStartedContext
       );
-      expect(greetingText).toContain('surprised');
+      expect(greetingText).toContain('놀랍');
     });
   });
 
@@ -151,7 +151,7 @@ describe('Marcus Cole Debt-Cleared Dialogue', () => {
     it('should mention an engineer or Barnards Star', () => {
       const node = MARCUS_COLE_DIALOGUE.debt_cleared;
       const text = node.text;
-      expect(text.includes('engineer') || text.includes('Barnard')).toBe(true);
+      expect(text.includes('엔지니어') || text.includes('바너드')).toBe(true);
     });
 
     it('should have choice leading to tanaka_detail', () => {
@@ -184,16 +184,16 @@ describe('Marcus Cole Debt-Cleared Dialogue', () => {
     });
 
     it('should mention Tanaka by name', () => {
-      expect(MARCUS_COLE_DIALOGUE.tanaka_detail.text).toContain('Tanaka');
+      expect(MARCUS_COLE_DIALOGUE.tanaka_detail.text).toContain('타나카');
     });
 
     it('should mention Barnards Star', () => {
-      expect(MARCUS_COLE_DIALOGUE.tanaka_detail.text).toContain('Barnard');
+      expect(MARCUS_COLE_DIALOGUE.tanaka_detail.text).toContain('바너드');
     });
 
     it('should mention jump drive or jump tech', () => {
       const text = MARCUS_COLE_DIALOGUE.tanaka_detail.text;
-      expect(text.includes('jump drive') || text.includes('jump')).toBe(true);
+      expect(text.includes('점프 구동계') || text.includes('점프')).toBe(true);
     });
 
     it('should have choice leading to tanaka_motive', () => {
@@ -222,9 +222,9 @@ describe('Marcus Cole Debt-Cleared Dialogue', () => {
     it('should reference debt or professional courtesy', () => {
       const text = MARCUS_COLE_DIALOGUE.tanaka_motive.text;
       expect(
-        text.includes('debt') ||
-          text.includes('courtesy') ||
-          text.includes('paid')
+        text.includes('빚') ||
+          text.includes('예우') ||
+          text.includes('갚았')
       ).toBe(true);
     });
 
@@ -247,9 +247,9 @@ describe('Marcus Cole Debt-Cleared Dialogue', () => {
     it('should reference reliability or demonstrated value', () => {
       const text = MARCUS_COLE_DIALOGUE.future_business.text;
       expect(
-        text.includes('reliab') ||
-          text.includes('value') ||
-          text.includes('demonstrated')
+        text.includes('믿을 만') ||
+          text.includes('가치') ||
+          text.includes('보여 줬')
       ).toBe(true);
     });
 

@@ -18,14 +18,14 @@ describe('TradingSystem static validators', () => {
 
     it('returns invalid with reason when totalCost exceeds credits', () => {
       const result = TradingSystem.validatePurchase(400, 10, 5, 100);
-      expect(result).toEqual({ valid: false, reason: 'Insufficient credits' });
+      expect(result).toEqual({ valid: false, reason: '크레딧이 부족합니다' });
     });
 
     it('returns invalid with reason when quantity exceeds cargo space', () => {
       const result = TradingSystem.validatePurchase(10000, 3, 5, 100);
       expect(result).toEqual({
         valid: false,
-        reason: 'Not enough cargo space',
+        reason: '화물 공간이 부족합니다',
       });
     });
 
@@ -69,7 +69,7 @@ describe('TradingSystem static validators', () => {
       const result = TradingSystem.validateSale(cargo, 0, 5);
       expect(result).toEqual({
         valid: false,
-        reason: 'Not enough quantity in stack',
+        reason: '묶음 내 수량이 부족합니다',
       });
     });
 

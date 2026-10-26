@@ -55,19 +55,19 @@ describe('ShipStatusPanel Property Tests', () => {
         // Verify condition section
         const conditionSection = Array.from(
           panel.querySelectorAll('.ship-status-section')
-        ).find((section) => section.textContent.includes('Condition'));
+        ).find((section) => section.textContent.includes('상태'));
         expect(conditionSection).toBeTruthy();
 
         // Verify upgrades section
         const upgradesSection = Array.from(
           panel.querySelectorAll('.ship-status-section')
-        ).find((section) => section.textContent.includes('Upgrades'));
+        ).find((section) => section.textContent.includes('업그레이드'));
         expect(upgradesSection).toBeTruthy();
 
         // Verify quirks section
         const quirksSection = Array.from(
           panel.querySelectorAll('.ship-status-section')
-        ).find((section) => section.textContent.includes('Ship Quirks'));
+        ).find((section) => section.textContent.includes('함선 특성'));
         expect(quirksSection).toBeTruthy();
       }),
       { numRuns: 100 }
@@ -93,7 +93,7 @@ describe('ShipStatusPanel Property Tests', () => {
         // Verify ship name is displayed in header
         const header = container.querySelector('h2');
         expect(header.textContent).toContain(shipName);
-        expect(header.textContent).toContain('SHIP STATUS');
+        expect(header.textContent).toContain('함선 상태');
       }),
       { numRuns: 100 }
     );
@@ -132,9 +132,9 @@ describe('ShipStatusPanel Property Tests', () => {
         const labels = Array.from(
           container.querySelectorAll('.ship-status-condition-item .info-label')
         ).map((el) => el.textContent);
-        expect(labels).toContain('Hull');
-        expect(labels).toContain('Engine');
-        expect(labels).toContain('Life Support');
+        expect(labels).toContain('선체');
+        expect(labels).toContain('엔진');
+        expect(labels).toContain('생명 유지');
       }),
       { numRuns: 100 }
     );
@@ -159,11 +159,11 @@ describe('ShipStatusPanel Property Tests', () => {
         // Find quirks section
         const quirksSection = Array.from(
           container.querySelectorAll('.ship-status-section')
-        ).find((section) => section.textContent.includes('Ship Quirks'));
+        ).find((section) => section.textContent.includes('함선 특성'));
 
         if (ship.quirks.length === 0) {
           // Should show empty message
-          expect(quirksSection.textContent).toContain('No quirks');
+          expect(quirksSection.textContent).toContain('특성 없음');
         } else {
           // Should display each quirk
           const quirkItems = quirksSection.querySelectorAll('.quirk-item');
@@ -210,12 +210,12 @@ describe('ShipStatusPanel Property Tests', () => {
         // Find upgrades section
         const upgradesSection = Array.from(
           container.querySelectorAll('.ship-status-section')
-        ).find((section) => section.textContent.includes('Upgrades'));
+        ).find((section) => section.textContent.includes('업그레이드'));
 
         if (ship.upgrades.length === 0) {
           // Should show empty message
           expect(upgradesSection.textContent).toContain(
-            'No upgrades installed'
+            '설치된 업그레이드 없음'
           );
         } else {
           // Should display each upgrade
@@ -378,7 +378,7 @@ describe('ShipStatusPanel Property Tests', () => {
         // Should only render valid quirks
         const quirksSection = Array.from(
           container.querySelectorAll('.ship-status-section')
-        ).find((section) => section.textContent.includes('Ship Quirks'));
+        ).find((section) => section.textContent.includes('함선 특성'));
 
         const quirkItems = quirksSection.querySelectorAll('.quirk-item');
         // Should have one less item than total quirks (invalid one filtered out)
@@ -412,7 +412,7 @@ describe('ShipStatusPanel Property Tests', () => {
         // Should only render valid upgrades
         const upgradesSection = Array.from(
           container.querySelectorAll('.ship-status-section')
-        ).find((section) => section.textContent.includes('Upgrades'));
+        ).find((section) => section.textContent.includes('업그레이드'));
 
         const upgradeItems = upgradesSection.querySelectorAll('.quirk-item');
         // Should have one less item than total upgrades (invalid one filtered out)
@@ -440,8 +440,8 @@ describe('ShipStatusPanel Property Tests', () => {
         // Verify initial state - no upgrades
         let upgradesSection = Array.from(
           container.querySelectorAll('.ship-status-section')
-        ).find((section) => section.textContent.includes('Upgrades'));
-        expect(upgradesSection.textContent).toContain('No upgrades installed');
+        ).find((section) => section.textContent.includes('업그레이드'));
+        expect(upgradesSection.textContent).toContain('설치된 업그레이드 없음');
 
         // Verify component subscribed to upgradesChanged event
         const subscriberCount = game.subscribers.upgradesChanged.length;

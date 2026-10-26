@@ -127,7 +127,7 @@ describe('ShipManager', () => {
     it('getQuirkDefinition returns definition for valid ID', () => {
       const def = gsm.shipManager.getQuirkDefinition('fuel_sipper');
       expect(def).not.toBeNull();
-      expect(def.name).toBe('Fuel Sipper');
+      expect(def.name).toBe('연료 홀짝이');
       expect(def.effects.fuelConsumption).toBe(0.85);
     });
 
@@ -165,13 +165,13 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.addQuirk('fuel_sipper');
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Quirk already installed');
+      expect(result.reason).toBe('이미 설치된 특성입니다');
     });
 
     it('addQuirk rejects unknown quirk', () => {
       const result = gsm.shipManager.addQuirk('totally_fake_quirk');
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Unknown quirk');
+      expect(result.reason).toBe('알 수 없는 특성');
     });
 
     it('addQuirk adds valid quirk via dynamic ID', () => {
@@ -204,7 +204,7 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.removeQuirk('fuel_sipper');
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Quirk not installed');
+      expect(result.reason).toBe('설치되지 않은 특성입니다');
     });
 
     it('removeQuirk removes installed quirk via dynamic ID', () => {
@@ -303,7 +303,7 @@ describe('ShipManager', () => {
     it('validateUpgradePurchase - unknown upgrade', () => {
       const result = gsm.shipManager.validateUpgradePurchase('warp_drive_9000');
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Unknown upgrade');
+      expect(result.reason).toBe('알 수 없는 업그레이드');
     });
 
     it('validateUpgradePurchase - already installed', () => {
@@ -312,7 +312,7 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.validateUpgradePurchase('extended_tank');
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Already installed');
+      expect(result.reason).toBe('이미 설치됨');
     });
 
     it('validateUpgradePurchase - insufficient credits', () => {
@@ -322,7 +322,7 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.validateUpgradePurchase('extended_tank');
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Insufficient credits');
+      expect(result.reason).toBe('크레딧이 부족합니다');
     });
 
     it('validateUpgradePurchase returns invalid for unknown via dynamic ID', () => {
@@ -387,7 +387,7 @@ describe('ShipManager', () => {
     it('purchaseUpgrade returns failure for unknown upgrade', () => {
       const result = gsm.shipManager.purchaseUpgrade('fake_upgrade');
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Unknown upgrade');
+      expect(result.reason).toBe('알 수 없는 업그레이드');
     });
 
     it('purchaseUpgrade returns failure for already installed', () => {
@@ -395,7 +395,7 @@ describe('ShipManager', () => {
       gsm.state.ship.upgrades = [upgradeId];
       const result = gsm.shipManager.purchaseUpgrade(upgradeId);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Already installed');
+      expect(result.reason).toBe('이미 설치됨');
     });
 
     it('purchaseUpgrade returns failure for insufficient credits', () => {
@@ -404,7 +404,7 @@ describe('ShipManager', () => {
       gsm.state.player.credits = 0;
       const result = gsm.shipManager.purchaseUpgrade(upgradeId);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Insufficient credits');
+      expect(result.reason).toBe('크레딧이 부족합니다');
     });
 
     it('purchaseUpgrade deducts credits and installs via dynamic ID', () => {
@@ -422,7 +422,7 @@ describe('ShipManager', () => {
     it('addUpgrade returns failure for unknown upgrade', () => {
       const result = gsm.shipManager.addUpgrade('fake_upgrade');
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Unknown upgrade');
+      expect(result.reason).toBe('알 수 없는 업그레이드');
     });
 
     it('addUpgrade returns failure for already installed upgrade', () => {
@@ -430,7 +430,7 @@ describe('ShipManager', () => {
       gsm.state.ship.upgrades = [upgradeId];
       const result = gsm.shipManager.addUpgrade(upgradeId);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Upgrade already installed');
+      expect(result.reason).toBe('이미 설치된 업그레이드입니다');
     });
 
     it('addUpgrade installs upgrade and updates capabilities', () => {
@@ -445,7 +445,7 @@ describe('ShipManager', () => {
       gsm.state.ship.upgrades = [];
       const result = gsm.shipManager.removeUpgrade('fake_upgrade');
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Upgrade not installed');
+      expect(result.reason).toBe('설치되지 않은 업그레이드입니다');
     });
 
     it('removeUpgrade removes installed upgrade', () => {
@@ -560,7 +560,7 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.moveToHiddenCargo('grain', 5);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Not enough hidden cargo space');
+      expect(result.reason).toBe('숨겨진 화물 공간이 부족합니다');
     });
 
     it('moveToHiddenCargo fails if good not in cargo', () => {
@@ -571,7 +571,7 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.moveToHiddenCargo('electronics', 5);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Good not found in cargo');
+      expect(result.reason).toBe('화물에서 해당 품목을 찾을 수 없습니다');
     });
 
     it('moveToHiddenCargo fails when quantity exceeds available', () => {
@@ -586,7 +586,7 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.moveToHiddenCargo('electronics', 20);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Not enough quantity in cargo');
+      expect(result.reason).toBe('화물 수량이 부족합니다');
     });
 
     it('moveToHiddenCargo fails when hidden cargo is full', () => {
@@ -606,7 +606,7 @@ describe('ShipManager', () => {
       ];
       const result = gsm.shipManager.moveToHiddenCargo('electronics', 1);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Not enough hidden cargo space');
+      expect(result.reason).toBe('숨겨진 화물 공간이 부족합니다');
     });
 
     it('moveToHiddenCargo moves cargo to hidden compartment', () => {
@@ -703,7 +703,7 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.moveToRegularCargo('ore', 3);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Not enough regular cargo space');
+      expect(result.reason).toBe('일반 화물 공간이 부족합니다');
     });
 
     it('moveToRegularCargo fails when good not found in hidden cargo', () => {
@@ -714,7 +714,7 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.moveToRegularCargo('grain', 5);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Good not found in hidden cargo');
+      expect(result.reason).toBe('숨겨진 화물에서 해당 품목을 찾을 수 없습니다');
     });
 
     it('moveToRegularCargo fails when quantity exceeds available', () => {
@@ -725,7 +725,7 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.moveToRegularCargo('electronics', 20);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Not enough quantity in hidden cargo');
+      expect(result.reason).toBe('숨겨진 화물 수량이 부족합니다');
     });
 
     it('moveToRegularCargo moves cargo from hidden to regular', () => {
@@ -825,7 +825,7 @@ describe('ShipManager', () => {
 
       const result = gsm.shipManager.removeCargoForMission('grain', 50);
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('Not enough');
+      expect(result.reason).toContain('곡물이 부족합니다.');
     });
 
     it('removes cargo across multiple stacks', () => {

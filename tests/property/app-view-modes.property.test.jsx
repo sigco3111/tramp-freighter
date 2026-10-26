@@ -119,15 +119,15 @@ describe('Property: ORBIT mode displays starmap and HUD', () => {
         const { container } = render(<App />, { wrapper });
 
         // Start a new game from title screen
-        const newGameButton = screen.getByText('New Game');
+        const newGameButton = screen.getByText('새 게임');
         fireEvent.click(newGameButton);
 
         // Submit ship name (uses default if empty)
-        const confirmButton = screen.getByText('Confirm');
+        const confirmButton = screen.getByText('확인');
         fireEvent.click(confirmButton);
 
         // Dismiss the auto-shown instructions modal
-        const closeModal = screen.getByLabelText('Close modal');
+        const closeModal = screen.getByLabelText('창 닫기');
         fireEvent.click(closeModal);
 
         // Now we should be in ORBIT mode
@@ -178,19 +178,19 @@ describe('Property: STATION mode displays station menu', () => {
         const { container } = render(<App />, { wrapper });
 
         // Start a new game from title screen
-        const newGameButton = screen.getByText('New Game');
+        const newGameButton = screen.getByText('새 게임');
         fireEvent.click(newGameButton);
 
         // Submit ship name (uses default if empty)
-        const confirmButton = screen.getByText('Confirm');
+        const confirmButton = screen.getByText('확인');
         fireEvent.click(confirmButton);
 
         // Dismiss the auto-shown instructions modal
-        const closeModal = screen.getByLabelText('Close modal');
+        const closeModal = screen.getByLabelText('창 닫기');
         fireEvent.click(closeModal);
 
         // Click dock button to transition to STATION mode
-        const dockButton = screen.getByText('Dock');
+        const dockButton = screen.getByText('도킹');
         fireEvent.click(dockButton);
 
         // Verify station menu is now present
@@ -240,23 +240,23 @@ describe('Property: Active panel displays alongside station menu', () => {
         const { container } = render(<App />, { wrapper });
 
         // Start a new game from title screen
-        const newGameButton = screen.getByText('New Game');
+        const newGameButton = screen.getByText('새 게임');
         fireEvent.click(newGameButton);
 
         // Submit ship name (uses default if empty)
-        const confirmButton = screen.getByText('Confirm');
+        const confirmButton = screen.getByText('확인');
         fireEvent.click(confirmButton);
 
         // Dismiss the auto-shown instructions modal
-        const closeModal = screen.getByLabelText('Close modal');
+        const closeModal = screen.getByLabelText('창 닫기');
         fireEvent.click(closeModal);
 
         // Click dock button to transition to STATION mode
-        const dockButton = screen.getByText('Dock');
+        const dockButton = screen.getByText('도킹');
         fireEvent.click(dockButton);
 
         // Click open panel button
-        const openPanelButton = screen.getByText('Trade');
+        const openPanelButton = screen.getByText('거래');
         fireEvent.click(openPanelButton);
 
         // Verify panel container is now present
@@ -264,7 +264,7 @@ describe('Property: Active panel displays alongside station menu', () => {
         expect(panelContainer).toBeTruthy();
 
         // Verify panel displays the trade panel (check for trade-specific content)
-        expect(panelContainer.textContent).toContain('Trade -');
+        expect(panelContainer.textContent).toContain('거래 -');
 
         // Verify starmap and HUD are still present
         const starmapContainer = container.querySelector('.starmap-container');
@@ -309,15 +309,15 @@ describe('Property: View mode changes update visibility', () => {
         const { container } = render(<App />, { wrapper });
 
         // Start a new game from title screen
-        const newGameButton = screen.getByText('New Game');
+        const newGameButton = screen.getByText('새 게임');
         fireEvent.click(newGameButton);
 
         // Submit ship name (uses default if empty)
-        const confirmButton = screen.getByText('Confirm');
+        const confirmButton = screen.getByText('확인');
         fireEvent.click(confirmButton);
 
         // Dismiss the auto-shown instructions modal
-        const closeModal = screen.getByLabelText('Close modal');
+        const closeModal = screen.getByLabelText('창 닫기');
         fireEvent.click(closeModal);
 
         // Initial state: ORBIT mode
@@ -327,7 +327,7 @@ describe('Property: View mode changes update visibility', () => {
         expect(panelContainer).toBeFalsy();
 
         // Transition to STATION mode
-        const dockButton = screen.getByText('Dock');
+        const dockButton = screen.getByText('도킹');
         fireEvent.click(dockButton);
 
         stationMenu = container.querySelector('#station-interface');
@@ -336,7 +336,7 @@ describe('Property: View mode changes update visibility', () => {
         expect(panelContainer).toBeFalsy();
 
         // Open a panel — station menu stays visible alongside it
-        const openPanelButton = screen.getByText('Trade');
+        const openPanelButton = screen.getByText('거래');
         fireEvent.click(openPanelButton);
 
         stationMenu = container.querySelector('#station-interface');

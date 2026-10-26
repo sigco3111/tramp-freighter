@@ -75,8 +75,8 @@ describe('RepairManager free repair', () => {
 
       const result = gsm.repairManager.canGetFreeRepair(TEST_NPC_ID);
 
-      expect(result.reason).toContain('Friendly');
-      expect(result.reason).toContain('Requires Trusted');
+      expect(result.reason).toContain('우호');
+      expect(result.reason).toContain('신뢰하는 관계가 필요합니다');
     });
 
     it('returns available=false when lastFreeRepairDay equals current day', () => {
@@ -87,7 +87,7 @@ describe('RepairManager free repair', () => {
       const result = gsm.repairManager.canGetFreeRepair(TEST_NPC_ID);
 
       expect(result.available).toBe(false);
-      expect(result.reason).toBe('Free repair already used once per visit');
+      expect(result.reason).toBe('무료 수리는 방문당 한 번만 가능합니다');
     });
 
     it('returns available=true when lastFreeRepairDay is null', () => {
@@ -150,7 +150,7 @@ describe('RepairManager free repair', () => {
 
       expect(result.success).toBe(false);
       expect(result.repairedPercent).toBe(0);
-      expect(result.message).toContain('Requires Trusted');
+      expect(result.message).toContain('신뢰하는 관계가 필요합니다');
     });
 
     it('caps repair at actual hull damage when damage < maxHullPercent', () => {
@@ -175,7 +175,7 @@ describe('RepairManager free repair', () => {
       const result = gsm.repairManager.applyFreeRepair(TEST_NPC_ID, -5);
 
       expect(result.success).toBe(false);
-      expect(result.message).toBe('Invalid hull damage percentage');
+      expect(result.message).toBe('잘못된 선체 손상 비율입니다');
     });
 
     it('returns failure for hullDamagePercent > 100', () => {
@@ -184,7 +184,7 @@ describe('RepairManager free repair', () => {
       const result = gsm.repairManager.applyFreeRepair(TEST_NPC_ID, 101);
 
       expect(result.success).toBe(false);
-      expect(result.message).toBe('Invalid hull damage percentage');
+      expect(result.message).toBe('잘못된 선체 손상 비율입니다');
     });
 
     it('returns failure for non-number hullDamagePercent', () => {
@@ -193,7 +193,7 @@ describe('RepairManager free repair', () => {
       const result = gsm.repairManager.applyFreeRepair(TEST_NPC_ID, 'ten');
 
       expect(result.success).toBe(false);
-      expect(result.message).toBe('Invalid hull damage percentage');
+      expect(result.message).toBe('잘못된 선체 손상 비율입니다');
     });
 
     it('sets lastFreeRepairDay to current day after successful repair', () => {

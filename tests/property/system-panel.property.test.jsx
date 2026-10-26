@@ -38,15 +38,15 @@ describe('Property: System Panel', () => {
       expect(screen.getByText(currentSystem.name)).toBeInTheDocument();
 
       // Should display system properties
-      expect(screen.getByText(/Spectral Class:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Wormholes:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Status:/i)).toBeInTheDocument();
+      expect(screen.getByText(/분광형:/)).toBeInTheDocument();
+      expect(screen.getByText(/웜홀:/)).toBeInTheDocument();
+      expect(screen.getByText(/상태:/)).toBeInTheDocument();
 
       // Should NOT display jump information
-      expect(screen.queryByText(/Distance:/i)).not.toBeInTheDocument();
-      expect(screen.queryByText(/Fuel Cost:/i)).not.toBeInTheDocument();
-      expect(screen.queryByText(/Jump Time:/i)).not.toBeInTheDocument();
-      expect(screen.queryByText(/Jump to System/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/점프 거리:/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/연료 비용:/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/점프 시간:/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/항성계로 점프/)).not.toBeInTheDocument();
     });
 
     it('should display connected systems list', () => {
@@ -185,12 +185,12 @@ describe('Property: System Panel', () => {
       expect(screen.getByText(targetSystem.name)).toBeInTheDocument();
 
       // Should display jump information
-      expect(screen.getByText(/Distance:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Fuel Cost:/i)).toBeInTheDocument();
-      expect(screen.getByText(/Jump Time:/i)).toBeInTheDocument();
+      expect(screen.getByText(/점프 거리:/)).toBeInTheDocument();
+      expect(screen.getByText(/연료 비용:/)).toBeInTheDocument();
+      expect(screen.getByText(/점프 시간:/)).toBeInTheDocument();
 
       // Should display jump button
-      expect(screen.getByText(/Jump to System/i)).toBeInTheDocument();
+      expect(screen.getByText(/항성계로 점프/)).toBeInTheDocument();
 
       // Should NOT display connected systems list
       expect(screen.queryByText(/Dock at Station/i)).not.toBeInTheDocument();
@@ -221,11 +221,11 @@ describe('Property: System Panel', () => {
         </GameProvider>
       );
 
-      const jumpButton = screen.getByText(/Jump to System/i);
+      const jumpButton = screen.getByText(/항성계로 점프/);
       expect(jumpButton).toBeDisabled();
 
       // Should show error message
-      expect(screen.getByText(/Insufficient fuel/i)).toBeInTheDocument();
+      expect(screen.getByText(/연료가 부족/)).toBeInTheDocument();
     });
 
     it('should disable jump button when no wormhole connection exists', () => {
@@ -256,11 +256,11 @@ describe('Property: System Panel', () => {
         </GameProvider>
       );
 
-      const jumpButton = screen.getByText(/Jump to System/i);
+      const jumpButton = screen.getByText(/항성계로 점프/);
       expect(jumpButton).toBeDisabled();
 
       // Should show error message
-      expect(screen.getByText(/No wormhole connection/i)).toBeInTheDocument();
+      expect(screen.getByText(/웜홀 연결이 없습니다/)).toBeInTheDocument();
     });
 
     it('should call onClose and onJumpStart when jump button is clicked', async () => {
@@ -299,7 +299,7 @@ describe('Property: System Panel', () => {
         </GameProvider>
       );
 
-      const jumpButton = screen.getByText(/Jump to System/i);
+      const jumpButton = screen.getByText(/항성계로 점프/);
       fireEvent.click(jumpButton);
 
       // Should call onClose and onJumpStart immediately
@@ -355,11 +355,11 @@ describe('Property: System Panel', () => {
 
       // Check that displayed values match calculated values
       // Look for jump distance specifically (not distance from Sol)
-      expect(screen.getByText('Jump Distance:')).toBeInTheDocument();
+      expect(screen.getByText('점프 거리:')).toBeInTheDocument();
       const jumpDistanceElement =
-        screen.getByText('Jump Distance:').parentElement;
+        screen.getByText('점프 거리:').parentElement;
       expect(jumpDistanceElement).toHaveTextContent(
-        `${validation.distance.toFixed(1)} LY`
+        `${validation.distance.toFixed(1)} 광년`
       );
 
       expect(
@@ -368,7 +368,7 @@ describe('Property: System Panel', () => {
       expect(
         screen.getByText(
           new RegExp(
-            `${validation.jumpTime} day${validation.jumpTime !== 1 ? 's' : ''}`
+            `${validation.jumpTime} 일`
           )
         )
       ).toBeInTheDocument();

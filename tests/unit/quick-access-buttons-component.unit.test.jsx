@@ -38,8 +38,8 @@ describe('QuickAccessButtons Component', () => {
     );
 
     const buttons = screen.getAllByRole('button');
-    expect(buttons[0].textContent).toBe('Dock');
-    expect(buttons[1].textContent).toBe('System Info');
+    expect(buttons[0].textContent).toBe('도킹');
+    expect(buttons[1].textContent).toBe('항성계 정보');
   });
 
   it('should render System Info and Dock buttons', () => {
@@ -49,8 +49,8 @@ describe('QuickAccessButtons Component', () => {
       </GameProvider>
     );
 
-    expect(screen.getByText('System Info')).toBeInTheDocument();
-    expect(screen.getByText('Dock')).toBeInTheDocument();
+    expect(screen.getByText('항성계 정보')).toBeInTheDocument();
+    expect(screen.getByText('도킹')).toBeInTheDocument();
   });
 
   it('should enable System Info button when game is active', () => {
@@ -60,7 +60,7 @@ describe('QuickAccessButtons Component', () => {
       </GameProvider>
     );
 
-    const systemInfoBtn = screen.getByText('System Info');
+    const systemInfoBtn = screen.getByText('항성계 정보');
     expect(systemInfoBtn.disabled).toBe(false);
   });
 
@@ -75,7 +75,7 @@ describe('QuickAccessButtons Component', () => {
       </GameProvider>
     );
 
-    const dockBtn = screen.getByText('Dock');
+    const dockBtn = screen.getByText('도킹');
     expect(dockBtn.disabled).toBe(false);
   });
 
@@ -92,7 +92,7 @@ describe('QuickAccessButtons Component', () => {
         </GameProvider>
       );
 
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
       expect(dockBtn.disabled).toBe(true);
     }
   });
@@ -106,7 +106,7 @@ describe('QuickAccessButtons Component', () => {
       </GameProvider>
     );
 
-    const systemInfoBtn = screen.getByText('System Info');
+    const systemInfoBtn = screen.getByText('항성계 정보');
     fireEvent.click(systemInfoBtn);
 
     expect(onSystemInfo).toHaveBeenCalledTimes(1);
@@ -123,7 +123,7 @@ describe('QuickAccessButtons Component', () => {
       </GameProvider>
     );
 
-    const dockBtn = screen.getByText('Dock');
+    const dockBtn = screen.getByText('도킹');
     fireEvent.click(dockBtn);
 
     expect(onDock).toHaveBeenCalledTimes(1);
@@ -142,7 +142,7 @@ describe('QuickAccessButtons Component', () => {
         </GameProvider>
       );
 
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
       fireEvent.click(dockBtn);
 
       // onDock should not be called because button is disabled
@@ -170,7 +170,7 @@ describe('QuickAccessButtons Component', () => {
       </GameProvider>
     );
 
-    const dockBtn = screen.getByText('Dock');
+    const dockBtn = screen.getByText('도킹');
     expect(dockBtn.disabled).toBe(false);
 
     // Move to system without station
@@ -197,8 +197,8 @@ describe('QuickAccessButtons Component', () => {
       </GameProvider>
     );
 
-    const systemInfoBtn = screen.getByText('System Info');
-    const dockBtn = screen.getByText('Dock');
+    const systemInfoBtn = screen.getByText('항성계 정보');
+    const dockBtn = screen.getByText('도킹');
 
     // Should not throw when clicking without callbacks
     expect(() => {

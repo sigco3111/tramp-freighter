@@ -78,7 +78,7 @@ describe('Dialogue Tree Structure', () => {
 
     it('should have backstory choice with condition function requiring rep >= 30', () => {
       const backstoryChoice = WEI_CHEN_DIALOGUE.greeting.choices.find(
-        (choice) => choice.text === 'Tell me about yourself.'
+        (choice) => choice.text === '당신에 대해 알려 주세요.'
       );
 
       expect(backstoryChoice).toBeDefined();
@@ -183,7 +183,7 @@ describe('Dialogue Tree Structure', () => {
     it('should have business choice with reputation condition', () => {
       const businessChoice = MARCUS_COLE_DIALOGUE.greeting.choices.find(
         (choice) =>
-          choice.text === 'I wanted to discuss business opportunities.'
+          choice.text === '사업 기회에 대해 이야기하고 싶었어요.'
       );
 
       expect(businessChoice).toBeDefined();
@@ -267,7 +267,7 @@ describe('Dialogue Tree Structure', () => {
 
     it('should have help choice with reputation condition', () => {
       const helpChoice = FATHER_OKONKWO_DIALOGUE.greeting.choices.find(
-        (choice) => choice.text === 'I could use some help.'
+        (choice) => choice.text === '도움이 좀 필요해요.'
       );
 
       expect(helpChoice).toBeDefined();
@@ -383,7 +383,7 @@ describe('Dialogue Tree Structure', () => {
 
     it('should have tip choice with reputation condition', () => {
       const tipChoice = WHISPER_DIALOGUE.greeting.choices.find(
-        (choice) => choice.text === 'Any trading tips for me?'
+        (choice) => choice.text === '거래 요령이 있나요?'
       );
 
       expect(tipChoice).toBeDefined();
@@ -409,7 +409,7 @@ describe('Dialogue Tree Structure', () => {
 
     it('should have loan choice with reputation condition', () => {
       const loanChoice = WHISPER_DIALOGUE.greeting.choices.find(
-        (choice) => choice.text === 'I need an emergency loan.'
+        (choice) => choice.text === '긴급 대출이 필요해요.'
       );
 
       expect(loanChoice).toBeDefined();
@@ -435,7 +435,7 @@ describe('Dialogue Tree Structure', () => {
 
     it('should have storage choice with reputation condition', () => {
       const storageChoice = WHISPER_DIALOGUE.greeting.choices.find(
-        (choice) => choice.text === 'Can you store some cargo for me?'
+        (choice) => choice.text === '화물을 좀 맡아 줄 수 있나요?'
       );
 
       expect(storageChoice).toBeDefined();
@@ -472,22 +472,22 @@ describe('Dialogue Tree Structure', () => {
 
       // Test specific greeting text from requirements
       expect(greetingText(REPUTATION_BOUNDS.NEUTRAL_MIN)).toBe(
-        'Welcome. I deal in information. What do you need?'
+        '어서 오세요. 저는 정보를 거래합니다. 무엇이 필요하십니까?'
       );
       expect(greetingText(REPUTATION_BOUNDS.WARM_MIN)).toBe(
-        'Ah, a familiar face. Looking for intel?'
+        '아, 낯익은 얼굴이군요. 정보를 찾으십니까?'
       );
       expect(greetingText(REPUTATION_BOUNDS.FRIENDLY_MIN)).toBe(
-        'Good to see you. I have something interesting.'
+        '반갑습니다. 흥미로운 게 있습니다.'
       );
       expect(greetingText(REPUTATION_BOUNDS.TRUSTED_MIN)).toBe(
-        "I've been expecting you. We need to talk."
+        '기다리고 있었습니다. 얘기를 좀 해야겠군요.'
       );
       expect(greetingText(REPUTATION_BOUNDS.COLD_MIN)).toBe(
-        'Information costs credits.'
+        '정보에는 크레딧이 듭니다.'
       );
       expect(greetingText(REPUTATION_BOUNDS.MIN)).toBe(
-        'Information costs credits.'
+        '정보에는 크레딧이 듭니다.'
       );
     });
 
@@ -659,7 +659,7 @@ describe('Dialogue Tree Structure', () => {
       expect(friendlyBackstory).not.toBe(trustedBackstory);
 
       // Trusted level should mention Pavonis
-      expect(trustedBackstory.toLowerCase()).toContain('pavonis');
+      expect(trustedBackstory.toLowerCase()).toContain('파보니스');
     });
 
     it('should have story flags in dialogue nodes', () => {
@@ -714,11 +714,11 @@ describe('Dialogue Tree Structure', () => {
       expect(trustedGreeting).not.toBe(familyGreeting);
 
       // Should reflect professional/formal tone
-      expect(neutralGreeting).toContain('documentation');
-      expect(warmGreeting).toContain('procedures');
-      expect(friendlyGreeting).toContain('professional');
-      expect(trustedGreeting).toContain('protocols');
-      expect(familyGreeting).toContain('exemplary');
+      expect(neutralGreeting).toContain('서류');
+      expect(warmGreeting).toContain('절차');
+      expect(friendlyGreeting).toContain('전문적인');
+      expect(trustedGreeting).toContain('규정');
+      expect(familyGreeting).toContain('모범적');
     });
 
     it('should have expected choice behavior in greeting', () => {
@@ -738,7 +738,7 @@ describe('Dialogue Tree Structure', () => {
 
       // Should have tip choice with reputation condition
       const tipChoice = choices.find((choice) =>
-        choice.text.includes('operational tips')
+        choice.text.includes('운영상 요령')
       );
       expect(tipChoice).toBeDefined();
       expect(tipChoice.condition).toBeDefined();
@@ -752,7 +752,7 @@ describe('Dialogue Tree Structure', () => {
 
       // Should have loan choice with Trusted tier condition
       const loanChoice = choices.find((choice) =>
-        choice.text.includes('emergency loan')
+        choice.text.includes('긴급 대출')
       );
       expect(loanChoice).toBeDefined();
       expect(loanChoice.condition).toBeDefined();
@@ -766,7 +766,7 @@ describe('Dialogue Tree Structure', () => {
 
       // Should have storage choice with Friendly tier condition
       const storageChoice = choices.find((choice) =>
-        choice.text.includes('store some cargo')
+        choice.text.includes('화물을 좀 맡아')
       );
       expect(storageChoice).toBeDefined();
       expect(storageChoice.condition).toBeDefined();
@@ -817,17 +817,17 @@ describe('Dialogue Tree Structure', () => {
     it('should reflect professional administrator personality', () => {
       // Check that dialogue reflects formal, technical vocabulary and regulation citations
       const stationOpsText = DR_SARAH_KIM_DIALOGUE.station_operations.text;
-      expect(stationOpsText).toContain('Regulation');
-      expect(stationOpsText).toContain('protocols');
-      expect(stationOpsText).toContain('procedures');
+      expect(stationOpsText).toContain('규정');
+      expect(stationOpsText).toContain('프로토콜');
+      expect(stationOpsText).toContain('절차');
 
       const proceduresText = DR_SARAH_KIM_DIALOGUE.procedures_important.text;
-      expect(proceduresText).toContain('Regulation');
-      expect(proceduresText).toContain('systematic');
+      expect(proceduresText).toContain('규정');
+      expect(proceduresText).toContain('체계적');
 
       const efficiencyText = DR_SARAH_KIM_DIALOGUE.efficiency_matters.text;
-      expect(efficiencyText).toContain('efficiency');
-      expect(efficiencyText).toContain('metrics');
+      expect(efficiencyText).toContain('효율');
+      expect(efficiencyText).toContain('지표');
     });
   });
 
@@ -846,20 +846,20 @@ describe('Dialogue Tree Structure', () => {
 
       // Test different reputation tiers
       const familyGreeting = greetingText(REPUTATION_BOUNDS.FAMILY_MIN);
-      expect(familyGreeting).toContain('partner');
-      expect(familyGreeting).toContain('family');
+      expect(familyGreeting).toContain('파트너');
+      expect(familyGreeting).toContain('식구');
 
       const trustedGreeting = greetingText(REPUTATION_BOUNDS.TRUSTED_MIN);
-      expect(trustedGreeting).toContain('hotshot');
+      expect(trustedGreeting).toContain('허세꾼');
 
       const friendlyGreeting = greetingText(REPUTATION_BOUNDS.FRIENDLY_MIN);
-      expect(friendlyGreeting).toContain('good to see you again');
+      expect(friendlyGreeting).toContain('다시 봐서 반가워');
 
       const warmGreeting = greetingText(REPUTATION_BOUNDS.WARM_MIN);
-      expect(warmGreeting).toContain('action');
+      expect(warmGreeting).toContain('한 판');
 
       const neutralGreeting = greetingText(REPUTATION_BOUNDS.NEUTRAL_MIN);
-      expect(neutralGreeting).toContain('trader');
+      expect(neutralGreeting).toContain('상인');
     });
 
     it('should have expected choice behavior in greeting', () => {
@@ -879,7 +879,7 @@ describe('Dialogue Tree Structure', () => {
 
       // Check for tip choice with reputation condition
       const tipChoice = choices.find((choice) =>
-        choice.text.includes('market tips')
+        choice.text.includes('시장 팁')
       );
       expect(tipChoice).toBeDefined();
       expect(tipChoice.condition).toBeDefined();
@@ -893,7 +893,7 @@ describe('Dialogue Tree Structure', () => {
 
       // Check for loan choice with reputation condition
       const loanChoice = choices.find((choice) =>
-        choice.text.includes('emergency loan')
+        choice.text.includes('긴급 대출')
       );
       expect(loanChoice).toBeDefined();
       expect(loanChoice.condition).toBeDefined();
@@ -907,7 +907,7 @@ describe('Dialogue Tree Structure', () => {
 
       // Check for storage choice with reputation condition
       const storageChoice = choices.find((choice) =>
-        choice.text.includes('store some cargo')
+        choice.text.includes('화물을 좀 맡아')
       );
       expect(storageChoice).toBeDefined();
       expect(storageChoice.condition).toBeDefined();
@@ -959,19 +959,19 @@ describe('Dialogue Tree Structure', () => {
     it('should reflect trader personality with casual speech and trading jargon', () => {
       // Check that dialogue reflects casual greeting style and trading jargon
       const tradingText = ZARA_OSMAN_DIALOGUE.trading_business.text;
-      expect(tradingText).toContain('flow');
-      expect(tradingText).toContain('Markets');
-      expect(tradingText).toContain('patterns');
+      expect(tradingText).toContain('흐름');
+      expect(tradingText).toContain('시장');
+      expect(tradingText).toContain('패턴');
 
       const marketText = ZARA_OSMAN_DIALOGUE.market_knowledge.text;
-      expect(marketText).toContain('connections');
-      expect(marketText).toContain('intel');
-      expect(marketText).toContain('profit');
+      expect(marketText).toContain('인맥');
+      expect(marketText).toContain('정보');
+      expect(marketText).toContain('이윤');
 
       const competitionText = ZARA_OSMAN_DIALOGUE.competition_talk.text;
-      expect(competitionText).toContain('sharp');
-      expect(competitionText).toContain('credits');
-      expect(competitionText).toContain('bottom line');
+      expect(competitionText).toContain('날카롭게');
+      expect(competitionText).toContain('돈');
+      expect(competitionText).toContain('수익');
     });
   });
 
@@ -1220,24 +1220,24 @@ describe('Dialogue Tree Structure', () => {
     it('should have appropriate reputation changes for dialogue choices', () => {
       // Wei Chen small_talk choices
       const boringChoice = WEI_CHEN_DIALOGUE.small_talk.choices.find(
-        (choice) => choice.text === 'Sounds boring.'
+        (choice) => choice.text === '지루하게 들리네요.'
       );
       expect(boringChoice.repGain).toBe(-2);
 
       const honestWorkChoice = WEI_CHEN_DIALOGUE.small_talk.choices.find(
-        (choice) => choice.text === 'Honest work is good work.'
+        (choice) => choice.text === '정직한 일은 좋은 일이죠.'
       );
       expect(honestWorkChoice.repGain).toBe(3);
 
       // Marcus Cole debt_talk choices
       const defiantChoice = MARCUS_COLE_DIALOGUE.debt_talk.choices.find(
-        (choice) => choice.text === "I'll pay when I can. Don't threaten me."
+        (choice) => choice.text === "가능할 때 갚을게요. 협박하지 마세요."
       );
       expect(defiantChoice.repGain).toBe(-5);
 
       // Father Okonkwo faith_talk choices
       const agreeChoice = FATHER_OKONKWO_DIALOGUE.faith_talk.choices.find(
-        (choice) => choice.text === "That's a beautiful way to put it."
+        (choice) => choice.text === "아름다운 표현이네요."
       );
       expect(agreeChoice.repGain).toBe(3);
     });

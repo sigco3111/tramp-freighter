@@ -35,7 +35,7 @@ describe('Epilogue generation', () => {
     };
     const sections = generateEpilogue(state);
     const rep = sections.find((s) => s.id === 'reputation');
-    expect(rep.text).toContain('remember you');
+    expect(rep.text).toContain('기억한다');
   });
 
   it('selects fallback reputation for neutral karma', () => {

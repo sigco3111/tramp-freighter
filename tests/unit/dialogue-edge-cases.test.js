@@ -35,7 +35,7 @@ describe('Dialogue Engine Edge Cases', () => {
         (choice) => choice.next === null
       );
       expect(endingChoice).toBeDefined();
-      expect(endingChoice.text).toBe('Nothing right now. Take care.');
+      expect(endingChoice.text).toBe('지금은 없어요. 몸 조심하세요.');
 
       // Select the ending choice
       const result = selectChoice(npcId, endingChoice.index, game);
@@ -86,7 +86,7 @@ describe('Dialogue Engine Edge Cases', () => {
 
       // Should display greeting content
       expect(dialogue.text).toBe(
-        'Another trader. Docking fees paid? Good. What you need?'
+        '또 한 명의 상인이네. 도킹 요금은 냈지? 좋아. 뭐가 필요해?'
       );
       expect(dialogue.choices.length).toBeGreaterThan(0);
     });
@@ -103,7 +103,7 @@ describe('Dialogue Engine Edge Cases', () => {
 
       // Should display greeting content
       expect(dialogue.text).toBe(
-        'Another trader. Docking fees paid? Good. What you need?'
+        '또 한 명의 상인이네. 도킹 요금은 냈지? 좋아. 뭐가 필요해?'
       );
       expect(dialogue.choices.length).toBeGreaterThan(0);
     });
@@ -139,7 +139,7 @@ describe('Dialogue Engine Edge Cases', () => {
 
       // Should show neutral greeting (rep 0 is in neutral range)
       expect(dialogue.text).toBe(
-        'Another trader. Docking fees paid? Good. What you need?'
+        '또 한 명의 상인이네. 도킹 요금은 냈지? 좋아. 뭐가 필요해?'
       );
       expect(dialogue.reputationTier.name).toBe('Neutral');
     });
@@ -154,7 +154,7 @@ describe('Dialogue Engine Edge Cases', () => {
 
       // Should show cold greeting (rep -20 is in cold range)
       expect(dialogue.text).toBe(
-        'Your debt remains outstanding. I trust you have good news for me.'
+        '자네 부채는 여전히 남아 있네. 좋은 소식을 가져왔길 바라네.'
       );
       expect(dialogue.reputationTier.name).toBe('Cold');
     });
@@ -169,7 +169,7 @@ describe('Dialogue Engine Edge Cases', () => {
 
       // Should show warm greeting (rep 10 is in warm range)
       expect(dialogue.text).toBe(
-        "Welcome back, child. It does my heart good to see you safe. The void between stars can be lonely - you're always welcome here."
+        '어서 오세요, 아이여. 무사한 모습을 보니 마음이 놓이는군요. 별 사이의 공허는 외로울 수 있지요. 이곳은 언제나 환영합니다.'
       );
       expect(dialogue.reputationTier.name).toBe('Warm');
     });
@@ -192,7 +192,7 @@ describe('Dialogue Engine Edge Cases', () => {
       const updatedDialogue = showDialogue(npcId, 'greeting', game);
       expect(updatedDialogue.reputationTier.name).toBe('Friendly');
       expect(updatedDialogue.text).toBe(
-        'Hey there, friend! Good to see you again. Ship treating you well?'
+        '여, 친구! 다시 보니 반갑네. 배는 잘 버텨 주고 있어?'
       );
     });
   });
@@ -258,8 +258,8 @@ describe('Dialogue Engine Edge Cases', () => {
 
       // Verify NPC information is correct
       expect(dialogue.npcId).toBe('chen_barnards');
-      expect(dialogue.npcName).toBe('Wei Chen');
-      expect(dialogue.npcRole).toBe('Dock Worker');
+      expect(dialogue.npcName).toBe('웨이 첸');
+      expect(dialogue.npcRole).toBe('부두 일꾼');
       expect(dialogue.npcStation).toBe('Bore Station 7');
       expect(dialogue.reputationTier.name).toBe('Warm');
 
@@ -271,8 +271,8 @@ describe('Dialogue Engine Edge Cases', () => {
 
       // NPC information should remain consistent
       expect(nextDialogue.npcId).toBe('chen_barnards');
-      expect(nextDialogue.npcName).toBe('Wei Chen');
-      expect(nextDialogue.npcRole).toBe('Dock Worker');
+      expect(nextDialogue.npcName).toBe('웨이 첸');
+      expect(nextDialogue.npcRole).toBe('부두 일꾼');
       expect(nextDialogue.npcStation).toBe('Bore Station 7');
     });
 

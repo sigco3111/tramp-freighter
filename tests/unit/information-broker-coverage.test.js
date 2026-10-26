@@ -66,7 +66,7 @@ describe('InformationBroker coverage', () => {
     it('returns invalid when credits are insufficient', () => {
       const result = InformationBroker.validatePurchase(100, 50);
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Insufficient credits for intelligence');
+      expect(result.reason).toBe('정보를 사기엔 크레딧이 부족합니다');
     });
   });
 
@@ -82,7 +82,7 @@ describe('InformationBroker coverage', () => {
         starData
       );
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Insufficient credits for intelligence');
+      expect(result.reason).toBe('정보를 사기엔 크레딧이 부족합니다');
     });
 
     it('returns failure for unknown system', () => {
@@ -179,7 +179,7 @@ describe('InformationBroker coverage', () => {
         const rumor = InformationBroker.generateRumor(gameState, starData);
         if (
           rumor.includes('Alpha Centauri') &&
-          rumor.includes('labor troubles')
+          rumor.includes('노동 분쟁')
         ) {
           foundEventRumor = true;
           break;
@@ -200,7 +200,7 @@ describe('InformationBroker coverage', () => {
       };
       const rumor = InformationBroker.generateRumor(gameState, starData);
       expect(rumor).toMatch(
-        /prices are pretty good|markets are always changing/
+        /가격이 꽤 좋다|시장은 늘 변합니다/
       );
     });
 
@@ -227,7 +227,7 @@ describe('InformationBroker coverage', () => {
           starData,
           count
         );
-        if (rumor.includes('Tanaka')) {
+        if (rumor.includes('타나카')) {
           foundTanakaRumor = true;
           break;
         }
@@ -257,7 +257,7 @@ describe('InformationBroker coverage', () => {
           starData,
           count
         );
-        expect(rumor).not.toContain('Tanaka');
+        expect(rumor).not.toContain('타나카');
       }
     });
 
@@ -277,16 +277,16 @@ describe('InformationBroker coverage', () => {
           starData,
           count
         );
-        expect(rumor).not.toContain('Tanaka');
+        expect(rumor).not.toContain('타나카');
       }
     });
 
     it('handles event descriptions for all event types', () => {
       const eventTypes = ['mining_strike', 'medical_emergency', 'festival'];
       const expectedDescriptions = [
-        'labor troubles',
-        'a health crisis',
-        'celebrations',
+        '노동 분쟁',
+        '보건 위기',
+        '축제',
       ];
 
       for (let i = 0; i < eventTypes.length; i++) {
@@ -328,7 +328,7 @@ describe('InformationBroker coverage', () => {
           },
         };
         const rumor = InformationBroker.generateRumor(gameState, starData);
-        if (rumor.includes('unusual market conditions')) {
+        if (rumor.includes('이례적인 시장 상황')) {
           found = true;
           break;
         }
@@ -432,7 +432,7 @@ describe('InformationBroker coverage', () => {
         true
       );
       expect(result[0].event).toEqual({
-        name: 'Mining Strike',
+        name: '광산 파업',
         commodities: ['ore', 'tritium'],
         modifiers: { ore: 1.5, tritium: 1.3 },
       });

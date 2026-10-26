@@ -196,7 +196,7 @@ describe('Complete Game Flow Integration Tests (React)', () => {
       const jumpResult = await navigationSystem.executeJump(game, 50);
 
       expect(jumpResult.success).toBe(false);
-      expect(jumpResult.error).toContain('No wormhole connection');
+      expect(jumpResult.error).toContain('웜홀 연결이 없습니다');
 
       // Verify state unchanged
       expect(game.state.player.currentSystem).toBe(0);
@@ -214,7 +214,7 @@ describe('Complete Game Flow Integration Tests (React)', () => {
       const jumpResult = await navigationSystem.executeJump(game, 1);
 
       expect(jumpResult.success).toBe(false);
-      expect(jumpResult.error).toContain('Insufficient fuel');
+      expect(jumpResult.error).toContain('연료가 부족합니다');
 
       // Verify state unchanged
       expect(game.state.player.currentSystem).toBe(0);
@@ -243,7 +243,7 @@ describe('Complete Game Flow Integration Tests (React)', () => {
       const buyResult = game.buyGood('tritium', 10, tritiumPrice);
 
       expect(buyResult.success).toBe(false);
-      expect(buyResult.reason).toContain('Insufficient credits');
+      expect(buyResult.reason).toContain('크레딧이 부족합니다');
 
       // Verify state unchanged
       expect(game.state.player.credits).toBe(10);
@@ -273,7 +273,7 @@ describe('Complete Game Flow Integration Tests (React)', () => {
       const buyResult = game.buyGood('grain', 1, grainPrice);
 
       expect(buyResult.success).toBe(false);
-      expect(buyResult.reason).toContain('Not enough cargo space');
+      expect(buyResult.reason).toContain('화물 공간이 부족합니다');
 
       // Verify cargo at capacity
       const cargoUsed = game.getCargoUsed();
@@ -293,7 +293,7 @@ describe('Complete Game Flow Integration Tests (React)', () => {
       const refuelResult = game.refuel(50);
 
       expect(refuelResult.success).toBe(false);
-      expect(refuelResult.reason).toContain('Insufficient credits');
+      expect(refuelResult.reason).toContain('크레딧이 부족합니다');
 
       // Verify state unchanged
       expect(game.state.ship.fuel).toBe(50);
@@ -308,7 +308,7 @@ describe('Complete Game Flow Integration Tests (React)', () => {
 
       expect(refuelResult.success).toBe(false);
       expect(refuelResult.reason).toContain(
-        'Cannot refuel beyond 100% capacity'
+        '100% 용량을 넘겨 주유할 수 없습니다'
       );
 
       // Verify state unchanged
@@ -327,8 +327,8 @@ describe('Complete Game Flow Integration Tests (React)', () => {
       );
 
       // App should render title screen initially
-      expect(screen.getByText('Tramp Freighter Blues')).toBeInTheDocument();
-      expect(screen.getByText('New Game')).toBeInTheDocument();
+      expect(screen.getByText('트램프 프레이터 블루스')).toBeInTheDocument();
+      expect(screen.getByText('새 게임')).toBeInTheDocument();
     });
 
     it('should transition from title screen to game on new game', async () => {
@@ -341,12 +341,12 @@ describe('Complete Game Flow Integration Tests (React)', () => {
       );
 
       // Click New Game button
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       // Should show ship naming dialog
       await waitFor(() => {
-        expect(screen.getByText('Name Your Ship')).toBeInTheDocument();
+        expect(screen.getByText('함선 이름 짓기')).toBeInTheDocument();
       });
     });
 
@@ -360,19 +360,19 @@ describe('Complete Game Flow Integration Tests (React)', () => {
       );
 
       // Start game to get past title screen
-      const newGameBtn = screen.getByText('New Game');
+      const newGameBtn = screen.getByText('새 게임');
       fireEvent.click(newGameBtn);
 
       // Submit ship name to get to game
-      const confirmBtn = screen.getByText('Confirm');
+      const confirmBtn = screen.getByText('확인');
       fireEvent.click(confirmBtn);
 
       // Wait for HUD to render - check for game view mode instead of specific values
       await waitFor(() => {
         // Look for elements that indicate we're in game mode
         // The HUD might not render exact text in test environment due to WebGL issues
-        expect(screen.queryByText('New Game')).not.toBeInTheDocument();
-        expect(screen.queryByText('Name Your Ship')).not.toBeInTheDocument();
+        expect(screen.queryByText('새 게임')).not.toBeInTheDocument();
+        expect(screen.queryByText('함선 이름 짓기')).not.toBeInTheDocument();
       });
 
       // Change credits and verify the game state manager updated

@@ -128,7 +128,7 @@ describe('MobileProvider wiring in App', () => {
         <App />
       </GameProvider>
     );
-    expect(screen.getByText(/tramp freighter blues/i)).toBeTruthy();
+    expect(screen.getByText(/트램프 프레이터 블루스/)).toBeTruthy();
   });
 
   it('should provide MobileProvider context after transitioning to game view', async () => {
@@ -162,9 +162,9 @@ describe('MobileProvider wiring in App', () => {
 
     // Click Continue Game to transition past title screen
     await waitFor(() => {
-      expect(screen.getByText('Continue Game')).toBeInTheDocument();
+      expect(screen.getByText('이어하기')).toBeInTheDocument();
     });
-    fireEvent.click(screen.getByText('Continue Game'));
+    fireEvent.click(screen.getByText('이어하기'));
 
     // After transition, MobileProvider should be wrapping game components
     await waitFor(() => {

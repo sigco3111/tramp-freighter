@@ -274,7 +274,7 @@ describe('InfoBrokerManager', () => {
 
       expect(alphaCentauri).toBeDefined();
       expect(alphaCentauri.event).toBeDefined();
-      expect(alphaCentauri.event.name).toBe('Mining Strike');
+      expect(alphaCentauri.event.name).toBe('광산 파업');
       expect(alphaCentauri.event.commodities).toEqual(['ore', 'tritium']);
       expect(alphaCentauri.event.modifiers).toEqual({ ore: 1.5, tritium: 1.3 });
     });

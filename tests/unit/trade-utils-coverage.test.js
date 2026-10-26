@@ -21,75 +21,75 @@ describe('tradeUtils coverage', () => {
     it('rejects null goodType', () => {
       const result = validateBuy(null, 5, 100, makeState());
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Invalid good type');
+      expect(result.reason).toBe('잘못된 상품 종류입니다');
     });
 
     it('rejects empty string goodType', () => {
       const result = validateBuy('', 5, 100, makeState());
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Invalid good type');
+      expect(result.reason).toBe('잘못된 상품 종류입니다');
     });
 
     it('rejects numeric goodType', () => {
       const result = validateBuy(42, 5, 100, makeState());
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Invalid good type');
+      expect(result.reason).toBe('잘못된 상품 종류입니다');
     });
 
     it('rejects zero quantity', () => {
       const result = validateBuy('ore', 0, 100, makeState());
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Quantity must be positive');
+      expect(result.reason).toBe('수량은 양수여야 합니다');
     });
 
     it('rejects negative quantity', () => {
       const result = validateBuy('ore', -5, 100, makeState());
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Quantity must be positive');
+      expect(result.reason).toBe('수량은 양수여야 합니다');
     });
 
     it('rejects zero price', () => {
       const result = validateBuy('ore', 5, 0, makeState());
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Price must be positive');
+      expect(result.reason).toBe('가격은 양수여야 합니다');
     });
 
     it('rejects negative price', () => {
       const result = validateBuy('ore', 5, -100, makeState());
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Price must be positive');
+      expect(result.reason).toBe('가격은 양수여야 합니다');
     });
 
     it('rejects null state', () => {
       const result = validateBuy('ore', 5, 100, null);
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Invalid game state');
+      expect(result.reason).toBe('잘못된 게임 상태입니다');
     });
 
     it('rejects state without player', () => {
       const result = validateBuy('ore', 5, 100, { ship: { cargo: [] } });
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Invalid game state');
+      expect(result.reason).toBe('잘못된 게임 상태입니다');
     });
 
     it('rejects state without ship', () => {
       const result = validateBuy('ore', 5, 100, { player: { credits: 1000 } });
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Invalid game state');
+      expect(result.reason).toBe('잘못된 게임 상태입니다');
     });
 
     it('rejects insufficient credits', () => {
       const state = makeState({ player: { credits: 100 } });
       const result = validateBuy('ore', 5, 100, state);
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Insufficient credits for purchase');
+      expect(result.reason).toBe('구매할 크레딧이 부족합니다');
     });
 
     it('rejects insufficient cargo capacity', () => {
       const state = makeState({ ship: { cargo: [], cargoCapacity: 3 } });
       const result = validateBuy('ore', 5, 10, state);
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Insufficient cargo capacity');
+      expect(result.reason).toBe('화물 적재량이 부족합니다');
     });
 
     it('accounts for passenger cargo space', () => {
@@ -101,7 +101,7 @@ describe('tradeUtils coverage', () => {
       });
       const result = validateBuy('ore', 5, 10, state);
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Insufficient cargo capacity');
+      expect(result.reason).toBe('화물 적재량이 부족합니다');
     });
 
     it('returns valid for acceptable purchase', () => {
@@ -115,37 +115,37 @@ describe('tradeUtils coverage', () => {
     it('rejects negative stack index', () => {
       const result = validateSell(-1, 5, makeState());
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Invalid stack index');
+      expect(result.reason).toBe('잘못된 스택 번호입니다');
     });
 
     it('rejects zero quantity', () => {
       const result = validateSell(0, 0, makeState());
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Quantity must be positive');
+      expect(result.reason).toBe('수량은 양수여야 합니다');
     });
 
     it('rejects negative quantity', () => {
       const result = validateSell(0, -1, makeState());
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Quantity must be positive');
+      expect(result.reason).toBe('수량은 양수여야 합니다');
     });
 
     it('rejects null state', () => {
       const result = validateSell(0, 5, null);
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Invalid game state');
+      expect(result.reason).toBe('잘못된 게임 상태입니다');
     });
 
     it('rejects state without ship', () => {
       const result = validateSell(0, 5, { player: {} });
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Invalid game state');
+      expect(result.reason).toBe('잘못된 게임 상태입니다');
     });
 
     it('rejects state without cargo', () => {
       const result = validateSell(0, 5, { ship: {} });
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Invalid game state');
+      expect(result.reason).toBe('잘못된 게임 상태입니다');
     });
 
     it('rejects out-of-bounds stack index', () => {
@@ -154,7 +154,7 @@ describe('tradeUtils coverage', () => {
       });
       const result = validateSell(5, 5, state);
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Stack index out of bounds');
+      expect(result.reason).toBe('스택 번호가 범위를 벗어났습니다');
     });
 
     it('rejects quantity exceeding stack', () => {
@@ -163,7 +163,7 @@ describe('tradeUtils coverage', () => {
       });
       const result = validateSell(0, 10, state);
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Insufficient quantity in stack');
+      expect(result.reason).toBe('스택의 수량이 부족합니다');
     });
 
     it('returns valid for acceptable sale', () => {

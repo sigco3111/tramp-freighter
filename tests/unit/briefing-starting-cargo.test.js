@@ -7,7 +7,7 @@ describe('Starting Cargo in Briefing (#7)', () => {
       'src/features/instructions/InstructionsModal.jsx',
       'utf-8'
     );
-    expect(source).toContain('grain');
-    expect(source).toContain('Cargo Manifest');
+    expect(source).toContain('곡물');
+    expect(source).toContain('화물 목록');
   });
 });

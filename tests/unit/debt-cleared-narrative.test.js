@@ -82,8 +82,8 @@ describe('Debt-Cleared Narrative Event', () => {
       const event = NARRATIVE_EVENTS.find((e) => e.id === 'cond_debt_free');
       const lastLine = event.content.text[3];
       // Should mention stations/opportunities without naming specific locations
-      expect(lastLine).toMatch(/station/i);
-      expect(lastLine).toMatch(/opportunit/i);
+      expect(lastLine).toMatch(/정거장/);
+      expect(lastLine).toMatch(/기회/);
     });
   });
 

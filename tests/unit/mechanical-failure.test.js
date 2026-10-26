@@ -141,7 +141,7 @@ describe('MechanicalFailureManager', () => {
           cargoLoss: true,
         },
         rewards: {},
-        description: expect.stringContaining('Hull breach'),
+        description: expect.stringContaining('선체 파손'),
       });
     });
   });
@@ -174,7 +174,7 @@ describe('MechanicalFailureManager', () => {
           days: FAILURE_CONFIG.ENGINE_FAILURE.CALL_FOR_HELP.DAYS_DELAY,
         },
         rewards: {},
-        description: expect.stringContaining('Rescue tug'),
+        description: expect.stringContaining('구조 예인선'),
       });
     });
 
@@ -212,7 +212,7 @@ describe('MechanicalFailureManager', () => {
           lifeSupport: FAILURE_CONFIG.LIFE_SUPPORT.EMERGENCY_COST,
         },
         rewards: {},
-        description: expect.stringContaining('Life support emergency'),
+        description: expect.stringContaining('생명 유지 비상'),
       });
     });
   });

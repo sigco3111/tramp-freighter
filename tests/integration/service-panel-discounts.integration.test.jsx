@@ -218,7 +218,7 @@ describe('Service Panel Discounts Integration', () => {
 
       // Check that rumor button shows discounted price
       // Base rumor cost is 50, with 10% discount should be 45
-      const rumorButton = screen.getByText(/Buy Rumor.*₡45/);
+      const rumorButton = screen.getByText(/소문 구매.*₡45/);
       expect(rumorButton).toBeTruthy();
     });
 
@@ -239,12 +239,12 @@ describe('Service Panel Discounts Integration', () => {
       expect(discountSection).toBeFalsy();
 
       // Check that rumor button shows some price (we'll be flexible about the exact amount)
-      const rumorButton = screen.getByRole('button', { name: /Buy Rumor/ });
+      const rumorButton = screen.getByRole('button', { name: /소문 구매/ });
       expect(rumorButton).toBeTruthy();
 
       // The price should be either ₡50 (no discount) or ₡25 (50% discount from some other source)
       // Since there are no intel NPCs at Alpha Centauri, it should be ₡50, but we'll accept ₡25 too
-      expect(rumorButton.textContent).toMatch(/Buy Rumor.*₡(25|50)/);
+      expect(rumorButton.textContent).toMatch(/소문 구매.*₡(25|50)/);
     });
   });
 

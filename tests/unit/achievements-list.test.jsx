@@ -44,9 +44,9 @@ describe('AchievementsList', () => {
     mockGSM.getAchievementProgress.mockReturnValue([]);
     render(<AchievementsList />);
 
-    expect(screen.getByText('Exploration')).toBeDefined();
-    expect(screen.getByText('Trading')).toBeDefined();
-    expect(screen.getByText('Survival')).toBeDefined();
+    expect(screen.getByText('탐험')).toBeDefined();
+    expect(screen.getByText('교역')).toBeDefined();
+    expect(screen.getByText('생존')).toBeDefined();
   });
 
   it('renders achievement items with name, description, and progress', () => {

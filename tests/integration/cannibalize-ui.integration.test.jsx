@@ -44,13 +44,13 @@ describe('Cannibalization UI', () => {
 
   it('should show cannibalize section when a system is critical', () => {
     render(<RepairPanel onClose={vi.fn()} />);
-    expect(screen.getByText('Cannibalize Systems')).toBeInTheDocument();
+    expect(screen.getByText('시스템 분해 수리')).toBeInTheDocument();
   });
 
   it('should show donor systems with available amounts', () => {
     render(<RepairPanel onClose={vi.fn()} />);
     // Should show donor info for Engine and Life Support
-    expect(screen.getByText(/Engine.*80%.*max.*59%/)).toBeInTheDocument();
-    expect(screen.getByText(/Life Support.*90%.*max.*69%/)).toBeInTheDocument();
+    expect(screen.getByText(/엔진.*80%.*최대.*59%/)).toBeInTheDocument();
+    expect(screen.getByText(/생명 유지.*90%.*최대.*69%/)).toBeInTheDocument();
   });
 });

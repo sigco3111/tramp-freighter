@@ -29,7 +29,7 @@ describe('Credits data', () => {
   it('includes disclaimer section', () => {
     const disclaimer = CREDITS_SECTIONS.find((s) => s.type === 'disclaimer');
     expect(disclaimer).toBeDefined();
-    expect(disclaimer.lines.join(' ')).toContain('fictitious');
+    expect(disclaimer.lines.join(' ')).toContain('허구');
   });
 
   it('includes closing quote', () => {
@@ -41,10 +41,10 @@ describe('Credits data', () => {
     const navSection = CREDITS_SECTIONS.find(
       (s) =>
         s.type === 'credit-pair' &&
-        s.pairs?.some((p) => p[0] === 'Stars Featured')
+        s.pairs?.some((p) => p[0] === '수록 항성')
     );
     expect(navSection).toBeDefined();
-    const starPair = navSection.pairs.find((p) => p[0] === 'Stars Featured');
+    const starPair = navSection.pairs.find((p) => p[0] === '수록 항성');
     expect(starPair[1]).toContain('117');
     expect(starPair[1]).toContain('131');
   });

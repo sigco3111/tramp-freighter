@@ -62,7 +62,7 @@ describe('Property: New game confirmation', () => {
         // Find and click the New Game button
         const buttons = Array.from(container.querySelectorAll('.menu-btn'));
         const newGameButton = buttons.find(
-          (btn) => btn.textContent === 'New Game'
+          (btn) => btn.textContent === '새 게임'
         );
 
         expect(newGameButton).toBeTruthy();
@@ -81,8 +81,8 @@ describe('Property: New game confirmation', () => {
         expect(modalMessage).toBeTruthy();
 
         const messageText = modalMessage.textContent;
-        expect(messageText).toContain('overwrite');
-        expect(messageText).toContain('save');
+        expect(messageText).toContain('덮어씁니다');
+        expect(messageText).toContain('저장');
 
         // Verify modal has confirm and cancel buttons
         const confirmButton = document.querySelector('.modal-confirm');
@@ -129,7 +129,7 @@ describe('Property: New game confirmation', () => {
         // Find and click the New Game button
         const buttons = Array.from(container.querySelectorAll('.menu-btn'));
         const newGameButton = buttons.find(
-          (btn) => btn.textContent === 'New Game'
+          (btn) => btn.textContent === '새 게임'
         );
 
         expect(newGameButton).toBeTruthy();
@@ -180,7 +180,7 @@ describe('Property: New game confirmation', () => {
         // Find and click the New Game button
         const buttons = Array.from(container.querySelectorAll('.menu-btn'));
         const newGameButton = buttons.find(
-          (btn) => btn.textContent === 'New Game'
+          (btn) => btn.textContent === '새 게임'
         );
 
         expect(newGameButton).toBeTruthy();
@@ -242,7 +242,7 @@ describe('Property: New game confirmation', () => {
         // Find and click the New Game button
         const buttons = Array.from(container.querySelectorAll('.menu-btn'));
         const newGameButton = buttons.find(
-          (btn) => btn.textContent === 'New Game'
+          (btn) => btn.textContent === '새 게임'
         );
 
         expect(newGameButton).toBeTruthy();
@@ -309,7 +309,7 @@ describe('Property: New game confirmation', () => {
         // Find and click the New Game button
         const buttons = Array.from(container.querySelectorAll('.menu-btn'));
         const newGameButton = buttons.find(
-          (btn) => btn.textContent === 'New Game'
+          (btn) => btn.textContent === '새 게임'
         );
 
         expect(newGameButton).toBeTruthy();

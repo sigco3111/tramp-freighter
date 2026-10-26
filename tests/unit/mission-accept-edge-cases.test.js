@@ -24,7 +24,7 @@ describe('MissionManager acceptMission edge cases', () => {
     };
     const result = gsm.missionManager.acceptMission(mission);
     expect(result.success).toBe(false);
-    expect(result.reason).toContain('cargo space');
+    expect(result.reason).toContain('화물 공간이 부족');
   });
 
   it('rejects mission with missionCargo when insufficient cargo space', () => {
@@ -38,7 +38,7 @@ describe('MissionManager acceptMission edge cases', () => {
     };
     const result = gsm.missionManager.acceptMission(mission);
     expect(result.success).toBe(false);
-    expect(result.reason).toContain('cargo space');
+    expect(result.reason).toContain('공간이 부족');
   });
 
   it('places mission cargo in hold on acceptance', () => {

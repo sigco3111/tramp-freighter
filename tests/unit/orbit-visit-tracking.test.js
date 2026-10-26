@@ -94,19 +94,19 @@ describe('NavigationManager orbit tracking', () => {
 
 describe('Info Broker display for orbit-only entries', () => {
   it('formatVisitInfo should return "Visited but never docked" for orbit source', () => {
-    expect(formatVisitInfo(5, 'orbit')).toBe('Visited but never docked');
-    expect(formatVisitInfo(0, 'orbit')).toBe('Visited but never docked');
+    expect(formatVisitInfo(5, 'orbit')).toBe('방문했지만 도킹한 적 없음');
+    expect(formatVisitInfo(0, 'orbit')).toBe('방문했지만 도킹한 적 없음');
   });
 
   it('formatVisitInfo should behave normally for non-orbit sources', () => {
-    expect(formatVisitInfo(null)).toBe('Never visited');
-    expect(formatVisitInfo(0)).toBe('Current prices');
-    expect(formatVisitInfo(5)).toBe('Last visited 5 days ago');
-    expect(formatVisitInfo(1)).toBe('Last visited 1 day ago');
+    expect(formatVisitInfo(null)).toBe('방문한 적 없음');
+    expect(formatVisitInfo(0)).toBe('현재 가격');
+    expect(formatVisitInfo(5)).toBe('마지막 방문: 5일 전');
+    expect(formatVisitInfo(1)).toBe('마지막 방문: 1일 전');
   });
 
   it('formatSource should handle orbit source', () => {
-    expect(formatSource('orbit')).toBe('Orbit only');
+    expect(formatSource('orbit')).toBe('궤도만 통과');
   });
 
   it('getIntelligenceCost should treat orbit-only as never-visited pricing', () => {
@@ -124,7 +124,7 @@ describe('Info Broker display for orbit-only entries', () => {
     priceKnowledge[5].lastVisit += 1;
     expect(priceKnowledge[5].lastVisit).toBe(1);
     expect(formatVisitInfo(priceKnowledge[5].lastVisit, 'orbit')).toBe(
-      'Visited but never docked'
+      '방문했지만 도킹한 적 없음'
     );
   });
 

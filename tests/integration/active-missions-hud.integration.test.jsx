@@ -97,7 +97,7 @@ describe('ActiveMissions HUD - Cargo Progress', () => {
   it('should not display cargo progress for missions without cargo requirements', () => {
     render(<ActiveMissions />);
     // Passenger mission has no cargo requirement - no progress line
-    const missionItems = screen.getAllByText(/remaining/);
+    const missionItems = screen.getAllByText(/일 남음/);
     expect(missionItems).toHaveLength(3);
     // Only one cargo progress line should exist
     const cargoProgress = screen.queryAllByText(/\/\d+/);
@@ -112,18 +112,18 @@ describe('ActiveMissions HUD - Abandon Mission', () => {
 
   it('should show an abandon button for each active mission', () => {
     render(<ActiveMissions />);
-    const abandonButtons = screen.getAllByText('Abandon');
+    const abandonButtons = screen.getAllByText('포기');
     expect(abandonButtons).toHaveLength(3);
   });
 
   it('should show confirmation dialog when abandon is clicked', () => {
     render(<ActiveMissions />);
-    const abandonButtons = screen.getAllByText('Abandon');
+    const abandonButtons = screen.getAllByText('포기');
     fireEvent.click(abandonButtons[0]);
-    expect(screen.getByText(/Abandon Mission/)).toBeInTheDocument();
+    expect(screen.getByText('임무를 포기하시겠습니까?')).toBeInTheDocument();
     // Modal message contains the mission title in quotes
     expect(
-      screen.getByText(/Abandon "Cargo Run: parts to Sirius A"/)
+      screen.getByText(/"Cargo Run: parts to Sirius A" 임무를 포기하시겠습니까/)
     ).toBeInTheDocument();
   });
 });
@@ -152,6 +152,6 @@ describe('ActiveMissions HUD - Rumor Warning', () => {
     const { container } = render(<ActiveMissions />);
     const warnings = container.querySelectorAll('.mission-hud-rumor');
     expect(warnings).toHaveLength(1);
-    expect(warnings[0].textContent).toContain('Rumors spreading');
+    expect(warnings[0].textContent).toContain('소문 확산 중');
   });
 });

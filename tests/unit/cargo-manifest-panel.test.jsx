@@ -69,7 +69,7 @@ describe('CargoManifestPanel', () => {
     mockCargo = [];
     render(<CargoManifestPanel onClose={defaultOnClose} />);
 
-    expect(screen.getByText('No cargo')).toBeTruthy();
+    expect(screen.getByText('화물 없음')).toBeTruthy();
   });
 
   it('renders cargo items with name, quantity, purchase location, buy price, age, value', () => {
@@ -86,11 +86,11 @@ describe('CargoManifestPanel', () => {
 
     render(<CargoManifestPanel onClose={defaultOnClose} />);
 
-    expect(screen.getByText('Registered Freight')).toBeTruthy();
-    expect(screen.getByText('5 units')).toBeTruthy();
+    expect(screen.getByText('등록 화물')).toBeTruthy();
+    expect(screen.getByText('5단위')).toBeTruthy();
     expect(screen.getByText('Sol')).toBeTruthy();
-    expect(screen.getByText('₡200/unit')).toBeTruthy();
-    expect(screen.getByText('3 days ago')).toBeTruthy();
+    expect(screen.getByText('₡200/단위')).toBeTruthy();
+    expect(screen.getByText('3일 전')).toBeTruthy();
     // Value appears both on the item and in the total (since there's only one item)
     const valueElements = screen.getAllByText('₡1,000');
     expect(valueElements.length).toBe(2);
@@ -135,7 +135,7 @@ describe('CargoManifestPanel', () => {
 
     render(<CargoManifestPanel onClose={defaultOnClose} />);
 
-    expect(screen.getByText('Passengers')).toBeTruthy();
+    expect(screen.getByText('승객')).toBeTruthy();
     expect(screen.getByText('Dr. Smith')).toBeTruthy();
   });
 
@@ -161,8 +161,8 @@ describe('CargoManifestPanel', () => {
     render(<CargoManifestPanel onClose={defaultOnClose} />);
 
     expect(screen.getByText('Lady Rothschild')).toBeTruthy();
-    expect(screen.getByText('Wealthy')).toBeTruthy();
-    expect(screen.getByText('3 units')).toBeTruthy();
+    expect(screen.getByText('부유층')).toBeTruthy();
+    expect(screen.getByText('3단위')).toBeTruthy();
     expect(screen.getByText('Barnards Star')).toBeTruthy();
     expect(screen.getByText('82%')).toBeTruthy();
   });
@@ -170,7 +170,7 @@ describe('CargoManifestPanel', () => {
   it('close button calls onClose', () => {
     render(<CargoManifestPanel onClose={defaultOnClose} />);
 
-    const closeButton = screen.getByRole('button', { name: 'Close' });
+    const closeButton = screen.getByRole('button', { name: '닫기' });
     fireEvent.click(closeButton);
 
     expect(defaultOnClose).toHaveBeenCalledTimes(1);
@@ -207,7 +207,7 @@ describe('CargoManifestPanel', () => {
     render(<CargoManifestPanel onClose={defaultOnClose} />);
 
     // Should show breakdown: "10 cargo + 1 passengers"
-    expect(screen.getByText(/10 cargo \+ 1 passengers/)).toBeTruthy();
+    expect(screen.getByText(/10 화물 \+ 1 승객/)).toBeTruthy();
   });
 
   it('renders multiple cargo items correctly', () => {
@@ -231,10 +231,10 @@ describe('CargoManifestPanel', () => {
 
     render(<CargoManifestPanel onClose={defaultOnClose} />);
 
-    expect(screen.getByText('Grain')).toBeTruthy();
-    expect(screen.getByText('Medicine')).toBeTruthy();
-    expect(screen.getByText('10 units')).toBeTruthy();
-    expect(screen.getByText('3 units')).toBeTruthy();
+    expect(screen.getByText('곡물')).toBeTruthy();
+    expect(screen.getByText('의약품')).toBeTruthy();
+    expect(screen.getByText('10단위')).toBeTruthy();
+    expect(screen.getByText('3단위')).toBeTruthy();
     expect(screen.getByText('Alpha Centauri')).toBeTruthy();
 
     // Total value: (10*50) + (3*300) = 500 + 900 = 1400

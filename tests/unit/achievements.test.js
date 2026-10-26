@@ -402,20 +402,20 @@ describe('Save Compatibility', () => {
 
 describe('Label Functions', () => {
   it('should return correct karma labels', () => {
-    expect(getKarmaLabel(80)).toBe('Saint');
-    expect(getKarmaLabel(50)).toBe('Virtuous');
-    expect(getKarmaLabel(25)).toBe('Decent');
-    expect(getKarmaLabel(0)).toBe('Neutral');
-    expect(getKarmaLabel(-30)).toBe('Shady');
-    expect(getKarmaLabel(-50)).toBe('Ruthless');
-    expect(getKarmaLabel(-80)).toBe('Villain');
+    expect(getKarmaLabel(80)).toBe('성인');
+    expect(getKarmaLabel(50)).toBe('선량');
+    expect(getKarmaLabel(25)).toBe('온건');
+    expect(getKarmaLabel(0)).toBe('중립');
+    expect(getKarmaLabel(-30)).toBe('수상쩍음');
+    expect(getKarmaLabel(-50)).toBe('냉혹');
+    expect(getKarmaLabel(-80)).toBe('악당');
   });
 
   it('should return correct faction labels', () => {
-    expect(getFactionLabel(80)).toBe('Allied');
-    expect(getFactionLabel(50)).toBe('Respected');
-    expect(getFactionLabel(0)).toBe('Neutral');
-    expect(getFactionLabel(-50)).toBe('Hostile');
-    expect(getFactionLabel(-80)).toBe('Enemy');
+    expect(getFactionLabel(80)).toBe('동맹');
+    expect(getFactionLabel(50)).toBe('존경');
+    expect(getFactionLabel(0)).toBe('중립');
+    expect(getFactionLabel(-50)).toBe('적대');
+    expect(getFactionLabel(-80)).toBe('원수');
   });
 });

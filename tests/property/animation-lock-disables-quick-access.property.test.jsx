@@ -50,8 +50,8 @@ describe('Property 49: Animation lock disables quick access', () => {
         render(<QuickAccessButtons onDock={mockOnDock} />, { wrapper });
 
         // Find buttons
-        const systemInfoBtn = screen.getByText('System Info');
-        const dockBtn = screen.getByText('Dock');
+        const systemInfoBtn = screen.getByText('항성계 정보');
+        const dockBtn = screen.getByText('도킹');
 
         // System Info should NEVER be disabled (always accessible)
         expect(systemInfoBtn).not.toBeDisabled();
@@ -100,8 +100,8 @@ describe('Property 49: Animation lock disables quick access', () => {
       { wrapper }
     );
 
-    const dockBtn = screen.getByText('Dock');
-    const systemInfoBtn = screen.getByText('System Info');
+    const dockBtn = screen.getByText('도킹');
+    const systemInfoBtn = screen.getByText('항성계 정보');
 
     // Dock button should be disabled
     expect(dockBtn).toBeDisabled();
@@ -139,7 +139,7 @@ describe('Property 49: Animation lock disables quick access', () => {
 
     render(<QuickAccessButtons onDock={mockOnDock} />, { wrapper });
 
-    const dockBtn = screen.getByText('Dock');
+    const dockBtn = screen.getByText('도킹');
 
     // Button should be enabled (Sol has a station)
     expect(dockBtn).not.toBeDisabled();
@@ -166,8 +166,8 @@ describe('Property 49: Animation lock disables quick access', () => {
       { wrapper }
     );
 
-    const systemInfoBtn = screen.getByText('System Info');
-    const dockBtn = screen.getByText('Dock');
+    const systemInfoBtn = screen.getByText('항성계 정보');
+    const dockBtn = screen.getByText('도킹');
 
     // Both buttons should be enabled when animation system is not available
     expect(systemInfoBtn).not.toBeDisabled();
@@ -204,7 +204,7 @@ describe('Property 49: Animation lock disables quick access', () => {
       wrapper,
     });
 
-    const dockBtn = screen.getByText('Dock');
+    const dockBtn = screen.getByText('도킹');
 
     // Initially disabled
     expect(dockBtn).toBeDisabled();
@@ -246,7 +246,7 @@ describe('Property 49: Animation lock disables quick access', () => {
 
     render(<QuickAccessButtons onDock={mockOnDock} />, { wrapper });
 
-    const dockBtn = screen.getByText('Dock');
+    const dockBtn = screen.getByText('도킹');
 
     // Initially disabled because animation is running
     expect(dockBtn).toBeDisabled();

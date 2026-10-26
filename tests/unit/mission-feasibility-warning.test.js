@@ -33,7 +33,7 @@ describe('Mission Feasibility Warning', () => {
     it('returns tight warning when travel time exceeds 70% of deadline', () => {
       // 8 days / 10 day deadline = 0.8 ratio, above 0.7 but below 1.0
       const result = getFeasibilityWarning(8, 10);
-      expect(result).toEqual({ level: 'tight', text: 'Tight deadline' });
+      expect(result).toEqual({ level: 'tight', text: '빠듯한 기한' });
     });
 
     it('returns impossible warning when travel time equals deadline', () => {
@@ -41,7 +41,7 @@ describe('Mission Feasibility Warning', () => {
       const result = getFeasibilityWarning(10, 10);
       expect(result).toEqual({
         level: 'impossible',
-        text: 'Deadline likely impossible',
+        text: '기한을 맞추기 어려움',
       });
     });
 
@@ -50,7 +50,7 @@ describe('Mission Feasibility Warning', () => {
       const result = getFeasibilityWarning(15, 10);
       expect(result).toEqual({
         level: 'impossible',
-        text: 'Deadline likely impossible',
+        text: '기한을 맞추기 어려움',
       });
     });
 
@@ -80,7 +80,7 @@ describe('Mission Feasibility Warning', () => {
       // With default 0.7 threshold, this would be no warning
       // With custom 0.5 threshold, this should be tight
       const result = getFeasibilityWarning(6, 10, 0.5);
-      expect(result).toEqual({ level: 'tight', text: 'Tight deadline' });
+      expect(result).toEqual({ level: 'tight', text: '빠듯한 기한' });
     });
 
     it('returns null when both inputs are undefined', () => {

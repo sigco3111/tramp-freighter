@@ -57,7 +57,7 @@ describe('Trading – mission cargo sell block', () => {
     const result = manager.sellGood(1, 5, 100); // stack index 1 = mission cargo
 
     expect(result.success).toBe(false);
-    expect(result.reason).toMatch(/mission/i);
+    expect(result.reason).toMatch(/임무/);
   });
 
   it('should allow selling regular cargo', () => {

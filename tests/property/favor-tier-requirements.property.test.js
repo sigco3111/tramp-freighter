@@ -73,7 +73,7 @@ describe('Favor Tier Requirements Property Tests', () => {
         if (!expectedAvailable) {
           expect(result.reason).toBeTruthy();
           expect(typeof result.reason).toBe('string');
-          expect(result.reason).toContain('Trusted relationship');
+          expect(result.reason).toContain('신뢰하는 관계가 필요합니다');
         } else {
           // When available, reason should be null or empty
           expect(result.reason === null || result.reason === '').toBe(true);
@@ -110,7 +110,7 @@ describe('Favor Tier Requirements Property Tests', () => {
         if (!expectedAvailable) {
           expect(result.reason).toBeTruthy();
           expect(typeof result.reason).toBe('string');
-          expect(result.reason).toContain('Friendly relationship');
+          expect(result.reason).toContain('우호적인 관계가 필요합니다');
         } else {
           // When available, reason should be null or empty
           expect(result.reason === null || result.reason === '').toBe(true);
@@ -153,9 +153,9 @@ describe('Favor Tier Requirements Property Tests', () => {
 
         // Should contain appropriate tier requirement message
         if (favorType === 'loan') {
-          expect(result.reason).toContain('Trusted relationship');
+          expect(result.reason).toContain('신뢰하는 관계가 필요합니다');
         } else {
-          expect(result.reason).toContain('Friendly relationship');
+          expect(result.reason).toContain('우호적인 관계가 필요합니다');
         }
       }),
       { numRuns: 100 }

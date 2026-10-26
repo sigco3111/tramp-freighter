@@ -52,12 +52,12 @@ describe('Property: Title screen displays on load', () => {
         // Verify game title is displayed
         const menuTitle = container.querySelector('.menu-title');
         expect(menuTitle).toBeTruthy();
-        expect(menuTitle.textContent).toBe('Tramp Freighter Blues');
+        expect(menuTitle.textContent).toBe('트램프 프레이터 블루스');
 
         // Verify subtitle is displayed
         const menuSubtitle = container.querySelector('.menu-subtitle');
         expect(menuSubtitle).toBeTruthy();
-        expect(menuSubtitle.textContent).toBe('Sol Sector Trading Simulation');
+        expect(menuSubtitle.textContent).toBe('솔 섹터 교역 시뮬레이션');
 
         // Verify menu buttons container is present
         const menuButtons = container.querySelector('.menu-buttons');
@@ -139,9 +139,9 @@ describe('Property: Title screen displays on load', () => {
         const buttons = Array.from(container.querySelectorAll('.menu-btn')).map(
           (btn) => btn.textContent
         );
-        expect(buttons).toContain('New Game');
+        expect(buttons).toContain('새 게임');
 
-        return buttons.includes('New Game');
+        return buttons.includes('새 게임');
       }),
       { numRuns: 100 }
     );

@@ -53,14 +53,14 @@ describe('DialoguePanel Quest Progress', () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByText('Yuki Tanaka')).toBeInTheDocument();
+        expect(screen.getByText('유키 타나카')).toBeInTheDocument();
       });
 
       // Should show Trust label with current rep out of 100 and next milestone
       expect(
         screen.getByText(
           (content) =>
-            content.includes('Trust:') &&
+            content.includes('신뢰도:') &&
             content.includes('5') &&
             content.includes('100')
         )
@@ -68,7 +68,7 @@ describe('DialoguePanel Quest Progress', () => {
 
       // Should render the progressbar with absolute 0-100 ARIA attributes
       const progressBar = screen.getByRole('progressbar', {
-        name: 'Quest progress',
+        name: '퀘스트 진행도',
       });
       expect(progressBar).toBeInTheDocument();
       expect(progressBar).toHaveAttribute('aria-valuenow', '5');
@@ -87,11 +87,11 @@ describe('DialoguePanel Quest Progress', () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByText('Yuki Tanaka')).toBeInTheDocument();
+        expect(screen.getByText('유키 타나카')).toBeInTheDocument();
       });
 
       const progressBar = screen.getByRole('progressbar', {
-        name: 'Quest progress',
+        name: '퀘스트 진행도',
       });
       // aria-valuenow should be clamped to 0, not -10
       expect(progressBar).toHaveAttribute('aria-valuenow', '0');
@@ -117,11 +117,11 @@ describe('DialoguePanel Quest Progress', () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByText('Yuki Tanaka')).toBeInTheDocument();
+        expect(screen.getByText('유키 타나카')).toBeInTheDocument();
       });
 
       const progressBar = screen.getByRole('progressbar', {
-        name: 'Quest progress',
+        name: '퀘스트 진행도',
       });
       // Absolute bar shows actual rep value, not clamped to threshold
       expect(progressBar).toHaveAttribute(
@@ -145,18 +145,18 @@ describe('DialoguePanel Quest Progress', () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByText('Yuki Tanaka')).toBeInTheDocument();
+        expect(screen.getByText('유키 타나카')).toBeInTheDocument();
       });
 
       // Should show "Ready!" instead of "Next: Field Test"
-      expect(screen.getByText(/Ready!/)).toBeInTheDocument();
+      expect(screen.getByText(/준비 완료!/)).toBeInTheDocument();
       expect(screen.queryByText(/Next:/)).not.toBeInTheDocument();
 
       // Label should show actual rep out of 100
       expect(
         screen.getByText(
           (content) =>
-            content.includes('Trust:') &&
+            content.includes('신뢰도:') &&
             content.includes(`${ENDGAME_CONFIG.STAGE_1_REP + 5}`) &&
             content.includes('100')
         )
@@ -180,18 +180,18 @@ describe('DialoguePanel Quest Progress', () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByText('Yuki Tanaka')).toBeInTheDocument();
+        expect(screen.getByText('유키 타나카')).toBeInTheDocument();
       });
 
       // Should NOT show "Ready!" since engine requirement is unmet
-      expect(screen.queryByText(/Ready!/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/준비 완료!/)).not.toBeInTheDocument();
       // Should show the reputation tier name in the quest progress area
-      const questStageNames = screen.getAllByText(/Warm/);
+      const questStageNames = screen.getAllByText(/온화/);
       const questProgressLabel = questStageNames.find(
         (el) => el.className === 'quest-stage-name'
       );
       expect(questProgressLabel).toBeDefined();
-      expect(questProgressLabel.textContent).toContain('(Warm)');
+      expect(questProgressLabel.textContent).toContain('(온화)');
     });
 
     it('should show next stage name', async () => {
@@ -204,11 +204,11 @@ describe('DialoguePanel Quest Progress', () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByText('Yuki Tanaka')).toBeInTheDocument();
+        expect(screen.getByText('유키 타나카')).toBeInTheDocument();
       });
 
       // Stage 1 name is "Field Test", shown with threshold
-      expect(screen.getByText(/Next: Field Test at \d+/)).toBeInTheDocument();
+      expect(screen.getByText(/다음: 현장 시험 \/ \d+/)).toBeInTheDocument();
     });
   });
 
@@ -221,16 +221,16 @@ describe('DialoguePanel Quest Progress', () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Should not have a progressbar
       expect(
-        screen.queryByRole('progressbar', { name: 'Quest progress' })
+        screen.queryByRole('progressbar', { name: '퀘스트 진행도' })
       ).not.toBeInTheDocument();
 
       // Should not show Trust label
-      expect(screen.queryByText(/Trust:/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/신뢰도:/)).not.toBeInTheDocument();
     });
   });
 });

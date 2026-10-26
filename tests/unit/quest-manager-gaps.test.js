@@ -18,7 +18,7 @@ describe('QuestManager coverage gaps', () => {
     it('returns failure for unknown quest', () => {
       const result = gsm.questManager.advanceQuest('nonexistent_quest');
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('not found');
+      expect(result.reason).toContain('찾을 수 없습니다');
     });
 
     it('returns failure for already completed quest', () => {
@@ -30,7 +30,7 @@ describe('QuestManager coverage gaps', () => {
         questState.completedDay = 10;
         const result = gsm.questManager.advanceQuest(questId);
         expect(result.success).toBe(false);
-        expect(result.reason).toContain('complete');
+        expect(result.reason).toContain('완료된 퀘스트');
       }
     });
   });

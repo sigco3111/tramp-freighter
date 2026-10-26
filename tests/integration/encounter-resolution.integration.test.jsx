@@ -113,10 +113,10 @@ describe('Encounter Resolution Integration', () => {
 
   /** Helper: navigate past title screen to orbit mode */
   async function navigateToOrbit() {
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
-    const shipNameInput = screen.getByPlaceholderText('Enter ship name...');
+    const shipNameInput = screen.getByPlaceholderText('함선 이름 입력...');
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
     fireEvent.keyDown(shipNameInput, { key: 'Enter' });
 
@@ -141,7 +141,7 @@ describe('Encounter Resolution Integration', () => {
     fireEvent.click(pirateButton);
 
     await waitFor(() => {
-      expect(screen.getByText('Pirate Encounter')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
     });
   }
 
@@ -157,19 +157,19 @@ describe('Encounter Resolution Integration', () => {
     await triggerPirateEncounter();
 
     // Select surrender (guaranteed success)
-    const surrenderOption = screen.getByText('Surrender');
+    const surrenderOption = screen.getByText('항복');
     fireEvent.click(surrenderOption);
 
-    const confirmButton = screen.getByText('Confirm Surrender');
+    const confirmButton = screen.getByText('확정 항복');
     fireEvent.click(confirmButton);
 
     // OutcomePanel should appear with result
     await waitFor(() => {
-      expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+      expect(screen.getByText('조우 결과')).toBeInTheDocument();
     });
 
     // Should show Continue button
-    expect(screen.getByText('Continue')).toBeInTheDocument();
+    expect(screen.getByText('계속')).toBeInTheDocument();
   });
 
   it('should return to orbit after clicking Continue on OutcomePanel', async () => {
@@ -184,26 +184,26 @@ describe('Encounter Resolution Integration', () => {
     await triggerPirateEncounter();
 
     // Surrender and resolve
-    const surrenderOption = screen.getByText('Surrender');
+    const surrenderOption = screen.getByText('항복');
     fireEvent.click(surrenderOption);
-    fireEvent.click(screen.getByText('Confirm Surrender'));
+    fireEvent.click(screen.getByText('확정 항복'));
 
     // Wait for OutcomePanel
     await waitFor(() => {
-      expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+      expect(screen.getByText('조우 결과')).toBeInTheDocument();
     });
 
     // Click Continue
-    const continueButton = screen.getByText('Continue');
+    const continueButton = screen.getByText('계속');
     fireEvent.click(continueButton);
 
     // OutcomePanel should disappear
     await waitFor(() => {
-      expect(screen.queryByText('Encounter Outcome')).not.toBeInTheDocument();
+      expect(screen.queryByText('조우 결과')).not.toBeInTheDocument();
     });
 
     // Pirate encounter panel should also be gone
-    expect(screen.queryByText('Pirate Encounter')).not.toBeInTheDocument();
+    expect(screen.queryByText('해적 조우')).not.toBeInTheDocument();
   });
 
   it('should apply game state changes from encounter resolution', async () => {
@@ -218,13 +218,13 @@ describe('Encounter Resolution Integration', () => {
     await triggerPirateEncounter();
 
     // Surrender (guaranteed resolution, costs cargo percentage)
-    const surrenderOption = screen.getByText('Surrender');
+    const surrenderOption = screen.getByText('항복');
     fireEvent.click(surrenderOption);
-    fireEvent.click(screen.getByText('Confirm Surrender'));
+    fireEvent.click(screen.getByText('확정 항복'));
 
     // Wait for OutcomePanel
     await waitFor(() => {
-      expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+      expect(screen.getByText('조우 결과')).toBeInTheDocument();
     });
 
     // Surrender always resolves - game state should reflect the resolution

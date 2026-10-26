@@ -133,9 +133,9 @@ describe('Encounter Buffering During Jump Animations', () => {
   });
 
   async function navigateToOrbit() {
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
-    const shipNameInput = screen.getByPlaceholderText('Enter ship name...');
+    const shipNameInput = screen.getByPlaceholderText('함선 이름 입력...');
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
     fireEvent.keyDown(shipNameInput, { key: 'Enter' });
     await waitFor(() => {
@@ -143,7 +143,7 @@ describe('Encounter Buffering During Jump Animations', () => {
     });
     expect(screen.queryByText('Something went wrong')).not.toBeInTheDocument();
     // Dismiss the auto-shown instructions modal
-    const closeModal = screen.queryByLabelText('Close modal');
+    const closeModal = screen.queryByLabelText('창 닫기');
     if (closeModal) {
       fireEvent.click(closeModal);
     }
@@ -154,12 +154,12 @@ describe('Encounter Buffering During Jump Animations', () => {
     encounter: {
       id: 'pirate_test',
       type: 'pirate',
-      title: 'Pirate Encounter',
+      title: '해적 조우',
       description: 'Pirates approach your vessel.',
       choices: [
-        { id: 'fight', label: 'Fight' },
-        { id: 'negotiate', label: 'Negotiate' },
-        { id: 'surrender', label: 'Surrender' },
+        { id: 'fight', label: '교전' },
+        { id: 'negotiate', label: '협상' },
+        { id: 'surrender', label: '항복' },
       ],
     },
   };
@@ -180,7 +180,7 @@ describe('Encounter Buffering During Jump Animations', () => {
 
     // Encounter should appear immediately
     await waitFor(() => {
-      expect(screen.getByText('Pirate Encounter')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
     });
   });
 
@@ -194,7 +194,7 @@ describe('Encounter Buffering During Jump Animations', () => {
     await navigateToOrbit();
 
     // Open SystemPanel via System Info button
-    const systemInfoBtn = screen.getByText('System Info');
+    const systemInfoBtn = screen.getByText('항성계 정보');
     fireEvent.click(systemInfoBtn);
 
     await waitFor(() => {
@@ -209,7 +209,7 @@ describe('Encounter Buffering During Jump Animations', () => {
       game.emit(EVENT_NAMES.ENCOUNTER_TRIGGERED, pirateEncounterData);
     });
 
-    expect(screen.queryByText('Pirate Encounter')).not.toBeInTheDocument();
+    expect(screen.queryByText('해적 조우')).not.toBeInTheDocument();
 
     // Emit near-end event — buffered encounter should now be revealed
     act(() => {
@@ -217,7 +217,7 @@ describe('Encounter Buffering During Jump Animations', () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByText('Pirate Encounter')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
     });
   });
 
@@ -236,8 +236,8 @@ describe('Encounter Buffering During Jump Animations', () => {
     });
 
     // No encounter should appear
-    expect(screen.queryByText('Pirate Encounter')).not.toBeInTheDocument();
-    expect(screen.queryByText('Customs Inspection')).not.toBeInTheDocument();
+    expect(screen.queryByText('해적 조우')).not.toBeInTheDocument();
+    expect(screen.queryByText('세관 검문')).not.toBeInTheDocument();
   });
 
   it('should not reveal encounter after near-end if encounter was already resolved', async () => {
@@ -255,20 +255,20 @@ describe('Encounter Buffering During Jump Animations', () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByText('Pirate Encounter')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
     });
 
-    fireEvent.click(screen.getByText('Surrender'));
-    fireEvent.click(screen.getByText('Confirm Surrender'));
+    fireEvent.click(screen.getByText('항복'));
+    fireEvent.click(screen.getByText('확정 항복'));
 
     await waitFor(() => {
-      expect(screen.getByText('Continue')).toBeInTheDocument();
+      expect(screen.getByText('계속')).toBeInTheDocument();
     });
 
-    fireEvent.click(screen.getByText('Continue'));
+    fireEvent.click(screen.getByText('계속'));
 
     await waitFor(() => {
-      expect(screen.queryByText('Pirate Encounter')).not.toBeInTheDocument();
+      expect(screen.queryByText('해적 조우')).not.toBeInTheDocument();
     });
 
     // Emit near-end after encounter is fully resolved — no ghost encounter
@@ -276,7 +276,7 @@ describe('Encounter Buffering During Jump Animations', () => {
       game.emit(EVENT_NAMES.JUMP_ANIMATION_NEAR_END);
     });
 
-    expect(screen.queryByText('Pirate Encounter')).not.toBeInTheDocument();
+    expect(screen.queryByText('해적 조우')).not.toBeInTheDocument();
   });
 
   it('should subscribe to JUMP_ANIMATION_NEAR_END on mount and unsubscribe on unmount', async () => {
@@ -318,7 +318,7 @@ describe('Encounter Buffering During Jump Animations', () => {
     await navigateToOrbit();
 
     // Open SystemPanel via System Info button
-    const systemInfoBtn = screen.getByText('System Info');
+    const systemInfoBtn = screen.getByText('항성계 정보');
     fireEvent.click(systemInfoBtn);
 
     await waitFor(() => {
@@ -351,7 +351,7 @@ describe('Encounter Buffering During Jump Animations', () => {
     await navigateToOrbit();
 
     // Open SystemPanel via System Info button
-    const systemInfoBtn = screen.getByText('System Info');
+    const systemInfoBtn = screen.getByText('항성계 정보');
     fireEvent.click(systemInfoBtn);
 
     await waitFor(() => {
@@ -366,13 +366,13 @@ describe('Encounter Buffering During Jump Animations', () => {
       game.emit(EVENT_NAMES.ENCOUNTER_TRIGGERED, pirateEncounterData);
     });
 
-    expect(screen.queryByText('Pirate Encounter')).not.toBeInTheDocument();
+    expect(screen.queryByText('해적 조우')).not.toBeInTheDocument();
 
     // Complete the jump without near-end event — safety fallback should reveal encounter
     fireEvent.click(screen.getByTestId('mock-jump-complete'));
 
     await waitFor(() => {
-      expect(screen.getByText('Pirate Encounter')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
     });
   });
 
@@ -414,28 +414,28 @@ describe('Encounter Buffering During Jump Animations', () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByText('Distress Call')).toBeInTheDocument();
+      expect(screen.getByText('조난 신호')).toBeInTheDocument();
     });
 
-    // Select "Salvage the Wreck" (loot choice)
-    fireEvent.click(screen.getByText('Salvage the Wreck'));
+    // Select "잔해 인양" (loot choice)
+    fireEvent.click(screen.getByText('잔해 인양'));
 
     // Confirm the choice
     await waitFor(() => {
       expect(
-        screen.getByText('Salvage the Wreck', {
+        screen.getByText('잔해 인양', {
           selector: 'button.distress-btn',
         })
       ).toBeInTheDocument();
     });
     fireEvent.click(
-      screen.getByText('Salvage the Wreck', { selector: 'button.distress-btn' })
+      screen.getByText('잔해 인양', { selector: 'button.distress-btn' })
     );
 
     // Salvage notification should appear — only 1 of 2 parts fit
     await waitFor(() => {
       expect(
-        screen.getByText(/Could only fit 1 of 2 units/)
+        screen.getByText(/1\/2단위만 실을 수 있었습니다/)
       ).toBeInTheDocument();
     });
   });

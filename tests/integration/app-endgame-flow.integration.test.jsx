@@ -136,10 +136,10 @@ describe('Endgame Flow Integration', () => {
 
   /** Helper: navigate past title screen to orbit mode */
   async function navigateToOrbit() {
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
-    const shipNameInput = screen.getByPlaceholderText('Enter ship name...');
+    const shipNameInput = screen.getByPlaceholderText('함선 이름 입력...');
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
     fireEvent.keyDown(shipNameInput, { key: 'Enter' });
 
@@ -190,7 +190,7 @@ describe('Endgame Flow Integration', () => {
     fireEvent.click(screen.getByText('Return to Title'));
 
     await waitFor(() => {
-      expect(screen.getByText('New Game')).toBeInTheDocument();
+      expect(screen.getByText('새 게임')).toBeInTheDocument();
     });
 
     // PostCreditsStation should be gone

@@ -108,7 +108,7 @@ describe('Cargo Run Mission Completion', () => {
 
     const result = manager.completeMission('cargo_run_123');
     expect(result.success).toBe(false);
-    expect(result.reason).toMatch(/cargo/i);
+    expect(result.reason).toMatch(/화물/);
   });
 
   it('should not require old-style cargo field for new cargo runs', () => {

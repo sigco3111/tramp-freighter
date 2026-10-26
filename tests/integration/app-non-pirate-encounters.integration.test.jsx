@@ -110,10 +110,10 @@ describe('Non-Pirate Encounter Integration', () => {
 
   /** Navigate past title screen to orbit mode */
   async function navigateToOrbit() {
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
-    const shipNameInput = screen.getByPlaceholderText('Enter ship name...');
+    const shipNameInput = screen.getByPlaceholderText('함선 이름 입력...');
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
     fireEvent.keyDown(shipNameInput, { key: 'Enter' });
 
@@ -131,7 +131,7 @@ describe('Non-Pirate Encounter Integration', () => {
         severity: 'routine',
         description:
           'Customs officials are conducting a standard cargo inspection.',
-        choices: [{ id: 'cooperate', label: 'Cooperate' }],
+        choices: [{ id: 'cooperate', label: '협조' }],
       },
     };
 
@@ -147,12 +147,12 @@ describe('Non-Pirate Encounter Integration', () => {
       game.emit(EVENT_NAMES.ENCOUNTER_TRIGGERED, inspectionData);
 
       await waitFor(() => {
-        expect(screen.getByText('Customs Inspection')).toBeInTheDocument();
+        expect(screen.getByText('세관 검문')).toBeInTheDocument();
       });
 
-      expect(screen.getByText('Cooperate')).toBeInTheDocument();
-      expect(screen.getByText('Attempt Bribery')).toBeInTheDocument();
-      expect(screen.getByText('Flee')).toBeInTheDocument();
+      expect(screen.getByText('협조')).toBeInTheDocument();
+      expect(screen.getByText('뇌물 시도')).toBeInTheDocument();
+      expect(screen.getByText('도주')).toBeInTheDocument();
     });
 
     it('should return to orbit after resolving inspection encounter', async () => {
@@ -167,27 +167,27 @@ describe('Non-Pirate Encounter Integration', () => {
       game.emit(EVENT_NAMES.ENCOUNTER_TRIGGERED, inspectionData);
 
       await waitFor(() => {
-        expect(screen.getByText('Customs Inspection')).toBeInTheDocument();
+        expect(screen.getByText('세관 검문')).toBeInTheDocument();
       });
 
       // Cooperate option resolves through handleEncounterChoice -> resolveEncounter
-      const cooperateOption = screen.getByText('Cooperate');
+      const cooperateOption = screen.getByText('협조');
       fireEvent.click(cooperateOption);
 
       // OutcomePanel should appear after resolution
       await waitFor(() => {
-        expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+        expect(screen.getByText('조우 결과')).toBeInTheDocument();
       });
 
       // Click Continue to return to orbit
-      const continueButton = screen.getByText('Continue');
+      const continueButton = screen.getByText('계속');
       fireEvent.click(continueButton);
 
       await waitFor(() => {
         expect(
-          screen.queryByText('Customs Inspection')
+          screen.queryByText('세관 검문')
         ).not.toBeInTheDocument();
-        expect(screen.queryByText('Encounter Outcome')).not.toBeInTheDocument();
+        expect(screen.queryByText('조우 결과')).not.toBeInTheDocument();
       });
     });
   });
@@ -215,11 +215,11 @@ describe('Non-Pirate Encounter Integration', () => {
       game.emit(EVENT_NAMES.ENCOUNTER_TRIGGERED, hullBreachData);
 
       await waitFor(() => {
-        expect(screen.getByText('Mechanical Failure')).toBeInTheDocument();
+        expect(screen.getByText('기계 고장')).toBeInTheDocument();
       });
 
-      expect(screen.getByText('Hull Breach')).toBeInTheDocument();
-      expect(screen.getByText('Acknowledge')).toBeInTheDocument();
+      expect(screen.getByText('선체 파손')).toBeInTheDocument();
+      expect(screen.getByText('확인')).toBeInTheDocument();
     });
 
     it('should return to orbit when mechanical failure encounter is acknowledged', async () => {
@@ -234,27 +234,27 @@ describe('Non-Pirate Encounter Integration', () => {
       game.emit(EVENT_NAMES.ENCOUNTER_TRIGGERED, hullBreachData);
 
       await waitFor(() => {
-        expect(screen.getByText('Mechanical Failure')).toBeInTheDocument();
+        expect(screen.getByText('기계 고장')).toBeInTheDocument();
       });
 
       // Hull breach Acknowledge button resolves through encounter resolution
-      const acknowledgeButton = screen.getByText('Acknowledge');
+      const acknowledgeButton = screen.getByText('확인');
       fireEvent.click(acknowledgeButton);
 
       // OutcomePanel should appear after resolution
       await waitFor(() => {
-        expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+        expect(screen.getByText('조우 결과')).toBeInTheDocument();
       });
 
       // Click Continue to return to orbit
-      const continueButton = screen.getByText('Continue');
+      const continueButton = screen.getByText('계속');
       fireEvent.click(continueButton);
 
       await waitFor(() => {
         expect(
-          screen.queryByText('Mechanical Failure')
+          screen.queryByText('기계 고장')
         ).not.toBeInTheDocument();
-        expect(screen.queryByText('Encounter Outcome')).not.toBeInTheDocument();
+        expect(screen.queryByText('조우 결과')).not.toBeInTheDocument();
       });
     });
   });
@@ -286,12 +286,12 @@ describe('Non-Pirate Encounter Integration', () => {
       game.emit(EVENT_NAMES.ENCOUNTER_TRIGGERED, distressCallData);
 
       await waitFor(() => {
-        expect(screen.getByText('Distress Call')).toBeInTheDocument();
+        expect(screen.getByText('조난 신호')).toBeInTheDocument();
       });
 
-      expect(screen.getByText('Respond to Distress Call')).toBeInTheDocument();
-      expect(screen.getByText('Ignore the Call')).toBeInTheDocument();
-      expect(screen.getByText('Salvage the Wreck')).toBeInTheDocument();
+      expect(screen.getByText('조난 신호에 응답')).toBeInTheDocument();
+      expect(screen.getByText('신호 무시')).toBeInTheDocument();
+      expect(screen.getByText('잔해 인양')).toBeInTheDocument();
     });
 
     it('should return to orbit after resolving distress call encounter', async () => {
@@ -306,31 +306,31 @@ describe('Non-Pirate Encounter Integration', () => {
       game.emit(EVENT_NAMES.ENCOUNTER_TRIGGERED, distressCallData);
 
       await waitFor(() => {
-        expect(screen.getByText('Distress Call')).toBeInTheDocument();
+        expect(screen.getByText('조난 신호')).toBeInTheDocument();
       });
 
-      // Select "Ignore the Call" then confirm
-      const ignoreOption = screen.getByText('Ignore the Call');
+      // Select "신호 무시" then confirm
+      const ignoreOption = screen.getByText('신호 무시');
       fireEvent.click(ignoreOption);
 
       // Confirm the choice
       await waitFor(() => {
-        expect(screen.getByText('Continue on Course')).toBeInTheDocument();
+        expect(screen.getByText('항로 유지')).toBeInTheDocument();
       });
-      fireEvent.click(screen.getByText('Continue on Course'));
+      fireEvent.click(screen.getByText('항로 유지'));
 
       // OutcomePanel should appear after resolution
       await waitFor(() => {
-        expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+        expect(screen.getByText('조우 결과')).toBeInTheDocument();
       });
 
       // Click Continue to return to orbit
-      const continueButton = screen.getByText('Continue');
+      const continueButton = screen.getByText('계속');
       fireEvent.click(continueButton);
 
       await waitFor(() => {
-        expect(screen.queryByText('Distress Call')).not.toBeInTheDocument();
-        expect(screen.queryByText('Encounter Outcome')).not.toBeInTheDocument();
+        expect(screen.queryByText('조난 신호')).not.toBeInTheDocument();
+        expect(screen.queryByText('조우 결과')).not.toBeInTheDocument();
       });
     });
   });

@@ -66,27 +66,27 @@ describe('MobileHUD', () => {
 
   it('should show worst resource indicator', () => {
     renderMobileHUD();
-    expect(screen.getByText(/Life Sup/i)).toBeTruthy();
+    expect(screen.getByText(/생명유지/)).toBeTruthy();
     expect(screen.getByText(/15%/)).toBeTruthy();
   });
 
   it('should expand when summary bar is tapped', () => {
     renderMobileHUD();
-    fireEvent.click(screen.getByRole('button', { name: /expand hud/i }));
+    fireEvent.click(screen.getByRole('button', { name: /HUD 펼치기/ }));
     expect(screen.getByTestId('resource-bar')).toBeTruthy();
     expect(screen.getByTestId('ship-status')).toBeTruthy();
   });
 
   it('should collapse when summary bar is tapped again', () => {
     renderMobileHUD();
-    fireEvent.click(screen.getByRole('button', { name: /expand hud/i }));
-    fireEvent.click(screen.getByRole('button', { name: /collapse hud/i }));
+    fireEvent.click(screen.getByRole('button', { name: /HUD 펼치기/ }));
+    fireEvent.click(screen.getByRole('button', { name: /HUD 접기/ }));
     expect(screen.queryByTestId('resource-bar')).toBeNull();
   });
 
   it('should collapse when backdrop is tapped', () => {
     renderMobileHUD();
-    fireEvent.click(screen.getByRole('button', { name: /expand hud/i }));
+    fireEvent.click(screen.getByRole('button', { name: /HUD 펼치기/ }));
     fireEvent.click(screen.getByTestId('hud-backdrop'));
     expect(screen.queryByTestId('resource-bar')).toBeNull();
   });
@@ -103,7 +103,7 @@ describe('MobileHUD', () => {
     );
 
     // Click the HUD bar — should NOT expand when panelActive is true
-    fireEvent.click(screen.getByRole('button', { name: /expand hud/i }));
+    fireEvent.click(screen.getByRole('button', { name: /HUD 펼치기/ }));
     expect(screen.queryByTestId('resource-bar')).toBeNull();
   });
 
@@ -117,7 +117,7 @@ describe('MobileHUD', () => {
         />
       </MobileProvider>
     );
-    fireEvent.click(screen.getByRole('button', { name: /expand hud/i }));
+    fireEvent.click(screen.getByRole('button', { name: /HUD 펼치기/ }));
     expect(screen.getByTestId('resource-bar')).toBeTruthy();
 
     rerender(

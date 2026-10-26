@@ -63,7 +63,7 @@ describe('Property: Game initialization on continue', () => {
         // Find the Continue Game button
         const buttons = Array.from(container.querySelectorAll('.menu-btn'));
         const continueButton = buttons.find(
-          (btn) => btn.textContent === 'Continue Game'
+          (btn) => btn.textContent === '이어하기'
         );
 
         expect(continueButton).toBeTruthy();
@@ -135,7 +135,7 @@ describe('Property: Game initialization on continue', () => {
           // Find the Continue Game button
           const buttons = Array.from(container.querySelectorAll('.menu-btn'));
           const continueButton = buttons.find(
-            (btn) => btn.textContent === 'Continue Game'
+            (btn) => btn.textContent === '이어하기'
           );
 
           expect(continueButton).toBeTruthy();
@@ -224,7 +224,7 @@ describe('Property: Game initialization on continue', () => {
           // Find the Continue Game button
           const buttons = Array.from(container.querySelectorAll('.menu-btn'));
           const continueButton = buttons.find(
-            (btn) => btn.textContent === 'Continue Game'
+            (btn) => btn.textContent === '이어하기'
           );
 
           expect(continueButton).toBeTruthy();

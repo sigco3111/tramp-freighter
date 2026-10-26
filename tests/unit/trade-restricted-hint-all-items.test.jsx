@@ -34,11 +34,11 @@ describe('TradePanel restricted hint on all items', () => {
     render(<TradePanel onClose={() => {}} />, { wrapper });
 
     // Sol has 2 restricted goods — both get RESTRICTED badges
-    const badges = screen.getAllByText('RESTRICTED');
+    const badges = screen.getAllByText('제한 품목');
     expect(badges.length).toBe(2);
 
     // Only the first restricted item shows the dismiss hint
-    const dismissButtons = screen.getAllByText('Got it');
+    const dismissButtons = screen.getAllByText('알겠습니다');
     expect(dismissButtons.length).toBe(1);
   });
 });

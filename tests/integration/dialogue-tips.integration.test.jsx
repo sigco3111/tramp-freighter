@@ -62,11 +62,11 @@ describe('Dialogue Tips Integration', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Whisper')).toBeInTheDocument();
+        expect(screen.getByText('위스퍼')).toBeInTheDocument();
       });
 
       // Verify tip option is present
-      expect(screen.getByText('Any trading tips for me?')).toBeInTheDocument();
+      expect(screen.getByText('거래 요령이 있나요?')).toBeInTheDocument();
     });
 
     it('should hide tip option when NPC reputation is below Warm tier', async () => {
@@ -84,12 +84,12 @@ describe('Dialogue Tips Integration', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Whisper')).toBeInTheDocument();
+        expect(screen.getByText('위스퍼')).toBeInTheDocument();
       });
 
       // Verify tip option is not present
       expect(
-        screen.queryByText('Any trading tips for me?')
+        screen.queryByText('거래 요령이 있나요?')
       ).not.toBeInTheDocument();
     });
 
@@ -112,12 +112,12 @@ describe('Dialogue Tips Integration', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Whisper')).toBeInTheDocument();
+        expect(screen.getByText('위스퍼')).toBeInTheDocument();
       });
 
       // Verify tip option is not present due to cooldown
       expect(
-        screen.queryByText('Any trading tips for me?')
+        screen.queryByText('거래 요령이 있나요?')
       ).not.toBeInTheDocument();
     });
 
@@ -136,7 +136,7 @@ describe('Dialogue Tips Integration', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Father Okonkwo')).toBeInTheDocument();
+        expect(screen.getByText('오콘쿠오 신부')).toBeInTheDocument();
       });
 
       // Verify no tip option is present (Father Okonkwo doesn't provide trading tips)
@@ -160,18 +160,18 @@ describe('Dialogue Tips Integration', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Whisper')).toBeInTheDocument();
+        expect(screen.getByText('위스퍼')).toBeInTheDocument();
       });
 
       // Click the tip option
-      const tipButton = screen.getByText('Any trading tips for me?');
+      const tipButton = screen.getByText('거래 요령이 있나요?');
       fireEvent.click(tipButton);
 
       // Wait for tip dialogue to appear
       await waitFor(() => {
         // Should show the tip dialogue text plus actual tip content
         expect(
-          screen.getByText(/Knowledge shared is knowledge multiplied/)
+          screen.getByText(/공유된 지식은 배가된 지식입니다/)
         ).toBeInTheDocument();
       });
 
@@ -203,17 +203,17 @@ describe('Dialogue Tips Integration', () => {
 
       // Wait for Wei Chen dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Click Wei Chen's tip option
-      const weiTipButton = screen.getByText('Any dock worker tips for me?');
+      const weiTipButton = screen.getByText('부두 일꾼으로서 알려 줄 요령이 있나요?');
       fireEvent.click(weiTipButton);
 
       // Wait for tip dialogue and capture tip content
       await waitFor(() => {
         expect(
-          screen.getByText(/Been working these docks for years/)
+          screen.getByText(/몇 년 동안 이 부두에서 일하면서/)
         ).toBeInTheDocument();
       });
 
@@ -241,17 +241,17 @@ describe('Dialogue Tips Integration', () => {
 
       // Wait for Marcus Cole dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Marcus Cole')).toBeInTheDocument();
+        expect(screen.getByText('마커스 콜')).toBeInTheDocument();
       });
 
       // Click Marcus Cole's tip option
-      const marcusTipButton = screen.getByText('Any financial tips for me?');
+      const marcusTipButton = screen.getByText('금융 조언이 있나요?');
       fireEvent.click(marcusTipButton);
 
       // Wait for tip dialogue
       await waitFor(() => {
         expect(
-          screen.getByText(/Credit management is a skill/)
+          screen.getByText(/신용 관리는 극소수의 상인만 익히는 기술이지/)
         ).toBeInTheDocument();
       });
 
@@ -285,17 +285,17 @@ describe('Dialogue Tips Integration', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Captain Vasquez')).toBeInTheDocument();
+        expect(screen.getByText('바스케스 선장')).toBeInTheDocument();
       });
 
       // Click the tip option
-      const tipButton = screen.getByText('Any trading tips for me?');
+      const tipButton = screen.getByText('거래 요령이 있을까요?');
       fireEvent.click(tipButton);
 
       // Wait for tip dialogue to appear
       await waitFor(() => {
         expect(
-          screen.getByText(/Always happy to share what I know/)
+          screen.getByText(/아는 걸 나누는 건 언제나 즐겁네/)
         ).toBeInTheDocument();
       });
 
@@ -304,20 +304,20 @@ describe('Dialogue Tips Integration', () => {
 
       // Go back to greeting and verify tip option is no longer available
       const responseButton = screen.getByText(
-        'That information is very helpful.'
+        '그 정보 정말 도움이 되네요.'
       );
       fireEvent.click(responseButton);
 
       // Wait for return to greeting
       await waitFor(() => {
         expect(
-          screen.getByText(/Good to see you're still out there making runs/)
+          screen.getByText(/오, 또 자네군/)
         ).toBeInTheDocument();
       });
 
       // Verify tip option is no longer available due to cooldown
       expect(
-        screen.queryByText('Any trading tips for me?')
+        screen.queryByText('거래 요령이 있나요?')
       ).not.toBeInTheDocument();
     });
   });
@@ -326,26 +326,26 @@ describe('Dialogue Tips Integration', () => {
     it('should show NPC-specific tip option text', async () => {
       // Test different NPCs have different tip option text
       const testCases = [
-        { npcId: 'whisper_sirius', expectedText: 'Any trading tips for me?' },
+        { npcId: 'whisper_sirius', expectedText: '거래 요령이 있나요?' },
         {
           npcId: 'chen_barnards',
-          expectedText: 'Any dock worker tips for me?',
+          expectedText: '부두 일꾼으로서 알려 줄 요령이 있나요?',
         },
-        { npcId: 'cole_sol', expectedText: 'Any financial tips for me?' },
-        { npcId: 'vasquez_epsilon', expectedText: 'Any trading tips for me?' },
-        { npcId: 'kim_tau_ceti', expectedText: 'Any operational tips for me?' },
+        { npcId: 'cole_sol', expectedText: '금융 조언이 있나요?' },
+        { npcId: 'vasquez_epsilon', expectedText: '거래 요령이 있을까요?' },
+        { npcId: 'kim_tau_ceti', expectedText: '운영상 요령이 있을까요?' },
         {
           npcId: 'rodriguez_procyon',
-          expectedText: 'Any maintenance tips for me?',
+          expectedText: '정비 요령이 있나요?',
         },
-        { npcId: 'osman_luyten', expectedText: 'Got any market tips for me?' },
+        { npcId: 'osman_luyten', expectedText: '시장 팁이 있나요?' },
         {
           npcId: 'kowalski_alpha_centauri',
-          expectedText: 'Any station operation tips for me?',
+          expectedText: '정거장 운영 요령이 있나요?',
         },
         {
           npcId: 'liu_wolf359',
-          expectedText: 'Got any risk-taking tips for me?',
+          expectedText: '위험을 감수하는 요령이 있나요?',
         },
       ];
 

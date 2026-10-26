@@ -25,29 +25,29 @@ describe('MobileCameraToolbar', () => {
 
   it('should render zoom buttons', () => {
     render(<MobileCameraToolbar {...defaultProps} />);
-    expect(screen.getByRole('button', { name: /zoom in/i })).toBeTruthy();
-    expect(screen.getByRole('button', { name: /zoom out/i })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /확대/ })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /축소/ })).toBeTruthy();
   });
 
   it('should render a Find Star select', () => {
     render(<MobileCameraToolbar {...defaultProps} />);
-    expect(screen.getByRole('combobox', { name: /find star/i })).toBeTruthy();
+    expect(screen.getByRole('combobox', { name: /별 찾기/ })).toBeTruthy();
   });
 
   it('should render a settings button', () => {
     render(<MobileCameraToolbar {...defaultProps} />);
-    expect(screen.getByRole('button', { name: /settings/i })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /설정/ })).toBeTruthy();
   });
 
   it('should call onZoomIn when pressed', () => {
     render(<MobileCameraToolbar {...defaultProps} />);
-    fireEvent.click(screen.getByRole('button', { name: /zoom in/i }));
+    fireEvent.click(screen.getByRole('button', { name: /확대/ }));
     expect(defaultProps.onZoomIn).toHaveBeenCalled();
   });
 
   it('should show settings popover when pressed', () => {
     render(<MobileCameraToolbar {...defaultProps} />);
-    fireEvent.click(screen.getByRole('button', { name: /settings/i }));
+    fireEvent.click(screen.getByRole('button', { name: /설정/ }));
     expect(screen.getByText(/Antimatter/i)).toBeTruthy();
     expect(screen.getByText(/Jump Warnings/i)).toBeTruthy();
   });

@@ -59,7 +59,7 @@ describe('DialoguePanel Lifecycle', () => {
 
       // Wait for dialogue to fully initialize
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Verify onClose was never called during initialization
@@ -77,7 +77,7 @@ describe('DialoguePanel Lifecycle', () => {
 
       // Eventually should show dialogue content, not loading
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
         expect(
           screen.queryByText('Loading dialogue...')
         ).not.toBeInTheDocument();
@@ -95,7 +95,7 @@ describe('DialoguePanel Lifecycle', () => {
 
       await waitFor(() => {
         // Should show Wei Chen's greeting
-        expect(screen.getByText(/Another trader/)).toBeInTheDocument();
+        expect(screen.getByText(/또 한 명의 상인/)).toBeInTheDocument();
       });
     });
   });
@@ -112,11 +112,11 @@ describe('DialoguePanel Lifecycle', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Find and click the farewell option
-      const farewellButton = screen.getByText('Nothing right now. Take care.');
+      const farewellButton = screen.getByText('지금은 없어요. 몸 조심하세요.');
       fireEvent.click(farewellButton);
 
       // Should call onClose when dialogue ends
@@ -136,11 +136,11 @@ describe('DialoguePanel Lifecycle', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Click farewell option
-      const farewellButton = screen.getByText('Nothing right now. Take care.');
+      const farewellButton = screen.getByText('지금은 없어요. 몸 조심하세요.');
       fireEvent.click(farewellButton);
 
       // Wait for onClose to be called
@@ -166,21 +166,21 @@ describe('DialoguePanel Lifecycle', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Find and click a conversation option (not farewell)
       const conversationButton = screen.getByText(
-        "Just making conversation. How's work?"
+        "그냥 얘기하는 거예요. 일은 어때요?"
       );
       fireEvent.click(conversationButton);
 
       // Should show next dialogue node, not close
       await waitFor(() => {
         // Should still show Wei Chen (dialogue continues)
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
         // Should show new dialogue text from small_talk node
-        expect(screen.getByText(/Work's work/)).toBeInTheDocument();
+        expect(screen.getByText(/일은 일이지/)).toBeInTheDocument();
       });
 
       // onClose should not have been called
@@ -198,18 +198,18 @@ describe('DialoguePanel Lifecycle', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Click conversation option
       const conversationButton = screen.getByText(
-        "Just making conversation. How's work?"
+        "그냥 얘기하는 거예요. 일은 어때요?"
       );
       fireEvent.click(conversationButton);
 
       // Should transition smoothly without showing loading
       await waitFor(() => {
-        expect(screen.getByText(/Work's work/)).toBeInTheDocument();
+        expect(screen.getByText(/일은 일이지/)).toBeInTheDocument();
       });
 
       // Loading state should not appear during transition
@@ -229,11 +229,11 @@ describe('DialoguePanel Lifecycle', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Click the close button
-      const closeButton = screen.getByLabelText('Close');
+      const closeButton = screen.getByLabelText('닫기');
       fireEvent.click(closeButton);
 
       // Should call onClose (may be called multiple times due to manual close + auto-close effect)
@@ -254,7 +254,7 @@ describe('DialoguePanel Lifecycle', () => {
 
       // Wait for dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Verify dialogue is active
@@ -262,7 +262,7 @@ describe('DialoguePanel Lifecycle', () => {
       expect(dialogueState.isActive).toBe(true);
 
       // Click the close button
-      const closeButton = screen.getByLabelText('Close');
+      const closeButton = screen.getByLabelText('닫기');
       fireEvent.click(closeButton);
 
       // Dialogue state should be cleared
@@ -284,11 +284,11 @@ describe('DialoguePanel Lifecycle', () => {
 
       // Wait for first dialogue to initialize
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Close dialogue via farewell
-      const farewellButton = screen.getByText('Nothing right now. Take care.');
+      const farewellButton = screen.getByText('지금은 없어요. 몸 조심하세요.');
       fireEvent.click(farewellButton);
 
       await waitFor(() => {
@@ -309,7 +309,7 @@ describe('DialoguePanel Lifecycle', () => {
 
       // Should initialize properly again
       await waitFor(() => {
-        expect(screen.getByText('Wei Chen')).toBeInTheDocument();
+        expect(screen.getByText('웨이 첸')).toBeInTheDocument();
       });
 
       // Should not have called onClose during reinitialization

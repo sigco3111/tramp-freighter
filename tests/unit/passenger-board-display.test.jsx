@@ -71,7 +71,7 @@ describe('MissionBoardPanel passenger rendering', () => {
   it('should render passenger type capitalized', () => {
     useGameEvent.mockReturnValue({ board: [passengerMission] });
     render(<MissionBoardPanel onClose={vi.fn()} />);
-    expect(screen.getByText('Scientist')).toBeInTheDocument();
+    expect(screen.getByText('과학자')).toBeInTheDocument();
   });
 
   it('should render passenger dialogue in quotes', () => {
@@ -83,20 +83,20 @@ describe('MissionBoardPanel passenger rendering', () => {
   it('should render cargo space requirement for passengers', () => {
     useGameEvent.mockReturnValue({ board: [passengerMission] });
     render(<MissionBoardPanel onClose={vi.fn()} />);
-    expect(screen.getByText(/Space Required: 2 units/)).toBeInTheDocument();
+    expect(screen.getByText(/필요 공간: 2단위/)).toBeInTheDocument();
   });
 
   it('should render deadline and reward for passenger missions', () => {
     useGameEvent.mockReturnValue({ board: [passengerMission] });
     render(<MissionBoardPanel onClose={vi.fn()} />);
-    expect(screen.getByText(/Deadline: 10 days/)).toBeInTheDocument();
+    expect(screen.getByText(/기한: 10 일/)).toBeInTheDocument();
     expect(screen.getByText(/800/)).toBeInTheDocument();
   });
 
   it('should render cargo details for delivery missions', () => {
     useGameEvent.mockReturnValue({ board: [cargoMission] });
     render(<MissionBoardPanel onClose={vi.fn()} />);
-    expect(screen.getByText(/Deliver:/)).toBeInTheDocument();
+    expect(screen.getByText(/배달:/)).toBeInTheDocument();
     expect(screen.getByText(/15/)).toBeInTheDocument();
     // "grain" appears in title and details; verify at least one exists
     expect(screen.getAllByText(/grain/).length).toBeGreaterThanOrEqual(1);
@@ -114,7 +114,7 @@ describe('MissionBoardPanel passenger rendering', () => {
     });
     render(<MissionBoardPanel onClose={vi.fn()} />);
     // Passenger elements
-    expect(screen.getByText('Scientist')).toBeInTheDocument();
+    expect(screen.getByText('과학자')).toBeInTheDocument();
     expect(screen.getByText(/Fascinating ship you have/)).toBeInTheDocument();
     // Cargo elements present (appears in title and details)
     expect(screen.getAllByText(/grain/).length).toBeGreaterThanOrEqual(1);

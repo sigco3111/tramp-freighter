@@ -67,7 +67,7 @@ describe('Mission Completion', () => {
 
     const result = manager.completeMission('test_wrong_dest');
     expect(result.success).toBe(false);
-    expect(result.reason).toContain('destination');
+    expect(result.reason).toContain('목적지에 있지 않습니다');
   });
 
   it('should reject completion if cargo requirements not met', () => {
@@ -87,7 +87,7 @@ describe('Mission Completion', () => {
 
     const result = manager.completeMission('test_no_cargo');
     expect(result.success).toBe(false);
-    expect(result.reason).toContain('cargo');
+    expect(result.reason).toContain('의약품이 부족합니다');
   });
 
   it('should complete a fetch mission at giver system with cargo', () => {
@@ -135,7 +135,7 @@ describe('Mission Completion', () => {
 
     const result = manager.completeMission('test_intel_fail');
     expect(result.success).toBe(false);
-    expect(result.reason).toContain('visited');
+    expect(result.reason).toContain('방문하지 않은 목표 항성계');
   });
 
   it('should complete a passenger mission at destination', () => {

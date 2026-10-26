@@ -128,7 +128,7 @@ describe('Modal Component', () => {
       </Modal>
     );
 
-    const closeButton = screen.getByRole('button', { name: /close modal/i });
+    const closeButton = screen.getByRole('button', { name: /창 닫기/ });
     expect(closeButton).toBeInTheDocument();
   });
 
@@ -205,7 +205,7 @@ describe('ConfirmModal Component', () => {
       />
     );
 
-    const cancelButton = screen.getByText('Cancel');
+    const cancelButton = screen.getByText('취소');
     fireEvent.click(cancelButton);
 
     expect(cancelCalled).toBe(true);

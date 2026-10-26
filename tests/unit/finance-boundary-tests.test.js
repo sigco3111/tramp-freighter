@@ -68,7 +68,7 @@ describe('Finance Boundary Tests', () => {
       const result = gsm.buyGood('water', 1, 10);
 
       expect(result.success).toBe(false);
-      expect(result.reason).toMatch(/insufficient credits/i);
+      expect(result.reason).toMatch(/크레딧이 부족/);
     });
 
     it('buy with cost exactly equal to credits should succeed', () => {
@@ -94,7 +94,7 @@ describe('Finance Boundary Tests', () => {
       const result = gsm.buyGood('water', 1, 10);
 
       expect(result.success).toBe(false);
-      expect(result.reason).toMatch(/cargo space/i);
+      expect(result.reason).toMatch(/화물 공간/);
     });
 
     it('sell entire cargo stack (qty matches exactly) should remove the stack', () => {
@@ -119,7 +119,7 @@ describe('Finance Boundary Tests', () => {
       const result = gsm.sellGood(0, 0, 20);
 
       expect(result.success).toBe(false);
-      expect(result.reason).toMatch(/positive/i);
+      expect(result.reason).toMatch(/양수/);
     });
   });
 
@@ -140,7 +140,7 @@ describe('Finance Boundary Tests', () => {
       const result = gsm.refuel(amountBeyondEpsilon);
 
       expect(result.success).toBe(false);
-      expect(result.reason).toMatch(/capacity/i);
+      expect(result.reason).toMatch(/용량/);
     });
 
     it('refuel at max capacity within epsilon succeeds but fuel is clamped', () => {
@@ -179,7 +179,7 @@ describe('Finance Boundary Tests', () => {
       const result = gsm.refuel(10);
 
       expect(result.success).toBe(false);
-      expect(result.reason).toMatch(/insufficient credits/i);
+      expect(result.reason).toMatch(/크레딧이 부족/);
       // State should be unchanged
       expect(state.ship.fuel).toBe(50);
       expect(state.player.credits).toBe(0);
@@ -194,7 +194,7 @@ describe('Finance Boundary Tests', () => {
       const result = gsm.refuel(0);
 
       expect(result.success).toBe(false);
-      expect(result.reason).toMatch(/positive/i);
+      expect(result.reason).toMatch(/양수/);
       // State should be unchanged
       expect(state.ship.fuel).toBe(50);
     });
@@ -213,7 +213,7 @@ describe('Finance Boundary Tests', () => {
       const result = gsm.repairShipSystem('hull', 10);
 
       expect(result.success).toBe(false);
-      expect(result.reason).toMatch(/maximum condition/i);
+      expect(result.reason).toMatch(/최대 상태/);
     });
 
     it('repair cost for system already at 100% should be 0', () => {
@@ -257,7 +257,7 @@ describe('Finance Boundary Tests', () => {
       const result = gsm.repairShipSystem('engine', 25);
 
       expect(result.success).toBe(false);
-      expect(result.reason).toMatch(/exceed maximum/i);
+      expect(result.reason).toMatch(/최대 상태를 초과/);
     });
 
     it('repair amount that exactly reaches 100% should succeed', () => {
@@ -280,7 +280,7 @@ describe('Finance Boundary Tests', () => {
       const result = gsm.repairShipSystem('hull', 0);
 
       expect(result.success).toBe(false);
-      expect(result.reason).toMatch(/positive/i);
+      expect(result.reason).toMatch(/양수/);
     });
   });
 
@@ -408,7 +408,7 @@ describe('Finance Boundary Tests', () => {
         const result = debtManager.makePayment(500);
 
         expect(result.success).toBe(false);
-        expect(result.reason).toMatch(/insufficient credits/i);
+        expect(result.reason).toMatch(/크레딧이 부족/);
         // State should be unchanged
         expect(state.player.credits).toBe(499);
         expect(state.player.debt).toBe(10000);
@@ -436,7 +436,7 @@ describe('Finance Boundary Tests', () => {
         const result = debtManager.makePayment(100);
 
         expect(result.success).toBe(false);
-        expect(result.reason).toMatch(/no outstanding debt/i);
+        expect(result.reason).toMatch(/남은 부채가 없습니다/);
       });
 
       it('payment larger than debt is capped at debt amount', () => {
@@ -463,7 +463,7 @@ describe('Finance Boundary Tests', () => {
         const result = debtManager.borrow(COLE_DEBT_CONFIG.MIN_DRAW - 1);
 
         expect(result.success).toBe(false);
-        expect(result.reason).toMatch(/minimum draw/i);
+        expect(result.reason).toMatch(/최소 인출 금액/);
       });
 
       it('borrow at exactly MIN_DRAW should succeed', () => {

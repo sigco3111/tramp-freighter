@@ -40,7 +40,7 @@ describe('Salvage Cargo Cap (#55/56)', () => {
     // Should only fit 2 of 5
     const parts = state.ship.cargo.find((item) => item.good === 'parts');
     expect(parts.qty).toBe(2);
-    expect(result.salvageMessages).toContain('Could only fit 2 of 5 units.');
+    expect(result.salvageMessages).toContain('2/5단위만 실을 수 있었습니다.');
   });
 
   it('should show partial salvage message when only 1 of multiple fits', () => {
@@ -64,7 +64,7 @@ describe('Salvage Cargo Cap (#55/56)', () => {
 
     const parts = state.ship.cargo.find((item) => item.good === 'parts');
     expect(parts.qty).toBe(1);
-    expect(result.salvageMessages).toContain('Could only fit 1 of 3 units.');
+    expect(result.salvageMessages).toContain('1/3단위만 실을 수 있었습니다.');
   });
 
   it('should salvage nothing when hold is full with full-hold message', () => {
@@ -94,7 +94,7 @@ describe('Salvage Cargo Cap (#55/56)', () => {
     const parts = state.ship.cargo.find((item) => item.good === 'parts');
     expect(parts).toBeUndefined();
     expect(result.salvageMessages).toContain(
-      'Your hold is full \u2014 nothing salvaged.'
+      '화물칸이 가득 차 아무것도 인양하지 못했습니다.'
     );
   });
 

@@ -252,7 +252,7 @@ describe('Property: Info broker utility functions are pure', () => {
 
           if (credits < cost) {
             expect(result.valid).toBe(false);
-            expect(result.reason).toBe('Insufficient credits for intelligence');
+            expect(result.reason).toBe('정보를 구매할 크레딧이 부족합니다');
           } else {
             expect(result.valid).toBe(true);
             expect(result.reason).toBe(null);
@@ -268,7 +268,7 @@ describe('Property: Info broker utility functions are pure', () => {
   it('formatStaleness should return correct CSS class for staleness levels', () => {
     // Current
     expect(formatStaleness(0).cssClass).toBe('');
-    expect(formatStaleness(0).text).toBe('Current');
+    expect(formatStaleness(0).text).toBe('현재');
 
     // Recent (1-10 days)
     expect(formatStaleness(1).cssClass).toBe('');
@@ -287,11 +287,11 @@ describe('Property: Info broker utility functions are pure', () => {
   });
 
   it('formatVisitInfo should return correct format', () => {
-    expect(formatVisitInfo(null)).toBe('Never visited');
-    expect(formatVisitInfo(0)).toBe('Current prices');
-    expect(formatVisitInfo(1)).toBe('Last visited 1 day ago');
-    expect(formatVisitInfo(5)).toBe('Last visited 5 days ago');
-    expect(formatVisitInfo(10)).toBe('Last visited 10 days ago');
+    expect(formatVisitInfo(null)).toBe('방문한 적 없음');
+    expect(formatVisitInfo(0)).toBe('현재 가격');
+    expect(formatVisitInfo(1)).toBe('마지막 방문: 1일 전');
+    expect(formatVisitInfo(5)).toBe('마지막 방문: 5일 전');
+    expect(formatVisitInfo(10)).toBe('마지막 방문: 10일 전');
   });
 
   it('sortIntelligenceByPriority should sort by priority correctly', () => {

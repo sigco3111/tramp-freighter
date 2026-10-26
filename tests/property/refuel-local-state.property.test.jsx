@@ -105,7 +105,7 @@ describe('Property 25: Refuel panel manages local state', () => {
           expect(game.state.ship.fuel).toBe(initialFuel);
 
           // Click confirm button
-          const confirmButton = screen.getByText('Confirm Refuel');
+          const confirmButton = screen.getByText('주유 확인');
           fireEvent.click(confirmButton);
 
           // Now game state should be updated
@@ -156,7 +156,7 @@ describe('Property 25: Refuel panel manages local state', () => {
           expect(Number(slider.value)).toBe(refuelAmount);
 
           // Click confirm button
-          const confirmButton = screen.getByText('Confirm Refuel');
+          const confirmButton = screen.getByText('주유 확인');
           fireEvent.click(confirmButton);
 
           // Slider should be reset to 0 after successful refuel
@@ -240,7 +240,7 @@ describe('Property 25: Refuel panel manages local state', () => {
           '.validation-message.info'
         );
         expect(validationMessage).toBeTruthy();
-        expect(validationMessage.textContent).toContain('Enter an amount');
+        expect(validationMessage.textContent).toContain('주유할 양을 입력하세요');
 
         return true;
       }),
@@ -272,7 +272,7 @@ describe('Property 25: Refuel panel manages local state', () => {
         });
 
         // Confirm button should be disabled (amount is 0)
-        const confirmButton = screen.getByText('Confirm Refuel');
+        const confirmButton = screen.getByText('주유 확인');
         expect(confirmButton.disabled).toBe(true);
 
         // Try to click (should not work because button is disabled)

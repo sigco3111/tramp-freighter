@@ -22,7 +22,7 @@ describe('Critical Damage Jump Validation', () => {
       lifeSupport: 100,
     });
     expect(result.valid).toBe(false);
-    expect(result.error).toContain('Hull');
+    expect(result.error).toContain('선체');
     expect(result.error).toContain('20%');
   });
 
@@ -33,7 +33,7 @@ describe('Critical Damage Jump Validation', () => {
       lifeSupport: 100,
     });
     expect(result.valid).toBe(false);
-    expect(result.error).toContain('Engine');
+    expect(result.error).toContain('엔진');
   });
 
   it('should block jump when life support is at 0%', () => {
@@ -43,7 +43,7 @@ describe('Critical Damage Jump Validation', () => {
       lifeSupport: 0,
     });
     expect(result.valid).toBe(false);
-    expect(result.error).toContain('Life Support');
+    expect(result.error).toContain('생명 유지 장치');
   });
 
   it('should list all critical systems in error message', () => {
@@ -53,9 +53,9 @@ describe('Critical Damage Jump Validation', () => {
       lifeSupport: 5,
     });
     expect(result.valid).toBe(false);
-    expect(result.error).toContain('Hull');
-    expect(result.error).toContain('Engine');
-    expect(result.error).toContain('Life Support');
+    expect(result.error).toContain('선체');
+    expect(result.error).toContain('엔진');
+    expect(result.error).toContain('생명 유지 장치');
   });
 
   it('should allow jump when all systems are above critical threshold', () => {

@@ -129,19 +129,19 @@ describe('FinancePanel', () => {
   it('renders debt overview with correct values', () => {
     render(<FinancePanel onClose={vi.fn()} />);
 
-    expect(screen.getByText('Cole Credit Line')).toBeTruthy();
-    expect(screen.getByText('Debt Overview')).toBeTruthy();
-    expect(screen.getByText('5% of trade sales')).toBeTruthy();
-    expect(screen.getByText('3% every 30 days')).toBeTruthy();
-    // nextInterestDay 45, currentDay 15 => 30 days
-    expect(screen.getByText('30 days')).toBeTruthy();
+    expect(screen.getByText('콜 신용 한도')).toBeTruthy();
+    expect(screen.getByText('부채 개요')).toBeTruthy();
+    expect(screen.getByText('5% (거래 매출 기준)')).toBeTruthy();
+    expect(screen.getByText('3% / 30 일마다')).toBeTruthy();
+    // nextInterestDay 45, currentDay 15 => 30일
+    expect(screen.getByText('30일')).toBeTruthy();
   });
 
   it('close button calls onClose', () => {
     const onClose = vi.fn();
     render(<FinancePanel onClose={onClose} />);
 
-    fireEvent.click(screen.getByLabelText('Close'));
+    fireEvent.click(screen.getByLabelText('닫기'));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
@@ -150,12 +150,12 @@ describe('FinancePanel', () => {
 
     render(<FinancePanel onClose={vi.fn()} />);
 
-    expect(screen.getByText('Make Payment')).toBeTruthy();
+    expect(screen.getByText('상환하기')).toBeTruthy();
 
-    const payButtons = screen.getAllByRole('button', { name: /^Pay ₡/ });
+    const payButtons = screen.getAllByRole('button', { name: /^₡\d+ 지불/ });
     // 3 tier buttons + 1 Pay All = 4
     const tierButtons = payButtons.filter(
-      (btn) => !btn.textContent.includes('Pay All')
+      (btn) => !btn.textContent.includes('전액 상환')
     );
     tierButtons.forEach((btn) => {
       expect(btn.disabled).toBe(true);
@@ -167,11 +167,11 @@ describe('FinancePanel', () => {
 
     render(<FinancePanel onClose={vi.fn()} />);
 
-    const pay500 = screen.getByRole('button', { name: /^Pay ₡500$/ });
+    const pay500 = screen.getByRole('button', { name: /^₡500 지불$/ });
     fireEvent.click(pay500);
 
     expect(mockMakeDebtPayment).toHaveBeenCalledWith(500);
-    expect(screen.getByText('Paid ₡500 toward debt')).toBeTruthy();
+    expect(screen.getByText('빚 상환에 ₡500 지불')).toBeTruthy();
   });
 
   it('shows error message on failed payment', () => {
@@ -182,7 +182,7 @@ describe('FinancePanel', () => {
 
     render(<FinancePanel onClose={vi.fn()} />);
 
-    const pay500 = screen.getByRole('button', { name: /^Pay ₡500$/ });
+    const pay500 = screen.getByRole('button', { name: /^₡500 지불$/ });
     fireEvent.click(pay500);
 
     expect(screen.getByText('Insufficient credits')).toBeTruthy();
@@ -193,11 +193,11 @@ describe('FinancePanel', () => {
 
     render(<FinancePanel onClose={vi.fn()} />);
 
-    const borrowBtn = screen.getByRole('button', { name: /^Borrow ₡250$/ });
+    const borrowBtn = screen.getByRole('button', { name: /^₡250 차입$/ });
     fireEvent.click(borrowBtn);
 
     expect(mockBorrowFromCole).toHaveBeenCalledWith(250);
-    expect(screen.getByText('Borrowed ₡250 from Cole')).toBeTruthy();
+    expect(screen.getByText('콜에게서 ₡250 차입')).toBeTruthy();
   });
 
   it('shows error message on failed borrow', () => {
@@ -208,7 +208,7 @@ describe('FinancePanel', () => {
 
     render(<FinancePanel onClose={vi.fn()} />);
 
-    const borrowBtn = screen.getByRole('button', { name: /^Borrow ₡100$/ });
+    const borrowBtn = screen.getByRole('button', { name: /^₡100 차입$/ });
     fireEvent.click(borrowBtn);
 
     expect(screen.getByText('Maximum credit exceeded')).toBeTruthy();
@@ -220,7 +220,7 @@ describe('FinancePanel', () => {
 
     render(<FinancePanel onClose={vi.fn()} />);
 
-    const payAllBtn = screen.getByRole('button', { name: /^Pay All/ });
+    const payAllBtn = screen.getByRole('button', { name: /^전액 상환/ });
     expect(payAllBtn.textContent).toContain('2,000');
 
     fireEvent.click(payAllBtn);
@@ -232,10 +232,10 @@ describe('FinancePanel', () => {
 
     render(<FinancePanel onClose={vi.fn()} />);
 
-    const payAllBtn = screen.getByRole('button', { name: /^Pay All/ });
+    const payAllBtn = screen.getByRole('button', { name: /^전액 상환/ });
     fireEvent.click(payAllBtn);
 
-    expect(screen.getByText('Debt paid in full!')).toBeTruthy();
+    expect(screen.getByText('빚을 모두 갚았습니다!')).toBeTruthy();
   });
 
   it('does not render payment section when debt is 0', () => {
@@ -244,8 +244,8 @@ describe('FinancePanel', () => {
 
     render(<FinancePanel onClose={vi.fn()} />);
 
-    expect(screen.queryByText('Make Payment')).toBeNull();
-    expect(screen.getByText('Emergency Credit')).toBeTruthy();
+    expect(screen.queryByText('상환하기')).toBeNull();
+    expect(screen.getByText('긴급 대출')).toBeTruthy();
   });
 
   it('shows next interest as N/A when debt is 0', () => {

@@ -61,20 +61,20 @@ describe('RefuelManager', () => {
     it('rejects zero amount', () => {
       const result = gsm.validateRefuel(50, 0, 1000, 3);
       expect(result.valid).toBe(false);
-      expect(result.reason).toMatch(/positive/i);
+      expect(result.reason).toMatch(/양수/);
     });
 
     it('rejects negative amount', () => {
       const result = gsm.validateRefuel(50, -10, 1000, 3);
       expect(result.valid).toBe(false);
-      expect(result.reason).toMatch(/positive/i);
+      expect(result.reason).toMatch(/양수/);
     });
 
     it('rejects refuel that exceeds capacity beyond epsilon tolerance', () => {
       // 90 + 20 = 110 > maxFuel(100) + epsilon(1.0) = 101
       const result = gsm.validateRefuel(90, 20, 1000, 3);
       expect(result.valid).toBe(false);
-      expect(result.reason).toMatch(/capacity/i);
+      expect(result.reason).toMatch(/용량/);
     });
 
     it('accepts refuel within epsilon tolerance of max capacity', () => {
@@ -88,7 +88,7 @@ describe('RefuelManager', () => {
     it('rejects refuel when credits are insufficient', () => {
       const result = gsm.validateRefuel(50, 20, 10, 3);
       expect(result.valid).toBe(false);
-      expect(result.reason).toMatch(/insufficient credits/i);
+      expect(result.reason).toMatch(/크레딧이 부족/);
       expect(result.cost).toBe(60);
     });
 
@@ -102,7 +102,7 @@ describe('RefuelManager', () => {
       // 10 * 5 = 50 cost, but only 49 credits
       const result = gsm.validateRefuel(50, 10, 49, 5);
       expect(result.valid).toBe(false);
-      expect(result.reason).toMatch(/insufficient credits/i);
+      expect(result.reason).toMatch(/크레딧이 부족/);
     });
 
     it('accepts when cost exactly equals credits', () => {

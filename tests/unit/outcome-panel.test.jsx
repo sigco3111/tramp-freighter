@@ -86,18 +86,18 @@ describe('OutcomePanel', () => {
 
   it('should display outcome panel title', () => {
     renderWithContext();
-    expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+    expect(screen.getByText('조우 결과')).toBeInTheDocument();
   });
 
   it('should display encounter result status', () => {
     renderWithContext();
-    expect(screen.getByText('Success')).toBeInTheDocument();
-    expect(screen.getByText('Pirate Encounter')).toBeInTheDocument();
+    expect(screen.getByText('성공')).toBeInTheDocument();
+    expect(screen.getByText('해적 조우')).toBeInTheDocument();
   });
 
   it('should display the choice made by player', () => {
     renderWithContext();
-    expect(screen.getByText('Your Choice:')).toBeInTheDocument();
+    expect(screen.getByText('당신의 선택:')).toBeInTheDocument();
     expect(screen.getByText('Negotiate')).toBeInTheDocument();
   });
 
@@ -113,7 +113,7 @@ describe('OutcomePanel', () => {
   it('should display modifiers that affected the result', () => {
     renderWithContext();
     expect(
-      screen.getByText('Factors That Influenced the Outcome')
+      screen.getByText('결과에 영향을 준 요인')
     ).toBeInTheDocument();
     expect(screen.getByText('Good Karma')).toBeInTheDocument();
     expect(screen.getByText('+5%')).toBeInTheDocument();
@@ -121,36 +121,36 @@ describe('OutcomePanel', () => {
 
   it('should display karma changes', () => {
     renderWithContext();
-    expect(screen.getByText('Moral Standing')).toBeInTheDocument();
-    expect(screen.getByText('Karma:')).toBeInTheDocument();
+    expect(screen.getByText('도덕적 입지')).toBeInTheDocument();
+    expect(screen.getByText('카르마:')).toBeInTheDocument();
     expect(screen.getByText('+1')).toBeInTheDocument();
     expect(screen.getByText('(peaceful resolution)')).toBeInTheDocument();
   });
 
   it('should display reputation changes', () => {
     renderWithContext();
-    expect(screen.getByText('Faction Standing')).toBeInTheDocument();
-    expect(screen.getAllByText('Outlaws:')).toHaveLength(2); // One in changes, one in current standings
+    expect(screen.getByText('세력 입지')).toBeInTheDocument();
+    expect(screen.getAllByText('무법자:')).toHaveLength(2); // One in changes, one in current standings
     expect(screen.getByText('+5')).toBeInTheDocument();
     expect(screen.getByText('(negotiated with pirates)')).toBeInTheDocument();
   });
 
   it('should display resource changes', () => {
     renderWithContext();
-    expect(screen.getByText('Ship & Resources')).toBeInTheDocument();
-    expect(screen.getByText('Fuel:')).toBeInTheDocument();
+    expect(screen.getByText('함선 및 자원')).toBeInTheDocument();
+    expect(screen.getByText('연료:')).toBeInTheDocument();
     expect(screen.getByText('-10%')).toBeInTheDocument();
-    expect(screen.getByText('Credits:')).toBeInTheDocument();
+    expect(screen.getByText('크레딧:')).toBeInTheDocument();
     expect(screen.getByText('-₡100')).toBeInTheDocument();
   });
 
   it('should display current karma and faction standings', () => {
     renderWithContext();
-    expect(screen.getByText('Current Karma:')).toBeInTheDocument();
-    expect(screen.getByText('Current Standing:')).toBeInTheDocument();
-    expect(screen.getByText('Authorities:')).toBeInTheDocument();
-    expect(screen.getByText('Traders:')).toBeInTheDocument();
-    expect(screen.getByText('Civilians:')).toBeInTheDocument();
+    expect(screen.getByText('현재 카르마:')).toBeInTheDocument();
+    expect(screen.getByText('현재 입지:')).toBeInTheDocument();
+    expect(screen.getByText('당국:')).toBeInTheDocument();
+    expect(screen.getByText('상인:')).toBeInTheDocument();
+    expect(screen.getByText('민간인:')).toBeInTheDocument();
   });
 
   it('should handle failure outcomes', () => {
@@ -161,7 +161,7 @@ describe('OutcomePanel', () => {
     };
 
     renderWithContext({ outcome: failureOutcome });
-    expect(screen.getByText('Failure')).toBeInTheDocument();
+    expect(screen.getByText('실패')).toBeInTheDocument();
     expect(
       screen.getByText('The negotiation failed and combat ensued.')
     ).toBeInTheDocument();
@@ -171,7 +171,7 @@ describe('OutcomePanel', () => {
     const onContinue = vi.fn();
     renderWithContext({ onContinue });
 
-    const continueButton = screen.getByText('Continue');
+    const continueButton = screen.getByText('계속');
     fireEvent.click(continueButton);
 
     expect(onContinue).toHaveBeenCalledTimes(1);
@@ -205,7 +205,7 @@ describe('OutcomePanel', () => {
     };
 
     renderWithContext({ outcome: outcomeWithEffects });
-    expect(screen.getByText('Additional Effects')).toBeInTheDocument();
+    expect(screen.getByText('추가 효과')).toBeInTheDocument();
     expect(
       screen.getByText("Your ship's reputation precedes you in this sector.")
     ).toBeInTheDocument();
@@ -242,11 +242,11 @@ describe('OutcomePanel', () => {
     };
 
     renderWithContext({ outcome: outcomeWithVariousResources });
-    expect(screen.getByText('Hull Integrity:')).toBeInTheDocument();
-    expect(screen.getByText('Engine Condition:')).toBeInTheDocument();
-    expect(screen.getByText('Life Support:')).toBeInTheDocument();
+    expect(screen.getByText('선체 무결성:')).toBeInTheDocument();
+    expect(screen.getByText('엔진 상태:')).toBeInTheDocument();
+    expect(screen.getByText('생명 유지:')).toBeInTheDocument();
     expect(screen.getByText('+₡500')).toBeInTheDocument();
-    expect(screen.getByText('-2% cargo')).toBeInTheDocument();
-    expect(screen.getByText('+3 days')).toBeInTheDocument();
+    expect(screen.getByText('-2% 화물')).toBeInTheDocument();
+    expect(screen.getByText('+3일')).toBeInTheDocument();
   });
 });

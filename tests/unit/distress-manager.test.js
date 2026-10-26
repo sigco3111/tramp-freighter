@@ -354,7 +354,7 @@ describe('DistressManager', () => {
       expect(partsItem).toBeDefined();
       expect(partsItem.buyPrice).toBe(0);
       expect(partsItem.qty).toBeGreaterThan(0);
-      expect(partsItem.buySystemName).toBe('Salvaged');
+      expect(partsItem.buySystemName).toBe('인양함');
     });
 
     it('includes a description string', () => {

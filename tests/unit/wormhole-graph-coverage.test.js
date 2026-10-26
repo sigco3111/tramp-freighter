@@ -74,12 +74,12 @@ describe('Wormhole Graph coverage', () => {
   describe('system name fallback', () => {
     it('uses fallback name for systems not in star data', () => {
       const result = getShortestPath(6, 7);
-      expect(result.systemNames).toEqual(['System 6', 'System 7']);
+      expect(result.systemNames).toEqual(['항성계 6', '항성계 7']);
     });
 
     it('uses fallback name for same-system query with unknown system', () => {
       const result = getShortestPath(6, 6);
-      expect(result.systemNames).toEqual(['System 6']);
+      expect(result.systemNames).toEqual(['항성계 6']);
     });
   });
 

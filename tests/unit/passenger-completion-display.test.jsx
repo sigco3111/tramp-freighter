@@ -49,13 +49,13 @@ describe('MissionCompleteNotifier passenger display', () => {
 
   it('should show passenger name in delivery info', () => {
     render(<MissionCompleteNotifier />);
-    expect(screen.getByText(/Dr\. Chen disembarks/)).toBeDefined();
+    expect(screen.getByText(/Dr\. Chen 하선/)).toBeDefined();
   });
 
   it('should show satisfaction percentage and label', () => {
     render(<MissionCompleteNotifier />);
     expect(screen.getByText(/75%/)).toBeDefined();
-    expect(screen.getByText(/Satisfied/)).toBeDefined();
+    expect(screen.getByText(/만족/)).toBeDefined();
   });
 
   it('should show "Very Satisfied" for satisfaction >= 80', () => {
@@ -73,7 +73,7 @@ describe('MissionCompleteNotifier passenger display', () => {
     });
 
     render(<MissionCompleteNotifier />);
-    expect(screen.getByText(/Very Satisfied/)).toBeDefined();
+    expect(screen.getByText(/매우 만족/)).toBeDefined();
   });
 
   it('should not show passenger info for cargo missions', () => {

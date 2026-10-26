@@ -116,16 +116,16 @@ describe('Integration: Critical Damage Jump Feedback', () => {
       />
     );
 
-    expect(screen.getByText('Ship Damaged')).toBeTruthy();
+    expect(screen.getByText('함선 손상')).toBeTruthy();
     expect(
       screen.getAllByText(/critically damaged/).length
     ).toBeGreaterThanOrEqual(1);
     expect(
       screen.getByText(
-        'Dock at a station for repairs before attempting a jump.'
+        '점프하기 전에 정거장에 도킹해 수리하세요.'
       )
     ).toBeTruthy();
-    expect(screen.getByText('Understood')).toBeTruthy();
+    expect(screen.getByText('알겠습니다')).toBeTruthy();
   });
 
   it('disables jump button when validation fails due to critical damage', () => {
@@ -147,7 +147,7 @@ describe('Integration: Critical Damage Jump Feedback', () => {
       />
     );
 
-    const jumpBtn = screen.getByText('Jump to System');
+    const jumpBtn = screen.getByText('항성계로 점프');
     expect(jumpBtn.disabled).toBe(true);
   });
 
@@ -170,11 +170,11 @@ describe('Integration: Critical Damage Jump Feedback', () => {
       />
     );
 
-    expect(screen.getByText('Ship Damaged')).toBeTruthy();
+    expect(screen.getByText('함선 손상')).toBeTruthy();
 
-    fireEvent.click(screen.getByText('Understood'));
+    fireEvent.click(screen.getByText('알겠습니다'));
 
-    expect(screen.queryByText('Ship Damaged')).toBeNull();
+    expect(screen.queryByText('함선 손상')).toBeNull();
   });
 
   it('does not show critical damage modal when viewing current system', () => {
@@ -196,7 +196,7 @@ describe('Integration: Critical Damage Jump Feedback', () => {
       />
     );
 
-    expect(screen.queryByText('Ship Damaged')).toBeNull();
+    expect(screen.queryByText('함선 손상')).toBeNull();
   });
 
   it('does not show critical damage modal when validation passes', () => {
@@ -217,7 +217,7 @@ describe('Integration: Critical Damage Jump Feedback', () => {
       />
     );
 
-    expect(screen.queryByText('Ship Damaged')).toBeNull();
+    expect(screen.queryByText('함선 손상')).toBeNull();
   });
 
   it('does not show critical damage modal for non-critical validation errors', () => {
@@ -239,7 +239,7 @@ describe('Integration: Critical Damage Jump Feedback', () => {
       />
     );
 
-    expect(screen.queryByText('Ship Damaged')).toBeNull();
+    expect(screen.queryByText('함선 손상')).toBeNull();
     // The inline error should still show
     expect(screen.getByText('Not enough fuel for this jump.')).toBeTruthy();
   });
@@ -264,7 +264,7 @@ describe('Integration: Critical Damage Jump Feedback', () => {
     );
 
     // Modal shows
-    expect(screen.getByText('Ship Damaged')).toBeTruthy();
+    expect(screen.getByText('함선 손상')).toBeTruthy();
 
     // Inline validation message also shows (in the panel behind the modal)
     const errorMessages = screen.getAllByText(/critically damaged/);

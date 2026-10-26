@@ -85,7 +85,7 @@ describe('Property: GameContext provides valid instance', () => {
         );
 
         // Verify loading state is displayed
-        const loadingElement = screen.getByText('Loading game...');
+        const loadingElement = screen.getByText('게임 불러오는 중...');
         expect(loadingElement).toBeTruthy();
 
         // Verify TestComponent is not rendered

@@ -61,7 +61,7 @@ describe('Property: Continue button visibility', () => {
         );
 
         // Verify Continue Game button is present
-        const hasContinueButton = buttons.includes('Continue Game');
+        const hasContinueButton = buttons.includes('이어하기');
         if (!hasContinueButton) {
           console.error(
             'Continue Game button not found when save exists. Buttons:',
@@ -70,7 +70,7 @@ describe('Property: Continue button visibility', () => {
         }
 
         // Verify New Game button is also present
-        const hasNewGameButton = buttons.includes('New Game');
+        const hasNewGameButton = buttons.includes('새 게임');
         if (!hasNewGameButton) {
           console.error(
             'New Game button not found when save exists. Buttons:',
@@ -118,7 +118,7 @@ describe('Property: Continue button visibility', () => {
         );
 
         // Verify Continue Game button is NOT present
-        const hasContinueButton = buttons.includes('Continue Game');
+        const hasContinueButton = buttons.includes('이어하기');
         if (hasContinueButton) {
           console.error(
             'Continue Game button found when no save exists. Buttons:',
@@ -127,7 +127,7 @@ describe('Property: Continue button visibility', () => {
         }
 
         // Verify New Game button is present
-        const hasNewGameButton = buttons.includes('New Game');
+        const hasNewGameButton = buttons.includes('새 게임');
         if (!hasNewGameButton) {
           console.error(
             'New Game button not found when no save exists. Buttons:',
@@ -170,7 +170,7 @@ describe('Property: Continue button visibility', () => {
         const buttons1 = Array.from(
           container1.querySelectorAll('.menu-btn')
         ).map((btn) => btn.textContent);
-        const hasContinueButton1 = buttons1.includes('Continue Game');
+        const hasContinueButton1 = buttons1.includes('이어하기');
 
         if (hasContinueButton1) {
           console.error(
@@ -197,7 +197,7 @@ describe('Property: Continue button visibility', () => {
         const buttons2 = Array.from(
           container2.querySelectorAll('.menu-btn')
         ).map((btn) => btn.textContent);
-        const hasContinueButton2 = buttons2.includes('Continue Game');
+        const hasContinueButton2 = buttons2.includes('이어하기');
 
         if (!hasContinueButton2) {
           console.error(

@@ -46,9 +46,9 @@ describe('MissionCompleteNotifier MISSIONS_CHANGED reactivity', () => {
     render(<MissionCompleteNotifier />);
 
     expect(
-      screen.getByRole('button', { name: /claim reward/i })
+      screen.getByRole('button', { name: '보상 받기' })
     ).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /later/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '나중에' })).toBeInTheDocument();
     // Old ambiguous labels should not exist
     expect(
       screen.queryByRole('button', { name: /^dismiss$/i })

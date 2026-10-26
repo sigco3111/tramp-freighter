@@ -23,6 +23,6 @@ vi.mock('../../src/hooks/useGameEvent', () => ({
 describe('StatsSection headings', () => {
   it('labels the counters section "Ship\'s Log"', () => {
     render(<StatsSection />);
-    expect(screen.getByText("Ship's Log")).toBeInTheDocument();
+    expect(screen.getByText('항해 일지')).toBeInTheDocument();
   });
 });

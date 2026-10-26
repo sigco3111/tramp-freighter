@@ -38,7 +38,7 @@ describe('Quick Access Buttons Integration', () => {
         wrapper,
       });
 
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
 
       // User clicks System Info button multiple times
       fireEvent.click(systemInfoBtn);
@@ -58,7 +58,7 @@ describe('Quick Access Buttons Integration', () => {
 
       render(<QuickAccessButtons onDock={mockOnDock} />, { wrapper });
 
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
 
       // User clicks Dock button
       fireEvent.click(dockBtn);
@@ -75,7 +75,7 @@ describe('Quick Access Buttons Integration', () => {
         wrapper,
       });
 
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
 
       fireEvent.click(systemInfoBtn);
       fireEvent.click(systemInfoBtn);
@@ -90,7 +90,7 @@ describe('Quick Access Buttons Integration', () => {
 
       render(<QuickAccessButtons onDock={mockOnDock} />, { wrapper });
 
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
 
       fireEvent.click(dockBtn);
       fireEvent.click(dockBtn);
@@ -109,8 +109,8 @@ describe('Quick Access Buttons Integration', () => {
 
       const { rerender } = render(<QuickAccessButtons />, { wrapper });
 
-      const systemInfoBtn = screen.getByText('System Info');
-      const dockBtn = screen.getByText('Dock');
+      const systemInfoBtn = screen.getByText('항성계 정보');
+      const dockBtn = screen.getByText('도킹');
 
       expect(systemInfoBtn).not.toBeDisabled();
       expect(dockBtn).not.toBeDisabled();
@@ -133,7 +133,7 @@ describe('Quick Access Buttons Integration', () => {
 
       const { rerender } = render(<QuickAccessButtons />, { wrapper });
 
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
 
       // Check at Sol
       const sol = STAR_DATA.find((s) => s.name === 'Sol');
@@ -179,7 +179,7 @@ describe('Quick Access Buttons Integration', () => {
         { wrapper }
       );
 
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
 
       // Click System Info button
       fireEvent.click(systemInfoBtn);
@@ -204,7 +204,7 @@ describe('Quick Access Buttons Integration', () => {
         { wrapper }
       );
 
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
 
       // Click Dock button
       fireEvent.click(dockBtn);
@@ -231,7 +231,7 @@ describe('Quick Access Buttons Integration', () => {
 
       render(<QuickAccessButtons />, { wrapper });
 
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
       expect(dockBtn).toBeDisabled();
     });
 
@@ -243,7 +243,7 @@ describe('Quick Access Buttons Integration', () => {
 
       render(<QuickAccessButtons />, { wrapper });
 
-      const dockBtn = screen.getByText('Dock');
+      const dockBtn = screen.getByText('도킹');
       expect(dockBtn).not.toBeDisabled();
     });
 
@@ -252,7 +252,7 @@ describe('Quick Access Buttons Integration', () => {
 
       render(<QuickAccessButtons />, { wrapper });
 
-      const systemInfoBtn = screen.getByText('System Info');
+      const systemInfoBtn = screen.getByText('항성계 정보');
       expect(systemInfoBtn).not.toBeDisabled();
     });
   });
@@ -263,8 +263,8 @@ describe('Quick Access Buttons Integration', () => {
 
       render(<QuickAccessButtons />, { wrapper });
 
-      const systemInfoBtn = screen.getByText('System Info');
-      const dockBtn = screen.getByText('Dock');
+      const systemInfoBtn = screen.getByText('항성계 정보');
+      const dockBtn = screen.getByText('도킹');
 
       expect(systemInfoBtn).toBeInTheDocument();
       expect(dockBtn).toBeInTheDocument();
@@ -278,8 +278,8 @@ describe('Quick Access Buttons Integration', () => {
 
       render(<QuickAccessButtons />, { wrapper });
 
-      const systemInfoBtn = screen.getByText('System Info');
-      const dockBtn = screen.getByText('Dock');
+      const systemInfoBtn = screen.getByText('항성계 정보');
+      const dockBtn = screen.getByText('도킹');
 
       expect(systemInfoBtn).not.toBeDisabled();
       expect(dockBtn).not.toBeDisabled();

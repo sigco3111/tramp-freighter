@@ -66,7 +66,7 @@ describe('Mission Completion Paths — fetch and intel types', () => {
       const result = gsm.completeMission('fetch-1');
 
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('not at the mission destination');
+      expect(result.reason).toContain('목적지에 있지 않습니다');
     });
 
     it('fails when insufficient cargo quantity', () => {
@@ -76,7 +76,7 @@ describe('Mission Completion Paths — fetch and intel types', () => {
       const result = gsm.completeMission('fetch-1');
 
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('Not enough ore');
+      expect(result.reason).toContain('광석이 부족합니다');
     });
 
     it('succeeds when giverSystem is undefined (no location check)', () => {
@@ -162,7 +162,7 @@ describe('Mission Completion Paths — fetch and intel types', () => {
       const result = gsm.completeMission('intel-1');
 
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('not at the mission destination');
+      expect(result.reason).toContain('목적지에 있지 않습니다');
     });
 
     it('fails when not all targets have been visited', () => {
@@ -174,7 +174,7 @@ describe('Mission Completion Paths — fetch and intel types', () => {
 
       expect(result.success).toBe(false);
       expect(result.reason).toContain(
-        'Not all target systems have been visited'
+        '아직 방문하지 않은 목표 항성계가 있습니다'
       );
     });
 

@@ -58,14 +58,14 @@ describe('MissionManager', () => {
         id: 'mission_overflow',
       });
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('maximum');
+      expect(result.reason).toContain('최대 개수');
     });
 
     it('should reject duplicate mission', () => {
       gsm.acceptMission(testMission);
       const result = gsm.acceptMission(testMission);
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('already');
+      expect(result.reason).toContain('이미 진행 중인 임무입니다');
     });
 
     it('should emit missionsChanged on acceptance', () => {
@@ -121,7 +121,7 @@ describe('MissionManager', () => {
 
       const result = gsm.missionManager.acceptMission(mission);
       expect(result.success).toBe(false);
-      expect(result.reason).toBe('Not enough cargo space for mission cargo.');
+      expect(result.reason).toBe('임무 화물을 실을 공간이 부족합니다.');
     });
 
     it('accepts cargo run mission when sufficient cargo space and places cargo in hold', () => {
@@ -153,7 +153,7 @@ describe('MissionManager', () => {
     it('returns failure when mission not found', () => {
       const result = gsm.missionManager.completeMission('nonexistent');
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('not found');
+      expect(result.reason).toContain('찾을 수 없습니다');
     });
 
     it('returns failure for delivery mission at wrong destination', () => {
@@ -167,7 +167,7 @@ describe('MissionManager', () => {
       ];
       const result = gsm.missionManager.completeMission('m1');
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('not at the mission destination');
+      expect(result.reason).toContain('임무 목적지에 있지 않습니다');
     });
 
     it('returns failure for delivery mission with missing cargo (new-style)', () => {
@@ -184,7 +184,7 @@ describe('MissionManager', () => {
       gsm.state.ship.cargo = [];
       const result = gsm.missionManager.completeMission('m1');
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('cargo is no longer');
+      expect(result.reason).toContain('더 이상 화물칸에 없습니다');
     });
 
     it('returns failure for delivery mission with insufficient legacy cargo', () => {
@@ -204,7 +204,7 @@ describe('MissionManager', () => {
       gsm.state.ship.cargo = [{ good: 'ore', qty: 5, buyPrice: 100 }];
       const result = gsm.missionManager.completeMission('m1');
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('Not enough ore');
+      expect(result.reason).toContain('광석이 부족합니다');
     });
 
     it('completes delivery mission with sufficient legacy cargo', () => {
@@ -258,7 +258,7 @@ describe('MissionManager', () => {
       ];
       const result = gsm.missionManager.completeMission('m1');
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('not at the mission destination');
+      expect(result.reason).toContain('임무 목적지에 있지 않습니다');
     });
 
     it('returns failure for fetch mission with insufficient cargo', () => {
@@ -275,7 +275,7 @@ describe('MissionManager', () => {
       gsm.state.ship.cargo = [{ good: 'ore', qty: 5, buyPrice: 100 }];
       const result = gsm.missionManager.completeMission('m1');
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('Not enough ore');
+      expect(result.reason).toContain('광석이 부족합니다');
     });
 
     it('completes fetch mission at correct system with cargo', () => {
@@ -380,7 +380,7 @@ describe('MissionManager', () => {
       gsm.state.world.visitedSystems = [1];
       const result = gsm.missionManager.completeMission('m1');
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('Not all target systems');
+      expect(result.reason).toContain('아직 방문하지 않은 목표 항성계가 있습니다');
     });
 
     it('completes intel mission with all targets visited', () => {
@@ -430,7 +430,7 @@ describe('MissionManager', () => {
       ];
       const result = gsm.missionManager.completeMission('m1');
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('not at the passenger destination');
+      expect(result.reason).toContain('승객 목적지에 있지 않습니다');
     });
 
     it('applies faction rewards on completion', () => {
@@ -1108,7 +1108,7 @@ describe('MissionManager', () => {
       gsm.state.missions.active = [{ id: 'm1', abandonable: false }];
       const result = gsm.missionManager.abandonMission('m1');
       expect(result.success).toBe(false);
-      expect(result.reason).toContain('cannot be abandoned');
+      expect(result.reason).toContain('포기할 수 없습니다');
     });
 
     it('removes mission cargo on abandon', () => {

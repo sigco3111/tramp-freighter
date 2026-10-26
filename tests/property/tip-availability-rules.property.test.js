@@ -94,7 +94,7 @@ describe('Tip Availability Rules Property Tests', () => {
               expect(typeof result1.reason).toBe('string');
               // Verify the reason matches the specific failure
               if (!hasWarmRep) {
-                expect(result1.reason).toContain('Warm relationship');
+                expect(result1.reason).toContain('따뜻한 관계가 필요합니다');
               } else if (!hasTips) {
                 expect(result1.reason).toContain('no tips available');
               }
@@ -117,7 +117,7 @@ describe('Tip Availability Rules Property Tests', () => {
               // Should not be available due to cooldown when other conditions are met
               expect(result2.available).toBe(false);
               expect(result2.reason).toBeTruthy();
-              expect(result2.reason).toContain('cooldown');
+              expect(result2.reason).toContain('팁 쿨다운 중입니다');
             }
 
             // Test case 3: Previous tip outside cooldown period (only test if other conditions are met)
@@ -185,7 +185,7 @@ describe('Tip Availability Rules Property Tests', () => {
 
               expect(result.available).toBe(false);
               expect(result.reason).toBeTruthy();
-              expect(result.reason).toContain('Warm relationship');
+              expect(result.reason).toContain('따뜻한 관계가 필요합니다');
             }
           } finally {
             // Restore Math.random
@@ -277,7 +277,7 @@ describe('Tip Availability Rules Property Tests', () => {
               // Should not be available due to cooldown
               expect(result.available).toBe(false);
               expect(result.reason).toBeTruthy();
-              expect(result.reason).toContain('cooldown');
+              expect(result.reason).toContain('팁 쿨다운 중입니다');
 
               // Should show correct days remaining
               const expectedDaysRemaining =

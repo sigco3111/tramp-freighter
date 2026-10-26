@@ -115,22 +115,22 @@ describe('Captain Vasquez Debt-Cleared Tanaka Hint', () => {
 
     it('should name Tanaka explicitly', () => {
       const node = CAPTAIN_VASQUEZ_DIALOGUE.debt_cleared_tanaka_hint;
-      expect(node.text).toContain('Tanaka');
+      expect(node.text).toContain('타나카');
     });
 
     it('should mention Barnards Star', () => {
       const node = CAPTAIN_VASQUEZ_DIALOGUE.debt_cleared_tanaka_hint;
-      expect(node.text).toContain('Barnard');
+      expect(node.text).toContain('바너드');
     });
 
     it('should mention jump drive', () => {
       const node = CAPTAIN_VASQUEZ_DIALOGUE.debt_cleared_tanaka_hint;
-      expect(node.text.toLowerCase()).toContain('jump drive');
+      expect(node.text.toLowerCase()).toContain('점프 구동계');
     });
 
     it('should acknowledge the debt being cleared', () => {
       const node = CAPTAIN_VASQUEZ_DIALOGUE.debt_cleared_tanaka_hint;
-      expect(node.text.toLowerCase()).toContain('debt');
+      expect(node.text.toLowerCase()).toContain('빚');
     });
 
     it('should have a choice leading to tanaka_recommendation', () => {
@@ -161,7 +161,7 @@ describe('Captain Vasquez Debt-Cleared Tanaka Hint', () => {
     it('should mention supplies Tanaka needs (electronics or medicine)', () => {
       const text =
         CAPTAIN_VASQUEZ_DIALOGUE.tanaka_recommendation.text.toLowerCase();
-      expect(text.includes('electronics') || text.includes('medicine')).toBe(
+      expect(text.includes('전자제품') || text.includes('의약품')).toBe(
         true
       );
     });

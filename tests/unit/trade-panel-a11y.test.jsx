@@ -70,7 +70,7 @@ describe('TradePanel accessibility', () => {
       await import('../../src/features/trade/TradePanel.jsx');
     render(<TradePanel onClose={() => {}} />);
 
-    const toggleButton = screen.getByRole('button', { name: /show|hide/i });
+    const toggleButton = screen.getByRole('button', { name: /보이기|숨기기/ });
     // Initially not collapsed, so aria-expanded should be true
     expect(toggleButton).toHaveAttribute('aria-expanded', 'true');
     expect(toggleButton).toHaveAttribute(

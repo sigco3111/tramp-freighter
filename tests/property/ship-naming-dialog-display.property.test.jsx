@@ -59,12 +59,12 @@ describe('Property: Ship naming dialog displays', () => {
         // Verify title is displayed
         const title = container.querySelector('.modal-title');
         expect(title).toBeTruthy();
-        expect(title.textContent).toBe('Name Your Ship');
+        expect(title.textContent).toBe('함선 이름 짓기');
 
         // Verify description is displayed
         const description = container.querySelector('.modal-description');
         expect(description).toBeTruthy();
-        expect(description.textContent).toBe('What will you call your vessel?');
+        expect(description.textContent).toBe('이 배를 뭐라고 부르시겠습니까?');
 
         // Verify input field is displayed
         const input = container.querySelector('.ship-name-input');
@@ -72,7 +72,7 @@ describe('Property: Ship naming dialog displays', () => {
 
         // Verify input has correct attributes
         expect(input.type).toBe('text');
-        expect(input.placeholder).toBe('Enter ship name...');
+        expect(input.placeholder).toBe('함선 이름 입력...');
         expect(input.maxLength).toBe(SHIP_CONFIG.MAX_NAME_LENGTH);
 
         // Verify suggestions section is displayed
@@ -84,7 +84,7 @@ describe('Property: Ship naming dialog displays', () => {
         // Verify suggestions label is displayed
         const suggestionsLabel = container.querySelector('.suggestions-label');
         expect(suggestionsLabel).toBeTruthy();
-        expect(suggestionsLabel.textContent).toBe('Suggestions:');
+        expect(suggestionsLabel.textContent).toBe('추천 이름:');
 
         // Verify suggestions list is displayed
         const suggestionsList = container.querySelector('.suggestions-list');
@@ -97,7 +97,7 @@ describe('Property: Ship naming dialog displays', () => {
         // Verify confirm button is displayed
         const confirmButton = container.querySelector('.modal-confirm');
         expect(confirmButton).toBeTruthy();
-        expect(confirmButton.textContent).toBe('Confirm');
+        expect(confirmButton.textContent).toBe('확인');
       }),
       { numRuns: 100 }
     );

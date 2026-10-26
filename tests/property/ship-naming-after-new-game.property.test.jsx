@@ -58,7 +58,7 @@ describe('Property: Ship naming after new game', () => {
         // Find and click the New Game button
         const buttons = Array.from(container.querySelectorAll('.menu-btn'));
         const newGameButton = buttons.find(
-          (btn) => btn.textContent === 'New Game'
+          (btn) => btn.textContent === '새 게임'
         );
 
         expect(newGameButton).toBeTruthy();
@@ -118,7 +118,7 @@ describe('Property: Ship naming after new game', () => {
         // Find and click the New Game button
         const buttons = Array.from(container.querySelectorAll('.menu-btn'));
         const newGameButton = buttons.find(
-          (btn) => btn.textContent === 'New Game'
+          (btn) => btn.textContent === '새 게임'
         );
 
         expect(newGameButton).toBeTruthy();
@@ -166,7 +166,7 @@ describe('Property: Ship naming after new game', () => {
         // Find and click the New Game button
         const buttons = Array.from(container.querySelectorAll('.menu-btn'));
         const newGameButton = buttons.find(
-          (btn) => btn.textContent === 'New Game'
+          (btn) => btn.textContent === '새 게임'
         );
 
         expect(newGameButton).toBeTruthy();

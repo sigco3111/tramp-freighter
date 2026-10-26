@@ -352,7 +352,7 @@ describe('ConfirmModal component', () => {
           );
 
           // Click cancel button
-          const cancelButton = screen.getByText('Cancel');
+          const cancelButton = screen.getByText('취소');
           fireEvent.click(cancelButton);
 
           // Cancel should be called, confirm should not

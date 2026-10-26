@@ -57,7 +57,7 @@ describe('CombatManager lucky_ship negation paths', () => {
       );
 
       expect(result.success).toBe(true);
-      expect(result.description).toMatch(/lucky/i);
+      expect(result.description).toMatch(/운 좋은/);
       expect(result.costs.fuel).toBe(COMBAT_CONFIG.EVASIVE.SUCCESS_FUEL_COST);
       expect(result.costs.engine).toBe(
         COMBAT_CONFIG.EVASIVE.SUCCESS_ENGINE_COST
@@ -74,7 +74,7 @@ describe('CombatManager lucky_ship negation paths', () => {
       const result = manager.resolveReturnFire(encounter, gameState, 0.01);
 
       expect(result.success).toBe(true);
-      expect(result.description).toMatch(/lucky/i);
+      expect(result.description).toMatch(/운 좋은/);
       expect(result.costs.hull).toBeDefined();
       expect(result.rewards.factionRep.outlaws).toBe(
         COMBAT_CONFIG.RETURN_FIRE.SUCCESS_OUTLAW_REP
@@ -91,7 +91,7 @@ describe('CombatManager lucky_ship negation paths', () => {
       const result = manager.resolveDistressCall(encounter, gameState, 0.01);
 
       expect(result.success).toBe(true);
-      expect(result.description).toMatch(/lucky/i);
+      expect(result.description).toMatch(/운 좋은/);
       expect(result.rewards.factionRep.authorities).toBe(
         COMBAT_CONFIG.DISTRESS_CALL.SUCCESS_REP_GAIN
       );

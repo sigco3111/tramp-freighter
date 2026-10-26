@@ -129,10 +129,10 @@ describe('App Notification Integration', () => {
 
   /** Helper: navigate past title screen to orbit mode */
   async function navigateToOrbit() {
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
-    const shipNameInput = screen.getByPlaceholderText('Enter ship name...');
+    const shipNameInput = screen.getByPlaceholderText('함선 이름 입력...');
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
     fireEvent.keyDown(shipNameInput, { key: 'Enter' });
 
@@ -178,14 +178,14 @@ describe('App Notification Integration', () => {
       await waitFor(() => {
         expect(
           screen.getByText(
-            /Scanner: Exotic matter detected\. Sample collected\. \[1\/5\]/
+            /스캐너: 외계 물질 감지\. 표본 채취 완료\. \[1\/5\]/
           )
         ).toBeInTheDocument();
       });
 
       // Verify it's rendered as an info notification
       const notification = screen.getByText(
-        /Scanner: Exotic matter detected\. Sample collected\. \[1\/5\]/
+        /스캐너: 외계 물질 감지\. 표본 채취 완료\. \[1\/5\]/
       );
       expect(notification.closest('.notification')).toHaveClass(
         'notification-info'
@@ -201,12 +201,12 @@ describe('App Notification Integration', () => {
 
       await waitFor(() => {
         expect(
-          screen.getByText(/Scanner: Already sampled this station\./)
+          screen.getByText(/스캐너: 이 정거장에서는 이미 표본을 채취했습니다\./)
         ).toBeInTheDocument();
       });
 
       const notification = screen.getByText(
-        /Scanner: Already sampled this station\./
+        /스캐너: 이 정거장에서는 이미 표본을 채취했습니다\./
       );
       expect(notification.closest('.notification')).toHaveClass(
         'notification-info'

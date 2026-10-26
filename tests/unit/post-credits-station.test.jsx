@@ -22,7 +22,7 @@ describe('PostCreditsStation', () => {
       </GameProvider>
     );
 
-    const button = screen.getByText('Return to Title');
+    const button = screen.getByText('타이틀로 돌아가기');
     expect(button.tagName).toBe('BUTTON');
     expect(button.classList.contains('station-btn')).toBe(true);
   });

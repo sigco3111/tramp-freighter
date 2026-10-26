@@ -46,11 +46,11 @@ describe('Trade receipt persistence', () => {
     render(<TradePanel onClose={() => {}} />, { wrapper });
 
     // Sell 1 unit — should trigger withholding receipt
-    const sellButton = screen.getAllByText(/Sell 1/)[0];
+    const sellButton = screen.getAllByText(/1개 판매/)[0];
     fireEvent.click(sellButton);
 
     // Receipt should be visible immediately
-    const receipt = screen.getByText(/Cole's cut/);
+    const receipt = screen.getByText(/콜의 몫/);
     expect(receipt).toBeTruthy();
 
     // Advance past the old timeout duration
@@ -61,7 +61,7 @@ describe('Trade receipt persistence', () => {
     });
 
     // Receipt should STILL be visible — it persists until next sale or panel close
-    expect(screen.getByText(/Cole's cut/)).toBeTruthy();
+    expect(screen.getByText(/콜의 몫/)).toBeTruthy();
 
     vi.useRealTimers();
     cleanup();

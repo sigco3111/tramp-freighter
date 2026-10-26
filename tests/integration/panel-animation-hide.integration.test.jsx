@@ -55,35 +55,35 @@ describe('Panel Animation Hide Integration (React)', () => {
     );
 
     // Start game - click New Game
-    const newGameBtn = screen.getByText('New Game');
+    const newGameBtn = screen.getByText('새 게임');
     fireEvent.click(newGameBtn);
 
     // Submit ship name
     await waitFor(() => {
-      expect(screen.getByText('Confirm')).toBeInTheDocument();
+      expect(screen.getByText('확인')).toBeInTheDocument();
     });
-    const confirmBtn = screen.getByText('Confirm');
+    const confirmBtn = screen.getByText('확인');
     fireEvent.click(confirmBtn);
 
     // Dismiss the auto-shown instructions modal
     await waitFor(() => {
-      expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+      expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
     });
-    fireEvent.click(screen.getByLabelText('Close modal'));
+    fireEvent.click(screen.getByLabelText('창 닫기'));
 
     // Wait for game to load
     await waitFor(() => {
-      expect(screen.getByText('System Info')).toBeInTheDocument();
+      expect(screen.getByText('항성계 정보')).toBeInTheDocument();
     });
 
     // Dock at station (Sol has a station)
-    const dockBtn = screen.getByText('Dock');
+    const dockBtn = screen.getByText('도킹');
     fireEvent.click(dockBtn);
 
     // Verify station menu is visible
     await waitFor(() => {
-      expect(screen.getByText('Trade')).toBeInTheDocument();
-      expect(screen.getByText('Refuel')).toBeInTheDocument();
+      expect(screen.getByText('거래')).toBeInTheDocument();
+      expect(screen.getByText('주유')).toBeInTheDocument();
     });
 
     // Open system panel to jump
@@ -95,27 +95,27 @@ describe('Panel Animation Hide Integration (React)', () => {
 
     // Wait for system panel to appear
     await waitFor(() => {
-      const jumpBtn = screen.queryByText('Jump to System');
+      const jumpBtn = screen.queryByText('항성계로 점프');
       if (jumpBtn) {
         expect(jumpBtn).toBeInTheDocument();
       }
     });
 
     // Click jump button
-    const jumpBtn = screen.queryByText('Jump to System');
+    const jumpBtn = screen.queryByText('항성계로 점프');
     if (jumpBtn) {
       fireEvent.click(jumpBtn);
 
       // Station menu should be hidden immediately (view mode changes to ORBIT)
       await waitFor(() => {
-        expect(screen.queryByText('Refuel')).not.toBeInTheDocument();
+        expect(screen.queryByText('주유')).not.toBeInTheDocument();
       });
 
       // After jump completes, station menu should NOT be restored
       // (player is in orbit, not docked)
       await waitFor(
         () => {
-          expect(screen.queryByText('Refuel')).not.toBeInTheDocument();
+          expect(screen.queryByText('주유')).not.toBeInTheDocument();
         },
         { timeout: 3000 }
       );
@@ -134,28 +134,28 @@ describe('Panel Animation Hide Integration (React)', () => {
     );
 
     // Start game
-    const newGameBtn = screen.getByText('New Game');
+    const newGameBtn = screen.getByText('새 게임');
     fireEvent.click(newGameBtn);
 
     await waitFor(() => {
-      expect(screen.getByText('Confirm')).toBeInTheDocument();
+      expect(screen.getByText('확인')).toBeInTheDocument();
     });
-    const confirmBtn = screen.getByText('Confirm');
+    const confirmBtn = screen.getByText('확인');
     fireEvent.click(confirmBtn);
 
     // Dismiss the auto-shown instructions modal
     await waitFor(() => {
-      expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+      expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
     });
-    fireEvent.click(screen.getByLabelText('Close modal'));
+    fireEvent.click(screen.getByLabelText('창 닫기'));
 
     // Wait for game to load (in orbit, not docked)
     await waitFor(() => {
-      expect(screen.getByText('System Info')).toBeInTheDocument();
+      expect(screen.getByText('항성계 정보')).toBeInTheDocument();
     });
 
     // Verify station menu is not visible
-    expect(screen.queryByText('Refuel')).not.toBeInTheDocument();
+    expect(screen.queryByText('주유')).not.toBeInTheDocument();
 
     // Select a system and jump
     if (window.StarmapBridge?.selectStarById) {
@@ -163,7 +163,7 @@ describe('Panel Animation Hide Integration (React)', () => {
     }
 
     await waitFor(() => {
-      const jumpBtn = screen.queryByText('Jump to System');
+      const jumpBtn = screen.queryByText('항성계로 점프');
       if (jumpBtn) {
         fireEvent.click(jumpBtn);
       }
@@ -172,7 +172,7 @@ describe('Panel Animation Hide Integration (React)', () => {
     // After jump, station menu should still not be visible
     await waitFor(
       () => {
-        expect(screen.queryByText('Refuel')).not.toBeInTheDocument();
+        expect(screen.queryByText('주유')).not.toBeInTheDocument();
       },
       { timeout: 3000 }
     );
@@ -190,40 +190,40 @@ describe('Panel Animation Hide Integration (React)', () => {
     );
 
     // Start game
-    const newGameBtn = screen.getByText('New Game');
+    const newGameBtn = screen.getByText('새 게임');
     fireEvent.click(newGameBtn);
 
     await waitFor(() => {
-      expect(screen.getByText('Confirm')).toBeInTheDocument();
+      expect(screen.getByText('확인')).toBeInTheDocument();
     });
-    const confirmBtn = screen.getByText('Confirm');
+    const confirmBtn = screen.getByText('확인');
     fireEvent.click(confirmBtn);
 
     // Dismiss the auto-shown instructions modal
     await waitFor(() => {
-      expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+      expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
     });
-    fireEvent.click(screen.getByLabelText('Close modal'));
+    fireEvent.click(screen.getByLabelText('창 닫기'));
 
     // Wait for game to load
     await waitFor(() => {
-      expect(screen.getByText('System Info')).toBeInTheDocument();
+      expect(screen.getByText('항성계 정보')).toBeInTheDocument();
     });
 
     // Dock at station
-    const dockBtn = screen.getByText('Dock');
+    const dockBtn = screen.getByText('도킹');
     fireEvent.click(dockBtn);
 
     // Open trade panel
     await waitFor(() => {
-      expect(screen.getByText('Trade')).toBeInTheDocument();
+      expect(screen.getByText('거래')).toBeInTheDocument();
     });
-    const tradeBtn = screen.getByText('Trade');
+    const tradeBtn = screen.getByText('거래');
     fireEvent.click(tradeBtn);
 
     // Verify trade panel is visible
     await waitFor(() => {
-      expect(screen.getByText(/Market Goods/i)).toBeInTheDocument();
+      expect(screen.getByText(/시장 상품/)).toBeInTheDocument();
     });
 
     // Select a system and jump
@@ -232,13 +232,13 @@ describe('Panel Animation Hide Integration (React)', () => {
     }
 
     await waitFor(() => {
-      const jumpBtn = screen.queryByText('Jump to System');
+      const jumpBtn = screen.queryByText('항성계로 점프');
       if (jumpBtn) {
         fireEvent.click(jumpBtn);
 
         // Trade panel should be hidden immediately
         waitFor(() => {
-          expect(screen.queryByText(/Market Goods/i)).not.toBeInTheDocument();
+          expect(screen.queryByText(/시장 상품/)).not.toBeInTheDocument();
         });
       }
     });
@@ -256,24 +256,24 @@ describe('Panel Animation Hide Integration (React)', () => {
     );
 
     // Start game
-    const newGameBtn = screen.getByText('New Game');
+    const newGameBtn = screen.getByText('새 게임');
     fireEvent.click(newGameBtn);
 
     await waitFor(() => {
-      expect(screen.getByText('Confirm')).toBeInTheDocument();
+      expect(screen.getByText('확인')).toBeInTheDocument();
     });
-    const confirmBtn = screen.getByText('Confirm');
+    const confirmBtn = screen.getByText('확인');
     fireEvent.click(confirmBtn);
 
     // Dismiss the auto-shown instructions modal
     await waitFor(() => {
-      expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+      expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
     });
-    fireEvent.click(screen.getByLabelText('Close modal'));
+    fireEvent.click(screen.getByLabelText('창 닫기'));
 
     // Wait for game to load
     await waitFor(() => {
-      expect(screen.getByText('System Info')).toBeInTheDocument();
+      expect(screen.getByText('항성계 정보')).toBeInTheDocument();
     });
 
     // Execute jump directly through GameCoordinator (no animation)
@@ -295,43 +295,43 @@ describe('Panel Animation Hide Integration (React)', () => {
     );
 
     // Start game
-    const newGameBtn = screen.getByText('New Game');
+    const newGameBtn = screen.getByText('새 게임');
     fireEvent.click(newGameBtn);
 
     await waitFor(() => {
-      expect(screen.getByText('Confirm')).toBeInTheDocument();
+      expect(screen.getByText('확인')).toBeInTheDocument();
     });
-    const confirmBtn = screen.getByText('Confirm');
+    const confirmBtn = screen.getByText('확인');
     fireEvent.click(confirmBtn);
 
     // Dismiss the auto-shown instructions modal
     await waitFor(() => {
-      expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+      expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
     });
-    fireEvent.click(screen.getByLabelText('Close modal'));
+    fireEvent.click(screen.getByLabelText('창 닫기'));
 
     // Wait for game to load
     await waitFor(() => {
-      expect(screen.getByText('System Info')).toBeInTheDocument();
+      expect(screen.getByText('항성계 정보')).toBeInTheDocument();
     });
 
     // Dock at station
-    const dockBtn = screen.getByText('Dock');
+    const dockBtn = screen.getByText('도킹');
     fireEvent.click(dockBtn);
 
     // Verify station menu is visible
     await waitFor(() => {
-      expect(screen.getByText('Trade')).toBeInTheDocument();
+      expect(screen.getByText('거래')).toBeInTheDocument();
     });
 
     // Try to jump to invalid system (no wormhole connection)
     const result = await navigationSystem.executeJump(game, 50);
 
     expect(result.success).toBe(false);
-    expect(result.error).toContain('No wormhole connection');
+    expect(result.error).toContain('웜홀 연결이 없습니다');
 
     // Station menu should still be visible (jump failed)
-    expect(screen.getByText('Trade')).toBeInTheDocument();
+    expect(screen.getByText('거래')).toBeInTheDocument();
   });
 
   it('should handle view mode transitions correctly during jump sequence', async () => {
@@ -346,40 +346,40 @@ describe('Panel Animation Hide Integration (React)', () => {
     );
 
     // Start game
-    const newGameBtn = screen.getByText('New Game');
+    const newGameBtn = screen.getByText('새 게임');
     fireEvent.click(newGameBtn);
 
     await waitFor(() => {
-      expect(screen.getByText('Confirm')).toBeInTheDocument();
+      expect(screen.getByText('확인')).toBeInTheDocument();
     });
-    const confirmBtn = screen.getByText('Confirm');
+    const confirmBtn = screen.getByText('확인');
     fireEvent.click(confirmBtn);
 
     // Dismiss the auto-shown instructions modal
     await waitFor(() => {
-      expect(screen.getByLabelText('Close modal')).toBeInTheDocument();
+      expect(screen.getByLabelText('창 닫기')).toBeInTheDocument();
     });
-    fireEvent.click(screen.getByLabelText('Close modal'));
+    fireEvent.click(screen.getByLabelText('창 닫기'));
 
     // Wait for game to load (ORBIT mode)
     await waitFor(() => {
-      expect(screen.getByText('System Info')).toBeInTheDocument();
+      expect(screen.getByText('항성계 정보')).toBeInTheDocument();
     });
 
     // Dock at station (STATION mode)
-    const dockBtn = screen.getByText('Dock');
+    const dockBtn = screen.getByText('도킹');
     fireEvent.click(dockBtn);
 
     await waitFor(() => {
-      expect(screen.getByText('Trade')).toBeInTheDocument();
+      expect(screen.getByText('거래')).toBeInTheDocument();
     });
 
     // Open trade panel (PANEL mode)
-    const tradeBtn = screen.getByText('Trade');
+    const tradeBtn = screen.getByText('거래');
     fireEvent.click(tradeBtn);
 
     await waitFor(() => {
-      expect(screen.getByText(/Market Goods/i)).toBeInTheDocument();
+      expect(screen.getByText(/시장 상품/)).toBeInTheDocument();
     });
 
     // Jump should transition back to ORBIT mode
@@ -388,14 +388,14 @@ describe('Panel Animation Hide Integration (React)', () => {
     }
 
     await waitFor(() => {
-      const jumpBtn = screen.queryByText('Jump to System');
+      const jumpBtn = screen.queryByText('항성계로 점프');
       if (jumpBtn) {
         fireEvent.click(jumpBtn);
 
         // Should be in ORBIT mode (no station menu or panels)
         waitFor(() => {
-          expect(screen.queryByText('Trade')).not.toBeInTheDocument();
-          expect(screen.queryByText(/Market Goods/i)).not.toBeInTheDocument();
+          expect(screen.queryByText('거래')).not.toBeInTheDocument();
+          expect(screen.queryByText(/시장 상품/)).not.toBeInTheDocument();
         });
       }
     });

@@ -92,13 +92,13 @@ describe('faction-karma-conditions.js uncovered lines', () => {
     it('returns lawful impression for good karma', () => {
       // Line 177
       const result = getKarmaFirstImpression(goodKarma, 'lawful');
-      expect(result).toBe(' You seem like a decent sort.');
+      expect(result).toBe(' 괜찮은 사람 같군요.');
     });
 
     it('returns chaotic impression for good karma', () => {
       // Line 179
       const result = getKarmaFirstImpression(goodKarma, 'chaotic');
-      expect(result).toBe(' You look like you follow the rules.');
+      expect(result).toBe(' 규칙을 잘 지킬 것 같은 분이군요.');
     });
   });
 
@@ -109,14 +109,14 @@ describe('faction-karma-conditions.js uncovered lines', () => {
     it('returns lawful impression for very bad karma', () => {
       // Line 187
       const result = getKarmaFirstImpression(veryBadKarma, 'lawful');
-      expect(result).toBe(' I can see trouble in your eyes.');
+      expect(result).toBe(' 눈에 말썽이 보이는군요.');
     });
 
     it('returns chaotic impression for very bad karma', () => {
       // Line 189
       const result = getKarmaFirstImpression(veryBadKarma, 'chaotic');
       expect(result).toBe(
-        " Now here's someone who knows how the sector really works."
+        ' 이제야 섹터가 실제로 어떻게 돌아가는지 아는 사람이 왔군요.'
       );
     });
   });
@@ -128,13 +128,13 @@ describe('faction-karma-conditions.js uncovered lines', () => {
     it('returns lawful impression for bad karma', () => {
       // Line 197
       const result = getKarmaFirstImpression(badKarma, 'lawful');
-      expect(result).toBe(' You look like someone I should be careful around.');
+      expect(result).toBe(' 조심해야 할 사람 같아 보이는군요.');
     });
 
     it('returns chaotic impression for bad karma', () => {
       // Line 199
       const result = getKarmaFirstImpression(badKarma, 'chaotic');
-      expect(result).toBe(' You look like you know how to bend the rules.');
+      expect(result).toBe(' 규칙을 구부릴 줄 아는 사람 같아 보이는군요.');
     });
   });
 
@@ -148,7 +148,7 @@ describe('faction-karma-conditions.js uncovered lines', () => {
         },
       };
       const result = getFactionAttitudeModifier('authorities', context);
-      expect(result).toBe(" You're a true friend to our cause.");
+      expect(result).toBe(' 당신은 우리 대의의 진정한 친구입니다.');
     });
 
     // Lines 227-230: EXTREME_LOW rep
@@ -159,7 +159,7 @@ describe('faction-karma-conditions.js uncovered lines', () => {
         },
       };
       const result = getFactionAttitudeModifier('traders', context);
-      expect(result).toBe(" Your reputation precedes you, and it's not good.");
+      expect(result).toBe(' 당신의 평판이 앞서 오는군요, 좋지 않은 쪽으로요.');
     });
 
     // Lines 228-230: VERY_LOW rep (not extreme)
@@ -170,7 +170,7 @@ describe('faction-karma-conditions.js uncovered lines', () => {
         },
       };
       const result = getFactionAttitudeModifier('outlaws', context);
-      expect(result).toBe(' We have... concerns about your activities.');
+      expect(result).toBe(' 당신의 활동이... 우려스럽습니다.');
     });
 
     // Lines 232-233: Neutral rep returns empty string
@@ -192,7 +192,7 @@ describe('marcus-cole.js uncovered greeting and debt_talk lines', () => {
   // Line 50: critical heat greeting
   it('returns critical heat greeting', () => {
     const result = greetingTextFn(0, { heat: 'critical' });
-    expect(result).toContain('No more games');
+    expect(result).toContain('더는 장난도');
   });
 
   // Lines 53-54: high heat with rep >= NEUTRAL_MIN
@@ -200,7 +200,7 @@ describe('marcus-cole.js uncovered greeting and debt_talk lines', () => {
     const result = greetingTextFn(REPUTATION_BOUNDS.NEUTRAL_MIN, {
       heat: 'high',
     });
-    expect(result).toContain("You're running out of time");
+    expect(result).toContain('시간이 얼마 남지 않았네');
   });
 
   // Lines 55-56: high heat with rep < NEUTRAL_MIN (fallback)
@@ -208,7 +208,7 @@ describe('marcus-cole.js uncovered greeting and debt_talk lines', () => {
     const result = greetingTextFn(REPUTATION_BOUNDS.NEUTRAL_MIN - 1, {
       heat: 'high',
     });
-    expect(result).toContain('I warned you');
+    expect(result).toContain('경고했지');
   });
 
   // Lines 59-60: medium heat with rep >= WARM_MIN
@@ -216,7 +216,7 @@ describe('marcus-cole.js uncovered greeting and debt_talk lines', () => {
     const result = greetingTextFn(REPUTATION_BOUNDS.WARM_MIN, {
       heat: 'medium',
     });
-    expect(result).toContain('debt trajectory concerns me');
+    expect(result).toContain('부채 추이가 마음에 걸리는군');
   });
 
   // Lines 61-62: medium heat with rep >= NEUTRAL_MIN but < WARM_MIN
@@ -224,7 +224,7 @@ describe('marcus-cole.js uncovered greeting and debt_talk lines', () => {
     const result = greetingTextFn(REPUTATION_BOUNDS.NEUTRAL_MIN, {
       heat: 'medium',
     });
-    expect(result).toContain('pattern forming');
+    expect(result).toContain('패턴이 보이네');
   });
 
   // Lines 63-64: medium heat fallback (rep < NEUTRAL_MIN)
@@ -232,13 +232,13 @@ describe('marcus-cole.js uncovered greeting and debt_talk lines', () => {
     const result = greetingTextFn(REPUTATION_BOUNDS.NEUTRAL_MIN - 1, {
       heat: 'medium',
     });
-    expect(result).toContain('trending in the wrong direction');
+    expect(result).toContain('나쁜 방향으로');
   });
 
   // Lines 158-159: debt_talk critical heat
   it('returns debt_talk text for critical heat', () => {
     const result = debtTalkTextFn(0, { heat: 'critical' });
-    expect(result).toContain('no longer a topic of negotiation');
+    expect(result).toContain('협상 주제가 아니네');
   });
 
   // Lines 161-162: debt_talk high heat with rep >= NEUTRAL_MIN
@@ -246,7 +246,7 @@ describe('marcus-cole.js uncovered greeting and debt_talk lines', () => {
     const result = debtTalkTextFn(REPUTATION_BOUNDS.NEUTRAL_MIN, {
       heat: 'high',
     });
-    expect(result).toContain('Your balance grows while your payments stagnate');
+    expect(result).toContain('잔액은 늘어나는데');
   });
 
   // Lines 163-164: debt_talk high heat fallback
@@ -254,24 +254,24 @@ describe('marcus-cole.js uncovered greeting and debt_talk lines', () => {
     const result = debtTalkTextFn(REPUTATION_BOUNDS.NEUTRAL_MIN - 1, {
       heat: 'high',
     });
-    expect(result).toContain('Your balance grows. Your payments do not');
+    expect(result).toContain('잔액은 늘어나네');
   });
 
   // Lines 167-168: debt_talk medium heat
   it('returns debt_talk text for medium heat', () => {
     const result = debtTalkTextFn(0, { heat: 'medium' });
-    expect(result).toContain('The terms were clear when you signed');
+    expect(result).toContain('조건은 분명했네');
   });
 
   // Lines 219-220: defiant_response high/critical heat
   it('returns defiant_response text for high heat', () => {
     const result = defiantTextFn(0, { heat: 'high' });
-    expect(result).toContain('Defiance. How refreshing');
+    expect(result).toContain('반항이라');
   });
 
   it('returns defiant_response text for critical heat', () => {
     const result = defiantTextFn(0, { heat: 'critical' });
-    expect(result).toContain('Defiance. How refreshing');
+    expect(result).toContain('반항이라');
   });
 });
 

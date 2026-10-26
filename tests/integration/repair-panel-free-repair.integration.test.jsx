@@ -58,21 +58,21 @@ describe('RepairPanel Free Repair Integration', () => {
     renderRepairPanel();
 
     // Should show free repair section
-    expect(screen.getByText('Free Repair')).toBeInTheDocument();
+    expect(screen.getByText('무료 수리')).toBeInTheDocument();
 
     // Should show Marcus Cole as available for free repair
-    expect(screen.getByText('Marcus Cole (Loan Shark)')).toBeInTheDocument();
+    expect(screen.getByText('마커스 콜 (고리대금업자)')).toBeInTheDocument();
 
     // Should show repair limit for Trusted tier
     expect(
-      screen.getByText('Trusted Tier:', { exact: false })
+      screen.getByText('신뢰 등급:', { exact: false })
     ).toBeInTheDocument();
     expect(
-      screen.getByText('Up to 10% hull damage repair', { exact: false })
+      screen.getByText('최대 10% 선체 피해 수리', { exact: false })
     ).toBeInTheDocument();
 
     // Should show once per visit limitation
-    expect(screen.getByText('Once per visit limitation')).toBeInTheDocument();
+    expect(screen.getByText('방문당 1회 제한')).toBeInTheDocument();
 
     // Should show actual repair amount (10% since hull is at 70%)
     expect(
@@ -81,13 +81,13 @@ describe('RepairPanel Free Repair Integration', () => {
           element &&
           element.className === 'repair-amount' &&
           element.textContent &&
-          element.textContent.includes('Will repair: 10.0% hull damage')
+          element.textContent.includes('수리 내용:') && element.textContent.includes('10.0%') && element.textContent.includes('선체 피해')
         );
       })
     ).toBeInTheDocument();
 
     // Should have enabled free repair button
-    const freeRepairButton = screen.getByText('Get Free Repair');
+    const freeRepairButton = screen.getByText('무료 수리 받기');
     expect(freeRepairButton).toBeInTheDocument();
     expect(freeRepairButton).not.toBeDisabled();
   });
@@ -100,23 +100,23 @@ describe('RepairPanel Free Repair Integration', () => {
     renderRepairPanel();
 
     // Should show free repair section but with validation info
-    expect(screen.getByText('Free Repair')).toBeInTheDocument();
+    expect(screen.getByText('무료 수리')).toBeInTheDocument();
 
     // Should show requirements not met
-    expect(screen.getByText('Free Repair Requirements')).toBeInTheDocument();
-    expect(screen.getByText('Marcus Cole')).toBeInTheDocument();
+    expect(screen.getByText('무료 수리 조건')).toBeInTheDocument();
+    expect(screen.getByText('마커스 콜')).toBeInTheDocument();
   });
 
   it('should apply free repair when button is clicked', () => {
     renderRepairPanel();
 
-    const freeRepairButton = screen.getByText('Get Free Repair');
+    const freeRepairButton = screen.getByText('무료 수리 받기');
 
     // Click the free repair button
     fireEvent.click(freeRepairButton);
 
     // Should show success message
-    expect(screen.getByText(/Free repair completed:/)).toBeInTheDocument();
+    expect(screen.getByText(/무료 수리 완료:/)).toBeInTheDocument();
 
     // Hull should be repaired by 10% (from 70% to 80%)
     const state = game.getState();
@@ -134,11 +134,11 @@ describe('RepairPanel Free Repair Integration', () => {
 
     renderRepairPanel();
 
-    // Should show "No hull damage to repair"
-    expect(screen.getByText('No hull damage to repair')).toBeInTheDocument();
+    // Should show "수리할 선체 피해 없음"
+    expect(screen.getByText('수리할 선체 피해 없음')).toBeInTheDocument();
 
     // Free repair button should be disabled
-    const freeRepairButton = screen.getByText('Get Free Repair');
+    const freeRepairButton = screen.getByText('무료 수리 받기');
     expect(freeRepairButton).toBeDisabled();
   });
 
@@ -151,10 +151,10 @@ describe('RepairPanel Free Repair Integration', () => {
 
     // Should show Family tier repair limit
     expect(
-      screen.getByText('Family Tier:', { exact: false })
+      screen.getByText('가족 등급:', { exact: false })
     ).toBeInTheDocument();
     expect(
-      screen.getByText('Up to 25% hull damage repair', { exact: false })
+      screen.getByText('최대 25% 선체 피해 수리', { exact: false })
     ).toBeInTheDocument();
   });
 
@@ -167,10 +167,10 @@ describe('RepairPanel Free Repair Integration', () => {
     renderRepairPanel();
 
     // Should show free repair section but with validation info
-    expect(screen.getByText('Free Repair')).toBeInTheDocument();
+    expect(screen.getByText('무료 수리')).toBeInTheDocument();
 
     // Should show requirements not met
-    expect(screen.getByText('Free Repair Requirements')).toBeInTheDocument();
-    expect(screen.getByText('Marcus Cole')).toBeInTheDocument();
+    expect(screen.getByText('무료 수리 조건')).toBeInTheDocument();
+    expect(screen.getByText('마커스 콜')).toBeInTheDocument();
   });
 });

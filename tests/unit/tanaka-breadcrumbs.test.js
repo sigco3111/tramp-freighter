@@ -44,7 +44,7 @@ describe('Wei Chen Tanaka Breadcrumbs', () => {
   describe('Pre-Discovery: station_gossip choice', () => {
     it('appears when tanaka_met is NOT set', () => {
       const ctx = makeContext({ systemsVisited: 3 });
-      const choice = findChoice('Bore Station', 0, ctx);
+      const choice = findChoice('보어 정거장', 0, ctx);
       expect(choice).toBeDefined();
     });
 
@@ -53,13 +53,13 @@ describe('Wei Chen Tanaka Breadcrumbs', () => {
         systemsVisited: 3,
         narrativeFlags: { tanaka_met: true },
       });
-      const choice = findChoice('Bore Station', 0, ctx);
+      const choice = findChoice('보어 정거장', 0, ctx);
       expect(choice).toBeUndefined();
     });
 
     it('has no rep requirement (available at rep 0)', () => {
       const ctx = makeContext({ systemsVisited: 3 });
-      const choice = findChoice('Bore Station', 0, ctx);
+      const choice = findChoice('보어 정거장', 0, ctx);
       expect(choice).toBeDefined();
     });
   });
@@ -68,7 +68,7 @@ describe('Wei Chen Tanaka Breadcrumbs', () => {
     it('mentions needing more experience when systems < threshold', () => {
       const ctx = makeContext({ systemsVisited: 3 });
       const text = WEI_CHEN_DIALOGUE.station_gossip.text(0, ctx);
-      expect(text).toMatch(/been around/i);
+      expect(text).toMatch(/돌아다녀/);
     });
 
     it('encourages talking to Tanaka when systems >= threshold', () => {
@@ -76,7 +76,7 @@ describe('Wei Chen Tanaka Breadcrumbs', () => {
         systemsVisited: ENDGAME_CONFIG.TANAKA_UNLOCK_SYSTEMS_VISITED,
       });
       const text = WEI_CHEN_DIALOGUE.station_gossip.text(0, ctx);
-      expect(text).toMatch(/talk to you|worth/i);
+      expect(text).toMatch(/말을 걸어|들러 볼 만/);
     });
   });
 
@@ -86,7 +86,7 @@ describe('Wei Chen Tanaka Breadcrumbs', () => {
         narrativeFlags: { tanaka_met: true },
         getQuestStage: () => 0,
       });
-      const choice = findChoice('Tanaka', 0, ctx);
+      const choice = findChoice('타나카', 0, ctx);
       expect(choice).toBeDefined();
     });
 
@@ -110,8 +110,8 @@ describe('Wei Chen Tanaka Breadcrumbs', () => {
     it('mentions electronics and medicine', () => {
       const raw = WEI_CHEN_DIALOGUE.tanaka_gossip.text;
       const text = typeof raw === 'function' ? raw(0) : raw;
-      expect(text).toMatch(/electronics/i);
-      expect(text).toMatch(/medicine/i);
+      expect(text).toMatch(/전자제품/);
+      expect(text).toMatch(/의약품/);
     });
   });
 
@@ -122,7 +122,7 @@ describe('Wei Chen Tanaka Breadcrumbs', () => {
         getQuestStage: () => 1,
         canStartQuestStage: () => false,
       });
-      const choice = findChoice('Tanaka', 0, ctx);
+      const choice = findChoice('타나카', 0, ctx);
       expect(choice).toBeDefined();
     });
 
@@ -146,7 +146,7 @@ describe('Wei Chen Tanaka Breadcrumbs', () => {
     it('encourages bringing research supplies', () => {
       const raw = WEI_CHEN_DIALOGUE.tanaka_progress.text;
       const text = typeof raw === 'function' ? raw(0) : raw;
-      expect(text).toMatch(/supplies|electronics|medicine/i);
+      expect(text).toMatch(/물자|전자제품|의약품/);
     });
   });
 });
@@ -167,13 +167,13 @@ describe('Captain Vasquez Tanaka Breadcrumbs', () => {
       const ctx = makeContext({
         systemsVisited: ENDGAME_CONFIG.TANAKA_UNLOCK_SYSTEMS_VISITED,
       });
-      const choice = findChoice('Barnard', 5, ctx);
+      const choice = findChoice('바너드', 5, ctx);
       expect(choice).toBeDefined();
     });
 
     it('shows exploration nudge when systems < threshold', () => {
       const ctx = makeContext({ systemsVisited: 3 });
-      const choice = findChoice('green', 5, ctx);
+      const choice = findChoice('풋내기', 5, ctx);
       expect(choice).toBeDefined();
     });
 
@@ -198,7 +198,7 @@ describe('Captain Vasquez Tanaka Breadcrumbs', () => {
         narrativeFlags: { tanaka_met: true },
         getQuestStage: () => 0,
       });
-      const choice = findChoice('engineer', 5, ctx);
+      const choice = findChoice('엔지니어를 만났', 5, ctx);
       expect(choice).toBeDefined();
     });
 
@@ -220,7 +220,7 @@ describe('Captain Vasquez Tanaka Breadcrumbs', () => {
     it('mentions supplies, electronics, or medicine', () => {
       const text = CAPTAIN_VASQUEZ_DIALOGUE.tanaka_advice.text;
       const resolved = typeof text === 'function' ? text(5) : text;
-      expect(resolved).toMatch(/supplies|electronics|medicine/i);
+      expect(resolved).toMatch(/물자|전자제품|의약품/);
     });
   });
 
@@ -231,7 +231,7 @@ describe('Captain Vasquez Tanaka Breadcrumbs', () => {
         getQuestStage: () => 2,
         canStartQuestStage: () => false,
       });
-      const choice = findChoice('Tanaka', 5, ctx);
+      const choice = findChoice('타나카', 5, ctx);
       expect(choice).toBeDefined();
     });
   });
@@ -248,7 +248,7 @@ describe('Captain Vasquez Tanaka Breadcrumbs', () => {
         debt: 10000,
         credits: 5000,
       });
-      const choice = findChoice('ready', 5, ctx);
+      const choice = findChoice('준비되면', 5, ctx);
       expect(choice).toBeDefined();
     });
 
@@ -276,8 +276,8 @@ describe('Captain Vasquez Tanaka Breadcrumbs', () => {
     it('mentions ship condition, credits, and debt', () => {
       const text = CAPTAIN_VASQUEZ_DIALOGUE.pavonis_prep.text;
       const resolved = typeof text === 'function' ? text(5) : text;
-      expect(resolved).toMatch(/ship|hull|engine/i);
-      expect(resolved).toMatch(/debt|credit|money/i);
+      expect(resolved).toMatch(/배|선체|엔진/);
+      expect(resolved).toMatch(/빚|크레딧/);
     });
   });
 });

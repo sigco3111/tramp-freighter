@@ -70,7 +70,7 @@ describe('dock_generic_rumor', () => {
 
     const fullText = content.text.join(' ');
     expect(fullText).not.toContain('Far Away System');
-    expect(fullText).toContain('Markets are shifting');
+    expect(fullText).toContain('시장이 변하고 있어');
   });
 
   it('should reference an active event at the current system', () => {

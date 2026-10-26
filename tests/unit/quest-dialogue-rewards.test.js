@@ -52,22 +52,22 @@ describe('Quest dialogue reward timing', () => {
   describe('Tanaka backstory consistency with spec', () => {
     it('dialogue references sister leaving ten years ago, not fifteen', () => {
       const whyPavonis = YUKI_TANAKA_DIALOGUE.why_pavonis;
-      expect(whyPavonis.text).toContain('ten years ago');
-      expect(whyPavonis.text).not.toContain('fifteen years ago');
+      expect(whyPavonis.text).toContain('십 년 전에');
+      expect(whyPavonis.text).not.toContain('십오 년 전에');
     });
 
     it('sister dialogue references ten years, not fifteen', () => {
       const sister = YUKI_TANAKA_DIALOGUE.sister;
-      expect(sister.text).toContain('ten years');
-      expect(sister.text).not.toContain('fifteen years');
+      expect(sister.text).toContain('십 년');
+      expect(sister.text).not.toContain('십오 년');
     });
   });
 
   describe('Design Note 2: completion choices hide after rewards claimed', () => {
     const completionChoiceTexts = [
-      '"Glad the data worked out. She handled well out there."',
-      '"Took some searching, but it was worth the trip."',
-      '"Your work is impressive, Tanaka. The ship feels different."',
+      '"데이터가 잘 나와서 다행이에요. 배가 거기서 잘 움직였어요."',
+      '"찾느라 고생했지만 그럴 가치가 있었어요."',
+      '"당신 솜씨가 인상적이에요, 타나카. 배가 다르게 느껴져요."',
     ];
 
     it('completion greeting choices have condition checking hasClaimedStageRewards', () => {
@@ -83,9 +83,9 @@ describe('Quest dialogue reward timing', () => {
         // Condition should return false when hasClaimedStageRewards returns true
         const mockGSM = {
           getQuestStage: () => {
-            if (text.includes('data worked out')) return 1;
-            if (text.includes('some searching')) return 2;
-            if (text.includes('impressive')) return 3;
+            if (text.includes('데이터가 잘 나와서')) return 1;
+            if (text.includes('찾느라 고생')) return 2;
+            if (text.includes('인상적')) return 3;
             return 0;
           },
           checkQuestObjectives: () => true,
@@ -101,7 +101,7 @@ describe('Quest dialogue reward timing', () => {
     it('mission_4_complete greeting choice exists', () => {
       const greetingChoices = YUKI_TANAKA_DIALOGUE.greeting.choices;
       const choice = greetingChoices.find((c) =>
-        c.text.includes('Vasquez understood')
+        c.text.includes('바스케스는 이해했어요')
       );
       expect(choice).toBeDefined();
       expect(choice.next).toBe('mission_4_complete');

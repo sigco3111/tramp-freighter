@@ -126,11 +126,11 @@ describe('App Load Game Integration', () => {
 
     // Continue Game button should appear because localStorage has a save
     await waitFor(() => {
-      expect(screen.getByText('Continue Game')).toBeInTheDocument();
+      expect(screen.getByText('이어하기')).toBeInTheDocument();
     });
 
     // Click Continue Game to load
-    fireEvent.click(screen.getByText('Continue Game'));
+    fireEvent.click(screen.getByText('이어하기'));
 
     // Should transition to ORBIT mode (dev admin button is a reliable indicator)
     await waitFor(() => {
@@ -151,9 +151,9 @@ describe('App Load Game Integration', () => {
 
     // Should show New Game but not Continue Game
     await waitFor(() => {
-      expect(screen.getByText('New Game')).toBeInTheDocument();
+      expect(screen.getByText('새 게임')).toBeInTheDocument();
     });
-    expect(screen.queryByText('Continue Game')).not.toBeInTheDocument();
+    expect(screen.queryByText('이어하기')).not.toBeInTheDocument();
   });
 
   it('should reset Yumi interaction counter on post-credits load', async () => {
@@ -180,11 +180,11 @@ describe('App Load Game Integration', () => {
 
     // Wait for Continue Game button
     await waitFor(() => {
-      expect(screen.getByText('Continue Game')).toBeInTheDocument();
+      expect(screen.getByText('이어하기')).toBeInTheDocument();
     });
 
     // Click Continue Game to trigger the load path
-    fireEvent.click(screen.getByText('Continue Game'));
+    fireEvent.click(screen.getByText('이어하기'));
 
     // Should transition to ORBIT
     await waitFor(() => {

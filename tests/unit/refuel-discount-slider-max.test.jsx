@@ -57,7 +57,7 @@ describe('RefuelPanel discount affects slider max', () => {
     render(<RefuelPanel onClose={() => {}} />, { wrapper });
 
     // The Max button shows the slider max value
-    const maxButton = screen.getByRole('button', { name: /Max/ });
+    const maxButton = screen.getByRole('button', { name: /최대/ });
     const maxMatch = maxButton.textContent.match(/(\d+)/);
     const sliderMax = Number(maxMatch[1]);
 
@@ -80,7 +80,7 @@ describe('RefuelPanel discount affects slider max', () => {
     const wrapper = createWrapper(game);
     render(<RefuelPanel onClose={() => {}} />, { wrapper });
 
-    const maxButton = screen.getByRole('button', { name: /Max/ });
+    const maxButton = screen.getByRole('button', { name: /최대/ });
     const maxMatch = maxButton.textContent.match(/(\d+)/);
     const sliderMax = Number(maxMatch[1]);
 

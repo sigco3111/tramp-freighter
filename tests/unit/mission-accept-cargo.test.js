@@ -58,7 +58,7 @@ describe('MissionManager.acceptMission – cargo run cargo placement', () => {
     const result = manager.acceptMission(mission);
 
     expect(result.success).toBe(false);
-    expect(result.reason).toMatch(/cargo space/i);
+    expect(result.reason).toMatch(/공간이 부족/);
   });
 
   it('should not place cargo for non-cargo-run missions', () => {

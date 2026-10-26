@@ -108,10 +108,10 @@ describe('Combat and Negotiation Resolution Paths', () => {
 
   /** Navigate past title screen to orbit mode */
   async function navigateToOrbit() {
-    const newGameButton = screen.getByText('New Game');
+    const newGameButton = screen.getByText('새 게임');
     fireEvent.click(newGameButton);
 
-    const shipNameInput = screen.getByPlaceholderText('Enter ship name...');
+    const shipNameInput = screen.getByPlaceholderText('함선 이름 입력...');
     fireEvent.change(shipNameInput, { target: { value: 'Test Ship' } });
     fireEvent.keyDown(shipNameInput, { key: 'Enter' });
 
@@ -133,20 +133,20 @@ describe('Combat and Negotiation Resolution Paths', () => {
     fireEvent.click(screen.getByText('🏴‍☠️ Pirate'));
 
     await waitFor(() => {
-      expect(screen.getByText('Pirate Encounter')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
     });
   }
 
   /** Navigate to CombatPanel: Fight -> Confirm Fight */
   function navigateToCombat() {
-    fireEvent.click(screen.getByText('Fight'));
-    fireEvent.click(screen.getByText('Confirm Fight'));
+    fireEvent.click(screen.getByText('교전'));
+    fireEvent.click(screen.getByText('확정 교전'));
   }
 
   /** Navigate to NegotiationPanel: Negotiate -> Confirm Negotiate */
   function navigateToNegotiation() {
-    fireEvent.click(screen.getByText('Negotiate'));
-    fireEvent.click(screen.getByText('Confirm Negotiate'));
+    fireEvent.click(screen.getByText('협상'));
+    fireEvent.click(screen.getByText('확정 협상'));
   }
 
   it('should resolve combat choice and show OutcomePanel after Return Fire', async () => {
@@ -171,16 +171,16 @@ describe('Combat and Negotiation Resolution Paths', () => {
 
     // CombatPanel should be visible
     await waitFor(() => {
-      expect(screen.getByText('Combat Resolution')).toBeInTheDocument();
+      expect(screen.getByText('전투 결과')).toBeInTheDocument();
     });
 
     // Select Return Fire option and confirm
-    fireEvent.click(screen.getByText('Return Fire'));
-    fireEvent.click(screen.getByText('Execute Return Fire'));
+    fireEvent.click(screen.getByText('응사'));
+    fireEvent.click(screen.getByText('실행: 응사'));
 
     // OutcomePanel should appear
     await waitFor(() => {
-      expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+      expect(screen.getByText('조우 결과')).toBeInTheDocument();
     });
 
     // resolveCombatChoice should have been called with 'return_fire'
@@ -190,7 +190,7 @@ describe('Combat and Negotiation Resolution Paths', () => {
     );
 
     // Continue button should be present
-    expect(screen.getByText('Continue')).toBeInTheDocument();
+    expect(screen.getByText('계속')).toBeInTheDocument();
   });
 
   it('should map negotiation flee to evasive via resolveCombatChoice', async () => {
@@ -215,7 +215,7 @@ describe('Combat and Negotiation Resolution Paths', () => {
 
     // NegotiationPanel should be visible
     await waitFor(() => {
-      expect(screen.getByText('Negotiation')).toBeInTheDocument();
+      expect(screen.getByText('협상')).toBeInTheDocument();
     });
 
     // Click the close button (x) which triggers onChoice('flee')
@@ -224,7 +224,7 @@ describe('Combat and Negotiation Resolution Paths', () => {
 
     // OutcomePanel should appear
     await waitFor(() => {
-      expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+      expect(screen.getByText('조우 결과')).toBeInTheDocument();
     });
 
     // resolveCombatChoice should have been called with 'evasive' (mapped from 'flee')
@@ -256,18 +256,18 @@ describe('Combat and Negotiation Resolution Paths', () => {
 
     // NegotiationPanel should be visible
     await waitFor(() => {
-      expect(screen.getByText('Negotiation')).toBeInTheDocument();
+      expect(screen.getByText('협상')).toBeInTheDocument();
     });
 
     // Select Counter-Proposal and confirm
-    fireEvent.click(screen.getByText('Counter-Proposal'));
+    fireEvent.click(screen.getByText('역제안'));
     fireEvent.click(
-      screen.getByText('Say: "How about something more reasonable?"')
+      screen.getByText('말하기: "좀 더 합리적인 선은 어떻소?"')
     );
 
     // OutcomePanel should appear
     await waitFor(() => {
-      expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+      expect(screen.getByText('조우 결과')).toBeInTheDocument();
     });
 
     // resolveNegotiation should have been called with 'counter_proposal'
@@ -299,36 +299,36 @@ describe('Combat and Negotiation Resolution Paths', () => {
     navigateToNegotiation();
 
     await waitFor(() => {
-      expect(screen.getByText('Negotiation')).toBeInTheDocument();
+      expect(screen.getByText('협상')).toBeInTheDocument();
     });
 
     // Select Counter-Proposal and confirm
-    fireEvent.click(screen.getByText('Counter-Proposal'));
+    fireEvent.click(screen.getByText('역제안'));
     fireEvent.click(
-      screen.getByText('Say: "How about something more reasonable?"')
+      screen.getByText('말하기: "좀 더 합리적인 선은 어떻소?"')
     );
 
     // Should show OutcomePanel in escalated_combat phase
     await waitFor(() => {
-      expect(screen.getByText('Encounter Outcome')).toBeInTheDocument();
+      expect(screen.getByText('조우 결과')).toBeInTheDocument();
     });
 
     // Click Continue on the outcome — should return to PirateEncounterPanel
     // with negotiate disabled
-    fireEvent.click(screen.getByText('Continue'));
+    fireEvent.click(screen.getByText('계속'));
 
     await waitFor(() => {
-      expect(screen.getByText('Pirate Encounter')).toBeInTheDocument();
+      expect(screen.getByText('해적 조우')).toBeInTheDocument();
     });
 
     // Negotiate option should be disabled (native disabled attribute)
     const negotiateOption = screen
-      .getByText('Negotiate')
+      .getByText('협상')
       .closest('.tactical-option');
     expect(negotiateOption).toBeDisabled();
 
     // The "They're done talking." message should be visible
-    expect(screen.getByText("They're done talking.")).toBeInTheDocument();
+    expect(screen.getByText('그들은 이미 대화를 끝냈습니다.')).toBeInTheDocument();
   });
 
   it('should return to orbit when encounter resolution throws an error', async () => {
@@ -349,20 +349,20 @@ describe('Combat and Negotiation Resolution Paths', () => {
     navigateToCombat();
 
     await waitFor(() => {
-      expect(screen.getByText('Combat Resolution')).toBeInTheDocument();
+      expect(screen.getByText('전투 결과')).toBeInTheDocument();
     });
 
     // Select Return Fire and confirm
-    fireEvent.click(screen.getByText('Return Fire'));
-    fireEvent.click(screen.getByText('Execute Return Fire'));
+    fireEvent.click(screen.getByText('응사'));
+    fireEvent.click(screen.getByText('실행: 응사'));
 
     // Should return to orbit — encounter panels gone
     await waitFor(() => {
-      expect(screen.queryByText('Combat Resolution')).not.toBeInTheDocument();
+      expect(screen.queryByText('전투 결과')).not.toBeInTheDocument();
     });
 
-    expect(screen.queryByText('Pirate Encounter')).not.toBeInTheDocument();
-    expect(screen.queryByText('Encounter Outcome')).not.toBeInTheDocument();
+    expect(screen.queryByText('해적 조우')).not.toBeInTheDocument();
+    expect(screen.queryByText('조우 결과')).not.toBeInTheDocument();
 
     // Error was logged
     expect(console.error).toHaveBeenCalledWith(

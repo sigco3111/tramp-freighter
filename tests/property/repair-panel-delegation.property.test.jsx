@@ -255,7 +255,7 @@ describe('Property: Repair panel delegates to GameCoordinator', () => {
         render(<RepairPanel onClose={() => {}} />, { wrapper });
 
         // Find and click "Repair All" button
-        const repairAllButton = screen.getByText(/Repair All to Full/);
+        const repairAllButton = screen.getByText(/전부 최대치로 수리/);
         expect(repairAllButton).toBeTruthy();
 
         fireEvent.click(repairAllButton);

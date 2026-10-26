@@ -44,10 +44,10 @@ describe('Property: Upgrades panel delegates to GameCoordinator', () => {
         render(<UpgradesPanel onClose={() => {}} />, { wrapper });
 
         // Verify panel renders
-        expect(screen.getByText(/Ship Upgrades/)).toBeInTheDocument();
+        expect(screen.getByText(/함선 업그레이드/)).toBeInTheDocument();
 
         // Verify available upgrades section exists
-        expect(screen.getByText('Available Upgrades')).toBeInTheDocument();
+        expect(screen.getByText('구매 가능한 업그레이드')).toBeInTheDocument();
 
         return true;
       }),
@@ -74,7 +74,7 @@ describe('Property: Upgrades panel delegates to GameCoordinator', () => {
         render(<UpgradesPanel onClose={() => {}} />, { wrapper });
 
         // Verify installed upgrades section exists
-        expect(screen.getByText('Installed Upgrades')).toBeInTheDocument();
+        expect(screen.getByText('설치된 업그레이드')).toBeInTheDocument();
 
         // Verify upgrade name is displayed
         const upgrade = SHIP_CONFIG.UPGRADES[upgradeId];
@@ -114,7 +114,7 @@ describe('Property: Upgrades panel delegates to GameCoordinator', () => {
         // Verify message contains "Insufficient credits"
         const hasInsufficientCreditsMessage = Array.from(
           validationMessages
-        ).some((msg) => msg.textContent.includes('Insufficient credits'));
+        ).some((msg) => msg.textContent.includes('크레딧이 부족합니다'));
         expect(hasInsufficientCreditsMessage).toBe(true);
 
         return true;
@@ -141,7 +141,7 @@ describe('Property: Upgrades panel delegates to GameCoordinator', () => {
         render(<UpgradesPanel onClose={() => {}} />, { wrapper });
 
         // Find all purchase buttons
-        const purchaseButtons = screen.getAllByText('Purchase');
+        const purchaseButtons = screen.getAllByText('구매');
 
         // All buttons should be disabled due to insufficient credits
         purchaseButtons.forEach((button) => {
@@ -172,7 +172,7 @@ describe('Property: Upgrades panel delegates to GameCoordinator', () => {
         render(<UpgradesPanel onClose={() => {}} />, { wrapper });
 
         // Find all purchase buttons
-        const purchaseButtons = screen.getAllByText('Purchase');
+        const purchaseButtons = screen.getAllByText('구매');
 
         // At least one button should be enabled
         const enabledButtons = purchaseButtons.filter(
@@ -204,15 +204,15 @@ describe('Property: Upgrades panel delegates to GameCoordinator', () => {
         render(<UpgradesPanel onClose={() => {}} />, { wrapper });
 
         // Find and click first enabled purchase button
-        const purchaseButtons = screen.getAllByText('Purchase');
+        const purchaseButtons = screen.getAllByText('구매');
         const enabledButton = purchaseButtons.find((btn) => !btn.disabled);
 
         if (enabledButton) {
           fireEvent.click(enabledButton);
 
           // Verify confirmation dialog appears
-          expect(screen.getByText('Confirm Purchase')).toBeInTheDocument();
-          expect(screen.getByText('Cancel')).toBeInTheDocument();
+          expect(screen.getByText('구매 확인')).toBeInTheDocument();
+          expect(screen.getByText('취소')).toBeInTheDocument();
         }
 
         return true;
@@ -397,14 +397,14 @@ describe('Property: Upgrades panel delegates to GameCoordinator', () => {
         render(<UpgradesPanel onClose={() => {}} />, { wrapper });
 
         // Find and click first enabled purchase button
-        const purchaseButtons = screen.getAllByText('Purchase');
+        const purchaseButtons = screen.getAllByText('구매');
         const enabledButton = purchaseButtons.find((btn) => !btn.disabled);
 
         if (enabledButton) {
           fireEvent.click(enabledButton);
 
           // Find and click confirm button
-          const confirmButton = screen.getByText('Confirm Purchase');
+          const confirmButton = screen.getByText('구매 확인');
           fireEvent.click(confirmButton);
 
           // Verify purchaseUpgrade was called
@@ -445,14 +445,14 @@ describe('Property: Upgrades panel delegates to GameCoordinator', () => {
         render(<UpgradesPanel onClose={() => {}} />, { wrapper });
 
         // Find and click first enabled purchase button
-        const purchaseButtons = screen.getAllByText('Purchase');
+        const purchaseButtons = screen.getAllByText('구매');
         const enabledButton = purchaseButtons.find((btn) => !btn.disabled);
 
         if (enabledButton) {
           fireEvent.click(enabledButton);
 
           // Find and click cancel button
-          const cancelButton = screen.getByText('Cancel');
+          const cancelButton = screen.getByText('취소');
           fireEvent.click(cancelButton);
 
           // Verify purchaseUpgrade was NOT called

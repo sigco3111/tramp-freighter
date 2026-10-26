@@ -166,7 +166,7 @@ describe('Navigation UX Integration (React)', () => {
       );
 
       expect(validation.valid).toBe(false);
-      expect(validation.error).toContain('Insufficient fuel');
+      expect(validation.error).toContain('연료가 부족합니다');
 
       // Attempt jump should fail
       const result = await navSystem.executeJump(game, unreachableSystem);
@@ -394,7 +394,7 @@ describe('Navigation UX Integration (React)', () => {
       );
 
       expect(validation.valid).toBe(false);
-      expect(validation.error).toContain('No wormhole connection');
+      expect(validation.error).toContain('웜홀 연결이 없습니다');
     }
   });
 

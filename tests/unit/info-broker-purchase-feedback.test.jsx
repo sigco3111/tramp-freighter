@@ -42,14 +42,14 @@ describe('InfoBrokerPanel Purchase Feedback', () => {
     render(<InfoBrokerPanel onClose={mockOnClose} />, { wrapper });
 
     // Find and click the purchase button for a connected system
-    const purchaseButtons = screen.queryAllByText('Purchase');
+    const purchaseButtons = screen.queryAllByText('구매');
 
     if (purchaseButtons.length > 0) {
       fireEvent.click(purchaseButtons[0]);
 
       // Verify success message appears immediately (no setTimeout delay in test)
       expect(
-        screen.getByText(/Intelligence purchased for/)
+        screen.getByText(/정보를 구매했습니다/)
       ).toBeInTheDocument();
     }
   });
@@ -63,7 +63,7 @@ describe('InfoBrokerPanel Purchase Feedback', () => {
     render(<InfoBrokerPanel onClose={mockOnClose} />, { wrapper });
 
     // Find and click the purchase button
-    const purchaseButtons = screen.queryAllByText('Purchase');
+    const purchaseButtons = screen.queryAllByText('구매');
 
     if (purchaseButtons.length > 0) {
       const initialCallCount = listSpy.mock.calls.length;
@@ -81,16 +81,16 @@ describe('InfoBrokerPanel Purchase Feedback', () => {
     render(<InfoBrokerPanel onClose={mockOnClose} />, { wrapper });
 
     // Find and click the buy rumor button
-    const buyRumorButton = screen.getByText(/Buy Rumor/);
+    const buyRumorButton = screen.getByText(/소문 구매/);
     fireEvent.click(buyRumorButton);
 
     // Verify success message appears immediately
     expect(
-      screen.getByText('Rumor purchased successfully')
+      screen.getByText('소문을 구매했습니다')
     ).toBeInTheDocument();
 
     // Verify the actual rumor text appears (look for specific rumor content)
-    expect(screen.getByText(/Word on the street/)).toBeInTheDocument();
+    expect(screen.getByText(/거리에선 지금/)).toBeInTheDocument();
   });
 
   it('should show error message when purchase fails', () => {
@@ -102,7 +102,7 @@ describe('InfoBrokerPanel Purchase Feedback', () => {
     render(<InfoBrokerPanel onClose={mockOnClose} />, { wrapper });
 
     // Find and click the purchase button (should be disabled, but test error handling)
-    const purchaseButtons = screen.queryAllByText('Purchase');
+    const purchaseButtons = screen.queryAllByText('구매');
 
     if (purchaseButtons.length > 0) {
       // Force click even if disabled to test error handling
@@ -121,11 +121,11 @@ describe('InfoBrokerPanel Purchase Feedback', () => {
     render(<InfoBrokerPanel onClose={mockOnClose} />, { wrapper });
 
     // Switch to Market Data tab
-    const marketDataTab = screen.getByText('Market Data');
+    const marketDataTab = screen.getByText('시장 데이터');
     fireEvent.click(marketDataTab);
 
     // Switch back to Purchase Intelligence tab
-    const purchaseTab = screen.getByText('Purchase Intelligence');
+    const purchaseTab = screen.getByText('정보 구매');
     fireEvent.click(purchaseTab);
 
     // Verify no validation messages are present after tab switch

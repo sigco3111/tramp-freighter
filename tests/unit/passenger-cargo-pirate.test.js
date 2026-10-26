@@ -125,7 +125,7 @@ describe('Passenger Cargo Space', () => {
       // 50 - 47 - 2 = 1 unit remaining
       const result = validateBuy('ore', 2, 15, state);
       expect(result.valid).toBe(false);
-      expect(result.reason).toBe('Insufficient cargo capacity');
+      expect(result.reason).toBe('화물 적재량이 부족합니다');
     });
 
     it('should allow buy when passenger space leaves enough room', () => {
@@ -387,13 +387,13 @@ describe('Passenger Display Bugs', () => {
 
   describe('Bug 4: singular/plural units grammar', () => {
     it('should return "unit" for singular values', () => {
-      expect(pluralizeUnit(1)).toBe('1 unit');
+      expect(pluralizeUnit(1)).toBe('1단위');
     });
 
     it('should return "units" for plural values', () => {
-      expect(pluralizeUnit(2)).toBe('2 units');
-      expect(pluralizeUnit(0)).toBe('0 units');
-      expect(pluralizeUnit(50)).toBe('50 units');
+      expect(pluralizeUnit(2)).toBe('2단위');
+      expect(pluralizeUnit(0)).toBe('0단위');
+      expect(pluralizeUnit(50)).toBe('50단위');
     });
   });
 });

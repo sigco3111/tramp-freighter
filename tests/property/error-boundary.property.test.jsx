@@ -50,12 +50,12 @@ describe('Property: Error boundaries catch component errors', () => {
           );
 
           // Verify fallback UI is displayed
-          expect(screen.getByText('Something went wrong')).toBeInTheDocument();
-          expect(screen.getByText('Reload Application')).toBeInTheDocument();
+          expect(screen.getByText('문제가 발생했습니다')).toBeInTheDocument();
+          expect(screen.getByText('애플리케이션 새로고침')).toBeInTheDocument();
 
           // Verify error message is displayed
           const errorText = container.textContent;
-          expect(errorText).toContain('Error:');
+          expect(errorText).toContain('오류:');
 
           return true;
         }
@@ -87,7 +87,7 @@ describe('Property: Error boundaries catch component errors', () => {
 
           // Verify fallback UI is NOT displayed
           expect(
-            screen.queryByText('Something went wrong')
+            screen.queryByText('문제가 발생했습니다')
           ).not.toBeInTheDocument();
 
           return true;
@@ -160,7 +160,7 @@ describe('Property: Error boundaries catch component errors', () => {
           );
 
           // Verify first boundary shows error UI
-          const errorBoundaries = screen.getAllByText('Something went wrong');
+          const errorBoundaries = screen.getAllByText('문제가 발생했습니다');
           expect(errorBoundaries.length).toBe(1);
 
           // Verify second boundary renders children normally

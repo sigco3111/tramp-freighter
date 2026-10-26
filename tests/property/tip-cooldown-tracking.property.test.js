@@ -181,7 +181,7 @@ describe('Tip Cooldown Tracking Property Tests', () => {
           // Verify tip is not available due to cooldown
           const availability = testGameCoordinator.canGetTip(npcId);
           expect(availability.available).toBe(false);
-          expect(availability.reason).toContain('cooldown');
+          expect(availability.reason).toContain('팁 쿨다운 중입니다');
 
           // Verify getTip returns null
           const secondTip = testGameCoordinator.getTip(npcId);

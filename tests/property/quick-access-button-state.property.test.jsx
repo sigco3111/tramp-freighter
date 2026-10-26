@@ -67,7 +67,7 @@ describe('Property 48: Quick access button state updates', () => {
 
           // Verify dock button is enabled
           await waitFor(() => {
-            const dockButton = screen.getByText('Dock');
+            const dockButton = screen.getByText('도킹');
             expect(dockButton).not.toBeDisabled();
           });
 
@@ -113,7 +113,7 @@ describe('Property 48: Quick access button state updates', () => {
 
           // Verify dock button is disabled
           await waitFor(() => {
-            const dockButton = screen.getByText('Dock');
+            const dockButton = screen.getByText('도킹');
             expect(dockButton).toBeDisabled();
           });
 

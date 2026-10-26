@@ -42,7 +42,7 @@ describe('MissionCompleteNotifier', () => {
 
   it('should auto-show completion dialog when completable missions exist on dock', () => {
     render(<MissionCompleteNotifier />);
-    expect(screen.getByText(/Mission Complete/i)).toBeInTheDocument();
+    expect(screen.getByText(/임무 완료/)).toBeInTheDocument();
     expect(
       screen.getByText(/Cargo Run: parts to Sirius A/)
     ).toBeInTheDocument();
@@ -51,7 +51,7 @@ describe('MissionCompleteNotifier', () => {
 
   it('should call completeMission when player confirms', () => {
     render(<MissionCompleteNotifier />);
-    const completeBtn = screen.getByText('Claim Reward');
+    const completeBtn = screen.getByText('보상 받기');
     fireEvent.click(completeBtn);
     expect(mockCompleteMission).toHaveBeenCalledWith('delivery_001');
   });

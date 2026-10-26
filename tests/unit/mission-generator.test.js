@@ -154,7 +154,7 @@ describe('Mission Generator', () => {
 
       expect(mission.id).toMatch(/^cargo_run_/);
       expect(mission.type).toBe('delivery');
-      expect(mission.title).toContain('Cargo Run');
+      expect(mission.title).toContain('화물 운송');
       expect(mission.requirements).toHaveProperty('destination');
       expect(mission.requirements).toHaveProperty('deadline');
       expect(mission.requirements.deadline).toBeGreaterThan(0);
@@ -572,8 +572,8 @@ describe('Mission Generator', () => {
       );
 
       expect(mission).not.toBeNull();
-      expect(mission.title).toContain('System 2');
-      expect(mission.destination.name).toBe('System 2');
+      expect(mission.title).toContain('항성계 2');
+      expect(mission.destination.name).toBe('항성계 2');
       expect(mission.destination.systemId).toBe(2);
     });
   });
@@ -599,7 +599,7 @@ describe('Mission Generator', () => {
         MISSION_CONFIG.CARGO_RUN_ILLEGAL_QUANTITY.MAX
       );
       expect(mission.description).toBe(
-        'Discreet delivery. No questions asked.'
+        '은밀한 배송. 묻지 않기.'
       );
     });
 
@@ -673,7 +673,7 @@ describe('Mission Generator', () => {
       );
 
       expect(mission).not.toBeNull();
-      expect(mission.title).toMatch(/Cargo Run: [A-Z]/);
+      expect(mission.title).toMatch(/화물 운송: ./);
       expect(mission.title).not.toContain('_');
     });
   });
@@ -933,7 +933,7 @@ describe('Mission Generator', () => {
       expect(mission).not.toBeNull();
       expect(mission.id).toMatch(/^passenger_/);
       expect(mission.type).toBe('passenger');
-      expect(mission.title).toMatch(/^Passenger: /);
+      expect(mission.title).toMatch(/^승객: /);
       expect(mission.giver).toBe('passenger');
       expect(mission.giverSystem).toBe(0);
       expect(mission.hopCount).toBeGreaterThanOrEqual(1);

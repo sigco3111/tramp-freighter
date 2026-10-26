@@ -52,40 +52,40 @@ describe('Epilogue credits phase', () => {
     const onCreditsComplete = vi.fn();
     render(<Epilogue onCreditsComplete={onCreditsComplete} />);
 
-    fireEvent.click(screen.getByText('Continue'));
-    fireEvent.click(screen.getByText('Credits'));
+    fireEvent.click(screen.getByText('계속'));
+    fireEvent.click(screen.getByText('크레딧'));
     act(() => {
       vi.advanceTimersByTime(
         CREDITS_CONFIG.FADE_OUT_MS + CREDITS_CONFIG.FADE_HOLD_MS
       );
     });
 
-    expect(screen.getByText('TRAMP FREIGHTER BLUES')).toBeTruthy();
+    expect(screen.getByText('트램프 프레이터 블루스')).toBeTruthy();
   });
 
   it('disables Credits button during fade transition', () => {
     const onCreditsComplete = vi.fn();
     render(<Epilogue onCreditsComplete={onCreditsComplete} />);
 
-    fireEvent.click(screen.getByText('Continue'));
-    fireEvent.click(screen.getByText('Credits'));
+    fireEvent.click(screen.getByText('계속'));
+    fireEvent.click(screen.getByText('크레딧'));
 
-    expect(screen.getByText('Credits').disabled).toBe(true);
+    expect(screen.getByText('크레딧').disabled).toBe(true);
   });
 
   it('EndCredits calls onCreditsComplete when skipped', () => {
     const onCreditsComplete = vi.fn();
     render(<Epilogue onCreditsComplete={onCreditsComplete} />);
 
-    fireEvent.click(screen.getByText('Continue'));
-    fireEvent.click(screen.getByText('Credits'));
+    fireEvent.click(screen.getByText('계속'));
+    fireEvent.click(screen.getByText('크레딧'));
     act(() => {
       vi.advanceTimersByTime(
         CREDITS_CONFIG.FADE_OUT_MS + CREDITS_CONFIG.FADE_HOLD_MS
       );
     });
 
-    fireEvent.click(screen.getByLabelText('Skip credits'));
+    fireEvent.click(screen.getByLabelText('크레딧 건너뛰기'));
     expect(onCreditsComplete).toHaveBeenCalledOnce();
   });
 });

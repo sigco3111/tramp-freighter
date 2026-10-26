@@ -53,7 +53,7 @@ describe('Property 24: Trade panel delegates to GameCoordinator', () => {
         render(<TradePanel onClose={() => {}} />, { wrapper });
 
         // Find and click a "Buy 1" button
-        const buyButtons = screen.getAllByText(/Buy 1/);
+        const buyButtons = screen.getAllByText(/1개 구매/);
         expect(buyButtons.length).toBeGreaterThan(0);
 
         fireEvent.click(buyButtons[0]);
@@ -104,7 +104,7 @@ describe('Property 24: Trade panel delegates to GameCoordinator', () => {
         render(<TradePanel onClose={() => {}} />, { wrapper });
 
         // Find and click a "Sell 1" button
-        const sellButtons = screen.getAllByText(/Sell 1/);
+        const sellButtons = screen.getAllByText(/1개 판매/);
         expect(sellButtons.length).toBeGreaterThan(0);
 
         fireEvent.click(sellButtons[0]);
@@ -137,12 +137,12 @@ describe('Property 24: Trade panel delegates to GameCoordinator', () => {
           wrapper,
         });
 
-        // Verify that prices are displayed (should be numbers followed by "₡/unit")
+        // Verify that prices are displayed (should be numbers followed by "₡/단위")
         const priceElements = container.querySelectorAll('.good-price');
         expect(priceElements.length).toBeGreaterThan(0);
 
         priceElements.forEach((element) => {
-          expect(element.textContent).toMatch(/\d+ ₡\/unit/);
+          expect(element.textContent).toMatch(/\d+\s+₡\/단위/);
         });
       }),
       { numRuns: 100 }
@@ -171,15 +171,15 @@ describe('Property 24: Trade panel delegates to GameCoordinator', () => {
 
         // Initial state - no cargo
         let cargoDisplay = container.querySelector('#cargo-stacks');
-        expect(cargoDisplay.textContent).toContain('No cargo');
+        expect(cargoDisplay.textContent).toContain('화물 없음');
 
         // Buy some goods (this should trigger cargoChanged event)
-        const buyButtons = screen.getAllByText(/Buy 1/);
+        const buyButtons = screen.getAllByText(/1개 구매/);
         fireEvent.click(buyButtons[0]);
 
         // Cargo display should update to show the purchased goods
         cargoDisplay = container.querySelector('#cargo-stacks');
-        expect(cargoDisplay.textContent).not.toContain('No cargo');
+        expect(cargoDisplay.textContent).not.toContain('화물 없음');
       }),
       { numRuns: 100 }
     );
@@ -205,7 +205,7 @@ describe('Property 24: Trade panel delegates to GameCoordinator', () => {
         });
 
         // Find a "Buy 10" button (should be disabled due to insufficient credits)
-        const buy10Buttons = screen.getAllByText(/Buy 10/);
+        const buy10Buttons = screen.getAllByText(/10개 구매/);
         expect(buy10Buttons.length).toBeGreaterThan(0);
 
         // Button should be disabled (validation happens in component, but uses utility functions)
